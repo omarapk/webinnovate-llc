@@ -1,0 +1,24 @@
+services:
+  - type: web
+    name: histudy-laravel
+    env: docker
+    dockerfilePath: ./Dockerfile
+    envVars:
+      - key: APP_ENV
+        value: production
+      - key: APP_DEBUG
+        value: false
+      - key: APP_URL
+        value: https://histudy-laravel.onrender.com
+      - key: LOG_CHANNEL
+        value: stack
+      - key: DB_CONNECTION
+        value: sqlite
+      - key: CACHE_DRIVER
+        value: file
+      - key: SESSION_DRIVER
+        value: file
+      - key: SESSION_LIFETIME
+        value: 120
+      - key: QUEUE_CONNECTION
+        value: sync
