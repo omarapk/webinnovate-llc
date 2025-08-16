@@ -44,11 +44,11 @@ RUN mkdir -p storage/framework/cache \
     && chmod -R 775 bootstrap/cache
 
 # Copy and make entrypoint script executable
-COPY docker-entrypoint.sh /usr/local/bin/
-RUN chmod +x /usr/local/bin/docker-entrypoint.sh
+COPY docker-entrypoint-simple.sh /usr/local/bin/
+RUN chmod +x /usr/local/bin/docker-entrypoint-simple.sh
 
 # Expose port 8000
 EXPOSE 8000
 
 # Use entrypoint script
-ENTRYPOINT ["/usr/local/bin/docker-entrypoint.sh"]
+ENTRYPOINT ["/usr/local/bin/docker-entrypoint-simple.sh"]

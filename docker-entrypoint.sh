@@ -11,6 +11,7 @@ if [ ! -f .env ]; then
     echo "APP_NAME=HiStudy" > .env
     echo "APP_ENV=production" >> .env
     echo "APP_DEBUG=true" >> .env
+    echo "APP_KEY=" >> .env
     echo "LOG_CHANNEL=stack" >> .env
     echo "DB_CONNECTION=sqlite" >> .env
     echo "DB_DATABASE=database/database.sqlite" >> .env
@@ -54,21 +55,26 @@ mkdir -p storage/logs
 chmod -R 775 storage
 chmod -R 775 bootstrap/cache
 
+# Ensure database file exists and is writable
+echo "Setting up database..."
+touch database/database.sqlite
+chmod 664 database/database.sqlite
+
 # Generate key if not set
 if ! grep -q "APP_KEY=base64:" .env; then
     echo "Generating application key..."
     php artisan key:generate
 fi
 
-# Clear caches
-echo "Clearing caches..."
-php artisan config:clear
-php artisan cache:clear
-php artisan view:clear
-
-# Run migrations
+# Run migrations first (before clearing cache)
 echo "Running migrations..."
 php artisan migrate --force
+
+# Clear caches after migrations (with error handling)
+echo "Clearing caches..."
+php artisan config:clear || echo "Config clear failed, continuing..."
+php artisan cache:clear || echo "Cache clear failed, continuing..."
+php artisan view:clear || echo "View clear failed, continuing..."
 
 # Show current .env configuration (without sensitive data)
 echo "Current configuration:"
