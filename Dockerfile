@@ -35,17 +35,13 @@ RUN npm run build
 # Create SQLite database file
 RUN touch database/database.sqlite
 
-# Create .env file with basic configuration
-RUN echo "APP_NAME=HiStudy" > .env && \
-    echo "APP_ENV=production" >> .env && \
-    echo "APP_DEBUG=false" >> .env && \
-    echo "LOG_CHANNEL=stack" >> .env && \
-    echo "DB_CONNECTION=sqlite" >> .env && \
-    echo "DB_DATABASE=database/database.sqlite" >> .env && \
-    echo "CACHE_DRIVER=file" >> .env && \
-    echo "SESSION_DRIVER=file" >> .env && \
-    echo "SESSION_LIFETIME=120" >> .env && \
-    echo "QUEUE_CONNECTION=sync" >> .env
+# Create storage directories and set permissions
+RUN mkdir -p storage/framework/cache \
+    && mkdir -p storage/framework/sessions \
+    && mkdir -p storage/framework/views \
+    && mkdir -p storage/logs \
+    && chmod -R 775 storage \
+    && chmod -R 775 bootstrap/cache
 
 # Copy and make entrypoint script executable
 COPY docker-entrypoint.sh /usr/local/bin/

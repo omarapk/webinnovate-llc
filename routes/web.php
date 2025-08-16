@@ -8,6 +8,34 @@ use App\Http\Controllers\ElementsController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PagesController;
 
+// Health check route for debugging
+Route::get('/health', function () {
+    return response()->json([
+        'status' => 'ok',
+        'timestamp' => now(),
+        'app_name' => config('app.name'),
+        'app_env' => config('app.env'),
+        'app_debug' => config('app.debug'),
+        'database_connection' => config('database.default'),
+    ]);
+});
+
+// Debug route to show environment info
+Route::get('/debug', function () {
+    if (config('app.debug')) {
+        return response()->json([
+            'env_file_exists' => file_exists('.env'),
+            'storage_writable' => is_writable(storage_path()),
+            'bootstrap_cache_writable' => is_writable(bootstrap_path('cache')),
+            'app_key_set' => !empty(config('app.key')),
+            'database_connection' => config('database.default'),
+            'database_path' => config('database.connections.sqlite.database'),
+            'database_exists' => file_exists(config('database.connections.sqlite.database')),
+        ]);
+    }
+    return response()->json(['error' => 'Debug mode disabled']);
+});
+
 Route::controller(HomeController::class)->group(function () {
     Route::get('/', 'multilingual')->name('multilingual');
 });
