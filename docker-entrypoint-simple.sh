@@ -19,6 +19,8 @@ CACHE_DRIVER=file
 SESSION_DRIVER=file
 SESSION_LIFETIME=120
 QUEUE_CONNECTION=sync
+BROADCAST_DRIVER=log
+FILESYSTEM_DISK=local
 EOF
 
 # Update with environment variables if provided
