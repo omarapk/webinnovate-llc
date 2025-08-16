@@ -36,6 +36,24 @@ Route::get('/debug', function () {
     return response()->json(['error' => 'Debug mode disabled']);
 });
 
+// Asset test route
+Route::get('/test-assets', function () {
+    $assets = [
+        'css' => [
+            'bootstrap' => file_exists(public_path('assets/css/vendor/bootstrap.min.css')),
+            'styles' => file_exists(public_path('assets/css/styles.css')),
+        ],
+        'js' => [
+            'main' => file_exists(public_path('assets/js/main.js')),
+        ],
+        'images' => [
+            'favicon' => file_exists(public_path('assets/images/favicon.png')),
+        ]
+    ];
+    
+    return response()->json($assets);
+});
+
 Route::controller(HomeController::class)->group(function () {
     Route::get('/', 'multilingual')->name('multilingual');
 });

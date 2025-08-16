@@ -4,6 +4,9 @@ set -e
 
 echo "Starting Laravel application setup..."
 
+# Install nginx
+apt-get update && apt-get install -y nginx
+
 # Create .env file with all required variables
 echo "Creating .env file..."
 cat > .env << EOF
@@ -58,9 +61,39 @@ php artisan optimize || true
 echo "Setting asset permissions..."
 chmod -R 755 public/assets
 
-# Create symbolic link for storage
-echo "Creating storage link..."
-php artisan storage:link || true
+# Create nginx configuration
+echo "Creating nginx configuration..."
+cat > /etc/nginx/sites-available/laravel << EOF
+server {
+    listen 8000;
+    server_name _;
+    root /var/www/public;
+    index index.php;
 
-echo "Laravel setup complete. Starting server..."
-exec php artisan serve --host 0.0.0.0 --port 8000
+    location / {
+        try_files \$uri \$uri/ /index.php?\$query_string;
+    }
+
+    location ~ \.php$ {
+        fastcgi_pass 127.0.0.1:9000;
+        fastcgi_index index.php;
+        fastcgi_param SCRIPT_FILENAME \$document_root\$fastcgi_script_name;
+        include fastcgi_params;
+    }
+
+    location ~* \.(css|js|png|jpg|jpeg|gif|ico|svg|woff|woff2|ttf|eot)$ {
+        expires 1y;
+        add_header Cache-Control "public, immutable";
+    }
+}
+EOF
+
+# Enable the site
+ln -sf /etc/nginx/sites-available/laravel /etc/nginx/sites-enabled/
+rm -f /etc/nginx/sites-enabled/default
+
+# Start PHP-FPM
+php-fpm -D
+
+# Start nginx
+nginx -g "daemon off;"
