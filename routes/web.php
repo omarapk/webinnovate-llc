@@ -83,6 +83,16 @@ Route::get('/debug-assets', function () {
     return view('debug-assets', compact('bootstrapUrl', 'stylesUrl'));
 });
 
+// Simple test route
+Route::get('/test', function () {
+    return response()->json([
+        'status' => 'ok',
+        'app_url' => config('app.url'),
+        'asset_url' => asset('assets/css/vendor/bootstrap.min.css'),
+        'environment' => app()->environment(),
+    ]);
+});
+
 Route::controller(HomeController::class)->group(function () {
     Route::get('/', 'multilingual')->name('multilingual');
 });

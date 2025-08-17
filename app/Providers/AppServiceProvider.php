@@ -19,9 +19,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        // Force HTTPS in production
+        // Force HTTPS for asset URLs only
         if (app()->environment('production')) {
-            \URL::forceScheme('https');
+            \URL::forceRootUrl(config('app.url'));
         }
     }
 }
