@@ -16,6 +16,7 @@ APP_DEBUG=true
 APP_KEY=
 APP_URL=https://leadform-page.onrender.com
 ASSET_URL=https://leadform-page.onrender.com
+MIX_ASSET_URL=https://leadform-page.onrender.com
 LOG_CHANNEL=stack
 DB_CONNECTION=sqlite
 DB_DATABASE=database/database.sqlite

@@ -1,114 +1,45 @@
-@extends('layout.layout')
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>HiStudy - Online Courses & Education Bootstrap5 Template</title>
+    <meta name="robots" content="noindex, follow">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-@php
-     $topToBottom='true';
-     $header='false';
-@endphp
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('assets/images/favicon.png') }}">
 
-@push('styles')
-<!-- Bootstrap CSS (CDN) -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <!-- Bootstrap CSS (CDN) -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    
+    <!-- Font Awesome (CDN) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{{ asset('assets/css/vendor/slick.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/vendor/slick-theme.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/plugins/sal.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/plugins/feather.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/plugins/euclid-circulara.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/plugins/swiper.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/plugins/odometer.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/plugins/animation.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/plugins/bootstrap-select.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/plugins/jquery-ui.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/plugins/magnigy-popup.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/plugins/plyr.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/plugins/jodit.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/styles.css') }}">
+</head>
+<body class="rbt-header-sticky">
 
-<!-- Font Awesome (CDN) -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-@endpush
-
-@push('scripts')
-<!-- jQuery JS (CDN) -->
-<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
-
-<!-- Bootstrap JS (CDN) -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-@endpush
-
-@section('content')
+    <!-- Content starts here -->
 
     <!-- Start Header Area -->
     <header class="rbt-header rbt-header-default">
         <div class="rbt-sticky-placeholder"></div>
-        <!-- Start Header Top  -->
-        <!-- <div class="rbt-header-top rbt-header-top-1 variation-height-60 header-space-betwween bg-color-transparent top-expended-activation">
-            <div class="container">
-                <div class="top-expended-wrapper">
-                    <div class="top-expended-inner rbt-header-sec align-items-center ">
-                        <div class="rbt-header-sec-col rbt-header-left">
-                            <div class="rbt-header-content">
-                                <div class="header-info d-none d-lg-block">
-                                    <ul class="rbt-information-list">
-                                        <li>
-                                            <a href="#"><i class="feather-help-circle"></i>Have any Question?</a>
-                                        </li>
-                                        <li>
-                                            <a href="mailto:hello@example.com"><i class="feather-mail"></i>example@gmail.com</a>
-                                        </li>
-                                        <li>
-                                            <a href="#"><i class="feather-phone"></i>+1-202-555-0174</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="rbt-header-sec-col rbt-header-right mt_md--10 mt_sm--10">
-                            <div class="rbt-header-content justify-content-start justify-content-lg-end">
-                                <div class="header-info">
-                                    <ul class="rbt-dropdown-menu switcher-language">
-                                        <li class="has-child-menu">
-                                            <a href="#">
-                                                <img class="left-image" src="{{ asset('assets/images/icons/en-us.png') }}" alt="Language Images">
-                                                <span class="menu-item">English</span>
-                                                <i class="right-icon feather-chevron-down"></i>
-                                            </a>
-                                            <ul class="sub-menu">
-                                                <li>
-                                                    <a href="#">
-                                                        <img class="left-image" src="{{ asset('assets/images/icons/fr.png') }}" alt="Language Images">
-                                                        <span class="menu-item">Français</span>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="#">
-                                                        <img class="left-image" src="{{ asset('assets/images/icons/de.png') }}" alt="Language Images">
-                                                        <span class="menu-item">Deutsch</span>
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="header-info">
-                                    <ul class="rbt-dropdown-menu currency-menu">
-                                        <li class="has-child-menu">
-                                            <a href="#">
-                                                <span class="menu-item">USD</span>
-                                                <i class="right-icon feather-chevron-down"></i>
-                                            </a>
-                                            <ul class="sub-menu hover-reverse">
-                                                <li>
-                                                    <a href="#">
-                                                        <span class="menu-item">EUR</span>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="#">
-                                                        <span class="menu-item">GBP</span>
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="header-info">
-                        <div class="top-bar-expended d-block d-lg-none">
-                            <button class="topbar-expend-button rbt-round-btn"><i class="color-body feather-plus"></i></button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div> -->
-        <!-- End Header Top  -->
 
         <div class="rbt-header-wrapper  shadow-none">
             <div class="container">
@@ -2992,4 +2923,41 @@
     
     </main>
 
-@endsection
+    <!-- jQuery JS (CDN) -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    
+    <!-- Bootstrap JS (CDN) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    
+    <!-- Modernizer JS -->
+    <script src="{{ asset('assets/js/vendor/modernizr.min.js') }}"></script>
+    <!-- sal.js -->
+    <script src="{{ asset('assets/js/vendor/sal.js') }}"></script>
+    <!-- Dark Mode Switcher -->
+    <script src="{{ asset('assets/js/vendor/js.cookie.js') }}"></script>
+    <script src="{{ asset('assets/js/vendor/jquery.style.switcher.js') }}"></script>
+    <script src="{{ asset('assets/js/vendor/swiper.js') }}"></script>
+    <script src="{{ asset('assets/js/vendor/jquery-appear.js') }}"></script>
+    <script src="{{ asset('assets/js/vendor/odometer.js') }}"></script>
+    <script src="{{ asset('assets/js/vendor/backtotop.js') }}"></script>
+    <script src="{{ asset('assets/js/vendor/isotop.js') }}"></script>
+    <script src="{{ asset('assets/js/vendor/imageloaded.js') }}"></script>
+    <script src="{{ asset('assets/js/vendor/wow.js') }}"></script>
+    <script src="{{ asset('assets/js/vendor/waypoint.min.js') }}"></script>
+    <script src="{{ asset('assets/js/vendor/easypie.js') }}"></script>
+    <script src="{{ asset('assets/js/vendor/text-type.js') }}"></script>
+    <script src="{{ asset('assets/js/vendor/jquery-one-page-nav.js') }}"></script>
+    <script src="{{ asset('assets/js/vendor/bootstrap-select.min.js') }}"></script>
+    <script src="{{ asset('assets/js/vendor/jquery-ui.js') }}"></script>
+    <script src="{{ asset('assets/js/vendor/magnify-popup.min.js') }}"></script>
+    <script src="{{ asset('assets/js/vendor/paralax-scroll.js') }}"></script>
+    <script src="{{ asset('assets/js/vendor/paralax.min.js') }}"></script>
+    <script src="{{ asset('assets/js/vendor/countdown.js') }}"></script>
+    <script src="{{ asset('assets/js/vendor/plyr.js') }}"></script>
+    <script src="{{ asset('assets/js/vendor/jodit.min.js') }}"></script>
+    <script src="{{ asset('assets/js/vendor/Sortable.min.js') }}"></script>
+    <!-- Main JS -->
+    <script src="{{ asset('assets/js/main.js') }}"></script>
+
+</body>
+</html>
