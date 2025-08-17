@@ -98,6 +98,10 @@ Route::get('/test-bootstrap-cdn', function () {
     return view('test-bootstrap-cdn');
 });
 
+Route::get('/multilingual-simple', function () {
+    return view('home.multilingual-simple');
+});
+
 Route::controller(HomeController::class)->group(function () {
     Route::get('/', 'multilingual')->name('multilingual');
 });

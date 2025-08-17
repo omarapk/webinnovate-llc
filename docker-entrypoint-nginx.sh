@@ -83,17 +83,17 @@ server {
     real_ip_header X-Forwarded-For;
     real_ip_recursive on;
 
-    # Handle CSS files
-    location ~* \.css$ {
-        add_header Content-Type text/css;
+    # Handle CSS files - must come before PHP location
+    location ~* \.(css)$ {
+        add_header Content-Type "text/css; charset=utf-8";
         expires 1y;
         add_header Cache-Control "public, immutable";
         try_files \$uri =404;
     }
 
-    # Handle JavaScript files
-    location ~* \.js$ {
-        add_header Content-Type application/javascript;
+    # Handle JavaScript files - must come before PHP location
+    location ~* \.(js)$ {
+        add_header Content-Type "application/javascript; charset=utf-8";
         expires 1y;
         add_header Cache-Control "public, immutable";
         try_files \$uri =404;
