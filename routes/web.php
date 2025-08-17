@@ -102,6 +102,17 @@ Route::get('/multilingual-simple', function () {
     return view('home.multilingual-simple');
 });
 
+Route::get('/test-asset-urls', function () {
+    return response()->json([
+        'app_url' => config('app.url'),
+        'asset_url' => config('app.asset_url'),
+        'css_url' => asset('assets/css/styles.css'),
+        'js_url' => asset('assets/js/main.js'),
+        'image_url' => asset('assets/images/favicon.png'),
+        'environment' => app()->environment(),
+    ]);
+});
+
 Route::controller(HomeController::class)->group(function () {
     Route::get('/', 'multilingual')->name('multilingual');
 });
