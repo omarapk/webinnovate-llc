@@ -93,6 +93,11 @@ Route::get('/test', function () {
     ]);
 });
 
+// Bootstrap CDN test route
+Route::get('/test-bootstrap-cdn', function () {
+    return view('test-bootstrap-cdn');
+});
+
 Route::controller(HomeController::class)->group(function () {
     Route::get('/', 'multilingual')->name('multilingual');
 });

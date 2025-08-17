@@ -3,6 +3,8 @@
 
 <x-head/>
 
+@stack('styles')
+
 <body class="<?php echo (isset($bodyClass) ?  $bodyClass   : 'rbt-header-sticky')?>">
 
 
@@ -46,6 +48,8 @@
     
 
     <x-script/>
+    
+    @stack('scripts')
     
 </body>
 
