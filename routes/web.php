@@ -48,10 +48,19 @@ Route::get('/test-assets', function () {
         ],
         'images' => [
             'favicon' => file_exists(public_path('assets/images/favicon.png')),
+        ],
+        'asset_urls' => [
+            'bootstrap_css' => asset('assets/css/vendor/bootstrap.min.css'),
+            'styles_css' => asset('assets/css/styles.css'),
         ]
     ];
     
     return response()->json($assets);
+});
+
+// Test Bootstrap loading
+Route::get('/test-bootstrap', function () {
+    return view('test-bootstrap');
 });
 
 Route::controller(HomeController::class)->group(function () {
