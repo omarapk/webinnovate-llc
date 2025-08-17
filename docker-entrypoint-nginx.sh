@@ -132,8 +132,14 @@ EOF
 ln -sf /etc/nginx/sites-available/laravel /etc/nginx/sites-enabled/
 rm -f /etc/nginx/sites-enabled/default
 
+# Test nginx configuration
+echo "Testing nginx configuration..."
+nginx -t
+
 # Start PHP-FPM
+echo "Starting PHP-FPM..."
 php-fpm -D
 
 # Start nginx
+echo "Starting nginx..."
 nginx -g "daemon off;"
