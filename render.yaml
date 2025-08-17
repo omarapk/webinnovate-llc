@@ -2,7 +2,7 @@ services:
   - type: web
     name: histudy-laravel
     env: docker
-    dockerfilePath: ./Dockerfile.simple
+    dockerfilePath: ./Dockerfile.nginx
     envVars:
       - key: APP_ENV
         value: production

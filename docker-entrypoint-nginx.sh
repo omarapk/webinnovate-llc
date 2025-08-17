@@ -61,6 +61,12 @@ php artisan optimize || true
 echo "Setting asset permissions..."
 chmod -R 755 public/assets
 
+# Debug: List assets directory
+echo "Checking assets directory..."
+ls -la public/assets/css/vendor/ || echo "CSS vendor directory not found"
+ls -la public/assets/css/ || echo "CSS directory not found"
+ls -la public/assets/js/ || echo "JS directory not found"
+
 # Create nginx configuration
 echo "Creating nginx configuration..."
 cat > /etc/nginx/sites-available/laravel << EOF
@@ -70,10 +76,14 @@ server {
     root /var/www/public;
     index index.php;
 
-    location / {
-        try_files \$uri \$uri/ /index.php?\$query_string;
+    # Handle static assets
+    location ~* \.(css|js|png|jpg|jpeg|gif|ico|svg|woff|woff2|ttf|eot|webp)$ {
+        expires 1y;
+        add_header Cache-Control "public, immutable";
+        try_files \$uri =404;
     }
 
+    # Handle PHP files
     location ~ \.php$ {
         fastcgi_pass 127.0.0.1:9000;
         fastcgi_index index.php;
@@ -81,9 +91,9 @@ server {
         include fastcgi_params;
     }
 
-    location ~* \.(css|js|png|jpg|jpeg|gif|ico|svg|woff|woff2|ttf|eot)$ {
-        expires 1y;
-        add_header Cache-Control "public, immutable";
+    # Handle all other requests
+    location / {
+        try_files \$uri \$uri/ /index.php?\$query_string;
     }
 }
 EOF
