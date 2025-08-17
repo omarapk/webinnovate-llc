@@ -251,6 +251,29 @@ Route::prefix('home')->group(function () {
         Route::get('/university-classic','universityClassic')->name('universityClassic');
         Route::get('/university-status','universityStatus')->name('universityStatus');
         Route::get('/wishlist','wishlist')->name('wishlist');
+        Route::get('/test-instagram-api', function() {
+            $controller = new \App\Http\Controllers\HomeController();
+            $reflection = new \ReflectionClass($controller);
+            $method = $reflection->getMethod('getInstagramPosts');
+            $method->setAccessible(true);
+            $posts = $method->invoke($controller);
+            
+            return response()->json([
+                'success' => true,
+                'posts_count' => count($posts),
+                'posts' => $posts,
+                'message' => count($posts) > 0 ? 'Posts loaded successfully' : 'No posts found, using sample data'
+            ]);
+        })->name('test.instagram.api');
+        
+        Route::get('/debug-instagram', function() {
+            // Enable debug mode temporarily
+            $controller = new \App\Http\Controllers\HomeController();
+            $instagramPosts = $controller->getInstagramPosts();
+            $debugMode = true;
+            
+            return view('home/multilingual', compact('instagramPosts', 'debugMode'));
+        })->name('debug.instagram');
     });
 });
 

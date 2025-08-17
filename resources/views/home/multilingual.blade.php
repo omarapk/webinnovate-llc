@@ -32,6 +32,51 @@
     <link rel="stylesheet" href="{{ asset('assets/css/plugins/plyr.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/plugins/jodit.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/styles.css') }}">
+    
+    <!-- Custom CSS for Instagram Posts -->
+    <style>
+        .instagram-posts-section {
+            padding: 80px 0;
+        }
+        .instagram-post-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .instagram-post-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        .instagram-post-image {
+            height: 250px;
+            object-fit: cover;
+            width: 100%;
+            border-radius: 8px 8px 0 0;
+        }
+        .instagram-post-caption {
+            font-size: 14px;
+            line-height: 1.4;
+            margin-bottom: 10px;
+            color: #666;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        .instagram-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 12px;
+            color: #888;
+        }
+        .instagram-meta-item {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+        .instagram-meta-item i {
+            font-size: 14px;
+        }
+    </style>
 </head>
 <body class="rbt-header-sticky">
 
@@ -2615,6 +2660,7 @@
                 <div class="col-lg-12">
                     <div class="breadcrumb-inner text-center">
                         <h2 class="title">Faqs</h2>
+
                     </div>
                 </div>
             </div>
@@ -2903,6 +2949,183 @@
             </div>
         </div>
     </div>
+
+        <div class="rbt-instagram-area bg-color-white rbt-section-gapTop">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 mb--60">
+                        <div class="section-title text-center">
+                            <h6 class="b2 mb--15"><span class="theme-gradient">Instagram</span></h6>
+                            <h2 class="title w-600">Follow Leadform On <span class="theme-gradient">Instagram</span></h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- <div class="container-fluid">
+                <div class="row g-3">
+                    <div class="col-lg-2 col-md-4 col-sm-6 col-6">
+                        <div class="instagram-grid">
+                            <a href="#">
+                                <img src="{{ asset('assets/images/instagram/instagram-07.png') }}" alt="instagram">
+                                <span class="user-info">
+                                    <span class="icon"><i class="icon-instagram"></i></span>
+                                <span class="user-name">@hello</span>
+                                </span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-4 col-sm-6 col-6">
+                        <div class="instagram-grid">
+                            <a href="#">
+                                <img src="{{ asset('assets/images/instagram/instagram-08.jpg') }}" alt="instagram">
+                                <span class="user-info">
+                                    <span class="icon"><i class="icon-instagram"></i></span>
+                                <span class="user-name">@Histudy</span>
+                                </span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-4 col-sm-6 col-6">
+                        <div class="instagram-grid">
+                            <a href="#">
+                                <img src="{{ asset('assets/images/instagram/instagram-09.jpg') }}" alt="instagram">
+                                <span class="user-info">
+                                    <span class="icon"><i class="icon-instagram"></i></span>
+                                <span class="user-name">@Histudy</span>
+                                </span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-4 col-sm-6 col-6">
+                        <div class="instagram-grid">
+                            <a href="#">
+                                <img src="{{ asset('assets/images/instagram/instagram-10.jpg') }}" alt="instagram">
+                                <span class="user-info">
+                                    <span class="icon"><i class="icon-instagram"></i></span>
+                                <span class="user-name">@Histudy</span>
+                                </span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-4 col-sm-6 col-6">
+                        <div class="instagram-grid">
+                            <a href="#">
+                                <img src="{{ asset('assets/images/instagram/instagram-11.jpg') }}" alt="instagram">
+                                <span class="user-info">
+                                    <span class="icon"><i class="icon-instagram"></i></span>
+                                <span class="user-name">@Histudy</span>
+                                </span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-4 col-sm-6 col-6">
+                        <div class="instagram-grid">
+                            <a href="#">
+                                <img src="{{ asset('assets/images/instagram/instagram-12.jpg') }}" alt="instagram">
+                                <span class="user-info">
+                                    <span class="icon"><i class="icon-instagram"></i></span>
+                                <span class="user-name">@Histudy</span>
+                                </span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+        </div>
+
+    <!-- Start Instagram Posts Section -->
+    <div class="rbt-section-gap bg-color-white instagram-posts-section">
+        <div class="container-fluid">
+            @if(!empty($instagramPosts))
+                <!-- @if(count($instagramPosts) > 0 && isset($instagramPosts[0]['pictureUrl']) && (strpos($instagramPosts[0]['pictureUrl'], 'placeholder.com') !== false || strpos($instagramPosts[0]['pictureUrl'], 'via.placeholder.com') !== false))
+                    <div class="row mb--20">
+                        <div class="col-lg-12 text-center">
+                            <div class="alert alert-warning" style="background-color: #fff3cd; border-color: #ffeaa7; color: #856404;">
+                                <i class="feather-info"></i> 
+                                <strong>Demo Mode:</strong> Showing sample Instagram posts. The actual API integration is working, but the Save Insta API may require authentication or the account may be private.
+                            </div>
+                        </div>
+                    </div>
+                @endif -->
+                <div class="row g-3">
+                    @foreach(array_slice($instagramPosts, 0, 6) as $post)
+                            <div class="col-lg-2 col-md-4 col-sm-6 col-6">
+                                <div class="instagram-grid">
+                                    <a href="https://www.instagram.com/leadform.cod/">
+                                        @php
+                                        $imageUrl = $post['pictureUrl'] ?? $post['display_url'] ?? $post['url'] ?? $post['media_url'] ?? $post['download_url'] ?? null;
+                                        $permalink = 'https://www.instagram.com/p/' . ($post['meta']['shortcode'] ?? '') . '/';
+                                        @endphp
+                                        @if($imageUrl)
+                                        <img src="{{ $imageUrl }}" alt="instagram">
+                                        @endif
+                                        <span class="user-info">
+                                            <span class="icon"><i class="icon-instagram"></i></span>
+                                        <span class="user-name">@leadform.cod</span>
+                                        </span>
+                                    </a>
+                                </div>
+                                
+                                <div class="rbt-card-body">
+                                    @php
+                                        $likeCount = $post['meta']['likeCount'] ?? $post['like_count'] ?? $post['likes'] ?? 0;
+                                        $commentCount = $post['meta']['commentCount'] ?? $post['comment_count'] ?? $post['comments'] ?? 0;
+                                        $timestamp = $post['meta']['takenAt'] ?? $post['taken_at_timestamp'] ?? $post['timestamp'] ?? time();
+                                    @endphp
+                                    <div class="rbt-card-bottom">
+                                        <div class="instagram-meta">
+                                            <span class="rbt-meta-left">
+                                                @if($likeCount > 0)
+                                                    <span class="instagram-meta-item">
+                                                        <i class="feather-heart"></i> {{ number_format($likeCount) }}
+                                                    </span>
+                                                @endif
+                                                @if($commentCount > 0)
+                                                    <span class="instagram-meta-item">
+                                                        <i class="feather-message-circle"></i> {{ number_format($commentCount) }}
+                                                    </span>
+                                                @endif
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                        </div>
+                    @endforeach
+                </div>
+                
+                <div class="row mt--40">
+                    <div class="col-lg-12 text-center">
+                        <a href="https://www.instagram.com/leadform.cod/" target="_blank" class="rbt-btn btn-gradient hover-icon-reverse">
+                            <span class="icon-reverse-wrapper">
+                                <span class="btn-text">View All Posts</span>
+                                <span class="btn-icon"><i class="feather-instagram"></i></span>
+                                <span class="btn-icon"><i class="feather-instagram"></i></span>
+                            </span>
+                        </a>
+                    </div>
+                </div>
+            @else
+                <div class="row">
+                    <div class="col-lg-12 text-center">
+                        <div class="rbt-card variation-01">
+                            <div class="rbt-card-body">
+                                <div class="mb--20">
+                                    <i class="feather-instagram" style="font-size: 48px; color: #e4405f;"></i>
+                                </div>
+                                <h5 class="mb--15">Follow Us on Instagram</h5>
+                                <p class="text-muted mb--20">Unable to load Instagram posts at the moment. Please check back later!</p>
+                                <a href="https://www.instagram.com/leadform.cod/" target="_blank" class="rbt-btn btn-gradient btn-sm">
+                                    <span class="btn-text">Visit Instagram</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            @endif
+        </div>
+    </div>
+    <!-- End Instagram Posts Section -->
+
     <footer class="rbt-footer footer-style-1 bg-color-darker overflow-hidden rbt-section-box box-footer">
             <div class="footer-top">
                 <div class="container">
