@@ -63,6 +63,26 @@ Route::get('/test-bootstrap', function () {
     return view('test-bootstrap');
 });
 
+// Test CSS content type
+Route::get('/test-css', function () {
+    $cssPath = public_path('assets/css/vendor/bootstrap.min.css');
+    if (file_exists($cssPath)) {
+        return response()->file($cssPath, [
+            'Content-Type' => 'text/css',
+            'Cache-Control' => 'public, max-age=31536000'
+        ]);
+    }
+    return response('CSS file not found', 404);
+});
+
+// Debug asset loading
+Route::get('/debug-assets', function () {
+    $bootstrapUrl = asset('assets/css/vendor/bootstrap.min.css');
+    $stylesUrl = asset('assets/css/styles.css');
+    
+    return view('debug-assets', compact('bootstrapUrl', 'stylesUrl'));
+});
+
 Route::controller(HomeController::class)->group(function () {
     Route::get('/', 'multilingual')->name('multilingual');
 });

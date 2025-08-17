@@ -76,8 +76,31 @@ server {
     root /var/www/public;
     index index.php;
 
-    # Handle static assets
-    location ~* \.(css|js|png|jpg|jpeg|gif|ico|svg|woff|woff2|ttf|eot|webp)$ {
+    # Handle CSS files
+    location ~* \.css$ {
+        add_header Content-Type text/css;
+        expires 1y;
+        add_header Cache-Control "public, immutable";
+        try_files \$uri =404;
+    }
+
+    # Handle JavaScript files
+    location ~* \.js$ {
+        add_header Content-Type application/javascript;
+        expires 1y;
+        add_header Cache-Control "public, immutable";
+        try_files \$uri =404;
+    }
+
+    # Handle image files
+    location ~* \.(png|jpg|jpeg|gif|ico|svg|webp)$ {
+        expires 1y;
+        add_header Cache-Control "public, immutable";
+        try_files \$uri =404;
+    }
+
+    # Handle font files
+    location ~* \.(woff|woff2|ttf|eot)$ {
         expires 1y;
         add_header Cache-Control "public, immutable";
         try_files \$uri =404;
