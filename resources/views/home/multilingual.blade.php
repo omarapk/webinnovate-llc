@@ -195,6 +195,152 @@
         body, .rbt-header, .rbt-card, .pricing-table, .section-title, .rbt-btn {
             transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
         }
+
+        /* Fix pricing button text overflow */
+        .pricing-btn .rbt-btn {
+            min-height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 20px;
+            line-height: 1.2;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .pricing-btn .rbt-btn .icon-reverse-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            gap: 8px;
+        }
+
+        .pricing-btn .rbt-btn .btn-text {
+            font-size: 14px;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        .pricing-btn .rbt-btn .btn-icon {
+            flex-shrink: 0;
+        }
+
+        /* Ensure button fits properly on smaller screens */
+        @media (max-width: 768px) {
+            .pricing-btn .rbt-btn {
+                min-height: 45px;
+                padding: 10px 15px;
+            }
+            
+            .pricing-btn .rbt-btn .btn-text {
+                font-size: 13px;
+            }
+        }
+
+        /* Fix checkmark positioning in pricing lists */
+        .pricing-body .list-item li {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            margin-bottom: 8px;
+            line-height: 1.4;
+            position: relative;
+        }
+
+        .pricing-body .list-item li i.feather-check {
+            color: #28a745;
+            font-size: 16px;
+            margin-top: 0;
+            flex-shrink: 0;
+            min-width: 16px;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+        .pricing-body .list-item li i.feather-x {
+            color: #dc3545;
+            font-size: 16px;
+            margin-top: 0;
+            flex-shrink: 0;
+            min-width: 16px;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+        .pricing-body .list-item li {
+            padding-left: 26px;
+            position: relative;
+        }
+
+        .pricing-body .list-item li.off {
+            opacity: 0.6;
+        }
+
+        /* Make brand logos smaller with more margin */
+        .brand-list.brand-style-3 {
+            display: flex;
+            flex-wrap: nowrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+            overflow-x: auto;
+            padding: 20px 40px;
+            margin: 0 60px;
+        }
+
+        .brand-list.brand-style-3 li {
+            flex-shrink: 0;
+            margin: 0;
+        }
+
+        .brand-list.brand-style-3 li img {
+            max-height: 70px;
+            width: auto;
+            object-fit: contain;
+            transition: transform 0.3s ease;
+        }
+
+        .brand-list.brand-style-3 li:hover img {
+            transform: scale(1.1);
+        }
+
+        /* Responsive adjustments for brand logos */
+        @media (max-width: 768px) {
+            .brand-list.brand-style-3 {
+                margin: 0 30px;
+                padding: 20px 20px;
+            }
+            .brand-list.brand-style-3 li img {
+                max-height: 50px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .brand-list.brand-style-3 {
+                margin: 0 15px;
+                padding: 15px 10px;
+            }
+            .brand-list.brand-style-3 li img {
+                max-height: 40px;
+            }
+        }
+
+        /* Smooth scrolling for anchor links */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Offset for fixed header when scrolling to sections */
+        #features,
+        #faq,
+        #pricing,
+        #affiliate {
+            scroll-margin-top: 100px;
+        }
     </style>
 </head>
 <body class="rbt-header-sticky">
@@ -212,38 +358,38 @@
                         <div class="logo logo-dark">
                             <a href="#">
                                 <img src="{{ asset('assets/images/logo/Design_sans_titre_30.png') }}" alt="Education Logo Images">
-                            </a>
-                        </div>
+                                                                </a>
+                                                            </div>
 
                         <div class="logo d-none logo-light">
                             <a href="#">
                                 <img src="{{ asset('assets/images/dark/Design_sans_titre_30.png') }}" alt="Education Logo Images">
-                            </a>
-                        </div>
-                    </div>
+                                                                </a>
+                                                            </div>
+                                                        </div>
 
                     <div class="rbt-main-navigation d-none d-xl-block">
                         <nav class="mainmenu-nav">
                             <ul class="mainmenu">
                                 <li class="with-megamenu has-menu-child-item position-static">
-                                    <a href="#">Features</a>
+                                    <a href="#features">Features</a>
                                     <!-- Start Mega Menu  -->
 
                                     <!-- End Mega Menu  -->
                                 </li>
 
                                 <li class="with-megamenu has-menu-child-item">
-                                    <a href="#">Faq  </a>
+                                    <a href="#faq">Faq  </a>
                                 </li>
 
                                 <li class="has-dropdown has-menu-child-item">
-                                    <a href="#">Pricing 
+                                    <a href="#pricing">Pricing 
                                         
                                     </a>
                                 </li>
 
                                 <li class="with-megamenu has-menu-child-item position-static">
-                                    <a href="#">Become An Affiliate </a>
+                                    <a href="#affiliate">Become An Affiliate </a>
                                 </li>
 
                                 
@@ -314,12 +460,12 @@
                         <div class="col-lg-3 col-md-4 col-sm-6 col-12">
                             <div class="rbt-card variation-01 rbt-hover">
                                 <div class="rbt-card-img">
-                                    <a href="{{ route('courseDetails') }}">
+                                    <a href="#">
                                         <img src="{{ asset('assets/images/course/course-online-01.jpg') }}" alt="Card image">
                                     </a>
                                 </div>
                                 <div class="rbt-card-body">
-                                    <h5 class="rbt-card-title"><a href="{{ route('courseDetails') }}">React Js</a>
+                                    <h5 class="rbt-card-title"><a href="#">React Js</a>
                                     </h5>
                                     <div class="rbt-review">
                                         <div class="rating">
@@ -346,12 +492,12 @@
                         <div class="col-lg-3 col-md-4 col-sm-6 col-12">
                             <div class="rbt-card variation-01 rbt-hover">
                                 <div class="rbt-card-img">
-                                    <a href="{{ route('courseDetails') }}">
+                                    <a href="#">
                                         <img src="{{ asset('assets/images/course/course-online-02.jpg') }}" alt="Card image">
                                     </a>
                                 </div>
                                 <div class="rbt-card-body">
-                                    <h5 class="rbt-card-title"><a href="{{ route('courseDetails') }}">Java Program</a>
+                                    <h5 class="rbt-card-title"><a href="#">Java Program</a>
                                     </h5>
                                     <div class="rbt-review">
                                         <div class="rating">
@@ -378,12 +524,12 @@
                         <div class="col-lg-3 col-md-4 col-sm-6 col-12">
                             <div class="rbt-card variation-01 rbt-hover">
                                 <div class="rbt-card-img">
-                                    <a href="{{ route('courseDetails') }}">
+                                    <a href="#">
                                         <img src="{{ asset('assets/images/course/course-online-03.jpg') }}" alt="Card image">
                                     </a>
                                 </div>
                                 <div class="rbt-card-body">
-                                    <h5 class="rbt-card-title"><a href="{{ route('courseDetails') }}">Web Design</a>
+                                    <h5 class="rbt-card-title"><a href="#">Web Design</a>
                                     </h5>
                                     <div class="rbt-review">
                                         <div class="rating">
@@ -410,12 +556,12 @@
                         <div class="col-lg-3 col-md-4 col-sm-6 col-12">
                             <div class="rbt-card variation-01 rbt-hover">
                                 <div class="rbt-card-img">
-                                    <a href="{{ route('courseDetails') }}">
+                                    <a href="#">
                                         <img src="{{ asset('assets/images/course/course-online-04.jpg') }}" alt="Card image">
                                     </a>
                                 </div>
                                 <div class="rbt-card-body">
-                                    <h5 class="rbt-card-title"><a href="{{ route('courseDetails') }}">Web Design</a>
+                                    <h5 class="rbt-card-title"><a href="#">Web Design</a>
                                     </h5>
                                     <div class="rbt-review">
                                         <div class="rating">
@@ -478,739 +624,6 @@
                     </li>
                 </ul>
             </div>
-
-            <nav class="mainmenu-nav">
-                <ul class="mainmenu">
-                    <li class="with-megamenu has-menu-child-item position-static">
-                        <a href="#">Home </a>
-                        <!-- Start Mega Menu  -->
-                        <div class="rbt-megamenu menu-skin-dark">
-                            <div class="wrapper">
-                                <div class="row row--15 home-plesentation-wrapper single-dropdown-menu-presentation">
-
-                                    <!-- Start Single Demo  -->
-                                    <div class="col-lg-12 col-xl-2 col-xxl-2 col-md-12 col-sm-12 col-12 single-mega-item">
-                                        <div class="demo-single">
-                                            <div class="inner">
-                                                <div class="thumbnail">
-                                                    <a href="{{ route('mainDemo') }}"><img src="{{ asset('assets/images/splash/demo/h1.jpg') }}" alt="Demo Images"></a>
-                                                </div>
-                                                <div class="content">
-                                                    <h4 class="title"><a href="{{ route('mainDemo') }}">Home Demo <span class="btn-icon"><i class="feather-arrow-right"></i></span></a></h4>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- End Single Demo  -->
-
-                                    <!-- Start Single Demo  -->
-                                    <div class="col-lg-12 col-xl-2 col-xxl-2 col-md-12 col-sm-12 col-12 single-mega-item">
-                                        <div class="demo-single">
-                                            <div class="inner">
-                                                <div class="thumbnail">
-                                                    <a href="{{ route('marketplace') }}"><img src="{{ asset('assets/images/splash/demo/h12.jpg') }}" alt="Demo Images"></a>
-                                                </div>
-                                                <div class="content">
-                                                    <h4 class="title"><a href="{{ route('marketplace') }}">Marketplace <span class="btn-icon"><i class="feather-arrow-right"></i></span></a></h4>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- End Single Demo  -->
-
-                                    <!-- Start Single Demo  -->
-                                    <div class="col-lg-12 col-xl-2 col-xxl-2 col-md-12 col-sm-12 col-12 single-mega-item">
-                                        <div class="demo-single">
-                                            <div class="inner">
-                                                <div class="thumbnail">
-                                                    <a href="{{ route('kindergarten') }}"><img src="{{ asset('assets/images/splash/demo/h4.jpg') }}" alt="Demo Images"></a>
-                                                </div>
-                                                <div class="content">
-                                                    <h4 class="title"><a href="{{ route('kindergarten') }}">kindergarten <span class="btn-icon"><i class="feather-arrow-right"></i></span></a></h4>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- End Single Demo  -->
-
-                                    <!-- Start Single Demo  -->
-                                    <div class="col-lg-12 col-xl-2 col-xxl-2 col-md-12 col-sm-12 col-12 single-mega-item">
-                                        <div class="demo-single">
-                                            <div class="inner">
-                                                <div class="thumbnail">
-                                                    <a href="{{ route('universityClassic') }}"><img src="{{ asset('assets/images/splash/demo/h13.jpg') }}" alt="Demo Images"></a>
-                                                </div>
-                                                <div class="content">
-                                                    <h4 class="title"><a href="{{ route('universityClassic') }}">University Classic <span class="btn-icon"><i class="feather-arrow-right"></i></span></a></h4>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- End Single Demo  -->
-
-                                    <!-- Start Single Demo  -->
-                                    <div class="col-lg-12 col-xl-2 col-xxl-2 col-md-12 col-sm-12 col-12 single-mega-item">
-                                        <div class="demo-single">
-                                            <div class="inner">
-                                                <div class="thumbnail">
-                                                    <a href="{{ route('homeElegant') }}"><img src="{{ asset('assets/images/splash/demo/h14.jpg') }}" alt="Demo Images"></a>
-                                                </div>
-                                                <div class="content">
-                                                    <h4 class="title"><a href="{{ route('homeElegant') }}">Home Elegant <span class="btn-icon"><i class="feather-arrow-right"></i></span></a></h4>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- End Single Demo  -->
-
-                                    <!-- Start Single Demo  -->
-                                    <div class="col-lg-12 col-xl-2 col-xxl-2 col-md-12 col-sm-12 col-12 single-mega-item">
-                                        <div class="demo-single">
-                                            <div class="inner">
-                                                <div class="thumbnail">
-                                                    <a href="{{ route('gymCoaching') }}"><img src="{{ asset('assets/images/splash/demo/h9.jpg') }}" alt="Demo Images"></a>
-                                                </div>
-                                                <div class="content">
-                                                    <h4 class="title"><a href="{{ route('gymCoaching') }}">Gym Coaching <span class="btn-icon"><i class="feather-arrow-right"></i></span></a></h4>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- End Single Demo  -->
-
-                                    <!-- Start Single Demo  -->
-                                    <div class="col-lg-12 col-xl-2 col-xxl-2 col-md-12 col-sm-12 col-12 single-mega-item">
-                                        <div class="demo-single">
-                                            <div class="inner">
-                                                <div class="thumbnail">
-                                                    <a href="{{ route('onlineSchool') }}"><img src="{{ asset('assets/images/splash/demo/h3.jpg') }}" alt="Demo Images"></a>
-                                                </div>
-                                                <div class="content">
-                                                    <h4 class="title"><a href="{{ route('onlineSchool') }}">Online School <span class="btn-icon"><i class="feather-arrow-right"></i></span></a></h4>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- End Single Demo  -->
-
-                                    <!-- Start Single Demo  -->
-                                    <div class="col-lg-12 col-xl-2 col-xxl-2 col-md-12 col-sm-12 col-12 single-mega-item">
-                                        <div class="demo-single">
-                                            <div class="inner">
-                                                <div class="thumbnail">
-                                                    <a href="{{ route('universityStatus') }}"><img src="{{ asset('assets/images/splash/demo/h6.jpg') }}" alt="Demo Images"></a>
-                                                </div>
-                                                <div class="content">
-                                                    <h4 class="title"><a href="{{ route('universityStatus') }}">University Status <span class="btn-icon"><i class="feather-arrow-right"></i></span></a></h4>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- End Single Demo  -->
-
-                                    <!-- Start Single Demo  -->
-                                    <div class="col-lg-12 col-xl-2 col-xxl-2 col-md-12 col-sm-12 col-12 single-mega-item">
-                                        <div class="demo-single">
-                                            <div class="inner">
-                                                <div class="thumbnail">
-                                                    <a href="{{ route('homeTechnology') }}"><img src="{{ asset('assets/images/splash/demo/h15.jpg') }}" alt="Demo Images"></a>
-                                                </div>
-                                                <div class="content">
-                                                    <h4 class="title"><a href="{{ route('homeTechnology') }}">Home Technology <span class="btn-icon"><i class="feather-arrow-right"></i></span></a></h4>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- End Single Demo  -->
-
-                                    <!-- Start Single Demo  -->
-                                    <div class="col-lg-12 col-xl-2 col-xxl-2 col-md-12 col-sm-12 col-12 single-mega-item">
-                                        <div class="demo-single">
-                                            <div class="inner">
-                                                <div class="thumbnail">
-                                                    <a href="{{ route('instructorPortfolio') }}"><img src="{{ asset('assets/images/splash/demo/h7.jpg') }}" alt="Demo Images"></a>
-                                                </div>
-                                                <div class="content">
-                                                    <h4 class="title"><a href="{{ route('instructorPortfolio') }}">Instructor Portfolio <span class="btn-icon"><i class="feather-arrow-right"></i></span></a></h4>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- End Single Demo  -->
-
-                                    <!-- Start Single Demo  -->
-                                    <div class="col-lg-12 col-xl-2 col-xxl-2 col-md-12 col-sm-12 col-12 single-mega-item">
-                                        <div class="demo-single">
-                                            <div class="inner">
-                                                <div class="thumbnail">
-                                                    <a href="{{ route('languageAcademy') }}"><img src="{{ asset('assets/images/splash/demo/h8.jpg') }}" alt="Demo Images"></a>
-                                                </div>
-                                                <div class="content">
-                                                    <h4 class="title"><a href="{{ route('languageAcademy') }}">Language Academy <span class="btn-icon"><i class="feather-arrow-right"></i></span></a></h4>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- End Single Demo  -->
-
-                                    <!-- Start Single Demo  -->
-                                    <div class="col-lg-12 col-xl-2 col-xxl-2 col-md-12 col-sm-12 col-12 single-mega-item">
-                                        <div class="demo-single">
-                                            <div class="inner">
-                                                <div class="thumbnail">
-                                                    <a href="{{ route('singleCourse') }}"><img src="{{ asset('assets/images/splash/demo/h11.jpg') }}" alt="Demo Images"></a>
-                                                </div>
-                                                <div class="content">
-                                                    <h4 class="title"><a href="{{ route('singleCourse') }}">Single Course <span class="btn-icon"><i class="feather-arrow-right"></i></span></a></h4>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- End Single Demo  -->
-
-                                    <!-- Start Single Demo  -->
-                                    <div class="col-lg-12 col-xl-2 col-xxl-2 col-md-12 col-sm-12 col-12 single-mega-item">
-                                        <div class="demo-single">
-                                            <div class="inner">
-                                                <div class="thumbnail">
-                                                    <a href="{{ route('onlineCourse') }}"><img src="{{ asset('assets/images/splash/demo/h10.jpg') }}" alt="Demo Images"></a>
-                                                </div>
-                                                <div class="content">
-                                                    <h4 class="title"><a href="{{ route('onlineCourse') }}">Online Course <span class="btn-icon"><i class="feather-arrow-right"></i></span></a></h4>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- End Single Demo  -->
-
-                                    <!-- Start Single Demo  -->
-                                    <div class="col-lg-12 col-xl-2 col-xxl-2 col-md-12 col-sm-12 col-12 single-mega-item">
-                                        <div class="demo-single">
-                                            <div class="inner">
-                                                <div class="thumbnail">
-                                                    <a href="{{ route('classicLms') }}"><img src="{{ asset('assets/images/splash/demo/h5.jpg') }}" alt="Demo Images"></a>
-                                                </div>
-                                                <div class="content">
-                                                    <h4 class="title"><a href="{{ route('classicLms') }}">Classic Lms <span class="btn-icon"><i class="feather-arrow-right"></i></span></a></h4>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- End Single Demo  -->
-
-                                    <!-- Start Single Demo  -->
-                                    <div class="col-lg-12 col-xl-2 col-xxl-2 col-md-12 col-sm-12 col-12 single-mega-item">
-                                        <div class="demo-single">
-                                            <div class="inner">
-                                                <div class="thumbnail">
-                                                    <a href="{{ route('courseSchool') }}"><img src="{{ asset('assets/images/splash/demo/h2.jpg') }}" alt="Demo Images"></a>
-                                                </div>
-                                                <div class="content">
-                                                    <h4 class="title"><a href="{{ route('courseSchool') }}">Course School <span class="btn-icon"><i class="feather-arrow-right"></i></span></a></h4>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- End Single Demo  -->
-
-                                    <!-- Start Single Demo  -->
-                                    <div class="col-lg-12 col-xl-2 col-xxl-2 col-md-12 col-sm-12 col-12 single-mega-item">
-                                        <div class="demo-single">
-                                            <div class="inner">
-                                                <div class="thumbnail">
-                                                    <a href="{{ route('udemyAffiliate') }}"><img src="{{ asset('assets/images/splash/demo/h16.jpg') }}" alt="Demo Images"></a>
-                                                </div>
-                                                <div class="content">
-                                                    <h4 class="title"><a href="{{ route('udemyAffiliate') }}">Udemy Affiliate <span class="btn-icon"><i class="feather-arrow-right"></i></span></a></h4>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- End Single Demo  -->
-
-                                    <!-- Start Single Demo  -->
-                                    <div class="col-lg-12 col-xl-2 col-xxl-2 col-md-12 col-sm-12 col-12 single-mega-item">
-                                        <div class="demo-single">
-                                            <div class="inner">
-                                                <div class="thumbnail">
-                                                    <a href="{{ route('onlineAcademy') }}"><img src="{{ asset('assets/images/splash/demo/h17.jpg') }}" alt="Demo Images"></a>
-                                                </div>
-                                                <div class="content">
-                                                    <h4 class="title"><a href="{{ route('onlineAcademy') }}">Online Academy <span class="btn-icon"><i class="feather-arrow-right"></i></span></a></h4>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- End Single Demo  -->
-
-                                    <!-- Start Single Demo  -->
-                                    <div class="col-lg-12 col-xl-2 col-xxl-2 col-md-12 col-sm-12 col-12 single-mega-item">
-                                        <div class="demo-single">
-                                            <div class="inner">
-                                                <div class="thumbnail">
-                                                    <a href="{{ route('instructorsCoaches') }}"><img src="{{ asset('assets/images/splash/demo/h18.jpg') }}" alt="Demo Images"></a>
-                                                </div>
-                                                <div class="content">
-                                                    <h4 class="title"><a href="{{ route('instructorsCoaches') }}">Instructor Coaches <span class="btn-icon"><i class="feather-arrow-right"></i></span></a></h4>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- End Single Demo  -->
-
-                                    <!-- Start Single Demo  -->
-                                    <div class="col-lg-12 col-xl-2 col-xxl-2 col-md-12 col-sm-12 col-12 single-mega-item">
-                                        <div class="demo-single">
-                                            <div class="inner">
-                                                <div class="thumbnail">
-                                                    <a href="{{ route('modernUniversity') }}"><img src="{{ asset('assets/images/splash/demo/h19.jpg') }}" alt="Demo Images"></a>
-                                                </div>
-                                                <div class="content">
-                                                    <h4 class="title"><a href="{{ route('modernUniversity') }}">Modern University <span class="btn-icon"><i class="feather-arrow-right"></i></span></a></h4>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- End Single Demo  -->
-
-                                    <!-- Start Single Demo  -->
-                                    <div class="col-lg-12 col-xl-2 col-xxl-2 col-md-12 col-sm-12 col-12 single-mega-item">
-                                        <div class="demo-single">
-                                            <div class="inner">
-                                                <div class="thumbnail">
-                                                    <a href="{{ route('multilingual') }}"><img src="{{ asset('assets/images/splash/demo/h20.jpg') }}" alt="Demo Images"></a>
-                                                </div>
-                                                <div class="content">
-                                                    <h4 class="title"><a href="{{ route('multilingual') }}">Multilingual <span class="btn-icon"><i class="feather-arrow-right"></i></span></a></h4>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- End Single Demo  -->
-
-                                    <!-- Start Single Demo  -->
-                                    <div class="col-lg-12 col-xl-2 col-xxl-2 col-md-12 col-sm-12 col-12 single-mega-item">
-                                        <div class="demo-single">
-                                            <div class="inner">
-                                                <div class="thumbnail">
-                                                    <a href="{{ route('artDesignSchool') }}"><img src="{{ asset('assets/images/splash/demo/h21.jpg') }}" alt="Demo Images"></a>
-                                                </div>
-                                                <div class="content">
-                                                    <h4 class="title"><a href="{{ route('artDesignSchool') }}">Art Design School <span class="btn-icon"><i class="feather-arrow-right"></i></span></a></h4>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- End Single Demo  -->
-
-                                    <!-- Start Single Demo  -->
-                                    <div class="col-lg-12 col-xl-2 col-xxl-2 col-md-12 col-sm-12 col-12 single-mega-item">
-                                        <div class="demo-single">
-                                            <div class="inner">
-                                                <div class="thumbnail">
-                                                    <a href="{{ route('wishlist') }}"><img src="{{ asset('assets/images/splash/demo/h22.jpg') }}" alt="Demo Images"></a>
-                                                </div>
-                                                <div class="content">
-                                                    <h4 class="title"><a href="{{ route('wishlist') }}">Wishlist <span class="btn-icon"><i class="feather-arrow-right"></i></span></a></h4>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- End Single Demo  -->
-
-                                    <!-- Start Single Demo  -->
-                                    <div class="col-lg-12 col-xl-2 col-xxl-2 col-md-12 col-sm-12 col-12 single-mega-item">
-                                        <div class="demo-single">
-                                            <div class="inner">
-                                                <div class="thumbnail">
-                                                    <a href="{{ route('coaching') }}"><img src="{{ asset('assets/images/splash/demo/h23.jpg') }}" alt="Demo Images"></a>
-                                                </div>
-                                                <div class="content">
-                                                    <h4 class="title"><a href="{{ route('coaching') }}">Coaching <span class="btn-icon"><i class="feather-arrow-right"></i></span></a></h4>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- End Single Demo  -->
-
-                                    <!-- Start Single Demo  -->
-                                    <div class="col-lg-12 col-xl-2 col-xxl-2 col-md-12 col-sm-12 col-12 single-mega-item">
-                                        <div class="demo-single">
-                                            <div class="inner">
-                                                <div class="thumbnail">
-                                                    <a href="{{ route('healthWellnessInstitute') }}"><img src="{{ asset('assets/images/splash/demo/h24.jpg') }}" alt="Demo Images"></a>
-                                                </div>
-                                                <div class="content">
-                                                    <h4 class="title"><a href="{{ route('healthWellnessInstitute') }}">Health Institute <span class="btn-icon"><i class="feather-arrow-right"></i></span></a></h4>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- End Single Demo  -->
-
-                                    <!-- Start Single Demo  -->
-                                    <div class="col-lg-12 col-xl-2 col-xxl-2 col-md-12 col-sm-12 col-12 single-mega-item">
-                                        <div class="demo-single">
-                                            <div class="inner">
-                                                <div class="thumbnail">
-                                                    <a href="{{ route('lifeCoach') }}"><img src="{{ asset('assets/images/splash/demo/h25.jpg') }}" alt="Demo Images"></a>
-                                                </div>
-                                                <div class="content">
-                                                    <h4 class="title"><a href="{{ route('lifeCoach') }}">Life Coach <span class="btn-icon"><i class="feather-arrow-right"></i></span></a></h4>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- End Single Demo  -->
-
-                                    <!-- Start Single Demo  -->
-                                    <div class="col-lg-12 col-xl-2 col-xxl-2 col-md-12 col-sm-12 col-12 single-mega-item">
-                                        <div class="demo-single">
-                                            <div class="inner">
-                                                <div class="thumbnail">
-                                                    <a href="{{ route('islamicCenter') }}"><img src="{{ asset('assets/images/splash/demo/h26.jpg') }}" alt="Demo Images"></a>
-                                                </div>
-                                                <div class="content">
-                                                    <h4 class="title"><a href="{{ route('islamicCenter') }}">Islamic Center <span class="btn-icon"><i class="feather-arrow-right"></i></span></a></h4>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- End Single Demo  -->
-
-                                </div>
-
-                                <div class="load-demo-btn-wrap">
-                                    <div class="load-demo-btn text-center">
-                                        <span class="color-white b3">Scroll to view more <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-down-up" viewBox="0 0 16 16">
-                                <path fill-rule="evenodd" d="M11.5 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L11 2.707V14.5a.5.5 0 0 0 .5.5zm-7-14a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L4 13.293V1.5a.5.5 0 0 1 .5-.5z"/>
-                              </svg></span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- End Mega Menu  -->
-                    </li>
-
-                    <li class="with-megamenu has-menu-child-item">
-                        <a href="#">Courses </a>
-                        <!-- Start Mega Menu  -->
-                        <div class="rbt-megamenu grid-item-2">
-                            <div class="wrapper">
-                                <div class="row">
-                                    <div class="col-lg-12">
-                                        <div class="mega-top-banner">
-                                            <div class="content">
-                                                <h4 class="title">Developer hub</h4>
-                                                <p class="description">Start building fast, with code samples, key resources and more.</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row row--15">
-                                    <div class="col-lg-12 col-xl-6 col-xxl-6 single-mega-item">
-                                        <h3 class="rbt-short-title">Course Layout</h3>
-                                        <ul class="mega-menu-item">
-                                            <li><a href="{{ route('courseFilterOneToggle') }}">Filter One Toggle</a></li>
-                                            <li><a href="{{ route('courseFilterOneOpen') }}">Filter One Open</a></li>
-                                            <li><a href="{{ route('courseFilterTwoToggle') }}">Filter Two Toggle</a></li>
-                                            <li><a href="{{ route('courseFilterTwoOpen') }}">Filter Two Open</a></li>
-                                            <li><a href="{{ route('courseWithTab') }}">Course With Tab</a></li>
-                                            <li><a href="{{ route('courseWithTabTwo') }}">Course With Tab Two</a></li>
-                                            <li><a href="{{ route('courseCard2') }}">Course Card Two</a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="col-lg-12 col-xl-6 col-xxl-6 single-mega-item">
-                                        <h3 class="rbt-short-title">Course Layout</h3>
-                                        <ul class="mega-menu-item">
-                                            <li><a href="{{ route('courseCard3') }}">Course Card Three</a></li>
-                                            <li><a href="{{ route('courseMasonry') }}">Course Masonry</a></li>
-                                            <li><a href="{{ route('courseWithSidebar') }}">Course With Sidebar</a></li>
-                                            <li><a href="{{ route('courseDetails') }}">Course Details</a></li>
-                                            <li><a href="{{ route('courseDetails2') }}">Course Details Two</a></li>
-                                            <li><a href="{{ route('lesson') }}">Course Lesson <span class="rbt-badge-card">New</span></a></li>
-                                            <li><a href="{{ route('createCourse') }}">Create Course <span class="rbt-badge-card">New</span></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-lg-12">
-                                        <ul class="nav-quick-access">
-                                            <li><a href="#"><i class="feather-folder-minus"></i> Quick Start Guide</a></li>
-                                            <li><a href="#"><i class="feather-folder-minus"></i> For Open Source</a></li>
-                                            <li><a href="#"><i class="feather-folder-minus"></i> API Status</a></li>
-                                            <li><a href="#"><i class="feather-folder-minus"></i> Support</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- End Mega Menu  -->
-                    </li>
-
-                    <li class="has-dropdown has-menu-child-item">
-                        <a href="#">Dashboard
-                            
-                        </a>
-                        <ul class="submenu">
-                            <li class="has-dropdown"><a href="#">Instructor Dashboard</a>
-                                <ul class="submenu">
-                                    <li><a href="{{ route('instructorDashboard') }}">Dashboard</a></li>
-                                    <li><a href="{{ route('instructorProfile') }}">Profile</a></li>
-                                    <li><a href="{{ route('instructorEnrolledCourses') }}">Enrolled Courses</a></li>
-                                    <li><a href="{{ route('instructorWishlist') }}">Wishlist</a></li>
-                                    <li><a href="{{ route('instructorReviews') }}">Reviews</a></li>
-                                    <li><a href="{{ route('instructorMyQuizAttempts') }}">My Quiz Attempts</a></li>
-                                    <li><a href="{{ route('instructorOrderHistory') }}">Order History</a></li>
-                                    <li><a href="{{ route('instructorCourse') }}">My Course</a></li>
-                                    <li><a href="{{ route('instructorAnnouncements') }}">Announcements</a></li>
-                                    <li><a href="{{ route('instructorQuizAttempts') }}">Quiz Attempts</a></li>
-                                    <li><a href="{{ route('instructorAssignments') }}">Assignments</a></li>
-                                    <li><a href="{{ route('instructorSettings') }}">Settings</a></li>
-                                </ul>
-                            </li>
-                            <li class="has-dropdown"><a href="#">Student Dashboard</a>
-                                <ul class="submenu">
-                                    <li><a href="{{ route('studentDashboard') }}">Dashboard</a></li>
-                                    <li><a href="{{ route('studentProfile') }}">Profile</a></li>
-                                    <li><a href="{{ route('studentEnrolledCourses') }}">Enrolled Courses</a></li>
-                                    <li><a href="{{ route('studentWishlist') }}">Wishlist</a></li>
-                                    <li><a href="{{ route('studentReviews') }}">Reviews</a></li>
-                                    <li><a href="{{ route('studentMyQuizAttempts') }}">My Quiz Attempts</a></li>
-                                    <li><a href="{{ route('studentOrderHistory') }}">Order History</a></li>
-                                    <li><a href="{{ route('studentSettings') }}">Settings</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
-
-                    <li class="with-megamenu has-menu-child-item position-static">
-                        <a href="#">Pages </a>
-                        <!-- Start Mega Menu  -->
-                        <div class="rbt-megamenu grid-item-4">
-                            <div class="wrapper">
-                                <div class="row row--15">
-                                    <div class="col-lg-12 col-xl-3 col-xxl-3 single-mega-item">
-                                        <h3 class="rbt-short-title">Get Started</h3>
-                                        <ul class="mega-menu-item">
-                                            <li><a href="{{ route('aboutus01') }}">About Us</a></li>
-                                            <li><a href="{{ route('aboutus02') }}">About Us 02</a></li>
-                                            <li><a href="{{ route('eventGrid') }}">Event Grid</a></li>
-                                            <li><a href="{{ route('eventList') }}">Event List</a></li>
-                                            <li><a href="{{ route('eventSidebar') }}">Event Sidebar</a></li>
-                                            <li><a href="{{ route('eventDetails') }}">Event Details</a></li>
-                                            <li><a href="{{ route('academyGallery') }}">Academy Gallery</a></li>
-                                            <li><a href="{{ route('admissionGuide') }}">Admission Guide</a></li>
-                                        </ul>
-                                    </div>
-
-                                    <div class="col-lg-12 col-xl-3 col-xxl-3 single-mega-item">
-                                        <h3 class="rbt-short-title">Get Started</h3>
-                                        <ul class="mega-menu-item">
-                                            <li><a href="{{ route('profile') }}">Profile</a></li>
-                                            <li><a href="{{ route('contact') }}">Contact Us</a></li>
-                                            <li><a href="{{ route('becomeTeacher') }}">Become a Teacher</a></li>
-                                            <li><a href="{{ route('instructor') }}">Instructor</a></li>
-                                            <li><a href="{{ route('faqs') }}">FAQS</a></li>
-                                            <li><a href="{{ route('privacyPolicy') }}">Privacy Policy</a></li>
-                                            <li><a href="{{ route('pageError') }}">404 Page</a></li>
-                                            <li><a href="{{ route('maintenance') }}">Maintenance</a></li>
-                                        </ul>
-                                    </div>
-
-                                    <div class="col-lg-12 col-xl-3 col-xxl-3 single-mega-item">
-                                        <h3 class="rbt-short-title">Shop Pages</h3>
-                                        <ul class="mega-menu-item">
-                                            <li><a href="{{ route('shop') }}">Shop <span class="rbt-badge-card">Sale Anything</span></a></li>
-                                            <li><a href="{{ route('singleProduct') }}">Single Product</a></li>
-                                            <li><a href="{{ route('cart') }}">Cart Page</a></li>
-                                            <li><a href="{{ route('checkout') }}">Checkout</a></li>
-                                            <li><a href="{{ route('wishlist') }}">Wishlist Page</a></li>
-                                            <li><a href="{{ route('myAccount') }}">My Acount</a></li>
-                                            <li><a href="{{ route('login') }}">Login & Register</a></li>
-                                            <li><a href="{{ route('subscription') }}">Subscription</a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="col-lg-12 col-xl-3 col-xxl-3 single-mega-item">
-                                        <div class="mega-category-item">
-                                            <!-- Start Single Category  -->
-                                            <div class="nav-category-item">
-                                                <div class="thumbnail">
-                                                    <div class="image"><img src="{{ asset('assets/images/course/category-2.png') }}" alt="Course images"></div>
-                                                    <a href="{{ route('courseFilterOneToggle') }}">
-                                                        <span>Online Education</span>
-                                                        <i class="feather-chevron-right"></i>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                            <!-- End Single Category  -->
-
-                                            <!-- Start Single Category  -->
-                                            <div class="nav-category-item">
-                                                <div class="thumbnail">
-                                                    <div class="image"><img src="{{ asset('assets/images/course/category-1.png') }}" alt="Course images"></div>
-                                                    <a href="{{ route('courseFilterOneToggle') }}">
-                                                        <span>Language Club</span>
-                                                        <i class="feather-chevron-right"></i>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                            <!-- End Single Category  -->
-
-                                            <!-- Start Single Category  -->
-                                            <div class="nav-category-item">
-                                                <div class="thumbnail">
-                                                    <div class="image"><img src="{{ asset('assets/images/course/category-4.png') }}" alt="Course images"></div>
-                                                    <a href="{{ route('courseFilterOneToggle') }}">
-                                                        <span>University Status</span>
-                                                        <i class="feather-chevron-right"></i>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                            <!-- End Single Category  -->
-
-                                            <!-- Start Single Category  -->
-                                            <div class="nav-category-item">
-                                                <div class="thumbnail">
-                                                    <a href="{{ route('courseFilterOneToggle') }}">
-                                                        <span>Course School</span>
-                                                        <i class="feather-chevron-right"></i>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                            <!-- End Single Category  -->
-
-                                            <!-- Start Single Category  -->
-                                            <div class="nav-category-item">
-                                                <div class="thumbnail">
-                                                    <div class="image"><img src="{{ asset('assets/images/course/category-9.png') }}" alt="Course images"></div>
-                                                    <a href="{{ route('courseFilterOneToggle') }}">
-                                                        <span>Academy</span>
-                                                        <i class="feather-chevron-right"></i>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                            <!-- End Single Category  -->
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- End Mega Menu  -->
-                    </li>
-
-                    <li class="with-megamenu has-menu-child-item position-static">
-                        <a href="#">Elements </a>
-                        <!-- Start Mega Menu  -->
-                        <div class="rbt-megamenu grid-item-3">
-                            <div class="wrapper">
-                                <div class="row row--15 single-dropdown-menu-presentation">
-                                    <div class="col-lg-4 col-xxl-4 single-mega-item">
-                                        <ul class="mega-menu-item">
-                                            <li><a href="{{ route('styleGuide') }}">Style Guide <span class="rbt-badge-card">Hot</span></a></li>
-                                            <li><a href="{{ route('accordion') }}">Accordion</a></li>
-                                            <li><a href="{{ route('advancetab') }}">Advance Tab</a></li>
-                                            <li><a href="{{ route('about') }}">About <span class="rbt-badge-card">New</span></a></li>
-                                            <li><a href="{{ route('brand') }}">Brand</a></li>
-                                            <li><a href="{{ route('button') }}">Button</a></li>
-                                            <li><a href="{{ route('badge') }}">Badge</a></li>
-                                            <li><a href="{{ route('card') }}">Card</a></li>
-                                            <li><a href="#">& More Coming</a></li>
-                                        </ul>
-                                    </div>
-
-                                    <div class="col-lg-4 col-xxl-4 single-mega-item">
-                                        <ul class="mega-menu-item">
-                                            <li><a href="{{ route('callToAction') }}">Call To Action</a></li>
-                                            <li><a href="{{ route('counterup') }}">Counter</a></li>
-                                            <li><a href="{{ route('category') }}">Categories</a></li>
-                                            <li><a href="{{ route('header') }}">Header Style</a></li>
-                                            <li><a href="{{ route('newsletter') }}">Newsletter</a></li>
-                                            <li><a href="{{ route('team') }}">Team</a></li>
-                                            <li><a href="{{ route('social') }}">Social</a></li>
-                                            <li><a href="{{ route('listStyle') }}">List Style</a></li>
-                                            <li><a href="#">& More Coming</a></li>
-                                        </ul>
-                                    </div>
-
-                                    <div class="col-lg-4 col-xxl-4 single-mega-item">
-                                        <ul class="mega-menu-item">
-                                            <li><a href="{{ route('gallery') }}">Gallery</a></li>
-                                            <li><a href="{{ route('pricing') }}">Pricing</a></li>
-                                            <li><a href="{{ route('progressbar') }}">Progressbar</a></li>
-                                            <li><a href="{{ route('testimonial') }}">Testimonial</a></li>
-                                            <li><a href="{{ route('service') }}">Service</a></li>
-                                            <li><a href="{{ route('split') }}">Split Area</a></li>
-                                            <li><a href="{{ route('search') }}">Search Style</a></li>
-                                            <li><a href="{{ route('instagram') }}">Instagram Style</a></li>
-                                            <li><a href="#">& More Coming</a></li>
-                                        </ul>
-                                    </div>
-
-                                </div>
-                                <div class="row">
-                                    <div class="col-lg-12">
-                                        <div class="btn-wrapper">
-                                            <a class="rbt-btn btn-gradient hover-icon-reverse square btn-xl w-100 text-center mt--30 hover-transform-none" href="#">
-                                                <span class="icon-reverse-wrapper">
-                                        <span class="btn-text">Visit Histudy Template</span>
-                                                <span class="btn-icon"><i class="feather-arrow-right"></i></span>
-                                                <span class="btn-icon"><i class="feather-arrow-right"></i></span>
-                                                </span>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- End Mega Menu  -->
-                    </li>
-
-                    <li class="with-megamenu has-menu-child-item position-static">
-                        <a href="#">Blog </a>
-                        <!-- Start Mega Menu  -->
-                        <div class="rbt-megamenu grid-item-3">
-                            <div class="wrapper">
-                                <div class="row row--15">
-                                    <div class="col-lg-12 col-xl-4 col-xxl-4 single-mega-item">
-                                        <h3 class="rbt-short-title">Blog Styles</h3>
-                                        <ul class="mega-menu-item">
-                                            <li><a href="{{ route('blogList') }}">Blog List</a></li>
-                                            <li><a href="{{ route('blog') }}">Blog Grid</a></li>
-                                            <li><a href="{{ route('blogGridMinimal') }}">Blog Grid Minimal</a></li>
-                                            <li><a href="{{ route('blogWithSidebar') }}">Blog With Sidebar</a></li>
-                                            <li><a href="{{ route('blogDetails') }}">Blog Details</a></li>
-                                            <li><a href="{{ route('postFormatStandard') }}">Post Format Standard</a></li>
-                                            <li><a href="{{ route('postFormatGallery') }}">Post Format Gallery</a></li>
-                                        </ul>
-                                    </div>
-
-                                    <div class="col-lg-12 col-xl-4 col-xxl-4 single-mega-item">
-                                        <h3 class="rbt-short-title">Get Started</h3>
-                                        <ul class="mega-menu-item">
-                                            <li><a href="{{ route('postFormatQuote') }}">Post Format Quote</a></li>
-                                            <li><a href="{{ route('postFormatAudio') }}">Post Format Audio</a></li>
-                                            <li><a href="{{ route('postFormatVideo') }}">Post Format Video</a></li>
-                                            <li><a href="#">Media Under Title <span class="rbt-badge-card">Coming</span></a></li>
-                                            <li><a href="#">Sticky Sidebar <span class="rbt-badge-card">Coming</span></a></li>
-                                            <li><a href="#">Auto Masonry <span class="rbt-badge-card">Coming</span></a></li>
-                                            <li><a href="#">Meta Overlaid <span class="rbt-badge-card">Coming</span></a></li>
-                                        </ul>
-                                    </div>
-
-                                    <div class="col-lg-12 col-xl-4 col-xxl-4 single-mega-item">
-                                        <div class="rbt-ads-wrapper">
-                                            <a class="d-block" href="#"><img src="{{ asset('assets/images/service/mobile-cat.jpg') }}" alt="Education Images"></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- End Mega Menu  -->
-                    </li>
-                </ul>
-            </nav>
 
             <div class="mobile-menu-bottom">
                 <div class="rbt-btn-wrapper mb--20">
@@ -1303,13 +716,13 @@
                                             <img src="{{ asset('assets/images/shape/PNGLOGO-PINK-BG copy 3.png') }}" alt="education">
                                         </a>
                                         <a href="#" class="avatar" data-tooltip="Shopify" tabindex="0">
-                                            <img src="{{ asset('assets/images/shape/shopify_glyph(1).png') }}" alt="education">
+                                            <img src="{{ asset('assets/images/shape/shopify_glyph_black.png') }}" alt="education">
                                         </a>
                                     </div>
                                     <h1 class="title">Fully customized </h1>
                                 </div>
                                 <h1 class="title">COD <span>
-                                    <img src="{{ asset('assets/images/shape/translate-in-text.png') }}" alt="">
+                                    <img src="ee" alt="">
                                     </span>Form With
                                 </h1>
                                 <h1 class="title">10+ Apps in One:
@@ -1384,7 +797,7 @@
                         <li><a href="https://www.maisonayla.ma"><img src="{{ asset('assets/images/brand/LOGO_MAISON_AYLA_AVEC_PICTO_2.png') }}" alt="Brand Image"></a></li>
                         <li><a href="https://emelle.ma/"><img src="{{ asset('assets/images/brand/Design sans titre(1).png') }}"  height='300px' alt="Brand Image"></a></li>
                         <li><a href="https://auconfort.shop/"><img src="{{ asset('assets/images/brand/Auconfort_Logo.png') }}" alt="Brand Image"></a></li>
-                        <li><a href="https://steelious.com/"><img src="{{ asset('assets/images/brand/az(1).png') }}" alt="Brand Image"></a></li>
+                        <li><a href="https://steelious.com/"><img src="{{ asset('assets/images/brand/20250818_1616_Logo Noir HD_remix_01k2yvwvqafh29yxj4vcndxbg2.png') }}" alt="Brand Image"></a></li>
                         <li><a href="https://www.siv.army/"><img src="{{ asset('assets/images/brand/58307711-0e53-4f88-88dc-283b02783a0b-logo-siv.png') }}" alt="Brand Image"></a></li>
                         <li><a href="https://parlons-tendance.shop/"><img src="{{ asset('assets/images/brand/Capture_d_ecran_2024-11-21_a_17.46.13.png') }}" alt="Brand Image"></a></li>
                     </ul>
@@ -1531,10 +944,10 @@ Our numbers speak louder than words.</p>
                 </div>
             </div>
         </div>
-<div class="rbt-feature-area bg-color-white rbt-section-gap">
+<div class="rbt-feature-area bg-color-extra2 rbt-section-gap">
             <div class="container">
-                <div class="row">
-                    <div class="col-lg-12">
+                <div class="row" id='features'>
+                    <div class="col-lg-12" >
                         <div class="section-title text-center">
                             <span class="subtitle bg-primary-opacity">The Practice</span>
                             <h2 class="title w-600">All-in-One Features to Scale <br> Your COD Busines</h2>
@@ -2095,7 +1508,7 @@ Merci LeadForm Order COD Form</p>
             </div>
         </div>
     </div>
-<div class="rbt-accordion-area accordion-style-1 bg-color-white rbt-section-gap">
+<div class="rbt-accordion-area accordion-style-1 bg-color-white rbt-section-gap" id="faq">
         <div class="container">
             <div class="row g-5">
                 <div class="col-lg-6">
@@ -2225,13 +1638,13 @@ Merci LeadForm Order COD Form</p>
         </div>
     </div>
 
-    <div class="rbt-pricing-area bg-color-extra2 rbt-section-gap">
+    <div class="rbt-pricing-area bg-color-extra2 rbt-section-gap" id="pricing">
         <div class="container">
             <div class="row g-5 mb--60">
                 <div class="col-lg-6 col-md-6 col-12">
                     <div class="section-title text-start">
-                        <span class="subtitle bg-pink-opacity">COURSE PRICING</span>
-                        <h2 class="title">Style Two</h2>
+                        <span class="subtitle bg-pink-opacity">LEADFORM PRICING</span>
+                        <h2 class="title">Choose Your Plan</h2>
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-6 col-12">
@@ -2252,16 +1665,16 @@ Merci LeadForm Order COD Form</p>
                 <div class="col-xl-3 col-lg-3 col-md-6 col-12">
                     <div class="pricing-table style-2">
                         <div class="pricing-header">
-                            <h3 class="title">Basic Plan</h3>
-                            <span class="rbt-badge mb--35">Free for a Month</span>
+                            <h3 class="title">Starter </h3>
+                            <span class="rbt-badge mb--35">14-day free trial</span>
                             <div class="price-wrap">
                                 <div class="yearly-pricing" style="display: none;">
-                                    <span class="amount">$30.99</span>
-                                    <span class="duration">/yearly</span>
+                                    <span class="amount">$9.99</span>
+                                    <span class="duration">/year and save 16%</span>
                                 </div>
                                 <div class="monthly-pricing" style="display: block;">
-                                    <span class="amount">$10.00</span>
-                                    <span class="duration">/monthly</span>
+                                    <span class="amount">$0.99</span>
+                                    <span class="duration">/month</span>
                                 </div>
                             </div>
                         </div>
@@ -2269,7 +1682,7 @@ Merci LeadForm Order COD Form</p>
                         <div class="pricing-btn">
                             <a class="rbt-btn bg-primary-opacity hover-icon-reverse w-100" href="#">
                                 <div class="icon-reverse-wrapper">
-                                    <span class="btn-text">Join Course Plan</span>
+                                    <span class="btn-text">Start Free Trial</span>
                                     <span class="btn-icon"><i class="feather-arrow-right"></i></span>
                                     <span class="btn-icon"><i class="feather-arrow-right"></i></span>
                                 </div>
@@ -2278,10 +1691,14 @@ Merci LeadForm Order COD Form</p>
 
                         <div class="pricing-body">
                             <ul class="list-item">
-                                <li><i class="feather-check"></i> Unlimited Access Courses</li>
-                                <li><i class="feather-check"></i> Certificate After Completion</li>
-                                <li class="off"><i class="feather-x"></i> 24/7 Dedicated Support</li>
-                                <li class="off"><i class="feather-x"></i> Unlimited Emails</li>
+                                <li><i class="feather-check"></i> 100 Orders/mo</li>
+                                <li><i class="feather-check"></i> Google Sheets Synchronisation</li>
+                                <li><i class="feather-check"></i> Upsells & Bundles</li>
+                                <li><i class="feather-check"></i> Abandoned checkouts</li>
+                                <li><i class="feather-check"></i> Shipping rates</li>
+                                <li><i class="feather-check"></i> Multi-Pixels</li>
+                                <li><i class="feather-check"></i> Anti-Spam Fake Order Protection</li>
+                                <li><i class="feather-check"></i> 24/7 support</li>
                             </ul>
                         </div>
                     </div>
@@ -2290,16 +1707,16 @@ Merci LeadForm Order COD Form</p>
                 <div class="col-xl-3 col-lg-3 col-md-6 col-12">
                     <div class="pricing-table style-2">
                         <div class="pricing-header">
-                            <h3 class="title">Basic Plan</h3>
-                            <span class="rbt-badge mb--35">Free for a Month</span>
+                            <h3 class="title">Basic </h3>
+                            <span class="rbt-badge mb--35">14-day free trial</span>
                             <div class="price-wrap">
                                 <div class="yearly-pricing" style="display: none;">
-                                    <span class="amount">$30.99</span>
-                                    <span class="duration">/yearly</span>
+                                    <span class="amount">$99</span>
+                                    <span class="duration">/year and save 17%</span>
                                 </div>
                                 <div class="monthly-pricing" style="display: block;">
-                                    <span class="amount">$10.00</span>
-                                    <span class="duration">/monthly</span>
+                                    <span class="amount">$9.99</span>
+                                    <span class="duration">/month</span>
                                 </div>
                             </div>
                         </div>
@@ -2307,7 +1724,7 @@ Merci LeadForm Order COD Form</p>
                         <div class="pricing-btn">
                             <a class="rbt-btn bg-primary-opacity hover-icon-reverse w-100" href="#">
                                 <div class="icon-reverse-wrapper">
-                                    <span class="btn-text">Join Course Plan</span>
+                                    <span class="btn-text">Start Free Trial</span>
                                     <span class="btn-icon"><i class="feather-arrow-right"></i></span>
                                     <span class="btn-icon"><i class="feather-arrow-right"></i></span>
                                 </div>
@@ -2316,10 +1733,14 @@ Merci LeadForm Order COD Form</p>
 
                         <div class="pricing-body">
                             <ul class="list-item">
-                                <li><i class="feather-check"></i> Unlimited Access Courses</li>
-                                <li><i class="feather-check"></i> Certificate After Completion</li>
-                                <li class="off"><i class="feather-x"></i> 24/7 Dedicated Support</li>
-                                <li class="off"><i class="feather-x"></i> Unlimited Emails</li>
+                                <li><i class="feather-check"></i> 400 Orders/mo</li>
+                                <li><i class="feather-check"></i> Google Sheets Synchronisation</li>
+                                <li><i class="feather-check"></i> Upsells & Bundles</li>
+                                <li><i class="feather-check"></i> Abandoned checkouts</li>
+                                <li><i class="feather-check"></i> Shipping rates</li>
+                                <li><i class="feather-check"></i> Multiple Pixels</li>
+                                <li><i class="feather-check"></i> Anti-Spam - Fake Order Protection</li>
+                                <li><i class="feather-check"></i> 24/7 support</li>
                             </ul>
                         </div>
                     </div>
@@ -2329,23 +1750,23 @@ Merci LeadForm Order COD Form</p>
                     <div class="pricing-table style-2 active">
                         <div class="pricing-header">
                             <div class="pricing-badge"><span>Popular</span></div>
-                            <h3 class="title">Standard Plan</h3>
+                            <h3 class="title">Premium </h3>
                             <span class="rbt-badge mb--35">Most Popular</span>
                             <div class="price-wrap">
                                 <div class="yearly-pricing" style="display: none;">
-                                    <span class="amount">$100.99</span>
-                                    <span class="duration">/yearly</span>
+                                    <span class="amount">$249</span>
+                                    <span class="duration">/year and save 17%</span>
                                 </div>
                                 <div class="monthly-pricing" style="display: block;">
-                                    <span class="amount">$20.00</span>
-                                    <span class="duration">/monthly</span>
+                                    <span class="amount">$24.99</span>
+                                    <span class="duration">/month</span>
                                 </div>
                             </div>
                         </div>
                         <div class="pricing-btn">
                             <a class="rbt-btn hover-icon-reverse w-100" href="#">
                                 <div class="icon-reverse-wrapper">
-                                    <span class="btn-text">Join Course Plan</span>
+                                    <span class="btn-text">Start Free Trial</span>
                                     <span class="btn-icon"><i class="feather-arrow-right"></i></span>
                                     <span class="btn-icon"><i class="feather-arrow-right"></i></span>
                                 </div>
@@ -2354,10 +1775,14 @@ Merci LeadForm Order COD Form</p>
 
                         <div class="pricing-body">
                             <ul class="list-item">
-                                <li><i class="feather-check"></i> Unlimited Access Courses</li>
-                                <li><i class="feather-check"></i> Certificate After Completion</li>
-                                <li><i class="feather-check"></i> High Resolution Videos</li>
-                                <li><i class="feather-check"></i> 24/7 Dedicated Support</li>
+                                <li><i class="feather-check"></i> Unlimited orders</li>
+                                <li><i class="feather-check"></i> Google Sheets Synchronisation</li>
+                                <li><i class="feather-check"></i> Upsells & Bundles</li>
+                                <li><i class="feather-check"></i> Abandoned checkouts</li>
+                                <li><i class="feather-check"></i> Shipping rates</li>
+                                <li><i class="feather-check"></i> Multi-Pixels</li>
+                                <li><i class="feather-check"></i> Anti-Spam Fake Order Protection</li>
+                                <li><i class="feather-check"></i> 24/7 support</li>
                             </ul>
                         </div>
 
@@ -2369,16 +1794,16 @@ Merci LeadForm Order COD Form</p>
                 <div class="col-xl-3 col-lg-3 col-md-6 col-12">
                     <div class="pricing-table style-2">
                         <div class="pricing-header">
-                            <h3 class="title">Exclusive Plan</h3>
-                            <span class="rbt-badge mb--35">Free for a Month</span>
+                            <h3 class="title">Market Pro </h3>
+                            <span class="rbt-badge mb--35">14-day free trial</span>
                             <div class="price-wrap">
                                 <div class="yearly-pricing" style="display: none;">
-                                    <span class="amount">$99.99</span>
-                                    <span class="duration">/yearly</span>
+                                    <span class="amount">$399</span>
+                                    <span class="duration">/year and save 33%</span>
                                 </div>
                                 <div class="monthly-pricing" style="display: block;">
-                                    <span class="amount">$39.00</span>
-                                    <span class="duration">/monthly</span>
+                                    <span class="amount">$49.99</span>
+                                    <span class="duration">/month</span>
                                 </div>
                             </div>
                         </div>
@@ -2386,7 +1811,7 @@ Merci LeadForm Order COD Form</p>
                         <div class="pricing-btn">
                             <a class="rbt-btn bg-primary-opacity hover-icon-reverse w-100" href="#">
                                 <div class="icon-reverse-wrapper">
-                                    <span class="btn-text">Join Course Plan</span>
+                                    <span class="btn-text">Start Free Trial</span>
                                     <span class="btn-icon"><i class="feather-arrow-right"></i></span>
                                     <span class="btn-icon"><i class="feather-arrow-right"></i></span>
                                 </div>
@@ -2395,16 +1820,25 @@ Merci LeadForm Order COD Form</p>
 
                         <div class="pricing-body">
                             <ul class="list-item">
-                                <li><i class="feather-check"></i> Unlimited Access Courses</li>
-                                <li><i class="feather-check"></i> Certificate After Completion</li>
-                                <li class="off"><i class="feather-x"></i> 24/7 Dedicated Support</li>
-                                <li class="off"><i class="feather-x"></i> Unlimited Emails</li>
+                                <li><i class="feather-check"></i> Multiple Markets</li>
+                                <li><i class="feather-check"></i> Google Sheets Synchronisation</li>
+                                <li><i class="feather-check"></i> Upsells & bundles</li>
+                                <li><i class="feather-check"></i> Abandoned checkouts</li>
+                                <li><i class="feather-check"></i> Shipping rates</li>
+                                <li><i class="feather-check"></i> Multi-Pixels</li>
+                                <li><i class="feather-check"></i> Anti-Spam Fake Order Protec</li>
+                                <li><i class="feather-check"></i> 24/7 support</li>
                             </ul>
                         </div>
 
                     </div>
                 </div>
                 <!-- End Single Pricing  -->
+            </div>
+            <div class="row mt--30">
+                <div class="col-12">
+                    <p class="text-center text-muted small">All charges are billed in USD. Recurring and usage-based charges are billed every 30 days.</p>
+                </div>
             </div>
         </div>
     </div>
@@ -2585,6 +2019,72 @@ Merci LeadForm Order COD Form</p>
     </div>
     <!-- End Instagram Posts Section -->
 
+    <!-- Start Affiliate Section -->
+    <section class="rbt-section-gap bg-color-white overflow-hidden" id="affiliate">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <div class="section-title text-start">
+                        <h2 class="title">Join Our <span style="color: #ffd700;">30"%</span> <span style="color: #ff6b35;">Lifetime</span> Commission Program</h2>
+                        <p class="description">Vitals top creators earn over $30k every month. With 2,700+ 5 star reviews, Vitals basically sells itself.</p>
+                        
+                        <div class="row g-4 mt-4">
+                            <div class="col-6">
+                                <div class="feature-card text-center p-4 rounded-3" style="background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%); border: 1px solid rgba(255, 215, 0, 0.3);">
+                                    <i class="fas fa-infinity mb-3" style="font-size: 32px; color: #333;"></i>
+                                    <h6 class="mb-2 fw-bold">Lifetime Commission</h6>
+                                    <p class="small mb-0">Earn commissions on every sale, forever</p>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="feature-card text-center p-4 rounded-3" style="background: linear-gradient(135deg, #9c27b0 0%, #e1bee7 100%); border: 1px solid rgba(156, 39, 176, 0.3);">
+                                    <i class="fas fa-calendar-check mb-3" style="font-size: 32px; color: #333;"></i>
+                                    <h6 class="mb-2 fw-bold">30-day Attribution</h6>
+                                    <p class="small mb-0">Get credit for sales within 30 days</p>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="feature-card text-center p-4 rounded-3" style="background: linear-gradient(135deg, #ff6b35 0%, #ffb74d 100%); border: 1px solid rgba(255, 107, 53, 0.3);">
+                                    <i class="fas fa-coins mb-3" style="font-size: 32px; color: #333;"></i>
+                                    <h6 class="mb-2 fw-bold">Passive Income</h6>
+                                    <p class="small mb-0">Build a sustainable income stream</p>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="feature-card text-center p-4 rounded-3" style="background: linear-gradient(135deg, #2196f3 0%, #90caf9 100%); border: 1px solid rgba(33, 150, 243, 0.3);">
+                                    <i class="fas fa-shopping-cart mb-3" style="font-size: 32px; color: #333;"></i>
+                                    <h6 class="mb-2 fw-bold">Built for Success</h6>
+                                    <p class="small mb-0">Proven system with high conversion rates</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="row mt-5">
+                            <div class="col-md-6">
+                                <a href="{{ route('affiliate.form') }}" class="rbt-btn btn-gradient btn-lg radius-round w-100">
+                                    <span class="btn-text">Join Now</span>
+                                    <span class="btn-icon"><i class="feather-arrow-right"></i></span>
+                                </a>
+                            </div>
+                            <div class="col-md-6">
+                                <a href="{{ route('affiliate.form') }}" class="rbt-btn btn-border btn-lg radius-round w-100">
+                                    <span class="btn-text">Learn More</span>
+                                    <span class="btn-icon"><i class="feather-info"></i></span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="text-center">
+                        <img src="{{ asset('assets/images/banner/banner-01.png') }}" alt="Affiliate Program" class="img-fluid" style="max-width: 500px;">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End Affiliate Section -->
+
     <footer class="rbt-footer footer-style-1 bg-color-darker overflow-hidden rbt-section-box box-footer">
             <div class="footer-top">
                 <div class="container">
@@ -2593,17 +2093,17 @@ Merci LeadForm Order COD Form</p>
                             <div class="footer-widget">
                                 <div class="logo logo-dark">
                                     <a href="#">
-                                        <img src="{{ asset('assets/images/logo/logo.png') }}" alt="Edu-cause">
+                                        <img src="{{ asset('assets/images/logo/Design_sans_titre_30.png') }}" alt="Edu-cause">
                                     </a>
                                 </div>
                                 <div class="logo d-none logo-light">
                                     <a href="#">
-                                        <img src="{{ asset('assets/images/dark/logo/logo-light.png') }}" alt="Edu-cause">
+                                        <img src="{{ asset('assets/images/dark/logo/Design_sans_titre_30.png') }}" alt="Edu-cause">
                                     </a>
                                 </div>
 
-                                <p class="description mt--20">We’re always in search for talented
-                                    and motivated people. Don’t be shy introduce yourself!
+                                <p class="description mt--20">The all-in-one COD order form trusted by thousands of Shopify merchants.
+Simplify checkout, boost conversions, and scale your business.
                                 </p>
 
                                 <ul class="social-icon social-default justify-content-start">
@@ -2642,25 +2142,25 @@ Merci LeadForm Order COD Form</p>
                                 <h5 class="ft-title">Useful Links</h5>
                                 <ul class="ft-link">
                                     <li>
-                                        <a href="{{ route('marketplace') }}">Marketplace</a>
+                                        <a href="#features">Features</a>
                                     </li>
                                     <li>
-                                        <a href="{{ route('kindergarten') }}">kindergarten</a>
+                                        <a href="#pricing">Pricing</a>
                                     </li>
                                     <li>
-                                        <a href="{{ route('universityClassic') }}">University</a>
+                                        <a href="#faq">FAQ</a>
                                     </li>
                                     <li>
-                                        <a href="{{ route('gymCoaching') }}">GYM Coaching</a>
+                                        <a href="#">Blog</a>
                                     </li>
                                     <li>
-                                        <a href="{{ route('faqs') }}">FAQ</a>
+                                        <a href="#affiliate">Become an Affiliate</a>
                                     </li>
                                     <li>
-                                        <a href="{{ route('aboutus01') }}">About Us</a>
+                                        <a href="#">Privacy Policy</a>
                                     </li>
                                     <li>
-                                        <a href="{{ route('privacyPolicy') }}">Privacy policy</a>
+                                        <a href="#">Terms of Service</a>
                                     </li>
                                 </ul>
                             </div>
@@ -2668,28 +2168,22 @@ Merci LeadForm Order COD Form</p>
 
                         <div class="col-lg-2 col-md-6 col-sm-6 col-12">
                             <div class="footer-widget">
-                                <h5 class="ft-title">Our Company</h5>
+                                <h5 class="ft-title">Support & Company</h5>
                                 <ul class="ft-link">
                                     <li>
-                                        <a href="{{ route('contact') }}">Contact Us</a>
+                                        <a href="#">Contact Us</a>
                                     </li>
                                     <li>
-                                        <a href="{{ route('becomeTeacher') }}">Become Teacher</a>
+                                        <a href="#">Documentation</a>
                                     </li>
                                     <li>
-                                        <a href="{{ route('blog') }}">Blog</a>
+                                        <a href="#">Help Center</a>
                                     </li>
                                     <li>
-                                        <a href="{{ route('instructor') }}">Instructor</a>
+                                        <a href="#">Request a Feature</a>
                                     </li>
                                     <li>
-                                        <a href="{{ route('eventList') }}">Events</a>
-                                    </li>
-                                    <li>
-                                        <a href="{{ route('courseFilterOneToggle') }}">Course</a>
-                                    </li>
-                                    <li>
-                                        <a href="{{ route('contact') }}">Contact</a>
+                                        <a href="#">About LeadForm</a>
                                     </li>
                                 </ul>
                             </div>
@@ -2697,10 +2191,11 @@ Merci LeadForm Order COD Form</p>
 
                         <div class="col-lg-4 col-md-6 col-sm-6 col-12">
                             <div class="footer-widget">
-                                <h5 class="ft-title">Get Contact</h5>
+                                <h5 class="ft-title">Get in Touch</h5>
                                 <ul class="ft-link">
-                                    <li><span>Phone:</span> <a href="#">(406) 555-0120</a></li>
-                                    <li><span>E-mail:</span> <a href="mailto:hr@example.com">admin@example.com</a></li>
+                                    <li><span>📧 Email:</span> <a href="mailto:support@leadform.app">support@leadform.app</a></li>
+                                    <li><span>📞 Phone:</span> <a href="#">+1 (xxx) xxx-xxxx</a></li>
+                                    <li><span>💬 Live Chat:</span> <a href="#">Available inside the app</a></li>
                                 </ul>
 
                                 <form class="newsletter-form mt--20" action="#">
@@ -2733,16 +2228,8 @@ Merci LeadForm Order COD Form</p>
             <div class="copyright-area copyright-style-1 ptb--20">
                 <div class="container">
                     <div class="row align-items-center">
-                        <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-12 col-12">
-                            <p class="rbt-link-hover text-center text-lg-start">Copyright © 2025 <a href="https://www.pixcelsthemes.com/">Pixcels Themes.</a> All Rights Reserved</p>
-                        </div>
-                        <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-12 col-12">
-                            <ul class="copyright-link rbt-link-hover justify-content-center justify-content-lg-end mt_sm--10 mt_md--10">
-                                <li><a href="#">Terms of service</a></li>
-                                <li><a href="{{ route('privacyPolicy') }}">Privacy policy</a></li>
-                                <li><a href="{{ route('subscription') }}">Subscription</a></li>
-                                <li><a href="{{ route('login') }}">Login & Register</a></li>
-                            </ul>
+                        <div class="col-12">
+                            <p class="rbt-link-hover text-center">© 2025 LeadForm. All Rights Reserved. | Built for Shopify 🚀</p>
                         </div>
                     </div>
                 </div>
@@ -2825,6 +2312,66 @@ Merci LeadForm Order COD Form</p>
             setTimeout(() => {
                 body.style.transition = 'background-color 0.3s ease, color 0.3s ease';
             }, 100);
+        });
+    </script>
+
+    <!-- Enhanced Smooth Scrolling JavaScript -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Enhanced smooth scrolling for all anchor links
+            const anchorLinks = document.querySelectorAll('a[href^="#"]');
+            
+            anchorLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    const href = this.getAttribute('href');
+                    
+                    // Skip if it's just a hash
+                    if (href === '#') return;
+                    
+                    const targetElement = document.querySelector(href);
+                    
+                    if (targetElement) {
+                        e.preventDefault();
+                        
+                        // Get the target position with offset
+                        const targetPosition = targetElement.offsetTop - 100; // 100px offset for header
+                        
+                        // Smooth scroll to target
+                        window.scrollTo({
+                            top: targetPosition,
+                            behavior: 'smooth'
+                        });
+                        
+                        // Update URL without page jump
+                        history.pushState(null, null, href);
+                    }
+                });
+            });
+            
+            // Add active state to navigation links on scroll
+            const sections = document.querySelectorAll('#features, #faq, #pricing, #affiliate');
+            const navLinks = document.querySelectorAll('.mainmenu a[href^="#"]');
+            
+            window.addEventListener('scroll', function() {
+                let current = '';
+                const scrollPosition = window.scrollY + 150; // Offset for better detection
+                
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.offsetHeight;
+                    
+                    if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+                        current = section.getAttribute('id');
+                    }
+                });
+                
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === '#' + current) {
+                        link.classList.add('active');
+                    }
+                });
+            });
         });
     </script>
 
