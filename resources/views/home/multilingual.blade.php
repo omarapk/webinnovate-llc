@@ -341,6 +341,11 @@
         #affiliate {
             scroll-margin-top: 100px;
         }
+
+        /* FAQs title margin */
+        .faqs-title {
+            margin-top: 50px;
+        }
     </style>
 </head>
 <body class="rbt-header-sticky">
@@ -1053,7 +1058,7 @@ Our numbers speak louder than words.</p>
                         <div class="inner">
                             <div class="clint-info-wrapper">
                                 <div class="thumb">
-                                    <img src="{{ asset('assets/images/testimonial/client-01.png') }}" alt="Clint Images">
+                                    <img src="{{ asset('assets/images/testimonial/shopify_glyph_black.png') }}" alt="Clint Images">
                                 </div>
                                 <div class="client-info">
                                     <h5 class="title">Auconfort</h5>
@@ -1082,7 +1087,7 @@ Our numbers speak louder than words.</p>
                         <div class="inner">
                             <div class="clint-info-wrapper">
                                 <div class="thumb">
-                                    <img src="{{ asset('assets/images/testimonial/client-02.png') }}" alt="Clint Images">
+                                    <img src="{{ asset('assets/images/testimonial/shopify_glyph_black.png') }}" alt="Clint Images">
                                 </div>
                                 <div class="client-info">
                                     <h5 class="title">Green Vibe Market </h5>
@@ -1104,7 +1109,7 @@ Our numbers speak louder than words.</p>
                         <div class="inner">
                             <div class="clint-info-wrapper">
                                 <div class="thumb">
-                                    <img src="{{ asset('assets/images/testimonial/client-03.png') }}" alt="Clint Images">
+                                    <img src="{{ asset('assets/images/testimonial/shopify_glyph_black.png') }}" alt="Clint Images">
                                 </div>
                                 <div class="client-info">
                                     <h5 class="title">Urban Avenue </h5>
@@ -1128,7 +1133,7 @@ Our numbers speak louder than words.</p>
                         <div class="inner">
                             <div class="clint-info-wrapper">
                                 <div class="thumb">
-                                    <img src="{{ asset('assets/images/testimonial/client-04.png') }}" alt="Clint Images">
+                                    <img src="{{ asset('assets/images/testimonial/shopify_glyph_black.png') }}" alt="Clint Images">
                                 </div>
                                 <div class="client-info">
                                     <h5 class="title"> DriZenlab </h5>
@@ -1149,7 +1154,7 @@ Our numbers speak louder than words.</p>
                         <div class="inner">
                             <div class="clint-info-wrapper">
                                 <div class="thumb">
-                                    <img src="{{ asset('assets/images/testimonial/client-05.png') }}" alt="Clint Images">
+                                    <img src="{{ asset('assets/images/testimonial/shopify_glyph_black.png') }}" alt="Clint Images">
                                 </div>
                                 <div class="client-info">
                                     <h5 class="title">petooboutique </h5>
@@ -1171,7 +1176,7 @@ Our numbers speak louder than words.</p>
                         <div class="inner">
                             <div class="clint-info-wrapper">
                                 <div class="thumb">
-                                    <img src="{{ asset('assets/images/testimonial/client-06.png') }}" alt="Clint Images">
+                                    <img src="{{ asset('assets/images/testimonial/shopify_glyph_black.png') }}" alt="Clint Images">
                                 </div>
                                 <div class="client-info">
                                     <h5 class="title">Steelious</h5>
@@ -1193,7 +1198,7 @@ Our numbers speak louder than words.</p>
                         <div class="inner">
                             <div class="clint-info-wrapper">
                                 <div class="thumb">
-                                    <img src="{{ asset('assets/images/testimonial/client-07.png') }}" alt="Clint Images">
+                                    <img src="{{ asset('assets/images/testimonial/shopify_glyph_black.png') }}" alt="Clint Images">
                                 </div>
                                 <div class="client-info">
                                     <h5 class="title">OLIVIE</h5>
@@ -1219,7 +1224,7 @@ Un grand bravo également au service d’assistance à distance : ils sont très
                         <div class="inner">
                             <div class="clint-info-wrapper">
                                 <div class="thumb">
-                                    <img src="{{ asset('assets/images/testimonial/client-08.png') }}" alt="Clint Images">
+                                    <img src="{{ asset('assets/images/testimonial/shopify_glyph_black.png') }}" alt="Clint Images">
                                 </div>
                                 <div class="client-info">
                                     <h5 class="title"> Truc dz </h5>
@@ -1242,7 +1247,7 @@ Un grand bravo également au service d’assistance à distance : ils sont très
                         <div class="inner">
                             <div class="clint-info-wrapper">
                                 <div class="thumb">
-                                    <img src="{{ asset('assets/images/testimonial/client-01.png') }}" alt="Clint Images">
+                                    <img src="{{ asset('assets/images/testimonial/shopify_glyph_black.png') }}" alt="Clint Images">
                                 </div>
                                 <div class="client-info">
                                     <h5 class="title"> BASTA TOOLS </h5>
@@ -1278,7 +1283,7 @@ Un grand bravo également au service d’assistance à distance : ils sont très
                         <div class="inner">
                             <div class="clint-info-wrapper">
                                 <div class="thumb">
-                                    <img src="{{ asset('assets/images/testimonial/client-01.png') }}" alt="Clint Images">
+                                    <img src="{{ asset('assets/images/testimonial/shopify_glyph_black.png') }}" alt="Clint Images">
                                 </div>
                                 <div class="client-info">
                                     <h5 class="title">Ramartista</h5>
@@ -1303,7 +1308,7 @@ Un grand bravo également au service d’assistance à distance : ils sont très
                         <div class="inner">
                             <div class="clint-info-wrapper">
                                 <div class="thumb">
-                                    <img src="{{ asset('assets/images/testimonial/client-02.png') }}" alt="Clint Images">
+                                    <img src="{{ asset('assets/images/testimonial/shopify_glyph_black.png') }}" alt="Clint Images">
                                 </div>
                                 <div class="client-info">
                                     <h5 class="title"> living simple </h5>
@@ -1327,7 +1332,7 @@ Merci LeadForm Order COD Form</p>
                         <div class="inner">
                             <div class="clint-info-wrapper">
                                 <div class="thumb">
-                                    <img src="{{ asset('assets/images/testimonial/client-03.png') }}" alt="Clint Images">
+                                    <img src="{{ asset('assets/images/testimonial/shopify_glyph_black.png') }}" alt="Clint Images">
                                 </div>
                                 <div class="client-info">
                                     <h5 class="title">MSMODA</h5>
@@ -1352,7 +1357,7 @@ Merci LeadForm Order COD Form</p>
                         <div class="inner">
                             <div class="clint-info-wrapper">
                                 <div class="thumb">
-                                    <img src="{{ asset('assets/images/testimonial/client-04.png') }}" alt="Clint Images">
+                                    <img src="{{ asset('assets/images/testimonial/shopify_glyph_black.png') }}" alt="Clint Images">
                                 </div>
                                 <div class="client-info">
                                     <h5 class="title"> Wi Oui </h5>
@@ -1375,7 +1380,7 @@ Merci LeadForm Order COD Form</p>
                         <div class="inner">
                             <div class="clint-info-wrapper">
                                 <div class="thumb">
-                                    <img src="{{ asset('assets/images/testimonial/client-05.png') }}" alt="Clint Images">
+                                    <img src="{{ asset('assets/images/testimonial/shopify_glyph_black.png') }}" alt="Clint Images">
                                 </div>
                                 <div class="client-info">
                                     <h5 class="title"> Delivery Uganda </h5>
@@ -1400,7 +1405,7 @@ Merci LeadForm Order COD Form</p>
                         <div class="inner">
                             <div class="clint-info-wrapper">
                                 <div class="thumb">
-                                    <img src="{{ asset('assets/images/testimonial/client-06.png') }}" alt="Clint Images">
+                                    <img src="{{ asset('assets/images/testimonial/shopify_glyph_black.png') }}" alt="Clint Images">
                                 </div>
                                 <div class="client-info">
                                     <h5 class="title"> My Store 02 </h5>
@@ -1425,7 +1430,7 @@ Merci LeadForm Order COD Form</p>
                         <div class="inner">
                             <div class="clint-info-wrapper">
                                 <div class="thumb">
-                                    <img src="{{ asset('assets/images/testimonial/client-07.png') }}" alt="Clint Images">
+                                    <img src="{{ asset('assets/images/testimonial/shopify_glyph_black.png') }}" alt="Clint Images">
                                 </div>
                                 <div class="client-info">
                                     <h5 class="title">Nutrirare</h5>
@@ -1450,7 +1455,7 @@ Merci LeadForm Order COD Form</p>
                         <div class="inner">
                             <div class="clint-info-wrapper">
                                 <div class="thumb">
-                                    <img src="{{ asset('assets/images/testimonial/client-08.png') }}" alt="Clint Images">
+                                    <img src="{{ asset('assets/images/testimonial/shopify_glyph_black.png') }}" alt="Clint Images">
                                 </div>
                                 <div class="client-info">
                                     <h5 class="title">OnlineDz</h5>
@@ -1474,7 +1479,7 @@ Merci LeadForm Order COD Form</p>
                         <div class="inner">
                             <div class="clint-info-wrapper">
                                 <div class="thumb">
-                                    <img src="{{ asset('assets/images/testimonial/client-01.png') }}" alt="Clint Images">
+                                    <img src="{{ asset('assets/images/testimonial/shopify_glyph_black.png') }}" alt="Clint Images">
                                 </div>
                                 <div class="client-info">
                                     <h5 class="title">AHTmarket</h5>
@@ -1497,26 +1502,28 @@ Merci LeadForm Order COD Form</p>
         </div>
     </div>
         <div class="rbt-breadcrumb-default ptb--100 ptb_md--50 ptb_sm--30 bg-gradient-1">
-        <div class="container">
+    </div>
+    <div class="container">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="breadcrumb-inner text-center">
-                        <h2 class="title">Faqs</h2>
+                        <h2 class="title faqs-title" id="faq">Faqs</h2>
 
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-<div class="rbt-accordion-area accordion-style-1 bg-color-white rbt-section-gap" id="faq">
+<div class="rbt-accordion-area accordion-style-1 bg-color-white rbt-section-gap" >
+    
         <div class="container">
+            
             <div class="row g-5">
                 <div class="col-lg-6">
                     <div class="rbt-accordion-style accordion">
 
                         <div class="rbt-accordion-style rbt-accordion-04 accordion">
                             <div class="accordion" id="accordionExamplec3">
-                                <div class="accordion-item card">
+                                <div class="accordion-item card" >
                                     <h2 class="accordion-header card-header" id="headingThree1">
                                         <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree1" aria-expanded="true" aria-controls="collapseThree1">
                                             What is LeadForm and how does it work?
@@ -1638,13 +1645,13 @@ Merci LeadForm Order COD Form</p>
         </div>
     </div>
 
-    <div class="rbt-pricing-area bg-color-extra2 rbt-section-gap" id="pricing">
+    <div class="rbt-pricing-area bg-color-extra2 rbt-section-gap" >
         <div class="container">
             <div class="row g-5 mb--60">
                 <div class="col-lg-6 col-md-6 col-12">
                     <div class="section-title text-start">
                         <span class="subtitle bg-pink-opacity">LEADFORM PRICING</span>
-                        <h2 class="title">Choose Your Plan</h2>
+                        <h2 class="title" id="pricing">Choose Your Plan</h2>
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-6 col-12">
@@ -2019,71 +2026,7 @@ Merci LeadForm Order COD Form</p>
     </div>
     <!-- End Instagram Posts Section -->
 
-    <!-- Start Affiliate Section -->
-    <section class="rbt-section-gap bg-color-white overflow-hidden" id="affiliate">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-6">
-                    <div class="section-title text-start">
-                        <h2 class="title">Join Our <span style="color: #ffd700;">30"%</span> <span style="color: #ff6b35;">Lifetime</span> Commission Program</h2>
-                        <p class="description">Vitals top creators earn over $30k every month. With 2,700+ 5 star reviews, Vitals basically sells itself.</p>
-                        
-                        <div class="row g-4 mt-4">
-                            <div class="col-6">
-                                <div class="feature-card text-center p-4 rounded-3" style="background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%); border: 1px solid rgba(255, 215, 0, 0.3);">
-                                    <i class="fas fa-infinity mb-3" style="font-size: 32px; color: #333;"></i>
-                                    <h6 class="mb-2 fw-bold">Lifetime Commission</h6>
-                                    <p class="small mb-0">Earn commissions on every sale, forever</p>
-                                </div>
-                            </div>
-                            <div class="col-6">
-                                <div class="feature-card text-center p-4 rounded-3" style="background: linear-gradient(135deg, #9c27b0 0%, #e1bee7 100%); border: 1px solid rgba(156, 39, 176, 0.3);">
-                                    <i class="fas fa-calendar-check mb-3" style="font-size: 32px; color: #333;"></i>
-                                    <h6 class="mb-2 fw-bold">30-day Attribution</h6>
-                                    <p class="small mb-0">Get credit for sales within 30 days</p>
-                                </div>
-                            </div>
-                            <div class="col-6">
-                                <div class="feature-card text-center p-4 rounded-3" style="background: linear-gradient(135deg, #ff6b35 0%, #ffb74d 100%); border: 1px solid rgba(255, 107, 53, 0.3);">
-                                    <i class="fas fa-coins mb-3" style="font-size: 32px; color: #333;"></i>
-                                    <h6 class="mb-2 fw-bold">Passive Income</h6>
-                                    <p class="small mb-0">Build a sustainable income stream</p>
-                                </div>
-                            </div>
-                            <div class="col-6">
-                                <div class="feature-card text-center p-4 rounded-3" style="background: linear-gradient(135deg, #2196f3 0%, #90caf9 100%); border: 1px solid rgba(33, 150, 243, 0.3);">
-                                    <i class="fas fa-shopping-cart mb-3" style="font-size: 32px; color: #333;"></i>
-                                    <h6 class="mb-2 fw-bold">Built for Success</h6>
-                                    <p class="small mb-0">Proven system with high conversion rates</p>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="row mt-5">
-                            <div class="col-md-6">
-                                <a href="{{ route('affiliate.form') }}" class="rbt-btn btn-gradient btn-lg radius-round w-100">
-                                    <span class="btn-text">Join Now</span>
-                                    <span class="btn-icon"><i class="feather-arrow-right"></i></span>
-                                </a>
-                            </div>
-                            <div class="col-md-6">
-                                <a href="{{ route('affiliate.form') }}" class="rbt-btn btn-border btn-lg radius-round w-100">
-                                    <span class="btn-text">Learn More</span>
-                                    <span class="btn-icon"><i class="feather-info"></i></span>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="text-center">
-                        <img src="{{ asset('assets/images/banner/banner-01.png') }}" alt="Affiliate Program" class="img-fluid" style="max-width: 500px;">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- End Affiliate Section -->
+ 
 
     <footer class="rbt-footer footer-style-1 bg-color-darker overflow-hidden rbt-section-box box-footer">
             <div class="footer-top">
