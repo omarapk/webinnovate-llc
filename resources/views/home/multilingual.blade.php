@@ -97,7 +97,7 @@
         }
 
         .dark-mode .mainmenu > li > a:hover {
-            color: #007bff !important;
+            color: #c20c81 !important;
         }
 
         .dark-mode .rbt-card {
@@ -131,12 +131,12 @@
         }
 
         .dark-mode .rbt-btn {
-            background-color: #007bff !important;
+            background-color: #c20c81 !important;
             color: #ffffff !important;
         }
 
         .dark-mode .rbt-btn:hover {
-            background-color: #0056b3 !important;
+            background-color: #930c81 !important;
         }
 
         .dark-mode .bg-color-white {
@@ -178,8 +178,8 @@
         }
 
         .dark-mode-toggle:hover {
-            background-color: rgba(0, 123, 255, 0.1);
-            color: #007bff;
+            background-color: rgba(194, 12, 129, 0.1);
+            color: #c20c81;
         }
 
         .dark-mode .dark-mode-toggle {
@@ -188,7 +188,7 @@
 
         .dark-mode .dark-mode-toggle:hover {
             background-color: rgba(255, 255, 255, 0.1);
-            color: #007bff;
+            color: #c20c81;
         }
 
         /* Smooth transitions for dark mode */
@@ -405,9 +405,9 @@
 
                     <div class="header-right">
                         <!-- Dark Mode Toggle -->
-                        <button class="dark-mode-toggle" id="darkModeToggle" title="Toggle Dark Mode">
+                        <!-- <button class="dark-mode-toggle" id="darkModeToggle" title="Toggle Dark Mode">
                             <i class="fas fa-moon" id="darkModeIcon"></i>
-                        </button>
+                        </button> -->
 
                         <!-- Navbar Icons -->
                         <!-- <ul class="quick-access">
@@ -419,7 +419,7 @@
                         </ul> -->
 
                         <div class="rbt-btn-wrapper d-none d-xl-block ml--20">
-                            <a class="rbt-btn rbt-switch-btn btn-gradient btn-sm hover-transform-none" href="#">
+                            <a class="rbt-btn rbt-switch-btn btn-gradient btn-sm hover-transform-none" href="https://apps.shopify.com/leadform-cod">
                                 <span data-text="Start Free Trial">Start Free Trial</span>
                             </a>
                         </div>
@@ -737,7 +737,7 @@
                                     
                                 </h1><h3> Form, Upsells, Pixels, G.sheets, Whatsapp & mores</h3>
                                 <p class="description mt--20 mb--40"> easily create a cash on delivery form that will allow you to generate leads easily and in a few clicks that will allow you to increase your conversion rate.</p>
-                                <a class="rbt-btn btn-gradient hover-icon-reverse" href="#">
+                                <a class="rbt-btn btn-gradient hover-icon-reverse" href="https://apps.shopify.com/leadform-cod">
                                     <span class="icon-reverse-wrapper">
                                         <span class="btn-text">Start Free Trial</span>
                                     <span class="btn-icon"><i class="feather-arrow-right"></i></span>
@@ -937,7 +937,7 @@ Our numbers speak louder than words.</p>
                             <div class="rbt-counterup style-2">
                                 <div class="inner">
                                     <div class="content">
-                                        <h3 class="counter"><span class="odometer" data-count="100">00</span>
+                                        <h3 class="counter"><span class="odometer" data-count="10">00</span>M
                                         </h3>
                                         <span class="subtitle">COD orders processed</span>
                                     </div>
@@ -1687,7 +1687,7 @@ Merci LeadForm Order COD Form</p>
                         </div>
 
                         <div class="pricing-btn">
-                            <a class="rbt-btn bg-primary-opacity hover-icon-reverse w-100" href="#">
+                            <a class="rbt-btn bg-primary-opacity hover-icon-reverse w-100" href="https://apps.shopify.com/leadform-cod">
                                 <div class="icon-reverse-wrapper">
                                     <span class="btn-text">Start Free Trial</span>
                                     <span class="btn-icon"><i class="feather-arrow-right"></i></span>
@@ -1729,7 +1729,7 @@ Merci LeadForm Order COD Form</p>
                         </div>
 
                         <div class="pricing-btn">
-                            <a class="rbt-btn bg-primary-opacity hover-icon-reverse w-100" href="#">
+                            <a class="rbt-btn bg-primary-opacity hover-icon-reverse w-100" href="https://apps.shopify.com/leadform-cod">
                                 <div class="icon-reverse-wrapper">
                                     <span class="btn-text">Start Free Trial</span>
                                     <span class="btn-icon"><i class="feather-arrow-right"></i></span>
@@ -1771,7 +1771,7 @@ Merci LeadForm Order COD Form</p>
                             </div>
                         </div>
                         <div class="pricing-btn">
-                            <a class="rbt-btn hover-icon-reverse w-100" href="#">
+                            <a class="rbt-btn hover-icon-reverse w-100" href="https://apps.shopify.com/leadform-cod">
                                 <div class="icon-reverse-wrapper">
                                     <span class="btn-text">Start Free Trial</span>
                                     <span class="btn-icon"><i class="feather-arrow-right"></i></span>
@@ -1816,7 +1816,7 @@ Merci LeadForm Order COD Form</p>
                         </div>
 
                         <div class="pricing-btn">
-                            <a class="rbt-btn bg-primary-opacity hover-icon-reverse w-100" href="#">
+                            <a class="rbt-btn bg-primary-opacity hover-icon-reverse w-100" href="https://apps.shopify.com/leadform-cod">
                                 <div class="icon-reverse-wrapper">
                                     <span class="btn-text">Start Free Trial</span>
                                     <span class="btn-icon"><i class="feather-arrow-right"></i></span>
@@ -2050,20 +2050,20 @@ Simplify checkout, boost conversions, and scale your business.
                                 </p>
 
                                 <ul class="social-icon social-default justify-content-start">
-                                    <li><a href="https://www.facebook.com/">
+                                    <li><a href="https://www.facebook.com/leadform.cod">
                                             <i class="feather-facebook"></i>
                                         </a>
                                     </li>
-                                    <li><a href="https://www.twitter.com">
-                                            <i class="feather-twitter"></i>
+                                    <li><a href="https://wa.me/18198070658">
+                                            <i class="fa-brands fa-whatsapp"></i>
                                         </a>
                                     </li>
-                                    <li><a href="https://www.instagram.com/">
+                                    <li><a href="https://www.instagram.com/leadform.cod">
                                             <i class="feather-instagram"></i>
                                         </a>
                                     </li>
-                                    <li><a href="https://www.linkdin.com/">
-                                            <i class="feather-linkedin"></i>
+                                    <li><a href="https://www.youtube.com/@Lead-Form-COD/videos">
+                                            <i class="feather-youtube"></i>
                                         </a>
                                     </li>
                                 </ul>
@@ -2092,9 +2092,6 @@ Simplify checkout, boost conversions, and scale your business.
                                     </li>
                                     <li>
                                         <a href="#faq">FAQ</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Blog</a>
                                     </li>
                                     <li>
                                         <a href="#affiliate">Become an Affiliate</a>
@@ -2136,27 +2133,10 @@ Simplify checkout, boost conversions, and scale your business.
                             <div class="footer-widget">
                                 <h5 class="ft-title">Get in Touch</h5>
                                 <ul class="ft-link">
-                                    <li><span>📧 Email:</span> <a href="mailto:support@leadform.app">support@leadform.app</a></li>
-                                    <li><span>📞 Phone:</span> <a href="#">+1 (xxx) xxx-xxxx</a></li>
-                                    <li><span>💬 Live Chat:</span> <a href="#">Available inside the app</a></li>
+                                    <li><span><i class="fa-solid fa-envelope"></i>  Email:</span> <a href="mailto:webinnovate.dev@gmail.com">webinnovate.dev@gmail.com</a></li>
+                                    <li><span><i class="fa-solid fa-phone"></i> Phone:</span> <a href="https://wa.me/18198070658">+1 (819) 807-0658</a></li>
+                                    <li><span><i class="fa-solid fa-comment"></i> Live Chat:</span> <a href="#">Available inside the app (Crisp)</a></li>
                                 </ul>
-
-                                <form class="newsletter-form mt--20" action="#">
-                                    <h6 class="w-600 color-white">Newsletter</h6>
-                                    <p class="description">2000+ Our students are subscribe Around the World.<br> Don’t be shy
-                                        introduce yourself!</p>
-
-                                    <div class="form-group right-icon icon-email mb--20">
-                                        <label for="email">Enter Your Email Here</label>
-                                        <input id="email" type="email">
-                                    </div>
-
-                                    <div class="form-group mb--0">
-                                        <button class="rbt-btn rbt-switch-btn btn-gradient radius-round btn-sm" type="submit">
-                                            <span data-text="Submit Now">Submit Now</span>
-                                        </button>
-                                    </div>
-                                </form>
                             </div>
                         </div>
                     </div>
