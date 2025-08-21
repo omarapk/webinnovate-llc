@@ -3,13 +3,13 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>HiStudy - Online Courses & Education Bootstrap5 Template</title>
+    <title>WEBI ‑ LeadForm Order Form COD Fully customized COD Form with 10+ Apps in One</title>
     <meta name="robots" content="noindex, follow">
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Favicon -->
-    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('assets/images/favicon.png') }}">
+    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('assets/images/logo.png') }}">
 
     <!-- Bootstrap CSS (CDN) -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
@@ -345,6 +345,160 @@
         /* FAQs title margin */
         .faqs-title {
             margin-top: 50px;
+        }
+
+        /* Commission Program Section Styles */
+        .benefits-circles {
+            position: relative;
+            margin-bottom: 60px;
+        }
+
+        .benefits-grid {
+            position: relative;
+            width: 250px;
+            height: 250px;
+            margin: 0 auto;
+        }
+
+        .benefit-circle {
+            position: absolute;
+            width: 100px;
+            height: 40px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            font-weight: 600;
+            font-size: 11px;
+            color: #333;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            opacity: 0.8;
+        }
+
+        .benefit-circle-1 {
+            top: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, #87CEEB, #5F9EA0);
+        }
+
+        .benefit-circle-2 {
+            bottom: 15px;
+            left: 15px;
+            background: linear-gradient(135deg, #FFA500, #FF8C00);
+        }
+
+        .benefit-circle-3 {
+            top: 50%;
+            right: 15px;
+            transform: translateY(-50%);
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+        }
+
+        .benefit-circle-4 {
+            top: 50%;
+            left: 15px;
+            transform: translateY(-50%);
+            background: linear-gradient(135deg, #9370DB, #8A2BE2);
+        }
+
+        .circle-content {
+            padding: 10px;
+        }
+
+        .benefit-text {
+            font-size: 9px;
+            font-weight: 600;
+            line-height: 1.2;
+        }
+
+        /* SVG demi-circles positioning */
+        .benefits-svg {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: -1;
+            display: none; /* Hide SVG arcs to see only circles */
+        }
+
+        /* Main headline styles */
+        .commission-headline .title {
+            font-size: 6rem;
+            line-height: 1.1;
+            margin-bottom: 30px;
+            font-weight: 700;
+        }
+
+        .highlight-yellow {
+            color: #c20c81;
+            font-weight: 700;
+        }
+
+        .highlight-orange {
+            color: #c20c81;
+            font-weight: 700;
+        }
+
+        /* Supporting text styles */
+        .supporting-text .description {
+            font-size: 1.8rem;
+            color: #666;
+            margin-bottom: 10px;
+        }
+
+        /* CTA buttons spacing */
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .benefits-grid {
+                width: 250px;
+                height: 250px;
+            }
+
+            .benefit-circle {
+                width: 90px;
+                height: 35px;
+                font-size: 8px;
+            }
+
+            .commission-headline .title {
+                font-size: 3rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .cta-buttons .rbt-btn {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .benefits-grid {
+                width: 200px;
+                height: 200px;
+            }
+
+            .benefit-circle {
+                width: 80px;
+                height: 30px;
+                font-size: 7px;
+            }
+
+            .commission-headline .title {
+                font-size: 2.5rem;
+            }
         }
     </style>
 </head>
@@ -1850,7 +2004,7 @@ Merci LeadForm Order COD Form</p>
         </div>
     </div>
 
-        <div class="rbt-instagram-area bg-color-white rbt-section-gapTop">
+        <!-- <div class="rbt-instagram-area bg-color-white rbt-section-gapTop">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12 mb--60">
@@ -1861,7 +2015,7 @@ Merci LeadForm Order COD Form</p>
                     </div>
                 </div>
             </div>
-            <!-- <div class="container-fluid">
+            <div class="container-fluid">
                 <div class="row g-3">
                     <div class="col-lg-2 col-md-4 col-sm-6 col-6">
                         <div class="instagram-grid">
@@ -1930,14 +2084,13 @@ Merci LeadForm Order COD Form</p>
                         </div>
                     </div>
                 </div>
-            </div> -->
-        </div>
+            </div>
+        </div> -->
 
-    <!-- Start Instagram Posts Section -->
-    <div class="rbt-section-gap bg-color-white instagram-posts-section">
+    <!-- <div class="rbt-section-gap bg-color-white instagram-posts-section">
         <div class="container-fluid">
             @if(!empty($instagramPosts))
-                <!-- @if(count($instagramPosts) > 0 && isset($instagramPosts[0]['pictureUrl']) && (strpos($instagramPosts[0]['pictureUrl'], 'placeholder.com') !== false || strpos($instagramPosts[0]['pictureUrl'], 'via.placeholder.com') !== false))
+                @if(count($instagramPosts) > 0 && isset($instagramPosts[0]['pictureUrl']) && (strpos($instagramPosts[0]['pictureUrl'], 'placeholder.com') !== false || strpos($instagramPosts[0]['pictureUrl'], 'via.placeholder.com') !== false))
                     <div class="row mb--20">
                         <div class="col-lg-12 text-center">
                             <div class="alert alert-warning" style="background-color: #fff3cd; border-color: #ffeaa7; color: #856404;">
@@ -1946,7 +2099,7 @@ Merci LeadForm Order COD Form</p>
                             </div>
                         </div>
                     </div>
-                @endif -->
+                @endif
                 <div class="row g-3">
                     @foreach(array_slice($instagramPosts, 0, 6) as $post)
                             <div class="col-lg-2 col-md-4 col-sm-6 col-6">
@@ -2023,10 +2176,98 @@ Merci LeadForm Order COD Form</p>
                 </div>
             @endif
         </div>
-    </div>
-    <!-- End Instagram Posts Section -->
+    </div> -->
 
- 
+    <!-- Start Commission Program Section -->
+    <div class="rbt-section-gap bg-color-white">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center">
+                    <!-- Section Title -->
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="section-title text-center mb--50" >
+                                <h2 id='affiliate' class="title w-600">Become a partner</h2>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Benefits Circles -->
+                    <div class="benefits-circles mb--50">
+                        <div class="benefits-grid">
+                            <!-- SVG Demi-circles Background -->
+                            <svg class="benefits-svg" width="300" height="300" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M 25 150 A 125 125 0 0 1 275 150" 
+                                      fill="none" 
+                                      stroke="lightgray" 
+                                      stroke-width="2" 
+                                      stroke-opacity="0.3" />
+                                <path d="M 50 150 A 100 100 0 0 1 250 150" 
+                                      fill="none" 
+                                      stroke="lightgray" 
+                                      stroke-width="2" 
+                                      stroke-opacity="0.3" />
+                                <path d="M 75 150 A 75 75 0 0 1 225 150" 
+                                      fill="none" 
+                                      stroke="lightgray" 
+                                      stroke-width="2" 
+                                      stroke-opacity="0.3" />
+                            </svg>
+                            
+                            <div class="benefit-circle benefit-circle-1">
+                                <div class="circle-content">
+                                    <span class="benefit-text">Built for Shopify</span>
+                                </div>
+                            </div>
+                            <div class="benefit-circle benefit-circle-2">
+                                <div class="circle-content">
+                                    <span class="benefit-text">Passive income</span>
+                                </div>
+                            </div>
+                            <div class="benefit-circle benefit-circle-3">
+                                <div class="circle-content">
+                                    <span class="benefit-text">Lifetime commission</span>
+                                </div>
+                            </div>
+                            <div class="benefit-circle benefit-circle-4">
+                                <div class="circle-content">
+                                    <span class="benefit-text">30-day attribution</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Main Headline -->
+                    <div class="commission-headline mb--30">
+                        <h1 class="title w-600">
+                            Join our <span class="highlight-yellow">30%</span> <span class="highlight-orange">lifetime</span><br> commission program
+                        </h1>
+                    </div>
+
+                    <!-- Supporting Text -->
+                    <div class="supporting-text mb--40">
+                        <p class="description">Vitals top creators earn over $30k every month.</p>
+                        <p class="description">With 2,700+ 5 star reviews, Vitals basically sells itself.</p>
+                    </div>
+
+                    <!-- Call to Action Buttons -->
+                    <div class="cta-buttons">
+                        <a href="{{ route('affiliate.application') }}" class="rbt-btn btn-gradient hover-icon-reverse me--20">
+                            <span class="icon-reverse-wrapper">
+                                <span class="btn-text">Join now</span>
+                                <span class="btn-icon"><i class="feather-arrow-right"></i></span>
+                                <span class="btn-icon"><i class="feather-arrow-right"></i></span>
+                            </span>
+                        </a>
+                        <!-- <a href="#" class="rbt-btn btn-border-gradient radius-round">
+                            <span class="btn-text">Login</span>
+                        </a> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Commission Program Section -->
 
     <footer class="rbt-footer footer-style-1 bg-color-darker overflow-hidden rbt-section-box box-footer">
             <div class="footer-top">

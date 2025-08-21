@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>LeadForm Affiliate Program – Form</title>
+    <meta name="robots" content="noindex, follow">
+    <meta name="description" content="Apply to become a LeadForm affiliate partner">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('assets/images/logo.png') }}">
+
+    <!-- Bootstrap CSS (CDN) -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    
+    <!-- Font Awesome (CDN) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{{ asset('assets/css/styles.css') }}">
+    
+    <style>
+        .form-section {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            border-left: 4px solid #c20c81;
+        }
+        
+        .form-section h3 {
+            color: #c20c81;
+            margin-bottom: 25px;
+            font-weight: 600;
+        }
+        
+        .form-label {
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 8px;
+        }
+        
+        .form-control, .form-select {
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            padding: 12px 15px;
+            transition: all 0.3s ease;
+        }
+        
+        .form-control:focus, .form-select:focus {
+            border-color: #c20c81;
+            box-shadow: 0 0 0 0.2rem rgba(194, 12, 129, 0.25);
+        }
+        
+        .required-field::after {
+            content: " *";
+            color: #dc3545;
+        }
+        
+        .checkbox-group {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 10px;
+        }
+        
+        .form-check {
+            margin-bottom: 10px;
+        }
+        
+        .form-check-input:checked {
+            background-color: #c20c81;
+            border-color: #c20c81;
+        }
+        
+        .submit-btn {
+            background: linear-gradient(135deg, #c20c81, #930c81);
+            border: none;
+            padding: 15px 40px;
+            border-radius: 50px;
+            color: white;
+            font-weight: 600;
+            font-size: 18px;
+            transition: all 0.3s ease;
+        }
+        
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(194, 12, 129, 0.3);
+            color: white;
+        }
+        
+        .page-header {
+            background: linear-gradient(135deg, #c20c81, #930c81);
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+        }
+        
+        .alert {
+            border-radius: 10px;
+            border: none;
+            padding: 15px 20px;
+        }
+        
+        .alert-success {
+            background-color: #d4edda;
+            color: #155724;
+        }
+        
+                 .alert-danger {
+             background-color: #f8d7da;
+             color: #721c24;
+         }
+         
+         /* RBT Button Styles for animations */
+         .rbt-btn {
+             display: inline-flex;
+             align-items: center;
+             justify-content: center;
+             padding: 12px 30px;
+             border-radius: 50px;
+             font-weight: 600;
+             text-decoration: none;
+             transition: all 0.3s ease;
+             border: none;
+             cursor: pointer;
+             position: relative;
+             overflow: hidden;
+         }
+         
+         .rbt-btn.btn-gradient {
+             background: linear-gradient(135deg, #c20c81, #930c81);
+             color: white;
+             box-shadow: 0 4px 15px rgba(194, 12, 129, 0.2);
+         }
+         
+         .rbt-btn.btn-gradient:hover {
+             transform: translateY(-3px);
+             box-shadow: 0 8px 25px rgba(194, 12, 129, 0.4);
+             color: white;
+         }
+         
+         .rbt-btn.hover-icon-reverse .icon-reverse-wrapper {
+             display: flex;
+             align-items: center;
+             gap: 8px;
+             transition: all 0.3s ease;
+         }
+         
+         .rbt-btn.hover-icon-reverse:hover .icon-reverse-wrapper {
+             transform: translateX(-5px);
+         }
+         
+         .rbt-btn .btn-text {
+             transition: all 0.3s ease;
+         }
+         
+         .rbt-btn .btn-icon {
+             transition: all 0.3s ease;
+             opacity: 0;
+             transform: translateX(-10px);
+         }
+         
+         .rbt-btn:hover .btn-icon {
+             opacity: 1;
+             transform: translateX(0);
+         }
+         
+                   .rbt-btn.btn-lg {
+              padding: 15px 40px;
+              font-size: 18px;
+          }
+          
+          .rbt-btn.btn-sm {
+              padding: 8px 20px;
+              font-size: 14px;
+          }
+    </style>
+</head>
+<body>
+
+         <!-- Page Header -->
+     <div class="page-header">
+         <div class="container">
+             <div class="text-center">
+                 <h1 class="mb-3 text-white">LeadForm Affiliate Program –  Form</h1>
+                 <p class="mb-0">Join our partner network and earn 30% lifetime commission</p>
+             </div>
+         </div>
+     </div>
+
+     <!-- Main Content -->
+     <div class="container my-5">
+                   <!-- Back to Home Button -->
+          <div class="mb-4">
+              <a href="/" class="rbt-btn btn-gradient hover-icon-reverse btn-sm">
+                  <span class="icon-reverse-wrapper">
+                      <span class="btn-text">Back to Home</span>
+                      <span class="btn-icon"><i class="fas fa-arrow-left"></i></span>
+                      <span class="btn-icon"><i class="fas fa-arrow-left"></i></span>
+                  </span>
+              </a>
+          </div>
+        @if(session('success'))
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <i class="fas fa-check-circle me-2"></i>
+                {{ session('success') }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            </div>
+        @endif
+
+        @if(session('error'))
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <i class="fas fa-exclamation-circle me-2"></i>
+                {{ session('error') }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            </div>
+        @endif
+
+        <form action="{{ route('affiliate.submit') }}" method="POST">
+            @csrf
+            
+            <!-- Section 1: Your Details -->
+            <div class="form-section">
+                <h3><i class="fas fa-user me-2"></i>Section 1: Your Details</h3>
+                
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label for="full_name" class="form-label required-field">Full Name</label>
+                        <input type="text" class="form-control @error('full_name') is-invalid @enderror" 
+                               id="full_name" name="full_name" value="{{ old('full_name') }}" 
+                               placeholder="ex: John Doe" required>
+                        @error('full_name')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
+                    
+                    <div class="col-md-6 mb-3">
+                        <label for="email" class="form-label required-field">Email Address</label>
+                        <input type="email" class="form-control @error('email') is-invalid @enderror" 
+                               id="email" name="email" value="{{ old('email') }}" 
+                               placeholder="for all communication" required>
+                        @error('email')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label for="whatsapp_number" class="form-label required-field">WhatsApp Number</label>
+                        <input type="text" class="form-control @error('whatsapp_number') is-invalid @enderror" 
+                               id="whatsapp_number" name="whatsapp_number" value="{{ old('whatsapp_number') }}" 
+                               placeholder="with country code" required>
+                        @error('whatsapp_number')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
+                    
+                    <div class="col-md-6 mb-3">
+                        <label for="country" class="form-label required-field">Country of Residence</label>
+                        <input type="text" class="form-control @error('country') is-invalid @enderror" 
+                               id="country" name="country" value="{{ old('country') }}" required>
+                        @error('country')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label for="preferred_language" class="form-label required-field">Preferred Language</label>
+                        <select class="form-select @error('preferred_language') is-invalid @enderror" 
+                                id="preferred_language" name="preferred_language" required>
+                            <option value="">Select language</option>
+                            <option value="English" {{ old('preferred_language') == 'English' ? 'selected' : '' }}>English</option>
+                            <option value="Français" {{ old('preferred_language') == 'Français' ? 'selected' : '' }}>Français</option>
+                            <option value="عربي" {{ old('preferred_language') == 'عربي' ? 'selected' : '' }}>عربي</option>
+                            <option value="Español" {{ old('preferred_language') == 'Español' ? 'selected' : '' }}>Español</option>
+                            <option value="Português" {{ old('preferred_language') == 'Português' ? 'selected' : '' }}>Português</option>
+                        </select>
+                        @error('preferred_language')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section 2: About Your Business & Audience -->
+            <div class="form-section">
+                <h3><i class="fas fa-briefcase me-2"></i>Section 2: About Your Business & Audience</h3>
+                
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label required-field">Are you working with the COD (Cash on Delivery) business model?</label>
+                        <div class="mt-2">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input @error('cod_business') is-invalid @enderror" 
+                                       type="radio" name="cod_business" id="cod_yes" value="yes" 
+                                       {{ old('cod_business') == 'yes' ? 'checked' : '' }} required>
+                                <label class="form-check-label" for="cod_yes">Yes</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input @error('cod_business') is-invalid @enderror" 
+                                       type="radio" name="cod_business" id="cod_no" value="no" 
+                                       {{ old('cod_business') == 'no' ? 'checked' : '' }} required>
+                                <label class="form-check-label" for="cod_no">No</label>
+                            </div>
+                        </div>
+                        @error('cod_business')
+                            <div class="invalid-feedback d-block">{{ $message }}</div>
+                        @enderror
+                    </div>
+                    
+                    <div class="col-md-6 mb-3">
+                        <label for="community_size" class="form-label required-field">Size of your community or client base</label>
+                        <select class="form-select @error('community_size') is-invalid @enderror" 
+                                id="community_size" name="community_size" required>
+                            <option value="">Select size</option>
+                            <option value="Less than 1,000" {{ old('community_size') == 'Less than 1,000' ? 'selected' : '' }}>Less than 1,000</option>
+                            <option value="1,000 – 10,000" {{ old('community_size') == '1,000 – 10,000' ? 'selected' : '' }}>1,000 – 10,000</option>
+                            <option value="10,000 – 50,000" {{ old('community_size') == '10,000 – 50,000' ? 'selected' : '' }}>10,000 – 50,000</option>
+                            <option value="50,000+" {{ old('community_size') == '50,000+' ? 'selected' : '' }}>50,000+</option>
+                        </select>
+                        @error('community_size')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
+                </div>
+                
+                <div class="mb-3">
+                    <label class="form-label required-field">What best describes you?</label>
+                    <div class="mt-2">
+                        <div class="form-check">
+                            <input class="form-check-input @error('business_type') is-invalid @enderror" 
+                                   type="radio" name="business_type" id="shopify_agency" value="Shopify Agency" 
+                                   {{ old('business_type') == 'Shopify Agency' ? 'checked' : '' }} required>
+                            <label class="form-check-label" for="shopify_agency">Shopify Agency</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input @error('business_type') is-invalid @enderror" 
+                                   type="radio" name="business_type" id="influencer" value="E-commerce Influencer / Content Creator" 
+                                   {{ old('business_type') == 'E-commerce Influencer / Content Creator' ? 'checked' : '' }} required>
+                            <label class="form-check-label" for="influencer">E-commerce Influencer / Content Creator</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input @error('business_type') is-invalid @enderror" 
+                                   type="radio" name="business_type" id="trainer" value="Trainer / Educator in E-commerce" 
+                                   {{ old('business_type') == 'Trainer / Educator in E-commerce' ? 'checked' : '' }} required>
+                            <label class="form-check-label" for="trainer">Trainer / Educator in E-commerce</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input @error('business_type') is-invalid @enderror" 
+                                   type="radio" name="business_type" id="community_owner" value="Community Owner (FB group, Telegram, Discord…)" 
+                                   {{ old('business_type') == 'Community Owner (FB group, Telegram, Discord…)' ? 'checked' : '' }} required>
+                            <label class="form-check-label" for="community_owner">Community Owner (FB group, Telegram, Discord…)</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input @error('business_type') is-invalid @enderror" 
+                                   type="radio" name="business_type" id="other" value="other" 
+                                   {{ old('business_type') == 'other' ? 'checked' : '' }} required>
+                            <label class="form-check-label" for="other">Other</label>
+                        </div>
+                    </div>
+                    @error('business_type')
+                        <div class="invalid-feedback d-block">{{ $message }}</div>
+                    @enderror
+                </div>
+                
+                <div class="mb-3" id="other_business_type_div" style="display: none;">
+                    <label for="other_business_type" class="form-label">Please specify</label>
+                    <input type="text" class="form-control @error('other_business_type') is-invalid @enderror" 
+                           id="other_business_type" name="other_business_type" value="{{ old('other_business_type') }}" 
+                           placeholder="Please describe your business type">
+                    @error('other_business_type')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
+                </div>
+            </div>
+
+            <!-- Section 3: Promotion Channels -->
+            <div class="form-section">
+                <h3><i class="fas fa-share-alt me-2"></i>Section 3: Promotion Channels</h3>
+                
+                <div class="mb-3">
+                    <label class="form-label required-field">Where do you plan to promote Leadform?</label>
+                    <div class="checkbox-group">
+                        <div class="form-check">
+                            <input class="form-check-input @error('promotion_channels') is-invalid @enderror" 
+                                   type="checkbox" name="promotion_channels[]" id="youtube" value="YouTube" 
+                                   {{ in_array('YouTube', old('promotion_channels', [])) ? 'checked' : '' }}>
+                            <label class="form-check-label" for="youtube">YouTube</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input @error('promotion_channels') is-invalid @enderror" 
+                                   type="checkbox" name="promotion_channels[]" id="instagram" value="Instagram" 
+                                   {{ in_array('Instagram', old('promotion_channels', [])) ? 'checked' : '' }}>
+                            <label class="form-check-label" for="instagram">Instagram</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input @error('promotion_channels') is-invalid @enderror" 
+                                   type="checkbox" name="promotion_channels[]" id="facebook" value="Facebook" 
+                                   {{ in_array('Facebook', old('promotion_channels', [])) ? 'checked' : '' }}>
+                            <label class="form-check-label" for="facebook">Facebook</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input @error('promotion_channels') is-invalid @enderror" 
+                                   type="checkbox" name="promotion_channels[]" id="tiktok" value="TikTok" 
+                                   {{ in_array('TikTok', old('promotion_channels', [])) ? 'checked' : '' }}>
+                            <label class="form-check-label" for="tiktok">TikTok</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input @error('promotion_channels') is-invalid @enderror" 
+                                   type="checkbox" name="promotion_channels[]" id="twitter" value="X (Twitter)" 
+                                   {{ in_array('X (Twitter)', old('promotion_channels', [])) ? 'checked' : '' }}>
+                            <label class="form-check-label" for="twitter">X (Twitter)</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input @error('promotion_channels') is-invalid @enderror" 
+                                   type="checkbox" name="promotion_channels[]" id="linkedin" value="LinkedIn" 
+                                   {{ in_array('LinkedIn', old('promotion_channels', [])) ? 'checked' : '' }}>
+                            <label class="form-check-label" for="linkedin">LinkedIn</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input @error('promotion_channels') is-invalid @enderror" 
+                                   type="checkbox" name="promotion_channels[]" id="website" value="Website / Blog" 
+                                   {{ in_array('Website / Blog', old('promotion_channels', [])) ? 'checked' : '' }}>
+                            <label class="form-check-label" for="website">Website / Blog</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input @error('promotion_channels') is-invalid @enderror" 
+                                   type="checkbox" name="promotion_channels[]" id="email" value="Email Marketing" 
+                                   {{ in_array('Email Marketing', old('promotion_channels', [])) ? 'checked' : '' }}>
+                            <label class="form-check-label" for="email">Email Marketing</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input @error('promotion_channels') is-invalid @enderror" 
+                                   type="checkbox" name="promotion_channels[]" id="other_channels" value="other" 
+                                   {{ in_array('other', old('promotion_channels', [])) ? 'checked' : '' }}>
+                            <label class="form-check-label" for="other_channels">Other</label>
+                        </div>
+                    </div>
+                    @error('promotion_channels')
+                        <div class="invalid-feedback d-block">{{ $message }}</div>
+                    @enderror
+                </div>
+
+                <!-- Channel Details Sections -->
+                <div id="channel-details-container">
+                    <!-- YouTube Channel Details -->
+                    <div id="youtube-details" class="channel-details mb-3" style="display: none;">
+                        <div class="card">
+                            <div class="card-header" style="background-color: #FF0000; color: white;">
+                                <h5 class="mb-0"><i class="fab fa-youtube me-2"></i>YouTube Channel Details</h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label for="youtube_channel_name" class="form-label">Channel Name</label>
+                                        <input type="text" class="form-control" id="youtube_channel_name" 
+                                               name="youtube_channel_name" value="{{ old('youtube_channel_name') }}" 
+                                               placeholder="Your YouTube channel name">
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="youtube_followers" class="form-label">Number of Subscribers</label>
+                                        <input type="number" class="form-control" id="youtube_followers" 
+                                               name="youtube_followers" value="{{ old('youtube_followers') }}" 
+                                               placeholder="e.g., 10000">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                                         <!-- Instagram Channel Details -->
+                     <div id="instagram-details" class="channel-details mb-3" style="display: none;">
+                         <div class="card">
+                             <div class="card-header" style="background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%);">
+                                 <h5 class="mb-0" style="color: white;"><i class="fab fa-instagram me-2"></i>Instagram Account Details</h5>
+                             </div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label for="instagram_username" class="form-label">Instagram Username</label>
+                                        <input type="text" class="form-control" id="instagram_username" 
+                                               name="instagram_username" value="{{ old('instagram_username') }}" 
+                                               placeholder="@yourusername">
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="instagram_followers" class="form-label">Number of Followers</label>
+                                        <input type="number" class="form-control" id="instagram_followers" 
+                                               name="instagram_followers" value="{{ old('instagram_followers') }}" 
+                                               placeholder="e.g., 5000">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                                         <!-- TikTok Channel Details -->
+                     <div id="tiktok-details" class="channel-details mb-3" style="display: none;">
+                         <div class="card">
+                             <div class="card-header" style="background: linear-gradient(45deg, #000000, #25F4EE, #FE2C55);">
+                                 <h5 class="mb-0" style="color: white;"><i class="fab fa-tiktok me-2"></i>TikTok Account Details</h5>
+                             </div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label for="tiktok_username" class="form-label">TikTok Username</label>
+                                        <input type="text" class="form-control" id="tiktok_username" 
+                                               name="tiktok_username" value="{{ old('tiktok_username') }}" 
+                                               placeholder="@yourusername">
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="tiktok_followers" class="form-label">Number of Followers</label>
+                                        <input type="number" class="form-control" id="tiktok_followers" 
+                                               name="tiktok_followers" value="{{ old('tiktok_followers') }}" 
+                                               placeholder="e.g., 8000">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Facebook Channel Details -->
+                    <div id="facebook-details" class="channel-details mb-3" style="display: none;">
+                        <div class="card">
+                            <div class="card-header" style="background-color: #1877F2; color: white;">
+                                <h5 class="mb-0"><i class="fab fa-facebook me-2"></i>Facebook Page Details</h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label for="facebook_page_name" class="form-label">Page Name</label>
+                                        <input type="text" class="form-control" id="facebook_page_name" 
+                                               name="facebook_page_name" value="{{ old('facebook_page_name') }}" 
+                                               placeholder="Your Facebook page name">
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="facebook_followers" class="form-label">Number of Followers</label>
+                                        <input type="number" class="form-control" id="facebook_followers" 
+                                               name="facebook_followers" value="{{ old('facebook_followers') }}" 
+                                               placeholder="e.g., 3000">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                                         <!-- Twitter Channel Details -->
+                     <div id="twitter-details" class="channel-details mb-3" style="display: none;">
+                         <div class="card">
+                             <div class="card-header" style="background-color: #000000;">
+                                 <h5 class="mb-0" style="color: white;"><i class="fab fa-twitter me-2"></i>X (Twitter) Account Details</h5>
+                             </div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label for="twitter_username" class="form-label">Twitter Username</label>
+                                        <input type="text" class="form-control" id="twitter_username" 
+                                               name="twitter_username" value="{{ old('twitter_username') }}" 
+                                               placeholder="@yourusername">
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="twitter_followers" class="form-label">Number of Followers</label>
+                                        <input type="number" class="form-control" id="twitter_followers" 
+                                               name="twitter_followers" value="{{ old('twitter_followers') }}" 
+                                               placeholder="e.g., 2000">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- LinkedIn Channel Details -->
+                    <div id="linkedin-details" class="channel-details mb-3" style="display: none;">
+                        <div class="card">
+                            <div class="card-header" style="background-color: #0A66C2; color: white;">
+                                <h5 class="mb-0"><i class="fab fa-linkedin me-2"></i>LinkedIn Profile Details</h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label for="linkedin_profile_name" class="form-label">Profile Name</label>
+                                        <input type="text" class="form-control" id="linkedin_profile_name" 
+                                               name="linkedin_profile_name" value="{{ old('linkedin_profile_name') }}" 
+                                               placeholder="Your LinkedIn profile name">
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="linkedin_connections" class="form-label">Number of Connections</label>
+                                        <input type="number" class="form-control" id="linkedin_connections" 
+                                               name="linkedin_connections" value="{{ old('linkedin_connections') }}" 
+                                               placeholder="e.g., 1500">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Website/Blog Details -->
+                    <div id="website-details" class="channel-details mb-3" style="display: none;">
+                        <div class="card">
+                            <div class="card-header bg-success text-white">
+                                <h5 class="mb-0"><i class="fas fa-globe me-2"></i>Website / Blog Details</h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label for="website_url" class="form-label">Website URL</label>
+                                        <input type="url" class="form-control" id="website_url" 
+                                               name="website_url" value="{{ old('website_url') }}" 
+                                               placeholder="https://yourwebsite.com">
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="website_monthly_visitors" class="form-label">Monthly Visitors</label>
+                                        <input type="number" class="form-control" id="website_monthly_visitors" 
+                                               name="website_monthly_visitors" value="{{ old('website_monthly_visitors') }}" 
+                                               placeholder="e.g., 5000">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mb-3" id="other_channels_div" style="display: none;">
+                    <label for="other_channels_text" class="form-label">Please specify</label>
+                    <input type="text" class="form-control @error('other_channels') is-invalid @enderror" 
+                           id="other_channels_text" name="other_channels" value="{{ old('other_channels') }}" 
+                           placeholder="Please specify other promotion channels">
+                    @error('other_channels')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
+                </div>
+            </div>
+
+                         <!-- Submit Button -->
+             <div class="text-center">
+                 <button type="submit" class="rbt-btn btn-gradient hover-icon-reverse btn-sm">
+                     <span class="icon-reverse-wrapper">
+                         <span class="btn-text">Submit </span>
+                         <span class="btn-icon"><i class="fas fa-paper-plane"></i></span>
+                         <span class="btn-icon"><i class="fas fa-paper-plane"></i></span>
+                     </span>
+                 </button>
+             </div>
+        </form>
+    </div>
+
+    <!-- Bootstrap JS (CDN) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    
+    <script>
+        // Show/hide "Other" text fields and channel details based on selection
+        document.addEventListener('DOMContentLoaded', function() {
+            const otherBusinessType = document.getElementById('other');
+            const otherBusinessTypeDiv = document.getElementById('other_business_type_div');
+            const otherChannels = document.getElementById('other_channels');
+            const otherChannelsDiv = document.getElementById('other_channels_div');
+            
+            // Channel checkboxes
+            const youtubeCheckbox = document.getElementById('youtube');
+            const instagramCheckbox = document.getElementById('instagram');
+            const facebookCheckbox = document.getElementById('facebook');
+            const tiktokCheckbox = document.getElementById('tiktok');
+            const twitterCheckbox = document.getElementById('twitter');
+            const linkedinCheckbox = document.getElementById('linkedin');
+            const websiteCheckbox = document.getElementById('website');
+            
+            // Channel detail sections
+            const youtubeDetails = document.getElementById('youtube-details');
+            const instagramDetails = document.getElementById('instagram-details');
+            const facebookDetails = document.getElementById('facebook-details');
+            const tiktokDetails = document.getElementById('tiktok-details');
+            const twitterDetails = document.getElementById('twitter-details');
+            const linkedinDetails = document.getElementById('linkedin-details');
+            const websiteDetails = document.getElementById('website-details');
+            
+            // Business type "Other" field
+            otherBusinessType.addEventListener('change', function() {
+                if (this.checked) {
+                    otherBusinessTypeDiv.style.display = 'block';
+                    document.getElementById('other_business_type').required = true;
+                } else {
+                    otherBusinessTypeDiv.style.display = 'none';
+                    document.getElementById('other_business_type').required = false;
+                }
+            });
+            
+            // Promotion channels "Other" field
+            otherChannels.addEventListener('change', function() {
+                if (this.checked) {
+                    otherChannelsDiv.style.display = 'block';
+                    document.getElementById('other_channels_text').required = true;
+                } else {
+                    otherChannelsDiv.style.display = 'none';
+                    document.getElementById('other_channels_text').required = false;
+                }
+            });
+            
+            // YouTube channel details
+            youtubeCheckbox.addEventListener('change', function() {
+                if (this.checked) {
+                    youtubeDetails.style.display = 'block';
+                } else {
+                    youtubeDetails.style.display = 'none';
+                }
+            });
+            
+            // Instagram channel details
+            instagramCheckbox.addEventListener('change', function() {
+                if (this.checked) {
+                    instagramDetails.style.display = 'block';
+                } else {
+                    instagramDetails.style.display = 'none';
+                }
+            });
+            
+            // Facebook channel details
+            facebookCheckbox.addEventListener('change', function() {
+                if (this.checked) {
+                    facebookDetails.style.display = 'block';
+                } else {
+                    facebookDetails.style.display = 'none';
+                }
+            });
+            
+            // TikTok channel details
+            tiktokCheckbox.addEventListener('change', function() {
+                if (this.checked) {
+                    tiktokDetails.style.display = 'block';
+                } else {
+                    tiktokDetails.style.display = 'none';
+                }
+            });
+            
+            // Twitter channel details
+            twitterCheckbox.addEventListener('change', function() {
+                if (this.checked) {
+                    twitterDetails.style.display = 'block';
+                } else {
+                    twitterDetails.style.display = 'none';
+                }
+            });
+            
+            // LinkedIn channel details
+            linkedinCheckbox.addEventListener('change', function() {
+                if (this.checked) {
+                    linkedinDetails.style.display = 'block';
+                } else {
+                    linkedinDetails.style.display = 'none';
+                }
+            });
+            
+            // Website details
+            websiteCheckbox.addEventListener('change', function() {
+                if (this.checked) {
+                    websiteDetails.style.display = 'block';
+                } else {
+                    websiteDetails.style.display = 'none';
+                }
+            });
+            
+            // Check on page load if fields were previously selected
+            if (otherBusinessType.checked) {
+                otherBusinessTypeDiv.style.display = 'block';
+                document.getElementById('other_business_type').required = true;
+            }
+            
+            if (otherChannels.checked) {
+                otherChannelsDiv.style.display = 'block';
+                document.getElementById('other_channels_text').required = true;
+            }
+            
+            if (youtubeCheckbox.checked) {
+                youtubeDetails.style.display = 'block';
+            }
+            
+            if (instagramCheckbox.checked) {
+                instagramDetails.style.display = 'block';
+            }
+            
+            if (facebookCheckbox.checked) {
+                facebookDetails.style.display = 'block';
+            }
+            
+            if (tiktokCheckbox.checked) {
+                tiktokDetails.style.display = 'block';
+            }
+            
+            if (twitterCheckbox.checked) {
+                twitterDetails.style.display = 'block';
+            }
+            
+            if (linkedinCheckbox.checked) {
+                linkedinDetails.style.display = 'block';
+            }
+            
+            if (websiteCheckbox.checked) {
+                websiteDetails.style.display = 'block';
+            }
+        });
+    </script>
+</body>
+</html>
