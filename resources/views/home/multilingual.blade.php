@@ -377,28 +377,28 @@
         }
 
         .benefit-circle-1 {
-            top: 15px;
-            left: 50%;
+            top: 55px;
+            left: 10%;
             transform: translateX(-50%);
             background: linear-gradient(135deg, #87CEEB, #5F9EA0);
         }
 
         .benefit-circle-2 {
             bottom: 15px;
-            left: 15px;
+            left: -40px;
             background: linear-gradient(135deg, #FFA500, #FF8C00);
         }
 
         .benefit-circle-3 {
             top: 50%;
-            right: 15px;
+            right: -40px;
             transform: translateY(-50%);
             background: linear-gradient(135deg, #FFD700, #FFA500);
         }
 
         .benefit-circle-4 {
-            top: 50%;
-            left: 15px;
+            top: 100%;
+            left: 270px;
             transform: translateY(-50%);
             background: linear-gradient(135deg, #9370DB, #8A2BE2);
         }
@@ -2179,8 +2179,34 @@ Merci LeadForm Order COD Form</p>
     </div> -->
 
     <!-- Start Commission Program Section -->
-    <div class="rbt-section-gap bg-color-white">
-        <div class="container">
+    <div class="rbt-section-gap" style="position: relative; overflow: hidden; background: linear-gradient(135deg,rgb(255, 255, 255) 0%,rgb(255, 255, 255) 100%);">
+        <!-- Background SVG -->
+        <div style="position: absolute; top: 40%; left: 50%; transform: translate(-50%, -50%); z-index: 0; opacity: 0.3;">
+            <svg width="600" height="400" xmlns="http://www.w3.org/2000/svg">
+                <!-- Largest arc -->
+                <path d="M 50 300 A 250 250 0 0 1 550 300" 
+                      fill="none" 
+                      stroke="#6c757d" 
+                      stroke-width="3" 
+                      stroke-opacity="0.4" />
+
+                <!-- Middle arc -->
+                <path d="M 100 300 A 200 200 0 0 1 500 300" 
+                      fill="none" 
+                      stroke="#6c757d" 
+                      stroke-width="3" 
+                      stroke-opacity="0.4" />
+
+                <!-- Smallest arc -->
+                <path d="M 150 300 A 150 150 0 0 1 450 300" 
+                      fill="none" 
+                      stroke="#6c757d" 
+                      stroke-width="3" 
+                      stroke-opacity="0.4" />
+            </svg>
+        </div>
+        
+        <div class="container" style="position: relative; z-index: 1;">
             <div class="row justify-content-center">
                 <div class="col-lg-8 text-center">
                     <!-- Section Title -->
@@ -2263,6 +2289,7 @@ Merci LeadForm Order COD Form</p>
                             <span class="btn-text">Login</span>
                         </a> -->
                     </div>
+
                 </div>
             </div>
         </div>

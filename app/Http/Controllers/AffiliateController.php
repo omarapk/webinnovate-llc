@@ -78,7 +78,7 @@ class AffiliateController extends Controller
 
         try {
             // Send email to admin
-            Mail::to('webinnovate.dev@gmail.com')->send(new AffiliateFormSubmission($formData));
+            Mail::to('abdellahe.7ammani@gmail.com')->send(new AffiliateFormSubmission($formData));
 
             return redirect()->back()->with('success', 'Thank you! Your affiliate application has been submitted successfully. We will contact you soon!');
         } catch (\Exception $e) {
