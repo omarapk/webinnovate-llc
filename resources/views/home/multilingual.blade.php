@@ -303,6 +303,12 @@
             object-fit: contain;
             transition: transform 0.3s ease;
         }
+        
+        /* Make grasse_1.avif image bigger */
+        .brand-list.brand-style-3 li img[src*="grasse_1.avif"] {
+            max-height: 120px;
+            transform: scale(1.2);
+        }
 
         .brand-list.brand-style-3 li:hover img {
             transform: scale(1.1);
@@ -956,7 +962,7 @@
                         <li><a href="https://www.maisonayla.ma"><img src="{{ asset('assets/images/brand/LOGO_MAISON_AYLA_AVEC_PICTO_2.png') }}" alt="Brand Image"></a></li>
                         <li><a href="https://emelle.ma/"><img src="{{ asset('assets/images/brand/Design sans titre(1).png') }}"  height='300px' alt="Brand Image"></a></li>
                         <li><a href="https://auconfort.shop/"><img src="{{ asset('assets/images/brand/Auconfort_Logo.png') }}" alt="Brand Image"></a></li>
-                        <li><a href="https://steelious.com/"><img src="{{ asset('assets/images/brand/20250818_1616_Logo Noir HD_remix_01k2yvwvqafh29yxj4vcndxbg2.png') }}" alt="Brand Image"></a></li>
+                        <li><a href="https://steelious.com/"><img src="{{ asset('assets/images/brand/grasse_1.avif') }}" alt="Brand Image"></a></li>
                         <li><a href="https://www.siv.army/"><img src="{{ asset('assets/images/brand/58307711-0e53-4f88-88dc-283b02783a0b-logo-siv.png') }}" alt="Brand Image"></a></li>
                         <li><a href="https://parlons-tendance.shop/"><img src="{{ asset('assets/images/brand/Capture_d_ecran_2024-11-21_a_17.46.13.png') }}" alt="Brand Image"></a></li>
                     </ul>
