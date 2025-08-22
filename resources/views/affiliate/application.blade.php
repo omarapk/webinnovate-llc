@@ -549,9 +549,9 @@
                     <!-- YouTube Channel Details -->
                     <div id="youtube-details" class="channel-details mb-3" style="display: none;">
                         <div class="card">
-                            <div class="card-header" style="background-color: #FF0000; color: white;">
-                                <h5 class="mb-0"><i class="fab fa-youtube me-2"></i>YouTube Channel Details</h5>
-                            </div>
+                                                         <div class="card-header" style="background-color: #FF0000;">
+                                 <h5 class="mb-0" style="color: white;"><i class="fab fa-youtube me-2"></i>YouTube Channel Details</h5>
+                             </div>
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col-md-6 mb-3">
@@ -624,9 +624,9 @@
                     <!-- Facebook Channel Details -->
                     <div id="facebook-details" class="channel-details mb-3" style="display: none;">
                         <div class="card">
-                            <div class="card-header" style="background-color: #1877F2; color: white;">
-                                <h5 class="mb-0"><i class="fab fa-facebook me-2"></i>Facebook Page Details</h5>
-                            </div>
+                                                         <div class="card-header" style="background-color: #1877F2;">
+                                 <h5 class="mb-0" style="color: white;"><i class="fab fa-facebook me-2"></i>Facebook Page Details</h5>
+                             </div>
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col-md-6 mb-3">
@@ -674,9 +674,9 @@
                     <!-- LinkedIn Channel Details -->
                     <div id="linkedin-details" class="channel-details mb-3" style="display: none;">
                         <div class="card">
-                            <div class="card-header" style="background-color: #0A66C2; color: white;">
-                                <h5 class="mb-0"><i class="fab fa-linkedin me-2"></i>LinkedIn Profile Details</h5>
-                            </div>
+                                                         <div class="card-header" style="background-color: #0A66C2;">
+                                 <h5 class="mb-0" style="color: white;"><i class="fab fa-linkedin me-2"></i>LinkedIn Profile Details</h5>
+                             </div>
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col-md-6 mb-3">
@@ -696,12 +696,12 @@
                         </div>
                     </div>
 
-                    <!-- Website/Blog Details -->
-                    <div id="website-details" class="channel-details mb-3" style="display: none;">
-                        <div class="card">
-                            <div class="card-header bg-success text-white">
-                                <h5 class="mb-0"><i class="fas fa-globe me-2"></i>Website / Blog Details</h5>
-                            </div>
+                                         <!-- Website/Blog Details -->
+                     <div id="website-details" class="channel-details mb-3" style="display: none;">
+                         <div class="card">
+                             <div class="card-header bg-success">
+                                 <h5 class="mb-0" style="color: white;"><i class="fas fa-globe me-2"></i>Website / Blog Details</h5>
+                             </div>
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col-md-6 mb-3">
