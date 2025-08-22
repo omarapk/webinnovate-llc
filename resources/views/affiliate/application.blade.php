@@ -20,53 +20,89 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="{{ asset('assets/css/styles.css') }}">
     
-    <style>
+        <style>
+        body {
+            background-color: #f5f5f5;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        .page-header {
+            background: linear-gradient(135deg, #c20c81, #930c81);
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        .page-header h1 {
+            color: white;
+            font-size: 2.5rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        
+        .page-header p {
+            color: white;
+            font-size: 1.1rem;
+        }
+        
+        .form-container {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin: 30px auto;
+            max-width: 800px;
+            padding: 40px;
+        }
+        
         .form-section {
-            background: #f8f9fa;
-            border-radius: 15px;
-            padding: 30px;
-            margin-bottom: 30px;
-            border-left: 4px solid #c20c81;
+            margin-bottom: 40px;
         }
         
         .form-section h3 {
             color: #c20c81;
-            margin-bottom: 25px;
+            font-size: 1.3rem;
             font-weight: 600;
+            margin-bottom: 25px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e5e7eb;
         }
         
         .form-label {
             font-weight: 600;
-            color: #333;
+            color: #374151;
             margin-bottom: 8px;
+            display: block;
         }
         
         .form-control, .form-select {
-            border: 2px solid #e9ecef;
+            border: 1px solid #d1d5db;
             border-radius: 8px;
-            padding: 12px 15px;
-            transition: all 0.3s ease;
+            padding: 12px 16px;
+            font-size: 14px;
+            transition: border-color 0.2s ease;
         }
         
         .form-control:focus, .form-select:focus {
             border-color: #c20c81;
-            box-shadow: 0 0 0 0.2rem rgba(194, 12, 129, 0.25);
+            box-shadow: 0 0 0 3px rgba(194, 12, 129, 0.1);
+            outline: none;
         }
         
         .required-field::after {
             content: " *";
-            color: #dc3545;
+            color: #dc2626;
         }
         
         .checkbox-group {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
+            gap: 12px;
             margin-top: 10px;
         }
         
         .form-check {
-            margin-bottom: 10px;
+            margin-bottom: 8px;
         }
         
         .form-check-input:checked {
@@ -74,44 +110,90 @@
             border-color: #c20c81;
         }
         
-        .submit-btn {
-            background: linear-gradient(135deg, #c20c81, #930c81);
+        .social-media-row {
+            display: flex;
+            gap: 15px;
+            align-items: end;
+            margin-bottom: 15px;
+        }
+        
+        .add-social-btn {
+            background: #c20c81;
+            color: white;
             border: none;
-            padding: 15px 40px;
-            border-radius: 50px;
-            color: white;
-            font-weight: 600;
-            font-size: 18px;
-            transition: all 0.3s ease;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            font-size: 20px;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
         }
         
-        .submit-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(194, 12, 129, 0.3);
-            color: white;
+        .add-social-btn:hover {
+            background: #930c81;
         }
         
-        .page-header {
-            background: linear-gradient(135deg, #c20c81, #930c81);
-            color: white;
-            padding: 60px 0;
-            text-align: center;
-        }
+                 .submit-btn {
+             background: linear-gradient(135deg, #c20c81, #930c81);
+             border: none;
+             padding: 15px 40px;
+             border-radius: 8px;
+             color: white;
+             font-weight: 600;
+             font-size: 16px;
+             transition: all 0.3s ease;
+             width: 100%;
+             max-width: 300px;
+         }
+         
+         .submit-btn:hover {
+             transform: translateY(-2px);
+             box-shadow: 0 8px 25px rgba(194, 12, 129, 0.3);
+         }
         
         .alert {
-            border-radius: 10px;
+            border-radius: 8px;
             border: none;
             padding: 15px 20px;
+            margin-bottom: 20px;
         }
         
         .alert-success {
-            background-color: #d4edda;
-            color: #155724;
+            background-color: #dcfce7;
+            color: #166534;
+            border: 1px solid #bbf7d0;
         }
         
-                 .alert-danger {
-             background-color: #f8d7da;
-             color: #721c24;
+        .alert-danger {
+            background-color: #fef2f2;
+            color: #991b1b;
+            border: 1px solid #fecaca;
+        }
+        
+        .back-btn {
+            background: #6b7280;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            text-decoration: none;
+            display: inline-block;
+            margin-bottom: 20px;
+            transition: background-color 0.2s ease;
+        }
+        
+        .back-btn:hover {
+            background: #4b5563;
+            color: white;
+            text-decoration: none;
+        }
+        
+                 .terms-checkbox {
+             margin: 30px 0;
+             padding: 20px;
+             background: #f9fafb;
+             border-radius: 8px;
+             border: 1px solid #e5e7eb;
          }
          
          /* RBT Button Styles for animations */
@@ -168,41 +250,42 @@
              transform: translateX(0);
          }
          
-                   .rbt-btn.btn-lg {
-              padding: 15px 40px;
-              font-size: 18px;
-          }
-          
-          .rbt-btn.btn-sm {
-              padding: 8px 20px;
-              font-size: 14px;
-          }
+         .rbt-btn.btn-lg {
+             padding: 15px 40px;
+             font-size: 18px;
+         }
+         
+         .rbt-btn.btn-sm {
+             padding: 8px 20px;
+             font-size: 14px;
+         }
     </style>
 </head>
 <body>
 
-         <!-- Page Header -->
-     <div class="page-header">
-         <div class="container">
-             <div class="text-center">
-                 <h1 class="mb-3 text-white">LeadForm Affiliate Program –  Form</h1>
-                 <p class="mb-0">Join our partner network and earn 30% lifetime commission</p>
-             </div>
-         </div>
-     </div>
-
-     <!-- Main Content -->
-     <div class="container my-5">
-                   <!-- Back to Home Button -->
-          <div class="mb-4">
-              <a href="/" class="rbt-btn btn-gradient hover-icon-reverse btn-sm">
-                  <span class="icon-reverse-wrapper">
-                      <span class="btn-text">Back to Home</span>
-                      <span class="btn-icon"><i class="fas fa-arrow-left"></i></span>
-                      <span class="btn-icon"><i class="fas fa-arrow-left"></i></span>
-                  </span>
-              </a>
+                   <!-- Page Header -->
+      <div class="page-header">
+          <div class="container">
+              <div class="text-center">
+                  <h1>LeadForm Affiliate Program Application</h1>
+                  <p>Join our partner network and earn 30% lifetime commission</p>
+              </div>
           </div>
+      </div>
+
+      <!-- Main Content -->
+      <div class="container">
+          <div class="form-container">
+              <!-- Back to Home Button -->
+              <div class="mb-4">
+                  <a href="/" class="rbt-btn btn-gradient hover-icon-reverse btn-sm">
+                      <span class="icon-reverse-wrapper">
+                          <span class="btn-text">Back to Home</span>
+                          <span class="btn-icon"><i class="fas fa-arrow-left"></i></span>
+                          <span class="btn-icon"><i class="fas fa-arrow-left"></i></span>
+                      </span>
+                  </a>
+              </div>
         @if(session('success'))
             <div class="alert alert-success alert-dismissible fade show" role="alert">
                 <i class="fas fa-check-circle me-2"></i>
@@ -222,51 +305,65 @@
         <form action="{{ route('affiliate.submit') }}" method="POST">
             @csrf
             
-            <!-- Section 1: Your Details -->
-            <div class="form-section">
-                <h3><i class="fas fa-user me-2"></i>Section 1: Your Details</h3>
+                         <!-- Section 1: Basic Information -->
+             <div class="form-section">
+                 <h3>Section 1: Basic Information</h3>
                 
                 <div class="row">
-                    <div class="col-md-6 mb-3">
-                        <label for="full_name" class="form-label required-field">Full Name</label>
-                        <input type="text" class="form-control @error('full_name') is-invalid @enderror" 
-                               id="full_name" name="full_name" value="{{ old('full_name') }}" 
-                               placeholder="ex: John Doe" required>
-                        @error('full_name')
-                            <div class="invalid-feedback">{{ $message }}</div>
-                        @enderror
-                    </div>
+                                         <div class="col-md-6 mb-3">
+                         <label for="full_name" class="form-label required-field">Full Name</label>
+                         <input type="text" class="form-control @error('full_name') is-invalid @enderror" 
+                                id="full_name" name="full_name" value="{{ old('full_name') }}" 
+                                placeholder="Please enter your full legal name" required>
+                         @error('full_name')
+                             <div class="invalid-feedback">{{ $message }}</div>
+                         @enderror
+                     </div>
                     
-                    <div class="col-md-6 mb-3">
-                        <label for="email" class="form-label required-field">Email Address</label>
-                        <input type="email" class="form-control @error('email') is-invalid @enderror" 
-                               id="email" name="email" value="{{ old('email') }}" 
-                               placeholder="for all communication" required>
-                        @error('email')
-                            <div class="invalid-feedback">{{ $message }}</div>
-                        @enderror
-                    </div>
+                                         <div class="col-md-6 mb-3">
+                         <label for="email" class="form-label required-field">Email</label>
+                         <input type="email" class="form-control @error('email') is-invalid @enderror" 
+                                id="email" name="email" value="{{ old('email') }}" 
+                                placeholder="Provide your primary email address" required>
+                         @error('email')
+                             <div class="invalid-feedback">{{ $message }}</div>
+                         @enderror
+                     </div>
                 </div>
                 
                 <div class="row">
-                    <div class="col-md-6 mb-3">
-                        <label for="whatsapp_number" class="form-label required-field">WhatsApp Number</label>
-                        <input type="text" class="form-control @error('whatsapp_number') is-invalid @enderror" 
-                               id="whatsapp_number" name="whatsapp_number" value="{{ old('whatsapp_number') }}" 
-                               placeholder="with country code" required>
-                        @error('whatsapp_number')
-                            <div class="invalid-feedback">{{ $message }}</div>
-                        @enderror
-                    </div>
+                                         <div class="col-md-6 mb-3">
+                         <label for="whatsapp_number" class="form-label required-field">WhatsApp Number</label>
+                         <div class="row">
+                             <div class="col-4">
+                                 <select class="form-select">
+                                     <option>United States +1</option>
+                                     <option>Canada +1</option>
+                                     <option>United Kingdom +44</option>
+                                     <option>France +33</option>
+                                     <option>Germany +49</option>
+                                 </select>
+                             </div>
+                             <div class="col-8">
+                                 <input type="text" class="form-control @error('whatsapp_number') is-invalid @enderror" 
+                                        id="whatsapp_number" name="whatsapp_number" value="{{ old('whatsapp_number') }}" 
+                                        placeholder="Enter phone number" required>
+                             </div>
+                         </div>
+                         @error('whatsapp_number')
+                             <div class="invalid-feedback">{{ $message }}</div>
+                         @enderror
+                     </div>
                     
-                    <div class="col-md-6 mb-3">
-                        <label for="country" class="form-label required-field">Country of Residence</label>
-                        <input type="text" class="form-control @error('country') is-invalid @enderror" 
-                               id="country" name="country" value="{{ old('country') }}" required>
-                        @error('country')
-                            <div class="invalid-feedback">{{ $message }}</div>
-                        @enderror
-                    </div>
+                                         <div class="col-md-6 mb-3">
+                         <label for="country" class="form-label required-field">Country</label>
+                         <input type="text" class="form-control @error('country') is-invalid @enderror" 
+                                id="country" name="country" value="{{ old('country') }}" 
+                                placeholder="Provide the country where you will" required>
+                         @error('country')
+                             <div class="invalid-feedback">{{ $message }}</div>
+                         @enderror
+                     </div>
                 </div>
                 
                 <div class="row">
