@@ -353,31 +353,31 @@
              <div class="form-section">
                  <h3> Basic Information</h3>
                 
-                                <div class="row">
+                <div class="row">
                     <div class="col-md-6 mb-4">
-                        <label for="full_name" class="form-label required-field">Full Name</label>
-                        <input type="text" class="form-control @error('full_name') is-invalid @enderror" 
-                               id="full_name" name="full_name" value="{{ old('full_name') }}" 
-                               placeholder="Please enter your full legal name" required>
-                        @error('full_name')
-                            <div class="invalid-feedback">{{ $message }}</div>
-                        @enderror
-                    </div>
+                         <label for="full_name" class="form-label required-field">Full Name</label>
+                         <input type="text" class="form-control @error('full_name') is-invalid @enderror" 
+                                id="full_name" name="full_name" value="{{ old('full_name') }}" 
+                                placeholder="Please enter your full legal name" required>
+                         @error('full_name')
+                             <div class="invalid-feedback">{{ $message }}</div>
+                         @enderror
+                     </div>
                     
                     <div class="col-md-6 mb-4">
-                        <label for="email" class="form-label required-field">Email</label>
-                        <input type="email" class="form-control @error('email') is-invalid @enderror" 
-                               id="email" name="email" value="{{ old('email') }}" 
-                               placeholder="Provide your primary email address" required>
-                        @error('email')
-                            <div class="invalid-feedback">{{ $message }}</div>
-                        @enderror
-                    </div>
+                         <label for="email" class="form-label required-field">Email</label>
+                         <input type="email" class="form-control @error('email') is-invalid @enderror" 
+                                id="email" name="email" value="{{ old('email') }}" 
+                                placeholder="Provide your primary email address" required>
+                         @error('email')
+                             <div class="invalid-feedback">{{ $message }}</div>
+                         @enderror
+                     </div>
                 </div>
                 
                 <div class="row">
                     <div class="col-md-6 mb-4">
-                        <label for="whatsapp_number" class="form-label required-field">WhatsApp Number</label>
+                         <label for="whatsapp_number" class="form-label required-field">WhatsApp Number</label>
                         <div class="input-group">
                             <select class="form-select js-example-templating" style="max-width: 200px;">
                                 <option value="us">United States (+1)</option>
@@ -561,18 +561,18 @@
                                 <option value="ye">Yemen (+967)</option>
                                 <option value="zm">Zambia (+260)</option>
                                 <option value="zw">Zimbabwe (+263)</option>
-                            </select>
-                            <input type="text" class="form-control @error('whatsapp_number') is-invalid @enderror" 
-                                   id="whatsapp_number" name="whatsapp_number" value="{{ old('whatsapp_number') }}" 
-                                   placeholder="Enter phone number" required>
-                        </div>
+                                 </select>
+                                 <input type="text" class="form-control @error('whatsapp_number') is-invalid @enderror" 
+                                        id="whatsapp_number" name="whatsapp_number" value="{{ old('whatsapp_number') }}" 
+                                        placeholder="Enter phone number" required>
+                         </div>
                          @error('whatsapp_number')
                              <div class="invalid-feedback">{{ $message }}</div>
                          @enderror
                      </div>
                     
                                                              <div class="col-md-6 mb-4">
-                        <label for="country" class="form-label required-field">Country</label>
+                         <label for="country" class="form-label required-field">Country</label>
                          <input type="text" class="form-control @error('country') is-invalid @enderror" 
                                 id="country" name="country" value="{{ old('country') }}" 
                                 placeholder="Provide the country where you will" required>

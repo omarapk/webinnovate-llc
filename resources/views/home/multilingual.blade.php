@@ -522,13 +522,13 @@
                     <div class="header-left">
                         <div class="logo logo-dark">
                             <a href="#">
-                                <img src="{{ asset('assets/images/logo/Design_sans_titre_30.png') }}" alt="Education Logo Images">
+                                <img src="{{ asset('assets/images/logo/1.svg') }}" style="width: 200px; height: auto;" alt="Education Logo Images">
                                                                 </a>
                                                             </div>
 
                         <div class="logo d-none logo-light">
                             <a href="#">
-                                <img src="{{ asset('assets/images/dark/Design_sans_titre_30.png') }}" alt="Education Logo Images">
+                                <img src="{{ asset('assets/images/dark/1.svg') }}" style="width: 200px; height: auto;" alt="Education Logo Images">
                                                                 </a>
                                                             </div>
                                                         </div>
@@ -2308,12 +2308,12 @@ Merci LeadForm Order COD Form</p>
                             <div class="footer-widget">
                                 <div class="logo logo-dark">
                                     <a href="#">
-                                        <img src="{{ asset('assets/images/logo/Design_sans_titre_30.png') }}" alt="Edu-cause">
+                                        <img src="{{ asset('assets/images/logo/3.svg') }}" alt="Edu-cause" style="width: 250px; height: auto;">
                                     </a>
                                 </div>
                                 <div class="logo d-none logo-light">
                                     <a href="#">
-                                        <img src="{{ asset('assets/images/dark/logo/Design_sans_titre_30.png') }}" alt="Edu-cause">
+                                        <img src="{{ asset('assets/images/dark/logo/3.svg') }}" alt="Edu-cause" style="width: 250px; height: auto;">
                                     </a>
                                 </div>
 

@@ -10,8 +10,8 @@ Route::get('/', function () {
 });
 
 // Affiliate routes
-Route::get('/affiliate', [AffiliateController::class, 'showForm'])->name('affiliate.application');
-Route::post('/affiliate/submit', [AffiliateController::class, 'submitForm'])->name('affiliate.submit');
+// Route::get('/affiliate', [AffiliateController::class, 'showForm'])->name('affiliate.application');
+// Route::post('/affiliate/submit', [AffiliateController::class, 'submitForm'])->name('affiliate.submit');
 
 // Fallback route - redirect all other routes to home
 Route::fallback(function () {
