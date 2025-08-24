@@ -969,7 +969,7 @@
                 </div>
         <!-- Start Brand -->
          <!-- Start Video Area  -->
-        <div class="rbt-video-area bg-color-white rbt-section-gap overflow-hidden">
+        <!-- <div class="rbt-video-area bg-color-white rbt-section-gap overflow-hidden">
             <div class="container">
                 <div class="row row--35 align-items-center mt_dec--50">
                     <div class="col-xl-6 col-12 mt--50">
@@ -990,7 +990,6 @@
                                 <h2 class="title w-600">Increase Your COD Business</h2>
                             </div>
 
-                            <!-- Start Feature List  -->
 
                             <div class="rbt-feature-wrapper mt--30 ml_dec_20">
                                 <div class="rbt-feature feature-style-2 rbt-radius">
@@ -1024,12 +1023,11 @@
                                 </div>
                             </div>
 
-                            <!-- End Feature List  -->
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
         <!-- End Video Area  -->
                  <!-- Start Counter Area -->
         <div class="rbt-counterup-area counterup-section-02 rbt-section-gapBottom">
@@ -2248,7 +2246,7 @@ Merci LeadForm Order COD Form</p>
                             
                             <div class="benefit-circle benefit-circle-1">
                                 <div class="circle-content">
-                                    <span class="benefit-text">Built for Shopify</span>
+                                    <span class="benefit-text">Full Transparency</span>
                                 </div>
                             </div>
                             <div class="benefit-circle benefit-circle-2">

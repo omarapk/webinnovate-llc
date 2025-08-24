@@ -46,6 +46,33 @@
             font-size: 1.1rem;
         }
         
+        /* Home Icon Styling */
+        .home-icon-link {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            color: white;
+            font-size: 24px;
+            text-decoration: none;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .home-icon-link:hover {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            transform: scale(1.1);
+            box-shadow: 0 4px 15px rgba(255, 255, 255, 0.3);
+        }
+        
         .form-container {
             background: white;
             border-radius: 12px;
@@ -61,7 +88,7 @@
         
         .form-section h3 {
             color: #c20c81;
-            font-size: 1.3rem;
+            font-size: 2rem;
             font-weight: 600;
             margin-bottom: 25px;
             padding-bottom: 10px;
@@ -70,6 +97,7 @@
         
         .form-label {
             font-weight: 600;
+            font-size: 1.3rem;
             color: #374151;
             margin-bottom: 8px;
             display: block;
@@ -81,12 +109,34 @@
             padding: 12px 16px;
             font-size: 14px;
             transition: border-color 0.2s ease;
+            height: auto;
+            line-height: 1.5;
+            background-color: #fff;
+            color: #374151;
         }
         
         .form-control:focus, .form-select:focus {
             border-color: #c20c81;
             box-shadow: 0 0 0 3px rgba(194, 12, 129, 0.1);
             outline: none;
+        }
+        
+        /* Ensure select elements have the same appearance as input fields */
+        select.form-select {
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23343a40' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m1 6 7 7 7-7'/%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right 12px center;
+            background-size: 16px 12px;
+            padding-right: 40px;
+        }
+        
+        /* Ensure consistent sizing for all form elements */
+        .form-control, .form-select, select {
+            min-height: 48px;
+            box-sizing: border-box;
         }
         
         .required-field::after {
@@ -266,7 +316,11 @@
                    <!-- Page Header -->
       <div class="page-header">
           <div class="container">
-              <div class="text-center">
+              <div class="text-center position-relative">
+                  <!-- Home Icon -->
+                  <a href="/" class="home-icon-link" title="Back to Home">
+                      <i class="fas fa-home"></i>
+                  </a>
                   <h1>LeadForm Affiliate Program Application</h1>
                   <p>Join our partner network and earn 30% lifetime commission</p>
               </div>
@@ -276,16 +330,6 @@
       <!-- Main Content -->
       <div class="container">
           <div class="form-container">
-              <!-- Back to Home Button -->
-              <div class="mb-4">
-                  <a href="/" class="rbt-btn btn-gradient hover-icon-reverse btn-sm">
-                      <span class="icon-reverse-wrapper">
-                          <span class="btn-text">Back to Home</span>
-                          <span class="btn-icon"><i class="fas fa-arrow-left"></i></span>
-                          <span class="btn-icon"><i class="fas fa-arrow-left"></i></span>
-                      </span>
-                  </a>
-              </div>
         @if(session('success'))
             <div class="alert alert-success alert-dismissible fade show" role="alert">
                 <i class="fas fa-check-circle me-2"></i>
@@ -307,56 +351,228 @@
             
                          <!-- Section 1: Basic Information -->
              <div class="form-section">
-                 <h3>Section 1: Basic Information</h3>
+                 <h3> Basic Information</h3>
                 
-                <div class="row">
-                                         <div class="col-md-6 mb-3">
-                         <label for="full_name" class="form-label required-field">Full Name</label>
-                         <input type="text" class="form-control @error('full_name') is-invalid @enderror" 
-                                id="full_name" name="full_name" value="{{ old('full_name') }}" 
-                                placeholder="Please enter your full legal name" required>
-                         @error('full_name')
-                             <div class="invalid-feedback">{{ $message }}</div>
-                         @enderror
-                     </div>
+                                <div class="row">
+                    <div class="col-md-6 mb-4">
+                        <label for="full_name" class="form-label required-field">Full Name</label>
+                        <input type="text" class="form-control @error('full_name') is-invalid @enderror" 
+                               id="full_name" name="full_name" value="{{ old('full_name') }}" 
+                               placeholder="Please enter your full legal name" required>
+                        @error('full_name')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
                     
-                                         <div class="col-md-6 mb-3">
-                         <label for="email" class="form-label required-field">Email</label>
-                         <input type="email" class="form-control @error('email') is-invalid @enderror" 
-                                id="email" name="email" value="{{ old('email') }}" 
-                                placeholder="Provide your primary email address" required>
-                         @error('email')
-                             <div class="invalid-feedback">{{ $message }}</div>
-                         @enderror
-                     </div>
+                    <div class="col-md-6 mb-4">
+                        <label for="email" class="form-label required-field">Email</label>
+                        <input type="email" class="form-control @error('email') is-invalid @enderror" 
+                               id="email" name="email" value="{{ old('email') }}" 
+                               placeholder="Provide your primary email address" required>
+                        @error('email')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
                 </div>
                 
                 <div class="row">
-                                         <div class="col-md-6 mb-3">
-                         <label for="whatsapp_number" class="form-label required-field">WhatsApp Number</label>
-                         <div class="row">
-                             <div class="col-4">
-                                 <select class="form-select">
-                                     <option>United States +1</option>
-                                     <option>Canada +1</option>
-                                     <option>United Kingdom +44</option>
-                                     <option>France +33</option>
-                                     <option>Germany +49</option>
-                                 </select>
-                             </div>
-                             <div class="col-8">
-                                 <input type="text" class="form-control @error('whatsapp_number') is-invalid @enderror" 
-                                        id="whatsapp_number" name="whatsapp_number" value="{{ old('whatsapp_number') }}" 
-                                        placeholder="Enter phone number" required>
-                             </div>
-                         </div>
+                    <div class="col-md-6 mb-4">
+                        <label for="whatsapp_number" class="form-label required-field">WhatsApp Number</label>
+                        <div class="input-group">
+                            <select class="form-select js-example-templating" style="max-width: 200px;">
+                                <option value="us">United States (+1)</option>
+                                <option value="af">Afghanistan (+93)</option>
+                                <option value="al">Albania (+355)</option>
+                                <option value="dz">Algeria (+213)</option>
+                                <option value="ad">Andorra (+376)</option>
+                                <option value="ao">Angola (+244)</option>
+                                <option value="ag">Antigua and Barbuda (+1-268)</option>
+                                <option value="ar">Argentina (+54)</option>
+                                <option value="am">Armenia (+374)</option>
+                                <option value="au">Australia (+61)</option>
+                                <option value="at">Austria (+43)</option>
+                                <option value="az">Azerbaijan (+994)</option>
+                                <option value="bs">Bahamas (+1-242)</option>
+                                <option value="bh">Bahrain (+973)</option>
+                                <option value="bd">Bangladesh (+880)</option>
+                                <option value="bb">Barbados (+1-246)</option>
+                                <option value="by">Belarus (+375)</option>
+                                <option value="be">Belgium (+32)</option>
+                                <option value="bz">Belize (+501)</option>
+                                <option value="bj">Benin (+229)</option>
+                                <option value="bt">Bhutan (+975)</option>
+                                <option value="bo">Bolivia (+591)</option>
+                                <option value="ba">Bosnia and Herzegovina (+387)</option>
+                                <option value="bw">Botswana (+267)</option>
+                                <option value="br">Brazil (+55)</option>
+                                <option value="bn">Brunei (+673)</option>
+                                <option value="bg">Bulgaria (+359)</option>
+                                <option value="bf">Burkina Faso (+226)</option>
+                                <option value="bi">Burundi (+257)</option>
+                                <option value="kh">Cambodia (+855)</option>
+                                <option value="cm">Cameroon (+237)</option>
+                                <option value="ca">Canada (+1)</option>
+                                <option value="cv">Cape Verde (+238)</option>
+                                <option value="cf">Central African Republic (+236)</option>
+                                <option value="td">Chad (+235)</option>
+                                <option value="cl">Chile (+56)</option>
+                                <option value="cn">China (+86)</option>
+                                <option value="co">Colombia (+57)</option>
+                                <option value="km">Comoros (+269)</option>
+                                <option value="cr">Costa Rica (+506)</option>
+                                <option value="hr">Croatia (+385)</option>
+                                <option value="cu">Cuba (+53)</option>
+                                <option value="cy">Cyprus (+357)</option>
+                                <option value="cz">Czech Republic (+420)</option>
+                                <option value="cd">Democratic Republic of the Congo (+243)</option>
+                                <option value="dk">Denmark (+45)</option>
+                                <option value="dj">Djibouti (+253)</option>
+                                <option value="dm">Dominica (+1-767)</option>
+                                <option value="do">Dominican Republic (+1-809)</option>
+                                <option value="ec">Ecuador (+593)</option>
+                                <option value="eg">Egypt (+20)</option>
+                                <option value="sv">El Salvador (+503)</option>
+                                <option value="gq">Equatorial Guinea (+240)</option>
+                                <option value="er">Eritrea (+291)</option>
+                                <option value="ee">Estonia (+372)</option>
+                                <option value="et">Ethiopia (+251)</option>
+                                <option value="fj">Fiji (+679)</option>
+                                <option value="fi">Finland (+358)</option>
+                                <option value="fr">France (+33)</option>
+                                <option value="ga">Gabon (+241)</option>
+                                <option value="gm">Gambia (+220)</option>
+                                <option value="ge">Georgia (+995)</option>
+                                <option value="de">Germany (+49)</option>
+                                <option value="gh">Ghana (+233)</option>
+                                <option value="gr">Greece (+30)</option>
+                                <option value="gd">Grenada (+1-473)</option>
+                                <option value="gt">Guatemala (+502)</option>
+                                <option value="gn">Guinea (+224)</option>
+                                <option value="gw">Guinea-Bissau (+245)</option>
+                                <option value="gy">Guyana (+592)</option>
+                                <option value="ht">Haiti (+509)</option>
+                                <option value="hn">Honduras (+504)</option>
+                                <option value="hu">Hungary (+36)</option>
+                                <option value="is">Iceland (+354)</option>
+                                <option value="in">India (+91)</option>
+                                <option value="id">Indonesia (+62)</option>
+                                <option value="ir">Iran (+98)</option>
+                                <option value="iq">Iraq (+964)</option>
+                                <option value="ie">Ireland (+353)</option>
+                                <option value="il">Israel (+972)</option>
+                                <option value="it">Italy (+39)</option>
+                                <option value="jm">Jamaica (+1-876)</option>
+                                <option value="jp">Japan (+81)</option>
+                                <option value="jo">Jordan (+962)</option>
+                                <option value="kz">Kazakhstan (+7)</option>
+                                <option value="ke">Kenya (+254)</option>
+                                <option value="ki">Kiribati (+686)</option>
+                                <option value="kw">Kuwait (+965)</option>
+                                <option value="kg">Kyrgyzstan (+996)</option>
+                                <option value="la">Laos (+856)</option>
+                                <option value="lv">Latvia (+371)</option>
+                                <option value="lb">Lebanon (+961)</option>
+                                <option value="ls">Lesotho (+266)</option>
+                                <option value="lr">Liberia (+231)</option>
+                                <option value="ly">Libya (+218)</option>
+                                <option value="li">Liechtenstein (+423)</option>
+                                <option value="lt">Lithuania (+370)</option>
+                                <option value="lu">Luxembourg (+352)</option>
+                                <option value="mg">Madagascar (+261)</option>
+                                <option value="mw">Malawi (+265)</option>
+                                <option value="my">Malaysia (+60)</option>
+                                <option value="mv">Maldives (+960)</option>
+                                <option value="ml">Mali (+223)</option>
+                                <option value="mt">Malta (+356)</option>
+                                <option value="mh">Marshall Islands (+692)</option>
+                                <option value="mr">Mauritania (+222)</option>
+                                <option value="mu">Mauritius (+230)</option>
+                                <option value="mx">Mexico (+52)</option>
+                                <option value="fm">Micronesia (+691)</option>
+                                <option value="md">Moldova (+373)</option>
+                                <option value="mc">Monaco (+377)</option>
+                                <option value="mn">Mongolia (+976)</option>
+                                <option value="me">Montenegro (+382)</option>
+                                <option value="ma">Morocco (+212)</option>
+                                <option value="mz">Mozambique (+258)</option>
+                                <option value="mm">Myanmar (+95)</option>
+                                <option value="na">Namibia (+264)</option>
+                                <option value="np">Nepal (+977)</option>
+                                <option value="nl">Netherlands (+31)</option>
+                                <option value="nz">New Zealand (+64)</option>
+                                <option value="ni">Nicaragua (+505)</option>
+                                <option value="ne">Niger (+227)</option>
+                                <option value="ng">Nigeria (+234)</option>
+                                <option value="no">Norway (+47)</option>
+                                <option value="om">Oman (+968)</option>
+                                <option value="pk">Pakistan (+92)</option>
+                                <option value="pw">Palau (+680)</option>
+                                <option value="pa">Panama (+507)</option>
+                                <option value="pg">Papua New Guinea (+675)</option>
+                                <option value="py">Paraguay (+595)</option>
+                                <option value="pe">Peru (+51)</option>
+                                <option value="ph">Philippines (+63)</option>
+                                <option value="pl">Poland (+48)</option>
+                                <option value="pt">Portugal (+351)</option>
+                                <option value="qa">Qatar (+974)</option>
+                                <option value="ro">Romania (+40)</option>
+                                <option value="ru">Russia (+7)</option>
+                                <option value="rw">Rwanda (+250)</option>
+                                <option value="sa">Saudi Arabia (+966)</option>
+                                <option value="sn">Senegal (+221)</option>
+                                <option value="rs">Serbia (+381)</option>
+                                <option value="sc">Seychelles (+248)</option>
+                                <option value="sl">Sierra Leone (+232)</option>
+                                <option value="sg">Singapore (+65)</option>
+                                <option value="sk">Slovakia (+421)</option>
+                                <option value="si">Slovenia (+386)</option>
+                                <option value="sb">Solomon Islands (+677)</option>
+                                <option value="so">Somalia (+252)</option>
+                                <option value="za">South Africa (+27)</option>
+                                <option value="kr">South Korea (+82)</option>
+                                <option value="ss">South Sudan (+211)</option>
+                                <option value="es">Spain (+34)</option>
+                                <option value="lk">Sri Lanka (+94)</option>
+                                <option value="sd">Sudan (+249)</option>
+                                <option value="sr">Suriname (+597)</option>
+                                <option value="sz">Swaziland (+268)</option>
+                                <option value="se">Sweden (+46)</option>
+                                <option value="ch">Switzerland (+41)</option>
+                                <option value="sy">Syria (+963)</option>
+                                <option value="tw">Taiwan (+886)</option>
+                                <option value="tj">Tajikistan (+992)</option>
+                                <option value="tz">Tanzania (+255)</option>
+                                <option value="th">Thailand (+66)</option>
+                                <option value="tg">Togo (+228)</option>
+                                <option value="to">Tonga (+676)</option>
+                                <option value="tt">Trinidad and Tobago (+1-868)</option>
+                                <option value="tn">Tunisia (+216)</option>
+                                <option value="tr">Turkey (+90)</option>
+                                <option value="tm">Turkmenistan (+993)</option>
+                                <option value="ug">Uganda (+256)</option>
+                                <option value="ua">Ukraine (+380)</option>
+                                <option value="ae">United Arab Emirates (+971)</option>
+                                <option value="gb">United Kingdom (+44)</option>
+                                <option value="uy">Uruguay (+598)</option>
+                                <option value="uz">Uzbekistan (+998)</option>
+                                <option value="vu">Vanuatu (+678)</option>
+                                <option value="ve">Venezuela (+58)</option>
+                                <option value="vn">Vietnam (+84)</option>
+                                <option value="ye">Yemen (+967)</option>
+                                <option value="zm">Zambia (+260)</option>
+                                <option value="zw">Zimbabwe (+263)</option>
+                            </select>
+                            <input type="text" class="form-control @error('whatsapp_number') is-invalid @enderror" 
+                                   id="whatsapp_number" name="whatsapp_number" value="{{ old('whatsapp_number') }}" 
+                                   placeholder="Enter phone number" required>
+                        </div>
                          @error('whatsapp_number')
                              <div class="invalid-feedback">{{ $message }}</div>
                          @enderror
                      </div>
                     
-                                         <div class="col-md-6 mb-3">
-                         <label for="country" class="form-label required-field">Country</label>
+                                                             <div class="col-md-6 mb-4">
+                        <label for="country" class="form-label required-field">Country</label>
                          <input type="text" class="form-control @error('country') is-invalid @enderror" 
                                 id="country" name="country" value="{{ old('country') }}" 
                                 placeholder="Provide the country where you will" required>
@@ -367,7 +583,7 @@
                 </div>
                 
                 <div class="row">
-                    <div class="col-md-6 mb-3">
+                    <div class="col-md-6 mb-4">
                         <label for="preferred_language" class="form-label required-field">Preferred Language</label>
                         <select class="form-select @error('preferred_language') is-invalid @enderror" 
                                 id="preferred_language" name="preferred_language" required>
@@ -387,11 +603,10 @@
 
             <!-- Section 2: About Your Business & Audience -->
             <div class="form-section">
-                <h3><i class="fas fa-briefcase me-2"></i>Section 2: About Your Business & Audience</h3>
+                <h3><i class="fas fa-briefcase me-2"></i>About Your Business & Audience</h3>
                 
-                <div class="row">
-                    <div class="col-md-6 mb-3">
-                        <label class="form-label required-field">Are you working with the COD (Cash on Delivery) business model?</label>
+                <div class="mb-3">
+                    <label class="form-label required-field">You working with the Cash on Delivery business model?</label>
                         <div class="mt-2">
                             <div class="form-check form-check-inline">
                                 <input class="form-check-input @error('cod_business') is-invalid @enderror" 
@@ -411,8 +626,8 @@
                         @enderror
                     </div>
                     
-                    <div class="col-md-6 mb-3">
-                        <label for="community_size" class="form-label required-field">Size of your community or client base</label>
+                <div class="mb-3">
+                    <label for="community_size" class="form-label required-field">Size of your community</label>
                         <select class="form-select @error('community_size') is-invalid @enderror" 
                                 id="community_size" name="community_size" required>
                             <option value="">Select size</option>
@@ -424,7 +639,6 @@
                         @error('community_size')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
-                    </div>
                 </div>
                 
                 <div class="mb-3">
@@ -479,7 +693,7 @@
 
             <!-- Section 3: Promotion Channels -->
             <div class="form-section">
-                <h3><i class="fas fa-share-alt me-2"></i>Section 3: Promotion Channels</h3>
+                <h3><i class="fas fa-share-alt me-2"></i>Promotion Channels</h3>
                 
                 <div class="mb-3">
                     <label class="form-label required-field">Where do you plan to promote Leadform?</label>
@@ -749,7 +963,23 @@
     <!-- Bootstrap JS (CDN) -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
     
+    <!-- Select2 CSS and JS -->
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    
     <script>
+        // Format state function for Select2 with flags
+        function formatState (state) {
+            if (!state.id) {
+                return state.text;
+            }
+            var baseUrl = "https://flagcdn.com/w20";
+            var $state = $(
+                '<span><img src="' + baseUrl + '/' + state.element.value.toLowerCase() + '.png" class="img-flag" style="width: 20px; height: 15px; margin-right: 8px;" /> ' + state.text + '</span>'
+            );
+            return $state;
+        };
+
         // Show/hide "Other" text fields and channel details based on selection
         document.addEventListener('DOMContentLoaded', function() {
             const otherBusinessType = document.getElementById('other');
@@ -898,6 +1128,16 @@
             if (websiteCheckbox.checked) {
                 websiteDetails.style.display = 'block';
             }
+        });
+        
+        // Initialize Select2 with flag template
+        $(document).ready(function() {
+            $(".js-example-templating").select2({
+                templateResult: formatState,
+                templateSelection: formatState,
+                placeholder: "Select a country",
+                allowClear: true
+            });
         });
     </script>
 </body>
