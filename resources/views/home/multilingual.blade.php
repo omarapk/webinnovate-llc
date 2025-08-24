@@ -449,7 +449,7 @@
 
         /* Supporting text styles */
         .supporting-text .description {
-            font-size: 1.8rem;
+            font-size: 1.4rem;
             color: #666;
             margin-bottom: 10px;
         }
@@ -2276,8 +2276,8 @@ Merci LeadForm Order COD Form</p>
 
                     <!-- Supporting Text -->
                     <div class="supporting-text mb--40">
-                        <p class="description">Vitals top creators earn over $30k every month.</p>
-                        <p class="description">With 2,700+ 5 star reviews, Vitals basically sells itself.</p>
+                        <p class="description">Every COD store you refer means recurring monthly income.</p>
+                        <p class="description">Turn your network into a predictable revenue stream with Leadform.</p>
                     </div>
 
                     <!-- Call to Action Buttons -->
