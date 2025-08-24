@@ -2282,7 +2282,7 @@ Merci LeadForm Order COD Form</p>
 
                     <!-- Call to Action Buttons -->
                     <div class="cta-buttons">
-                        <a href="{{ route('affiliate.application') }}" class="rbt-btn btn-gradient hover-icon-reverse me--20">
+                        <a href="https://platform.shoffi.app/signup/affiliate?app=Gl_aqvi4vT4" class="rbt-btn btn-gradient hover-icon-reverse me--20">
                             <span class="icon-reverse-wrapper">
                                 <span class="btn-text">Join now</span>
                                 <span class="btn-icon"><i class="feather-arrow-right"></i></span>
