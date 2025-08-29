@@ -318,6 +318,40 @@
             align-items: center;
             justify-content: center;
         }
+
+        /* Custom Video Player Styling */
+        .custom-video-player {
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .custom-video-player video {
+            display: block;
+            width: 100%;
+            height: auto;
+            border-radius: 15px;
+        }
+
+        .custom-video-player video::-webkit-media-controls {
+            background-color: rgba(0,0,0,0.7);
+        }
+
+        .custom-video-player video::-webkit-media-controls-panel {
+            background-color: rgba(0,0,0,0.7);
+        }
+
+        .video-wrapper {
+            position: relative;
+        }
+
+        .video-wrapper .v-shape-1 {
+            position: absolute;
+            top: -20px;
+            right: -20px;
+            z-index: 1;
+        }
         
         /* Make grasse_1.avif image bigger */
         .brand-list.brand-style-3 li img[src*="grasse_1.avif"] {
@@ -1018,18 +1052,22 @@
                 </div>
         <!-- Start Brand -->
          <!-- Start Video Area  -->
-        <!-- <div class="rbt-video-area bg-color-white rbt-section-gap overflow-hidden">
+        <div class="rbt-video-area bg-color-white rbt-section-gap overflow-hidden">
             <div class="container">
                 <div class="row row--35 align-items-center mt_dec--50">
                     <div class="col-xl-6 col-12 mt--50">
-                        <div class="video-popup-wrapper version-02">
+                        <div class="video-wrapper version-02">
                             <div class="v-shape-1 style-02">
                                 <img src="{{ asset('assets/images/shape/video-dot-02.png') }}" alt="Shape">
                             </div>
-                            <img class="w-100 rbt-radius position-relative" src="{{ asset('assets/images/others/video-11.png') }}" alt="Video Images">
-                            <a class="rbt-btn btn-white rounded-player-2 popup-video position-to-top bounced-btn" href="https://www.youtube.com/watch?v=nA1Aqp0sPQo">
-                                <span class="play-icon"></span>
-                            </a>
+                            <div class="custom-video-player">
+                                <video class="w-100 rbt-radius" controls poster="{{ asset('assets/images/othersvideo-11.png') }}">
+                                    <source src="{{ asset('assets/videos/leadform-demo.mp4') }}" type="video/mp4">
+                                    <source src="{{ asset('assets/videos/leadform-demo.webm') }}" type="video/webm">
+                                    <source src="{{ asset('assets/videos/leadform-demo.ogg') }}" type="video/ogg">
+                                    Your browser does not support the video tag.
+                                </video>
+                            </div>
                         </div>
                     </div>
                     <div class="col-xl-5 col-12 mt--50">
@@ -1076,7 +1114,7 @@
                     </div>
                 </div>
             </div>
-        </div> -->
+        </div>
         <!-- End Video Area  -->
                  <!-- Start Counter Area -->
         <div class="rbt-counterup-area counterup-section-02 rbt-section-gapBottom">
