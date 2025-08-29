@@ -334,13 +334,13 @@
             border-radius: 15px;
         }
 
-        .custom-video-player video::-webkit-media-controls {
+        /* .custom-video-player video::-webkit-media-controls {
             background-color: rgba(0,0,0,0.7);
         }
 
         .custom-video-player video::-webkit-media-controls-panel {
             background-color: rgba(0,0,0,0.7);
-        }
+        } */
 
         .video-wrapper {
             position: relative;
@@ -1061,7 +1061,7 @@
                                 <img src="{{ asset('assets/images/shape/video-dot-02.png') }}" alt="Shape">
                             </div>
                             <div class="custom-video-player">
-                                <video class="w-100 rbt-radius" controls poster="{{ asset('assets/images/othersvideo-11.png') }}">
+                                <video class="w-100 rbt-radius" controls >
                                     <source src="{{ asset('assets/videos/leadform-demo.mp4') }}" type="video/mp4">
                                     <source src="{{ asset('assets/videos/leadform-demo.webm') }}" type="video/webm">
                                     <source src="{{ asset('assets/videos/leadform-demo.ogg') }}" type="video/ogg">
