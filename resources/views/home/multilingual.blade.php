@@ -303,6 +303,21 @@
             object-fit: contain;
             transition: transform 0.3s ease;
         }
+
+        /* Make feature card icons smaller */
+        .rbt-feature-card .icon img {
+            width: 30px !important;
+            height: 30px !important;
+            object-fit: contain;
+        }
+
+        .rbt-feature-card .icon {
+            width: 50px !important;
+            height: 50px !important;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
         
         /* Make grasse_1.avif image bigger */
         .brand-list.brand-style-3 li img[src*="grasse_1.avif"] {
@@ -506,6 +521,40 @@
                 font-size: 2.5rem;
             }
         }
+
+        /* Minimalist spacing for testimonials section */
+        .rbt-testimonial-area.rbt-section-gap {
+            padding-top: 20px !important;
+            padding-bottom: 40px !important;
+        }
+        
+        .rbt-testimonial-area .wrapper {
+            padding-top: 20px !important;
+        }
+        
+        .rbt-testimonial-area .section-title {
+            margin-bottom: 30px !important;
+        }
+
+        /* Smooth scrolling for anchor links */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Affiliate section styling */
+        #affiliate {
+            padding-top: 80px !important;
+            padding-bottom: 80px !important;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+        }
+
+        #affiliate .rbt-section-gap {
+            padding-top: 0 !important;
+            padding-bottom: 0 !important;
+        }
+
     </style>
 </head>
 <body class="rbt-header-sticky">
@@ -521,13 +570,13 @@
                 <div class="mainbar-row rbt-navigation-center align-items-center">
                     <div class="header-left">
                         <div class="logo logo-dark">
-                            <a href="#">
+                            <a href="https://apps.shopify.com/leadform-cod">
                                 <img src="{{ asset('assets/images/logo/1.svg') }}" style="width: 200px; height: auto;" alt="Education Logo Images">
                                                                 </a>
                                                             </div>
 
                         <div class="logo d-none logo-light">
-                            <a href="#">
+                            <a href="https://apps.shopify.com/leadform-cod">
                                 <img src="{{ asset('assets/images/dark/1.svg') }}" style="width: 200px; height: auto;" alt="Education Logo Images">
                                                                 </a>
                                                             </div>
@@ -962,7 +1011,7 @@
                         <li><a href="https://www.maisonayla.ma"><img src="{{ asset('assets/images/brand/LOGO_MAISON_AYLA_AVEC_PICTO_2.png') }}" alt="Brand Image"></a></li>
                         <li><a href="https://emelle.ma/"><img src="{{ asset('assets/images/brand/Design sans titre(1).png') }}"  height='300px' alt="Brand Image"></a></li>
                         <li><a href="https://auconfort.shop/"><img src="{{ asset('assets/images/brand/Auconfort_Logo.png') }}" alt="Brand Image"></a></li>
-                        <li><a href="https://steelious.com/"><img src="{{ asset('assets/images/brand/grasse_1.avif') }}" alt="Brand Image"></a></li>
+                        <li><a href="https://grasseparfumerie.fr/"><img src="{{ asset('assets/images/brand/grasse_1.avif') }}" alt="Brand Image"></a></li>
                         <li><a href="https://www.siv.army/"><img src="{{ asset('assets/images/brand/58307711-0e53-4f88-88dc-283b02783a0b-logo-siv.png') }}" alt="Brand Image"></a></li>
                         <li><a href="https://parlons-tendance.shop/"><img src="{{ asset('assets/images/brand/Capture_d_ecran_2024-11-21_a_17.46.13.png') }}" alt="Brand Image"></a></li>
                     </ul>
@@ -1123,7 +1172,7 @@ Our numbers speak louder than words.</p>
                         <div class="rbt-feature-card">
                             <div class="d-flex align-items-center gap-4">
                                 <span class="icon bg-color-pink">
-                                    <img src="{{ asset('assets/images/icons/f-icon-01.png') }}" alt="Banner Icon">
+                                    <img src="{{ asset('assets/images/icons/form.png') }}" alt="Banner Icon">
                                 </span>
                                 <h6 class="card-title">One-Click COD Form</h6>
                             </div>
@@ -1135,7 +1184,7 @@ Our numbers speak louder than words.</p>
                         <div class="rbt-feature-card">
                             <div class="d-flex align-items-center gap-4">
                                 <span class="icon bg-color-primary">
-                                    <img src="{{ asset('assets/images/icons/f-icon-02.png') }}" alt="Banner Icon">
+                                    <img src="{{ asset('assets/images/icons/google sheet.png') }}" alt="Banner Icon">
                                 </span>
                                 <h6 class="card-title">Google Sheets Sync</h6>
                             </div>
@@ -1147,7 +1196,7 @@ Our numbers speak louder than words.</p>
                         <div class="rbt-feature-card">
                             <div class="d-flex align-items-center gap-4">
                                 <span class="icon bg-color-secondary">
-                                    <img src="{{ asset('assets/images/icons/f-icon-03.png') }}" alt="Banner Icon">
+                                    <img src="{{ asset('assets/images/icons/pixel.png') }}" alt="Banner Icon">
                                 </span>
                                 <h6 class="card-title">Multi-Pixel Tracking</h6>
                             </div>
@@ -1159,7 +1208,7 @@ Our numbers speak louder than words.</p>
                         <div class="rbt-feature-card">
                             <div class="d-flex align-items-center gap-4">
                                 <span class="icon bg-color-warning">
-                                    <img src="{{ asset('assets/images/icons/f-icon-04.png') }}" alt="Banner Icon">
+                                    <img src="{{ asset('assets/images/icons/earning.png') }}" alt="Banner Icon">
                                 </span>
                                 <h6 class="card-title">Upsells & Bundles</h6>
                             </div>
@@ -1171,7 +1220,7 @@ Our numbers speak louder than words.</p>
                         <div class="rbt-feature-card">
                             <div class="d-flex align-items-center gap-4">
                                 <span class="icon bg-color-success">
-                                    <img src="{{ asset('assets/images/icons/f-icon-05.png') }}" alt="Banner Icon">
+                                    <img src="{{ asset('assets/images/icons/true.png') }}" alt="Banner Icon">
                                 </span>
                                 <h6 class="card-title">Abandoned Order Recovery</h6>
                             </div>
@@ -1183,7 +1232,7 @@ Our numbers speak louder than words.</p>
                         <div class="rbt-feature-card">
                             <div class="d-flex align-items-center gap-4">
                                 <span class="icon bg-color-info">
-                                    <img src="{{ asset('assets/images/icons/f-icon-06.png') }}" alt="Banner Icon">
+                                    <img src="{{ asset('assets/images/icons/antibot.png') }}" alt="Banner Icon">
                                 </span>
                                 <h6 class="card-title">Fraud Prevention</h6>
                             </div>
@@ -1659,7 +1708,7 @@ Merci LeadForm Order COD Form</p>
             </div>
         </div>
     </div>
-        <div class="rbt-breadcrumb-default ptb--100 ptb_md--50 ptb_sm--30 bg-gradient-1">
+        <div class="rbt-breadcrumb-default ptb--30 ptb_md--50 ptb_sm--30 bg-gradient-1">
     </div>
     <div class="container">
             <div class="row">
@@ -2183,7 +2232,7 @@ Merci LeadForm Order COD Form</p>
     </div> -->
 
     <!-- Start Commission Program Section -->
-    <div class="rbt-section-gap" style="position: relative; overflow: hidden; background: linear-gradient(135deg,rgb(255, 255, 255) 0%,rgb(255, 255, 255) 100%);">
+    <div id="affiliate" class="rbt-section-gap" style="position: relative; overflow: hidden; background: linear-gradient(135deg,rgb(255, 255, 255) 0%,rgb(255, 255, 255) 100%);">
         <!-- Background SVG -->
         <div style="position: absolute; top: 40%; left: 50%; transform: translate(-50%, -50%); z-index: 0; opacity: 0.3;">
             <svg width="600" height="400" xmlns="http://www.w3.org/2000/svg">
@@ -2217,7 +2266,7 @@ Merci LeadForm Order COD Form</p>
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="section-title text-center mb--50" >
-                                <h2 id='affiliate' class="title w-600">Become a partner</h2>
+                                <h2  class="title w-600">Become a partner</h2>
                             </div>
                         </div>
                     </div>
@@ -2307,12 +2356,12 @@ Merci LeadForm Order COD Form</p>
                         <div class="col-lg-4 col-md-6 col-sm-6 col-12">
                             <div class="footer-widget">
                                 <div class="logo logo-dark">
-                                    <a href="#">
+                                    <a href="https://apps.shopify.com/leadform-cod">
                                         <img src="{{ asset('assets/images/logo/3.svg') }}" alt="Edu-cause" style="width: 250px; height: auto;">
                                     </a>
                                 </div>
                                 <div class="logo d-none logo-light">
-                                    <a href="#">
+                                    <a href="https://apps.shopify.com/leadform-cod">
                                         <img src="{{ asset('assets/images/dark/logo/3.svg') }}" alt="Edu-cause" style="width: 250px; height: auto;">
                                     </a>
                                 </div>
@@ -2341,12 +2390,8 @@ Simplify checkout, boost conversions, and scale your business.
                                 </ul>
 
                                 <div class="contact-btn mt--30">
-                                    <a class="rbt-btn hover-icon-reverse btn-border-gradient radius-round" href="#">
-                                        <div class="icon-reverse-wrapper">
-                                            <span class="btn-text">Contact With Us</span>
-                                            <span class="btn-icon"><i class="feather-arrow-right"></i></span>
-                                            <span class="btn-icon"><i class="feather-arrow-right"></i></span>
-                                        </div>
+                                    <a href="https://apps.shopify.com/leadform-cod">
+                                        <img src="{{ asset('assets/images/icons/badge-shopify-app-store-light.png') }}" alt="Contact Us" style="height: 60px; width: auto;">
                                     </a>
                                 </div>
                             </div>
@@ -2369,10 +2414,10 @@ Simplify checkout, boost conversions, and scale your business.
                                         <a href="#affiliate">Become an Affiliate</a>
                                     </li>
                                     <li>
-                                        <a href="#">Privacy Policy</a>
+                                        <a href="{{ route('privacyPolicy') }}">Privacy Policy</a>
                                     </li>
                                     <li>
-                                        <a href="#">Terms of Service</a>
+                                        <a href="{{ route('termsOfService') }}">Terms of Service</a>
                                     </li>
                                 </ul>
                             </div>
@@ -2383,19 +2428,19 @@ Simplify checkout, boost conversions, and scale your business.
                                 <h5 class="ft-title">Support & Company</h5>
                                 <ul class="ft-link">
                                     <li>
-                                        <a href="#">Contact Us</a>
+                                        <a href="https://wa.me/18198070658">Contact Us</a>
                                     </li>
-                                    <li>
+                                    <!-- <li>
                                         <a href="#">Documentation</a>
+                                    </li> -->
+                                    <li>
+                                        <a href="https://leadform.crisp.help/en/">Help Center</a>
                                     </li>
                                     <li>
-                                        <a href="#">Help Center</a>
+                                        <a href="{{ route('featureRequest') }}">Request a Feature</a>
                                     </li>
                                     <li>
-                                        <a href="#">Request a Feature</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">About LeadForm</a>
+                                        <a href="{{ route('aboutUs') }}">About LeadForm</a>
                                     </li>
                                 </ul>
                             </div>
@@ -2407,7 +2452,7 @@ Simplify checkout, boost conversions, and scale your business.
                                 <ul class="ft-link">
                                     <li><span><i class="fa-solid fa-envelope"></i>  Email:</span> <a href="mailto:webinnovate.dev@gmail.com">webinnovate.dev@gmail.com</a></li>
                                     <li><span><i class="fa-solid fa-phone"></i> Phone:</span> <a href="https://wa.me/18198070658">+1 (819) 807-0658</a></li>
-                                    <li><span><i class="fa-solid fa-comment"></i> Live Chat:</span> <a href="#">Available inside the app (Crisp)</a></li>
+                                    <li><span><i class="fa-solid fa-comment"></i> Live Chat:</span> <a href="https://leadform.crisp.help/en/">Available inside the app (Crisp)</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -2424,7 +2469,7 @@ Simplify checkout, boost conversions, and scale your business.
                 <div class="container">
                     <div class="row align-items-center">
                         <div class="col-12">
-                            <p class="rbt-link-hover text-center">© 2025 LeadForm. All Rights Reserved. | Built for Shopify 🚀</p>
+                            <p class="rbt-link-hover text-center">© 2025 LeadForm. All Rights Reserved. | Built for Shopify <i class="fa-solid fa-rocket"></i></p>
                         </div>
                     </div>
                 </div>

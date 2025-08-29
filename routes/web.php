@@ -3,17 +3,23 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AffiliateController;
+use App\Http\Controllers\PagesController;
 
 // Main route - serves multilingual.blade.php at root URL
 Route::get('/', function () {
     return view('home.multilingual');
 });
 
-// Affiliate routes
-// Route::get('/affiliate', [AffiliateController::class, 'showForm'])->name('affiliate.application');
-// Route::post('/affiliate/submit', [AffiliateController::class, 'submitForm'])->name('affiliate.submit');
+// Privacy Policy route
+Route::get('/privacy-policy', [PagesController::class, 'privacyPolicy'])->name('privacyPolicy');
 
-// Fallback route - redirect all other routes to home
+// Terms of Service route
+Route::get('/terms-of-service', [PagesController::class, 'termsOfService'])->name('termsOfService');
+
+// About Us route
+Route::get('/about-us', [PagesController::class, 'aboutUs'])->name('aboutUs');
+Route::get('/feature-request', [PagesController::class, 'featureRequest'])->name('featureRequest');
+
 Route::fallback(function () {
     return redirect('/');
 });

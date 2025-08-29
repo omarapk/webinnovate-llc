@@ -97,6 +97,21 @@ class PagesController extends Controller
         return view('pages/privacyPolicy');
     }
 
+    public function termsOfService()
+    {
+        return view('pages/termsOfService');
+    }
+
+    public function aboutUs()
+    {
+        return view('pages/aboutUs');
+    }
+
+    public function featureRequest()
+    {
+        return view('pages/featureRequest');
+    }
+
     public function profile()
     {
         return view('pages/profile');
