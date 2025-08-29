@@ -1220,7 +1220,7 @@ Our numbers speak louder than words.</p>
                         <div class="rbt-feature-card">
                             <div class="d-flex align-items-center gap-4">
                                 <span class="icon bg-color-success">
-                                    <img src="{{ asset('assets/images/icons/true.png') }}" alt="Banner Icon">
+                                    <img src="{{ asset('assets/images/icons/recoverd.png') }}" alt="Banner Icon">
                                 </span>
                                 <h6 class="card-title">Abandoned Order Recovery</h6>
                             </div>
