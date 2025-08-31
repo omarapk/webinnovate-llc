@@ -2336,7 +2336,7 @@ Simplify checkout, boost conversions, and scale your business.
                                     </li>
                             
                                     <li>
-                                        <a href="{{ route('privacyPolicy') }}">Privacy Policy</a>
+                                        <a href="https://webinnovate.dev/leadform/privacy-policy">Privacy Policy</a>
                                     </li>
                                     <li>
                                         <a href="https://webinnovate.dev/leadform/terms-of-service">Terms of Service</a>
