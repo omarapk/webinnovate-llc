@@ -626,21 +626,6 @@
             padding-bottom: 0 !important;
         }
 
-        /* Fix pricing display to show price and /month on same horizontal line */
-        .pricing-table .pricing-header .price-wrap .amount {
-            display: inline-flex !important;
-            align-items: baseline !important;
-            flex-wrap: nowrap !important;
-        }
-
-        .pricing-table .pricing-header .price-wrap .amount .duration {
-            display: inline !important;
-            margin-left: 0 !important;
-            font-size: 16px !important;
-            font-weight: 500 !important;
-            color: var(--color-primary) !important;
-        }
-
     </style>
 </head>
 <body class="rbt-header-sticky">
@@ -723,7 +708,7 @@
                         <div class="mobile-menu-bar ml--5 d-block d-xl-none">
                             <div class="hamberger">
                                 <button class="hamberger-button">
-                                    <i class="feather-menu"></i>
+                                    <i class="fa solid fa-menu"></i>
                                 </button>
                             </div>
                         </div>
@@ -893,7 +878,7 @@
     </header>
     <!-- Mobile Menu Section -->
      
-    <div class="popup-mobile-menu">
+    <!-- <div class="popup-mobile-menu">
         <div class="inner-wrapper">
             <div class="inner-top">
                 <div class="content">
@@ -956,7 +941,7 @@
             </div>
 
         </div>
-    </div>
+    </div> -->
 
     <main class="rbt-main-wrapper">
         <!-- Start Banner Area  -->
@@ -1035,8 +1020,8 @@
                                 <a class="rbt-btn btn-gradient hover-icon-reverse" href="https://apps.shopify.com/leadform-cod">
                                     <span class="icon-reverse-wrapper">
                                         <span class="btn-text">Start Free Trial</span>
-                                    <span class="btn-icon"><i class="feather-arrow-right"></i></span>
-                                    <span class="btn-icon"><i class="feather-arrow-right"></i></span>
+                                    <span class="btn-icon"><i class="fa-solid fa-arrow-right"></i></span>
+                                    <span class="btn-icon"><i class="fa-solid fa-arrow-right"></i></span>
                                     </span>
                                 </a>
                             </div>
@@ -1133,7 +1118,7 @@
                             <div class="rbt-feature-wrapper mt--30 ml_dec_20">
                                 <div class="rbt-feature feature-style-2 rbt-radius">
                                     <div class="icon bg-pink-opacity">
-                                        <i class="feather-heart"></i>
+                                        <i class="fa solid fa-heart"></i>
                                     </div>
                                     <div class="feature-content">
                                         <h6 class="feature-title"> Smooth Experience, Higher Conversions</h6>
@@ -1143,7 +1128,7 @@
 
                                 <div class="rbt-feature feature-style-2 rbt-radius">
                                     <div class="icon bg-primary-opacity">
-                                        <i class="feather-book"></i>
+                                        <i class="fa-solid fa-book"></i>
                                     </div>
                                     <div class="feature-content">
                                         <h6 class="feature-title">All Your Tools in One</h6>
@@ -1153,7 +1138,7 @@
 
                                 <div class="rbt-feature feature-style-2 rbt-radius">
                                     <div class="icon bg-secondary-opacity">
-                                        <i class="feather-award"></i>
+                                        <i class="fa-solid fa-award"></i>
                                     </div>
                                     <div class="feature-content">
                                         <h6 class="feature-title">Maximize Every Order</h6>
@@ -1538,8 +1523,7 @@ Un grand bravo également au service d'assistance à distance : ils sont très r
                             <div class="description">
                                 <p class="subtitle-3 testimonial-text">I sincerely want to thank the support agent Sami for his exceptional help. I had been looking for assistance, and when he came, he was incredibly patient and polite. He spent over an hour with me on a WhatsApp call, using Apple video sharing to guide me step by step until all my issues were resolved. I'm truly grateful for his professionalism and support. Thank you so much!</p>
                                 <button class="read-more-btn" onclick="toggleReadMore(this)">Read more</button>
-                                <a class="rbt-btn-link" href="#">11 months using the app<i
-                                class="feather-arrow-right"></i></a>
+                                <a class="rbt-btn-link" href="#">11 months using the app</a>
                             </div>
                         </div>
                     </div>
@@ -1570,8 +1554,7 @@ Un grand bravo également au service d'assistance à distance : ils sont très r
                                         Continuez comme ça
                                         </p>
                                 <button class="read-more-btn" onclick="toggleReadMore(this)">Read more</button>
-                                <a class="rbt-btn-link" href="#">12 months using the app<i
-                                class="feather-arrow-right"></i></a>
+                                <a class="rbt-btn-link" href="#">12 months using the app</a>
                             </div>
                         </div>
                     </div>
@@ -1601,8 +1584,7 @@ Un grand bravo également au service d'assistance à distance : ils sont très r
                                 Après la dernière MAJ, j'ai eu un soucis à connecter mon Sheet. J'ai contacté le support, et ils ont résolu mon problème de suite. Je tiens à féliciter Sami en particulier pour son professionnalisme.
                                 Bravo!</p>
                                 <button class="read-more-btn" onclick="toggleReadMore(this)">Read more</button>
-                                <a class="rbt-btn-link" href="#">10 months using the app<i
-                                class="feather-arrow-right"></i></a>
+                                <a class="rbt-btn-link" href="#">10 months using the app</a>
                             </div>
                         </div>
                     </div>
@@ -1626,8 +1608,7 @@ Un grand bravo également au service d'assistance à distance : ils sont très r
                                 <p class="subtitle-3 testimonial-text">après l'utilisation d'un an et plus je suis très satisfait
 Merci LeadForm Order COD Form. L'application a vraiment transformé notre façon de gérer les commandes et amélioré significativement notre taux de conversion.</p>
                                 <button class="read-more-btn" onclick="toggleReadMore(this)">Read more</button>
-                                <a class="rbt-btn-link" href="#">12 months using the app<i
-                                class="feather-arrow-right"></i></a>
+                                <a class="rbt-btn-link" href="#">12 months using the app</a>
                             </div>
                         </div>
                     </div>
@@ -1652,8 +1633,7 @@ Merci LeadForm Order COD Form. L'application a vraiment transformé notre façon
                                     i've been using this app since i started my shopify store ( 2 years ago ) , amazing app with amazing support team , it helped me alot to grow my business. The features are exactly what we needed to scale our operations efficiently.
                                     </p>
                                 <button class="read-more-btn" onclick="toggleReadMore(this)">Read more</button>
-                                <a class="rbt-btn-link" href="#">About 1 year using the app<i
-                                class="feather-arrow-right"></i></a>
+                                <a class="rbt-btn-link" href="#">About 1 year using the app</a>
                             </div>
                         </div>
                     </div>
@@ -1677,8 +1657,7 @@ Merci LeadForm Order COD Form. L'application a vraiment transformé notre façon
                                 <p class="subtitle-3 testimonial-text">support team always active and attentive to customer expectations, plus they have a lot of development in the near future in their application.
                                 the ip block option to counter fake orders is available now, it's really great, you have nothing to fear against fake commands. The continuous improvements and new features keep making the app even better.</p>
                                 <button class="read-more-btn" onclick="toggleReadMore(this)">Read more</button>
-                                <a class="rbt-btn-link" href="#">Over 2 years using the app<i
-                                class="feather-arrow-right"></i></a>
+                                <a class="rbt-btn-link" href="#">Over 2 years using the app</a>
                             </div>
                         </div>
                     </div>
@@ -1702,8 +1681,7 @@ Merci LeadForm Order COD Form. L'application a vraiment transformé notre façon
                                 It works well, good service and quick actions. The app has been reliable and the support team responds quickly to any issues we encounter.
                                 </p>
                                 <button class="read-more-btn" onclick="toggleReadMore(this)">Read more</button>
-                                <a class="rbt-btn-link" href="#">Almost 4 years using the app<i
-                                class="feather-arrow-right"></i></a>
+                                <a class="rbt-btn-link" href="#">Almost 4 years using the app</a>
                             </div>
                         </div>
                     </div>
@@ -1728,8 +1706,7 @@ Merci LeadForm Order COD Form. L'application a vraiment transformé notre façon
                                 application top du top et un trés bon service client ;le support est tout active abdellahe prend le temps de bien m'expliquer a chaque fois et de régler mes problème vraiment top. Je recommande vivement cette application à tous les e-commerçants.
                                 </p>
                                 <button class="read-more-btn" onclick="toggleReadMore(this)">Read more</button>
-                                <a class="rbt-btn-link" href="#">7 months using the app<i
-                                class="feather-arrow-right"></i></a>
+                                <a class="rbt-btn-link" href="#">7 months using the app</a>
                             </div>
                         </div>
                     </div>
@@ -1754,8 +1731,7 @@ Merci LeadForm Order COD Form. L'application a vraiment transformé notre façon
                                 Une application au top, offrant des commandes rapides et sans souci, avec un support exceptionnel toujours disponible pour répondre à toutes les questions. Vous êtes les meilleurs ! L'interface est intuitive et les fonctionnalités répondent parfaitement à nos besoins.
                                 </p>
                                 <button class="read-more-btn" onclick="toggleReadMore(this)">Read more</button>
-                                <a class="rbt-btn-link" href="#">About 1 month using the app<i
-                                class="feather-arrow-right"></i></a>
+                                <a class="rbt-btn-link" href="#">About 1 month using the app</a>
                             </div>
                         </div>
                     </div>
@@ -1779,8 +1755,7 @@ Merci LeadForm Order COD Form. L'application a vraiment transformé notre façon
                                 <p class="subtitle-3 testimonial-text">Hello,
                                 This app is incredibly intuitive and simple to navigate, making it a breeze to accomplish tasks efficiently. I would definitely recommend it, particularly for its excellent customer service. Also the support service is helpful so much. The integration with our existing systems has been seamless.</p>
                                 <button class="read-more-btn" onclick="toggleReadMore(this)">Read more</button>
-                                <a class="rbt-btn-link" href="#">Over 2 years using the app<i
-                                class="feather-arrow-right"></i></a>
+                                <a class="rbt-btn-link" href="#">Over 2 years using the app</a>
                             </div>
                         </div>
                     </div>
@@ -1805,8 +1780,7 @@ Merci LeadForm Order COD Form. L'application a vraiment transformé notre façon
 
                                 Application très utile avec un support a l'écoute surtout omar qui m'a beaucoup aidé tout au long de l'utilisation de l'application avec des conseils en or et des vidéos explicative meme a des heures tardive , je recommande vivement , merci omar. L'application a vraiment transformé notre business.</p>
                                 <button class="read-more-btn" onclick="toggleReadMore(this)">Read more</button>
-                                <a class="rbt-btn-link" href="#">About 2 years using the app<i
-                                class="feather-arrow-right"></i></a>
+                                <a class="rbt-btn-link" href="#">About 2 years using the app</a>
                             </div>
                         </div>
                     </div>
@@ -1994,7 +1968,8 @@ Merci LeadForm Order COD Form. L'application a vraiment transformé notre façon
                                     <span class="duration">/year and save 16%</span>
                                 </div>
                                 <div class="monthly-pricing" style="display: block;">
-                                    <span class="amount">$0.99<span class="duration">/month</span></span>
+                                    <span class="amount">$0.99</span>
+                                    <span class="duration">/month</span>
                                 </div>
                             </div>
                         </div>
@@ -2003,22 +1978,22 @@ Merci LeadForm Order COD Form. L'application a vraiment transformé notre façon
                             <a class="rbt-btn bg-primary-opacity hover-icon-reverse w-100" href="https://apps.shopify.com/leadform-cod">
                                 <div class="icon-reverse-wrapper">
                                     <span class="btn-text">Start Free Trial</span>
-                                    <span class="btn-icon"><i class="feather-arrow-right"></i></span>
-                                    <span class="btn-icon"><i class="feather-arrow-right"></i></span>
+                                    <span class="btn-icon"><i class="fa-solid fa-arrow-right"></i></span>
+                                    <span class="btn-icon"><i class="fa-solid fa-arrow-right"></i></span>
                                 </div>
                             </a>
                         </div>
 
                         <div class="pricing-body">
                             <ul class="list-item">
-                                <li><i class="feather-check"></i> 100 Orders/mo</li>
-                                <li><i class="feather-check"></i> Google Sheets Synchronisation</li>
-                                <li><i class="feather-check"></i> Upsells & Bundles</li>
-                                <li><i class="feather-check"></i> Abandoned checkouts</li>
-                                <li><i class="feather-check"></i> Shipping rates</li>
-                                <li><i class="feather-check"></i> Multi-Pixels</li>
-                                <li><i class="feather-check"></i> Anti-Spam Fake Order Protection</li>
-                                <li><i class="feather-check"></i> 24/7 support</li>
+                                <li><i class="fa-solid fa-check fa-2xs"></i> 100 Orders/mo</li>
+                                <li><i class="fa-solid fa-check fa-2xs"></i> Google Sheets Synchronisation</li>
+                                <li><i class="fa-solid fa-check fa-2xs"></i> Upsells & Bundles</li>
+                                <li><i class="fa-solid fa-check fa-2xs"></i> Abandoned checkouts</li>
+                                <li><i class="fa-solid fa-check fa-2xs"></i> Shipping rates</li>
+                                <li><i class="fa-solid fa-check fa-2xs"></i> Multi-Pixels</li>
+                                <li><i class="fa-solid fa-check fa-2xs"></i> Anti-Spam Fake Order Protection</li>
+                                <li><i class="fa-solid fa-check fa-2xs"></i> 24/7 support</li>
                             </ul>
                         </div>
                     </div>
@@ -2035,7 +2010,8 @@ Merci LeadForm Order COD Form. L'application a vraiment transformé notre façon
                                     <span class="duration">/year and save 17%</span>
                                 </div>
                                 <div class="monthly-pricing" style="display: block;">
-                                    <span class="amount">$9.99<span class="duration">/month</span></span>
+                                    <span class="amount">$9.99</span>
+                                    <span class="duration">/month</span>
                                 </div>
                             </div>
                         </div>
@@ -2044,22 +2020,22 @@ Merci LeadForm Order COD Form. L'application a vraiment transformé notre façon
                             <a class="rbt-btn bg-primary-opacity hover-icon-reverse w-100" href="https://apps.shopify.com/leadform-cod">
                                 <div class="icon-reverse-wrapper">
                                     <span class="btn-text">Start Free Trial</span>
-                                    <span class="btn-icon"><i class="feather-arrow-right"></i></span>
-                                    <span class="btn-icon"><i class="feather-arrow-right"></i></span>
+                                    <span class="btn-icon"><i class="fa-solid fa-arrow-right"></i></span>
+                                    <span class="btn-icon"><i class="fa-solid fa-arrow-right"></i></span>
                                 </div>
                             </a>
                         </div>
 
                         <div class="pricing-body">
                             <ul class="list-item">
-                                <li><i class="feather-check"></i> 400 Orders/mo</li>
-                                <li><i class="feather-check"></i> Google Sheets Synchronisation</li>
-                                <li><i class="feather-check"></i> Upsells & Bundles</li>
-                                <li><i class="feather-check"></i> Abandoned checkouts</li>
-                                <li><i class="feather-check"></i> Shipping rates</li>
-                                <li><i class="feather-check"></i> Multiple Pixels</li>
-                                <li><i class="feather-check"></i> Anti-Spam - Fake Order Protection</li>
-                                <li><i class="feather-check"></i> 24/7 support</li>
+                                <li><i class="fa-solid fa-check fa-2xs"></i> 400 Orders/mo</li>
+                                <li><i class="fa-solid fa-check fa-2xs"></i> Google Sheets Synchronisation</li>
+                                <li><i class="fa-solid fa-check fa-2xs"></i> Upsells & Bundles</li>
+                                <li><i class="fa-solid fa-check fa-2xs"></i> Abandoned checkouts</li>
+                                <li><i class="fa-solid fa-check fa-2xs"></i> Shipping rates</li>
+                                <li><i class="fa-solid fa-check fa-2xs"></i> Multiple Pixels</li>
+                                <li><i class="fa-solid fa-check fa-2xs"></i> Anti-Spam - Fake Order Protection</li>
+                                <li><i class="fa-solid fa-check fa-2xs"></i> 24/7 support</li>
                             </ul>
                         </div>
                     </div>
@@ -2077,7 +2053,8 @@ Merci LeadForm Order COD Form. L'application a vraiment transformé notre façon
                                     <span class="duration">/year and save 17%</span>
                                 </div>
                                 <div class="monthly-pricing" style="display: block;">
-                                    <span class="amount">$24.99<span class="duration">/month</span></span>
+                                    <span class="amount">$24.99</span>
+                                    <span class="duration">/month</span>
                                 </div>
                             </div>
                         </div>
@@ -2085,22 +2062,22 @@ Merci LeadForm Order COD Form. L'application a vraiment transformé notre façon
                             <a class="rbt-btn hover-icon-reverse w-100" href="https://apps.shopify.com/leadform-cod">
                                 <div class="icon-reverse-wrapper">
                                     <span class="btn-text">Start Free Trial</span>
-                                    <span class="btn-icon"><i class="feather-arrow-right"></i></span>
-                                    <span class="btn-icon"><i class="feather-arrow-right"></i></span>
+                                    <span class="btn-icon"><i class="fa-solid fa-arrow-right"></i></span>
+                                    <span class="btn-icon"><i class="fa-solid fa-arrow-right"></i></span>
                                 </div>
                             </a>
                         </div>
 
                         <div class="pricing-body">
                             <ul class="list-item">
-                                <li><i class="feather-check"></i> Unlimited orders</li>
-                                <li><i class="feather-check"></i> Google Sheets Synchronisation</li>
-                                <li><i class="feather-check"></i> Upsells & Bundles</li>
-                                <li><i class="feather-check"></i> Abandoned checkouts</li>
-                                <li><i class="feather-check"></i> Shipping rates</li>
-                                <li><i class="feather-check"></i> Multi-Pixels</li>
-                                <li><i class="feather-check"></i> Anti-Spam Fake Order Protection</li>
-                                <li><i class="feather-check"></i> 24/7 support</li>
+                                <li><i class="fa-solid fa-check fa-2xs"></i> Unlimited orders</li>
+                                <li><i class="fa-solid fa-check fa-2xs"></i> Google Sheets Synchronisation</li>
+                                <li><i class="fa-solid fa-check fa-2xs"></i> Upsells & Bundles</li>
+                                <li><i class="fa-solid fa-check fa-2xs"></i> Abandoned checkouts</li>
+                                <li><i class="fa-solid fa-check fa-2xs"></i> Shipping rates</li>
+                                <li><i class="fa-solid fa-check fa-2xs"></i> Multi-Pixels</li>
+                                <li><i class="fa-solid fa-check fa-2xs"></i> Anti-Spam Fake Order Protection</li>
+                                <li><i class="fa-solid fa-check fa-2xs"></i> 24/7 support</li>
                             </ul>
                         </div>
 
@@ -2120,7 +2097,8 @@ Merci LeadForm Order COD Form. L'application a vraiment transformé notre façon
                                     <span class="duration">/year and save 33%</span>
                                 </div>
                                 <div class="monthly-pricing" style="display: block;">
-                                    <span class="amount">$49.99<span class="duration">/month</span></span>
+                                    <span class="amount">$49.99</span>
+                                    <span class="duration">/month</span>
                                 </div>
                             </div>
                         </div>
@@ -2129,22 +2107,22 @@ Merci LeadForm Order COD Form. L'application a vraiment transformé notre façon
                             <a class="rbt-btn bg-primary-opacity hover-icon-reverse w-100" href="https://apps.shopify.com/leadform-cod">
                                 <div class="icon-reverse-wrapper">
                                     <span class="btn-text">Start Free Trial</span>
-                                    <span class="btn-icon"><i class="feather-arrow-right"></i></span>
-                                    <span class="btn-icon"><i class="feather-arrow-right"></i></span>
+                                    <span class="btn-icon"><i class="fa-solid fa-arrow-right"></i></span>
+                                    <span class="btn-icon"><i class="fa-solid fa-arrow-right"></i></span>
                                 </div>
                             </a>
                         </div>
 
                         <div class="pricing-body">
                             <ul class="list-item">
-                                <li><i class="feather-check"></i> Multiple Markets</li>
-                                <li><i class="feather-check"></i> Google Sheets Synchronisation</li>
-                                <li><i class="feather-check"></i> Upsells & bundles</li>
-                                <li><i class="feather-check"></i> Abandoned checkouts</li>
-                                <li><i class="feather-check"></i> Shipping rates</li>
-                                <li><i class="feather-check"></i> Multi-Pixels</li>
-                                <li><i class="feather-check"></i> Anti-Spam Fake Order Protec</li>
-                                <li><i class="feather-check"></i> 24/7 support</li>
+                                <li><i class="fa-solid fa-check fa-2xs"></i> Multiple Markets</li>
+                                <li><i class="fa-solid fa-check fa-2xs"></i> Google Sheets Synchronisation</li>
+                                <li><i class="fa-solid fa-check fa-2xs"></i> Upsells & bundles</li>
+                                <li><i class="fa-solid fa-check fa-2xs"></i> Abandoned checkouts</li>
+                                <li><i class="fa-solid fa-check fa-2xs"></i> Shipping rates</li>
+                                <li><i class="fa-solid fa-check fa-2xs"></i> Multi-Pixels</li>
+                                <li><i class="fa-solid fa-check fa-2xs"></i> Anti-Spam Fake Order Protec</li>
+                                <li><i class="fa-solid fa-check fa-2xs"></i> 24/7 support</li>
                             </ul>
                         </div>
 
@@ -2437,8 +2415,8 @@ Merci LeadForm Order COD Form. L'application a vraiment transformé notre façon
                         <a href="https://platform.shoffi.app/signup/affiliate?app=Gl_aqvi4vT4" class="rbt-btn btn-gradient hover-icon-reverse me--20">
                             <span class="icon-reverse-wrapper">
                                 <span class="btn-text">Join now</span>
-                                <span class="btn-icon"><i class="feather-arrow-right"></i></span>
-                                <span class="btn-icon"><i class="feather-arrow-right"></i></span>
+                                <span class="btn-icon"><i class="fa-solid fa-arrow-right"></i></span>
+                                <span class="btn-icon"><i class="fa-solid fa-arrow-right"></i></span>
                             </span>
                         </a>
                         <!-- <a href="#" class="rbt-btn btn-border-gradient radius-round">
@@ -2475,7 +2453,7 @@ Simplify checkout, boost conversions, and scale your business.
 
                                 <ul class="social-icon social-default justify-content-start">
                                     <li><a href="https://www.facebook.com/leadform.cod">
-                                            <i class="feather-facebook"></i>
+                                            <i class="fa-brands fa-facebook"></i>
                                         </a>
                                     </li>
                                     <li><a href="https://wa.me/18198070658">
@@ -2483,11 +2461,11 @@ Simplify checkout, boost conversions, and scale your business.
                                         </a>
                                     </li>
                                     <li><a href="https://www.instagram.com/leadform.cod">
-                                            <i class="feather-instagram"></i>
+                                            <i class="fa-brands fa-instagram"></i>
                                         </a>
                                     </li>
                                     <li><a href="https://www.youtube.com/@Lead-Form-COD/videos">
-                                            <i class="feather-youtube"></i>
+                                            <i class="fa-brands fa-youtube"></i>
                                         </a>
                                     </li>
                                 </ul>
