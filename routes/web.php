@@ -5,7 +5,12 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AffiliateController;
 use App\Http\Controllers\PagesController;
 
-// Main route - serves multilingual.blade.php at root URL
+// Root route - displays welcome page with "Welcome to WebInnovate"
+Route::get('/', function () {
+    return view('welcome');
+});
+
+// Main route - serves multilingual.blade.php at /leadform URL
 Route::get('/leadform', function () {
     return view('home.multilingual');
 });
