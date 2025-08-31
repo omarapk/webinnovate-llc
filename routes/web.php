@@ -16,14 +16,14 @@ Route::get('/leadform', function () {
 });
 
 // Privacy Policy route
-Route::get('/privacy-policy', [PagesController::class, 'privacyPolicy'])->name('privacyPolicy');
+Route::get('/leadform/privacy-policy', [PagesController::class, 'privacyPolicy'])->name('privacyPolicy');
 
 // Terms of Service route
-Route::get('/terms-of-service', [PagesController::class, 'termsOfService'])->name('termsOfService');
+Route::get('/leadform/terms-of-service', [PagesController::class, 'termsOfService'])->name('termsOfService');
 
 // About Us route
-Route::get('/about-us', [PagesController::class, 'aboutUs'])->name('aboutUs');
-Route::get('/feature-request', [PagesController::class, 'featureRequest'])->name('featureRequest');
+Route::get('/leadform/about-us', [PagesController::class, 'aboutUs'])->name('aboutUs');
+Route::get('/leadform/feature-request', [PagesController::class, 'featureRequest'])->name('featureRequest');
 
 // Route::fallback(function () {
 //     return redirect('/');
