@@ -20,6 +20,6 @@ Route::get('/terms-of-service', [PagesController::class, 'termsOfService'])->nam
 Route::get('/about-us', [PagesController::class, 'aboutUs'])->name('aboutUs');
 Route::get('/feature-request', [PagesController::class, 'featureRequest'])->name('featureRequest');
 
-Route::fallback(function () {
-    return redirect('/');
-});
+// Route::fallback(function () {
+//     return redirect('/');
+// });
