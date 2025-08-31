@@ -626,6 +626,59 @@
             padding-bottom: 0 !important;
         }
 
+        /* Save Badge Styles */
+        .yearly-plan-btn {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .save-badge {
+            background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+            color: white;
+            font-size: 10px;
+            font-weight: 700;
+            padding: 4px 8px;
+            border-radius: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            box-shadow: 0 2px 8px rgba(255, 107, 107, 0.3);
+            animation: pulse 2s infinite;
+            white-space: nowrap;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        /* Dark mode support for save badge */
+        .dark-mode .save-badge {
+            background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+            box-shadow: 0 2px 8px rgba(255, 107, 107, 0.4);
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .yearly-plan-btn {
+                flex-direction: column;
+                gap: 4px;
+            }
+            
+            .save-badge {
+                font-size: 9px;
+                padding: 3px 6px;
+            }
+        }
+
     </style>
 </head>
 <body class="rbt-header-sticky">
@@ -1789,7 +1842,10 @@ Merci LeadForm Order COD Form. L'application a vraiment transformé notre façon
                     <div class="pricing-billing-duration text-start text-md-end">
                         <ul>
                             <li class="nav-item">
-                                <button class="nav-link yearly-plan-btn" type="button">Yearly Plan</button>
+                                <button class="nav-link yearly-plan-btn" type="button">
+                                    Yearly Plan
+                                    <span class="save-badge">SAVE UP TO 33%</span>
+                                </button>
                             </li>
                             <li class="nav-item">
                                 <button class="nav-link monthly-plan-btn active" type="button">Monthly Plan</button>

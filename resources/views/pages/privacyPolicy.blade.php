@@ -253,7 +253,7 @@
                 <div id="contact">
                     <h4>10. How Can You Contact Us About This Policy?</h4>
                     <p>If you have questions or comments about this Privacy Notice, you may contact us at:</p>
-                    <p><i class="fa-solid fa-envelope"></i> <a href="mailto:webinnovate.dev@gmail.com">webinnovate.dev@gmail.com</a><br>
+                    <p><i class="fa-solid fa-envelope"></i> <a href="mailto:contact@webinnovate.dev.">contact@webinnovate.dev.</a><br>
                     <!-- <i class="fa-solid fa-building"></i> WebInnovate LLC</p> -->
                 </div>
             </div>

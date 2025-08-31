@@ -17596,8 +17596,9 @@ span.transparent-button:hover i {
 }
 .rbt-accordion-style .card .card-header button::before {
   position: absolute;
-  content: "\e996";
-  font-family: "feather" !important;
+  content: "\f078";
+  font-family: "Font Awesome 5 Free" !important;
+  font-weight: 900;
   right: -18px;
   top: 50%;
   transform: translateY(-50%);
@@ -17607,7 +17608,7 @@ span.transparent-button:hover i {
   color: var(--color-heading);
 }
 .rbt-accordion-style .card .card-header button.collapsed::before {
-  content: "\e9b1";
+  content: "\f077";
 }
 .rbt-accordion-style .card .card-body {
   border-top: 1px solid var(--white-opacity);
@@ -18458,6 +18459,7 @@ span.transparent-button:hover i {
 }
 .pricing-table .pricing-header .price-wrap .monthly-pricing {
   display: none;
+  white-space: nowrap;
 }
 .pricing-table .pricing-header .price-wrap .amount {
   font-weight: 500;
@@ -18478,6 +18480,10 @@ span.transparent-button:hover i {
   text-transform: capitalize;
   display: inline-block;
   margin-left: -4px;
+}
+
+.pricing-table .pricing-header .price-wrap .monthly-pricing[style*="display: block"] {
+  white-space: nowrap;
 }
 .pricing-table .pricing-header .title {
   font-weight: 500;
@@ -21544,6 +21550,36 @@ ul.testimonial-thumb-wrapper li a.active .thumb img {
   object-fit: cover;
   width: 100%;
   border-radius: 100%;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+/* Mobile-specific fixes for Shopify logos */
+@media only screen and (max-width: 767px) {
+  .rbt-testimonial-box .clint-info-wrapper .thumb {
+    height: 60px;
+    min-width: 60px;
+    padding: 2px;
+  }
+  
+  .rbt-testimonial-box .clint-info-wrapper .thumb img {
+    object-fit: contain;
+    background: transparent;
+  }
+}
+
+/* iPhone-specific fixes */
+@media only screen and (max-width: 480px) {
+  .rbt-testimonial-box .clint-info-wrapper .thumb {
+    height: 50px;
+    min-width: 50px;
+    padding: 1px;
+  }
+  
+  .rbt-testimonial-box .clint-info-wrapper .thumb img {
+    object-fit: contain;
+    background: transparent;
+  }
 }
 .rbt-testimonial-box .clint-info-wrapper .client-info {
   padding-left: 25px;
@@ -21608,8 +21644,25 @@ ul.testimonial-thumb-wrapper li a.active .thumb img {
 }
 @media only screen and (max-width: 767px) {
   .rbt-testimonial-box .description .rbt-btn-link {
-    margin-top: 10px;
+  margin-top: 10px;
+}
+
+/* Shopify App Store badge mobile fixes */
+@media only screen and (max-width: 767px) {
+  .contact-btn img[src*="badge-shopify-app-store"] {
+    height: 50px !important;
+    width: auto !important;
+    max-width: 100%;
   }
+}
+
+@media only screen and (max-width: 480px) {
+  .contact-btn img[src*="badge-shopify-app-store"] {
+    height: 40px !important;
+    width: auto !important;
+    max-width: 100%;
+  }
+}
 }
 .rbt-testimonial-box.style-2 .inner {
   text-align: center;

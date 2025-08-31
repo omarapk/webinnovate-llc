@@ -54,8 +54,9 @@
 
                 &::before {
                     position: absolute;
-                    content: "\e996";
-                    font-family: 'feather' !important;
+                    content: "\f078";
+                    font-family: 'Font Awesome 5 Free' !important;
+                    font-weight: 900;
                     right: -18px;
                     top: 50%;
                     transform: translateY(-50%);
@@ -66,7 +67,7 @@
                     color: var(--color-heading);
 
                     &::before {
-                        content: "\e9b1";
+                        content: "\f077";
                     }
                 }
             }

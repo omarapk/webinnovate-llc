@@ -200,44 +200,6 @@
                         <textarea class="form-control" id="featureDescription" name="featureDescription" rows="6" placeholder="Please describe the feature in detail, including how it would work and why it would be useful" required></textarea>
                     </div>
 
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="priority" class="form-label">Priority Level</label>
-                                <select class="form-control" id="priority" name="priority">
-                                    <option value="low">Low - Nice to have</option>
-                                    <option value="medium" selected>Medium - Would be helpful</option>
-                                    <option value="high">High - Important for my business</option>
-                                    <option value="critical">Critical - Need this to function</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="category" class="form-label">Feature Category</label>
-                                <select class="form-control" id="category" name="category">
-                                    <option value="checkout">Checkout & Payment</option>
-                                    <option value="analytics">Analytics & Reporting</option>
-                                    <option value="integration">Third-party Integrations</option>
-                                    <option value="ui">User Interface</option>
-                                    <option value="automation">Automation</option>
-                                    <option value="security">Security & Compliance</option>
-                                    <option value="other">Other</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="useCase" class="form-label">Use Case / Business Impact</label>
-                        <textarea class="form-control" id="useCase" name="useCase" rows="4" placeholder="How would this feature help your business? What problem would it solve?"></textarea>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="additionalInfo" class="form-label">Additional Information</label>
-                        <textarea class="form-control" id="additionalInfo" name="additionalInfo" rows="3" placeholder="Any other details, examples, or suggestions"></textarea>
-                    </div>
-
                     <div class="success-message" id="successMessage">
                         <h4><i class="fa-solid fa-check-circle"></i> Thank You!</h4>
                         <p>Your feature request has been submitted successfully. We'll review it and get back to you soon.</p>
@@ -251,7 +213,7 @@
                 </form>
 
                 <div class="text-center mt-5">
-                    <a href="/" class="btn btn-outline-secondary">← Back to Home</a>
+                    <a href="https://webinnovate.dev/leadform" class="btn btn-outline-secondary">← Back to Home</a>
                 </div>
             </div>
         </div>

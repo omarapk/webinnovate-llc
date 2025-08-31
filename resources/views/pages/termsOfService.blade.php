@@ -280,7 +280,7 @@
                 <div id="contact">
                     <h4>17. Contact Us</h4>
                     <p>If you have questions, complaints, or requests regarding these Terms of Use, please contact us:</p>
-                    <p><i class="fa-solid fa-envelope"></i> <a href="mailto:webinnovate.dev@gmail.com">webinnovate.dev@gmail.com</a><br>
+                    <p><i class="fa-solid fa-envelope"></i> <a href="mailto:contact@webinnovate.dev.">webinnovate.dev@gmail.com</a><br>
                     <!-- <i class="fa-solid fa-building"></i> WebInnovate LLC</p> -->
                 </div>
             </div>
