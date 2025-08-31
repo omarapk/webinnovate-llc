@@ -17596,19 +17596,39 @@ span.transparent-button:hover i {
 }
 .rbt-accordion-style .card .card-header button::before {
   position: absolute;
-  content: "\f078";
+  content: "\f078" !important;
   font-family: "Font Awesome 5 Free" !important;
-  font-weight: 900;
+  font-weight: 900 !important;
   right: -18px;
   top: 50%;
   transform: translateY(-50%);
   transition: 0.4s;
 }
+
+/* Force override for all accordion types */
+.rbt-accordion-style.rbt-accordion-04 .card .card-header button::before,
+.rbt-accordion-style.rbt-accordion-02 .card .card-header button::before,
+.rbt-accordion-style.rbt-accordion-03 .card .card-header button::before,
+.rbt-accordion-style.rbt-accordion-05 .card .card-header button::before {
+  content: "\f078" !important;
+  font-family: "Font Awesome 5 Free" !important;
+  font-weight: 900 !important;
+}
 .rbt-accordion-style .card .card-header button.collapsed {
   color: var(--color-heading);
 }
 .rbt-accordion-style .card .card-header button.collapsed::before {
-  content: "\f077";
+  content: "\f077" !important;
+}
+
+/* Force override for collapsed state for all accordion types */
+.rbt-accordion-style.rbt-accordion-04 .card .card-header button.collapsed::before,
+.rbt-accordion-style.rbt-accordion-02 .card .card-header button.collapsed::before,
+.rbt-accordion-style.rbt-accordion-03 .card .card-header button.collapsed::before,
+.rbt-accordion-style.rbt-accordion-05 .card .card-header button.collapsed::before {
+  content: "\f077" !important;
+  font-family: "Font Awesome 5 Free" !important;
+  font-weight: 900 !important;
 }
 .rbt-accordion-style .card .card-body {
   border-top: 1px solid var(--white-opacity);
@@ -37579,7 +37599,9 @@ Course Sidebar
   color: var(--color-white);
 }
 .active-dark-mode .rbt-accordion-style.rbt-accordion-01 .card .card-header button.collapsed::before {
-  content: "\e9b1";
+  content: "\f077";
+  font-family: "Font Awesome 5 Free" !important;
+  font-weight: 900;
 }
 .active-dark-mode .rbt-accordion-style.rbt-accordion-01 .card .card-body {
   background: var(--color-bodyest);
