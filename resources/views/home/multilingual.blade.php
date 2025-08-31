@@ -570,6 +570,144 @@
             margin-bottom: 30px !important;
         }
 
+        /* Testimonial text truncation and read more functionality */
+        .testimonial-text {
+            display: -webkit-box;
+            -webkit-line-clamp: 4;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            line-height: 1.5;
+            max-height: 6em; /* 4 lines * 1.5 line-height */
+            transition: max-height 0.3s ease;
+        }
+
+        .testimonial-text.expanded {
+            -webkit-line-clamp: unset;
+            max-height: none;
+        }
+
+        .read-more-btn {
+            color: #c20c81;
+            background: none;
+            border: none;
+            padding: 5px 0;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: underline;
+            margin-top: 10px;
+            transition: color 0.3s ease;
+        }
+
+        .read-more-btn:hover {
+            color: #930c81;
+        }
+
+        .read-more-btn.hidden {
+            display: none;
+        }
+
+        /* iPhone-specific fixes for testimonial logos */
+        @media only screen and (max-width: 767px) {
+            .rbt-testimonial-box .clint-info-wrapper .thumb {
+                height: 50px !important;
+                min-width: 50px !important;
+                width: 50px !important;
+                margin: 0 auto 10px auto;
+                display: block;
+            }
+            
+            .rbt-testimonial-box .clint-info-wrapper .thumb img {
+                width: 100% !important;
+                height: 100% !important;
+                object-fit: contain !important;
+                border-radius: 50% !important;
+            }
+            
+            .rbt-testimonial-box .clint-info-wrapper {
+                text-align: center;
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .rbt-testimonial-box .clint-info-wrapper .client-info {
+                text-align: center;
+                padding-left: 0 !important;
+                margin-top: 10px !important;
+            }
+            
+            .rbt-testimonial-box .inner {
+                padding: 25px 20px !important;
+            }
+        }
+
+        /* iPhone 12/13/14 specific fixes */
+        @media only screen and (max-width: 390px) {
+            .rbt-testimonial-box .clint-info-wrapper .thumb {
+                height: 45px !important;
+                min-width: 45px !important;
+                width: 45px !important;
+            }
+            
+            .rbt-testimonial-box .inner {
+                padding: 20px 15px !important;
+            }
+            
+            .rbt-testimonial-box .clint-info-wrapper .client-info .title {
+                font-size: 18px !important;
+            }
+        }
+
+        /* iPhone SE specific fixes */
+        @media only screen and (max-width: 375px) {
+            .rbt-testimonial-box .clint-info-wrapper .thumb {
+                height: 40px !important;
+                min-width: 40px !important;
+                width: 40px !important;
+            }
+            
+            .rbt-testimonial-box .inner {
+                padding: 18px 12px !important;
+            }
+        }
+
+        /* Additional mobile fixes for testimonial area */
+        @media only screen and (max-width: 767px) {
+            .scroll-animation .single-column-20 {
+                width: 280px !important;
+                padding: 0 8px !important;
+            }
+            
+            .rbt-testimonial-area .section-title .title {
+                font-size: 24px !important;
+                line-height: 1.3 !important;
+            }
+            
+            .rbt-testimonial-area .section-title .subtitle {
+                font-size: 14px !important;
+            }
+            
+            .testimonial-text {
+                font-size: 14px !important;
+                line-height: 1.4 !important;
+            }
+            
+            .read-more-btn {
+                font-size: 13px !important;
+                margin-top: 8px !important;
+            }
+        }
+
+        /* Ensure proper image display on all devices */
+        .rbt-testimonial-box .clint-info-wrapper .thumb img {
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            -webkit-touch-callout: none;
+            -webkit-tap-highlight-color: transparent;
+        }
+
         /* Smooth scrolling for anchor links */
         html {
             scroll-behavior: smooth;
@@ -1311,14 +1449,15 @@ Our numbers speak louder than words.</p>
                                 </div>
                             </div>
                             <div class="description">
-                                <p class="subtitle-3">
+                                <p class="subtitle-3 testimonial-text">
                                     Outstanding App & Support—Special Thanks to Samy
 
-                                    I’ve been using LeadForm since I launched my Shopify store, and it’s been flawless—fast, stable, and extremely useful.
+                                    I've been using LeadForm since I launched my Shopify store, and it's been flawless—fast, stable, and extremely useful.
 
                                     What truly sets it apart is the support. A huge thank you to Samy, who helped me every step of the way—even during his vacation. That kind of dedication is rare and deeply appreciated.
 
-                                    I recommend this app to anyone doing COD. It’s ...</p>
+                                    I recommend this app to anyone doing COD. It's truly exceptional and has transformed our business operations completely.</p>
+                                <button class="read-more-btn" onclick="toggleReadMore(this)">Read more</button>
                                 <a class="rbt-btn-link" href="#">Almost 2 years using the app</a>
                             </div>
                         </div>
@@ -1340,7 +1479,8 @@ Our numbers speak louder than words.</p>
                                 </div>
                             </div>
                             <div class="description">
-                                <p class="subtitle-3">We're an eco-friendly shop on Shopify, and LeadForm COD has become essential for managing our Cash on Delivery orders. The lead form system is intuitive, seamless, and captures all the necessary info no hassle, no confusion.</p>
+                                <p class="subtitle-3 testimonial-text">We're an eco-friendly shop on Shopify, and LeadForm COD has become essential for managing our Cash on Delivery orders. The lead form system is intuitive, seamless, and captures all the necessary info no hassle, no confusion. The integration with our existing workflow has been seamless, and the customer support team has been incredibly helpful throughout our journey.</p>
+                                <button class="read-more-btn" onclick="toggleReadMore(this)">Read more</button>
                                 <a class="rbt-btn-link" href="#">3 months using the app</a>
                             </div>
                         </div>
@@ -1362,9 +1502,10 @@ Our numbers speak louder than words.</p>
                                 </div>
                             </div>
                             <div class="description">
-                                <p class="subtitle-3">La meilleure application LEADFORM COD, que j'utilise pour ne nombreuses boutiques.
+                                <p class="subtitle-3 testimonial-text">La meilleure application LEADFORM COD, que j'utilise pour ne nombreuses boutiques.
                                 Le support est très réactif et plus même, j'ai eu un problème technique avec le code de mon site (en pensant que c'était à cause de l'application en vrai, pas du tout), l'intervention du support a réglé, modifier et suggérer un nouveau et meilleure thème, qu'on utilise jusqu'à ce jour-ci et gratuitement en plus !
                                 DZ♥MA</p>
+                                <button class="read-more-btn" onclick="toggleReadMore(this)">Read more</button>
                                 <a class="rbt-btn-link" href="#">About 1 year using the app</a>
                             </div>
                         </div>
@@ -1386,7 +1527,8 @@ Our numbers speak louder than words.</p>
                                 </div>
                             </div>
                             <div class="description">
-                                <p class="subtitle-3">Good app and Amazing support! I had a technical issue integrating the form with my theme, and Abdellahe from the support team went above and beyond to help me fix it. He was fast, professional, and very kind. Now everything works perfectly, and I’m really impressed with the service. Highly recommend this app for anyone doing COD in their store!</p>
+                                <p class="subtitle-3 testimonial-text">Good app and Amazing support! I had a technical issue integrating the form with my theme, and Abdellahe from the support team went above and beyond to help me fix it. He was fast, professional, and very kind. Now everything works perfectly, and I'm really impressed with the service. Highly recommend this app for anyone doing COD in their store!</p>
+                                <button class="read-more-btn" onclick="toggleReadMore(this)">Read more</button>
                                 <a class="rbt-btn-link" href="#">4 days using the app</a>
                             </div>
                         </div>
@@ -1407,7 +1549,8 @@ Our numbers speak louder than words.</p>
                                 </div>
                             </div>
                             <div class="description">
-                                <p class="subtitle-3">i've been using leadform cod since 2 years it wroks very well and they have a great support team and a good manager, it helped me a lot with my buissnes</p>
+                                <p class="subtitle-3 testimonial-text">i've been using leadform cod since 2 years it wroks very well and they have a great support team and a good manager, it helped me a lot with my buissnes. The app has been instrumental in streamlining our operations and improving customer satisfaction.</p>
+                                <button class="read-more-btn" onclick="toggleReadMore(this)">Read more</button>
                                 <a class="rbt-btn-link" href="#">Over 1 year using the app</a>
                             </div>
                         </div>
@@ -1429,7 +1572,8 @@ Our numbers speak louder than words.</p>
                                 </div>
                             </div>
                             <div class="description">
-                                <p class="subtitle-3">Great App and Great people Working on it especially Sami , Great guy , He helped me alot to understand this app more , one of the best customer support i've worked with , A great team !!</p>
+                                <p class="subtitle-3 testimonial-text">Great App and Great people Working on it especially Sami , Great guy , He helped me alot to understand this app more , one of the best customer support i've worked with , A great team !!</p>
+                                <button class="read-more-btn" onclick="toggleReadMore(this)">Read more</button>
                                 <a class="rbt-btn-link" href="#">7 months using the app</a>
                             </div>
                         </div>
@@ -1451,11 +1595,12 @@ Our numbers speak louder than words.</p>
                                 </div>
                             </div>
                             <div class="description">
-                                <p class="subtitle-3">
+                                <p class="subtitle-3 testimonial-text">
 
-J’utilise cette application depuis un moment et je la trouve vraiment bien conçue. L’interface est fluide, intuitive, et les fonctionnalités sont à la hauteur de mes attentes. Elle m’aide au quotidien et répond parfaitement à mes besoins.
+J'utilise cette application depuis un moment et je la trouve vraiment bien conçue. L'interface est fluide, intuitive, et les fonctionnalités sont à la hauteur de mes attentes. Elle m'aide au quotidien et répond parfaitement à mes besoins.
 
-Un grand bravo également au service d’assistance à distance : ils sont très réactifs, professionnels et toujours prêts à aider rapidement. Un vrai plus qui fait ....</p>
+Un grand bravo également au service d'assistance à distance : ils sont très réactifs, professionnels et toujours prêts à aider rapidement. Un vrai plus qui fait vraiment la différence dans notre quotidien.</p>
+                                <button class="read-more-btn" onclick="toggleReadMore(this)">Read more</button>
                                 <a class="rbt-btn-link" href="#">About 2 months using the app</a>
                             </div>
                         </div>
@@ -1477,7 +1622,8 @@ Un grand bravo également au service d’assistance à distance : ils sont très
                                 </div>
                             </div>
                             <div class="description">
-                                <p class="subtitle-3">I sincerely want to thank the support agent Sami for his exceptional help. I had been looking for assistance, and when he came, he was incredibly patient and polite. He spent over an hour with me on a WhatsApp call, using Apple video sharing to guide me step by step until all my issues were resolved. I’m truly grateful for his professionalism and support. Thank you so much!</p>
+                                <p class="subtitle-3 testimonial-text">I sincerely want to thank the support agent Sami for his exceptional help. I had been looking for assistance, and when he came, he was incredibly patient and polite. He spent over an hour with me on a WhatsApp call, using Apple video sharing to guide me step by step until all my issues were resolved. I'm truly grateful for his professionalism and support. Thank you so much!</p>
+                                <button class="read-more-btn" onclick="toggleReadMore(this)">Read more</button>
                                 <a class="rbt-btn-link" href="#">11 months using the app<i
                                 class="feather-arrow-right"></i></a>
                             </div>
@@ -1500,15 +1646,16 @@ Un grand bravo également au service d’assistance à distance : ils sont très
                                 </div>
                             </div>
                             <div class="description">
-                                <p class="subtitle-3">
+                                <p class="subtitle-3 testimonial-text">
                                         Application très pratique et fluide.
                                         Nous utilisons Lead Form en Algérie pour notre boutique en ligne en paiement à la livraison (COD), et cela nous a beaucoup facilité la gestion des commandes et la qualification des clients.
 
-                                        Le support technique est très réactif — un grand merci à SAMI pour son accompagnement étape par étape, et à toute l’équipe pour leur professionnalisme. Grâce à eux, nous avons pu configurer l’application rapidement sans aucun blocage.
+                                        Le support technique est très réactif — un grand merci à SAMI pour son accompagnement étape par étape, et à toute l'équipe pour leur professionnalisme. Grâce à eux, nous avons pu configurer l'application rapidement sans aucun blocage.
 
                                         Je recommande fortement cette application à tous les e-commerçants qui travaillent en COD.
                                         Continuez comme ça
                                         </p>
+                                <button class="read-more-btn" onclick="toggleReadMore(this)">Read more</button>
                                 <a class="rbt-btn-link" href="#">12 months using the app<i
                                 class="feather-arrow-right"></i></a>
                             </div>
@@ -1536,9 +1683,10 @@ Un grand bravo également au service d’assistance à distance : ils sont très
                                 </div>
                             </div>
                             <div class="description">
-                                <p class="subtitle-3">J'utilise LeadForm COD depuis presque une année. j'aime bien l'application et elle est trop utile pour mon store.
+                                <p class="subtitle-3 testimonial-text">J'utilise LeadForm COD depuis presque une année. j'aime bien l'application et elle est trop utile pour mon store.
                                 Après la dernière MAJ, j'ai eu un soucis à connecter mon Sheet. J'ai contacté le support, et ils ont résolu mon problème de suite. Je tiens à féliciter Sami en particulier pour son professionnalisme.
                                 Bravo!</p>
+                                <button class="read-more-btn" onclick="toggleReadMore(this)">Read more</button>
                                 <a class="rbt-btn-link" href="#">10 months using the app<i
                                 class="feather-arrow-right"></i></a>
                             </div>
@@ -1561,8 +1709,9 @@ Un grand bravo également au service d’assistance à distance : ils sont très
                                 </div>
                             </div>
                             <div class="description">
-                                <p class="subtitle-3">après l'utilisation d'un an et plus je suis très satisfait
-Merci LeadForm Order COD Form</p>
+                                <p class="subtitle-3 testimonial-text">après l'utilisation d'un an et plus je suis très satisfait
+Merci LeadForm Order COD Form. L'application a vraiment transformé notre façon de gérer les commandes et amélioré significativement notre taux de conversion.</p>
+                                <button class="read-more-btn" onclick="toggleReadMore(this)">Read more</button>
                                 <a class="rbt-btn-link" href="#">12 months using the app<i
                                 class="feather-arrow-right"></i></a>
                             </div>
@@ -1585,9 +1734,10 @@ Merci LeadForm Order COD Form</p>
                                 </div>
                             </div>
                             <div class="description">
-                                <p class="subtitle-3">
-                                    i've been using this app since i started my shopify store ( 2 years ago ) , amazing app with amazing support team , it helped me alot to grow my business
+                                <p class="subtitle-3 testimonial-text">
+                                    i've been using this app since i started my shopify store ( 2 years ago ) , amazing app with amazing support team , it helped me alot to grow my business. The features are exactly what we needed to scale our operations efficiently.
                                     </p>
+                                <button class="read-more-btn" onclick="toggleReadMore(this)">Read more</button>
                                 <a class="rbt-btn-link" href="#">About 1 year using the app<i
                                 class="feather-arrow-right"></i></a>
                             </div>
@@ -1610,8 +1760,9 @@ Merci LeadForm Order COD Form</p>
                                 </div>
                             </div>
                             <div class="description">
-                                <p class="subtitle-3">support team always active and attentive to customer expectations, plus they have a lot of development in the near future in their application.
-                                the ip block option to counter fake orders is available now, it's really great, you have nothing to fear against fake commands</p>
+                                <p class="subtitle-3 testimonial-text">support team always active and attentive to customer expectations, plus they have a lot of development in the near future in their application.
+                                the ip block option to counter fake orders is available now, it's really great, you have nothing to fear against fake commands. The continuous improvements and new features keep making the app even better.</p>
+                                <button class="read-more-btn" onclick="toggleReadMore(this)">Read more</button>
                                 <a class="rbt-btn-link" href="#">Over 2 years using the app<i
                                 class="feather-arrow-right"></i></a>
                             </div>
@@ -1633,9 +1784,10 @@ Merci LeadForm Order COD Form</p>
                                 </div>
                             </div>
                             <div class="description">
-                                <p class="subtitle-3">
-                                It works well, good service and quick actions.
+                                <p class="subtitle-3 testimonial-text">
+                                It works well, good service and quick actions. The app has been reliable and the support team responds quickly to any issues we encounter.
                                 </p>
+                                <button class="read-more-btn" onclick="toggleReadMore(this)">Read more</button>
                                 <a class="rbt-btn-link" href="#">Almost 4 years using the app<i
                                 class="feather-arrow-right"></i></a>
                             </div>
@@ -1658,9 +1810,10 @@ Merci LeadForm Order COD Form</p>
                                 </div>
                             </div>
                             <div class="description">
-                                <p class="subtitle-3">
-                                application top du top et un trés bon service client ;le support est tout active abdellahe prend le temps de bien m'expliquer a chaque fois et de régler mes problème vraiment top
+                                <p class="subtitle-3 testimonial-text">
+                                application top du top et un trés bon service client ;le support est tout active abdellahe prend le temps de bien m'expliquer a chaque fois et de régler mes problème vraiment top. Je recommande vivement cette application à tous les e-commerçants.
                                 </p>
+                                <button class="read-more-btn" onclick="toggleReadMore(this)">Read more</button>
                                 <a class="rbt-btn-link" href="#">7 months using the app<i
                                 class="feather-arrow-right"></i></a>
                             </div>
@@ -1683,9 +1836,10 @@ Merci LeadForm Order COD Form</p>
                                 </div>
                             </div>
                             <div class="description">
-                                <p class="subtitle-3">
-                                Une application au top, offrant des commandes rapides et sans souci, avec un support exceptionnel toujours disponible pour répondre à toutes les questions. Vous êtes les meilleurs !
+                                <p class="subtitle-3 testimonial-text">
+                                Une application au top, offrant des commandes rapides et sans souci, avec un support exceptionnel toujours disponible pour répondre à toutes les questions. Vous êtes les meilleurs ! L'interface est intuitive et les fonctionnalités répondent parfaitement à nos besoins.
                                 </p>
+                                <button class="read-more-btn" onclick="toggleReadMore(this)">Read more</button>
                                 <a class="rbt-btn-link" href="#">About 1 month using the app<i
                                 class="feather-arrow-right"></i></a>
                             </div>
@@ -1708,8 +1862,9 @@ Merci LeadForm Order COD Form</p>
                                 </div>
                             </div>
                             <div class="description">
-                                <p class="subtitle-3">Hello,
-                                This app is incredibly intuitive and simple to navigate, making it a breeze to accomplish tasks efficiently. I would definitely recommend it, particularly for its excellent customer service. Also the support service is helpful so much.</p>
+                                <p class="subtitle-3 testimonial-text">Hello,
+                                This app is incredibly intuitive and simple to navigate, making it a breeze to accomplish tasks efficiently. I would definitely recommend it, particularly for its excellent customer service. Also the support service is helpful so much. The integration with our existing systems has been seamless.</p>
+                                <button class="read-more-btn" onclick="toggleReadMore(this)">Read more</button>
                                 <a class="rbt-btn-link" href="#">Over 2 years using the app<i
                                 class="feather-arrow-right"></i></a>
                             </div>
@@ -1732,10 +1887,10 @@ Merci LeadForm Order COD Form</p>
                                 </div>
                             </div>
                             <div class="description">
-                                <p class="subtitle-3">
+                                <p class="subtitle-3 testimonial-text">
 
-                                Application très utile avec un support a l’écoute surtout omar qui m’a beaucoup aidé tout au long de l’utilisation de l’application avec des conseils en or et des vidéos explicative meme a des heures tardive , je recommande vivement , merci omar
-                                </p>
+                                Application très utile avec un support a l'écoute surtout omar qui m'a beaucoup aidé tout au long de l'utilisation de l'application avec des conseils en or et des vidéos explicative meme a des heures tardive , je recommande vivement , merci omar. L'application a vraiment transformé notre business.</p>
+                                <button class="read-more-btn" onclick="toggleReadMore(this)">Read more</button>
                                 <a class="rbt-btn-link" href="#">About 2 years using the app<i
                                 class="feather-arrow-right"></i></a>
                             </div>
@@ -1877,7 +2032,7 @@ Merci LeadForm Order COD Form</p>
                                     </h2>
                                     <div id="faqs-collapseThree4" class="accordion-collapse collapse" aria-labelledby="faqs-headingThree4" data-bs-parent="#faqs-accordionExamplec3">
                                         <div class="accordion-body card-body">
-                                            Of course! Our support team is available via live chat and email. We’re here to listen to your needs and help you get the best results from LeadForm.
+                                            Of course! Our support team is available via live chat and email. We're here to listen to your needs and help you get the best results from LeadForm.
                                         </div>
                                     </div>
                                 </div>
@@ -2333,7 +2488,7 @@ Merci LeadForm Order COD Form</p>
                             
                             <div class="benefit-circle benefit-circle-1">
                                 <div class="circle-content">
-                                    <span class="benefit-text">Full Transparency</span>
+                                    <span class="benefit-text">Full Transparency</span>
                                 </div>
                             </div>
                             <div class="benefit-circle benefit-circle-2">
@@ -2364,7 +2519,7 @@ Merci LeadForm Order COD Form</p>
                     <!-- Supporting Text -->
                     <div class="supporting-text mb--40">
                         <p class="description">Every COD store you refer means recurring monthly income.</p>
-                        <p class="description">Turn your network into a predictable revenue stream with Leadform.</p>
+                        <p class="description">Turn your network into a predictable revenue stream with Leadform.</p>
                     </div>
 
                     <!-- Call to Action Buttons -->
@@ -2448,9 +2603,7 @@ Simplify checkout, boost conversions, and scale your business.
                                     <li>
                                         <a href="#faq">FAQ</a>
                                     </li>
-                                    <li>
-                                        <a href="#affiliate">Become an Affiliate</a>
-                                    </li>
+                            
                                     <li>
                                         <a href="{{ route('privacyPolicy') }}">Privacy Policy</a>
                                     </li>
@@ -2476,6 +2629,9 @@ Simplify checkout, boost conversions, and scale your business.
                                     </li>
                                     <li>
                                         <a href="{{ route('featureRequest') }}">Request a Feature</a>
+                                    </li>
+                                    <li>
+                                        <a href="#affiliate">Become an Affiliate</a>
                                     </li>
                                     <li>
                                         <a href="{{ route('aboutUs') }}">About LeadForm</a>
@@ -2651,6 +2807,22 @@ Simplify checkout, boost conversions, and scale your business.
                 });
             });
         });
+    </script>
+
+    <!-- Read More Functionality for Testimonials -->
+    <script>
+        function toggleReadMore(button) {
+            const testimonialText = button.previousElementSibling;
+            const isExpanded = testimonialText.classList.contains('expanded');
+            
+            if (isExpanded) {
+                testimonialText.classList.remove('expanded');
+                button.textContent = 'Read more';
+            } else {
+                testimonialText.classList.add('expanded');
+                button.textContent = 'Read less';
+            }
+        }
     </script>
 
 </body>
