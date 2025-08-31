@@ -2339,7 +2339,7 @@ Simplify checkout, boost conversions, and scale your business.
                                         <a href="{{ route('privacyPolicy') }}">Privacy Policy</a>
                                     </li>
                                     <li>
-                                        <a href="{{ route('termsOfService') }}">Terms of Service</a>
+                                        <a href="https://webinnovate.dev/leadform/terms-of-service">Terms of Service</a>
                                     </li>
                                 </ul>
                             </div>
@@ -2359,13 +2359,13 @@ Simplify checkout, boost conversions, and scale your business.
                                         <a href="https://leadform.crisp.help/en/">Help Center</a>
                                     </li>
                                     <li>
-                                        <a href="{{ route('featureRequest') }}">Request a Feature</a>
+                                        <a href="https://webinnovate.dev/leadform/feature-request">Request a Feature</a>
                                     </li>
                                     <li>
                                         <a href="#affiliate">Become an Affiliate</a>
                                     </li>
                                     <li>
-                                        <a href="{{ route('aboutUs') }}">About LeadForm</a>
+                                        <a href="https://webinnovate.dev/leadform/about-us">About LeadForm</a>
                                     </li>
                                 </ul>
                             </div>

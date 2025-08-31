@@ -114,13 +114,13 @@
         <div class="container">
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="/">Home</a></li>
+                    <li class="breadcrumb-item"><a href="/leadform"><i class="fas fa-home"></i></a></li>
                     <li class="breadcrumb-item active">Privacy Policy</li>
                 </ol>
             </nav>
             <h1 class="display-4 fw-bold">Privacy Policy</h1>
             <p class="lead">LeadForm: COD Order Form Privacy Policy</p>
-                                                </div>
+        </div>
     </section>
 
     <!-- Content Section -->
