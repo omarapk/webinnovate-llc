@@ -607,107 +607,6 @@
             display: none;
         }
 
-        /* iPhone-specific fixes for testimonial logos */
-        @media only screen and (max-width: 767px) {
-            .rbt-testimonial-box .clint-info-wrapper .thumb {
-                height: 50px !important;
-                min-width: 50px !important;
-                width: 50px !important;
-                margin: 0 auto 10px auto;
-                display: block;
-            }
-            
-            .rbt-testimonial-box .clint-info-wrapper .thumb img {
-                width: 100% !important;
-                height: 100% !important;
-                object-fit: contain !important;
-                border-radius: 50% !important;
-            }
-            
-            .rbt-testimonial-box .clint-info-wrapper {
-                text-align: center;
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .rbt-testimonial-box .clint-info-wrapper .client-info {
-                text-align: center;
-                padding-left: 0 !important;
-                margin-top: 10px !important;
-            }
-            
-            .rbt-testimonial-box .inner {
-                padding: 25px 20px !important;
-            }
-        }
-
-        /* iPhone 12/13/14 specific fixes */
-        @media only screen and (max-width: 390px) {
-            .rbt-testimonial-box .clint-info-wrapper .thumb {
-                height: 45px !important;
-                min-width: 45px !important;
-                width: 45px !important;
-            }
-            
-            .rbt-testimonial-box .inner {
-                padding: 20px 15px !important;
-            }
-            
-            .rbt-testimonial-box .clint-info-wrapper .client-info .title {
-                font-size: 18px !important;
-            }
-        }
-
-        /* iPhone SE specific fixes */
-        @media only screen and (max-width: 375px) {
-            .rbt-testimonial-box .clint-info-wrapper .thumb {
-                height: 40px !important;
-                min-width: 40px !important;
-                width: 40px !important;
-            }
-            
-            .rbt-testimonial-box .inner {
-                padding: 18px 12px !important;
-            }
-        }
-
-        /* Additional mobile fixes for testimonial area */
-        @media only screen and (max-width: 767px) {
-            .scroll-animation .single-column-20 {
-                width: 280px !important;
-                padding: 0 8px !important;
-            }
-            
-            .rbt-testimonial-area .section-title .title {
-                font-size: 24px !important;
-                line-height: 1.3 !important;
-            }
-            
-            .rbt-testimonial-area .section-title .subtitle {
-                font-size: 14px !important;
-            }
-            
-            .testimonial-text {
-                font-size: 14px !important;
-                line-height: 1.4 !important;
-            }
-            
-            .read-more-btn {
-                font-size: 13px !important;
-                margin-top: 8px !important;
-            }
-        }
-
-        /* Ensure proper image display on all devices */
-        .rbt-testimonial-box .clint-info-wrapper .thumb img {
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
-            user-select: none;
-            -webkit-touch-callout: none;
-            -webkit-tap-highlight-color: transparent;
-        }
-
         /* Smooth scrolling for anchor links */
         html {
             scroll-behavior: smooth;
@@ -725,6 +624,21 @@
         #affiliate .rbt-section-gap {
             padding-top: 0 !important;
             padding-bottom: 0 !important;
+        }
+
+        /* Fix pricing display to show price and /month on same horizontal line */
+        .pricing-table .pricing-header .price-wrap .amount {
+            display: inline-flex !important;
+            align-items: baseline !important;
+            flex-wrap: nowrap !important;
+        }
+
+        .pricing-table .pricing-header .price-wrap .amount .duration {
+            display: inline !important;
+            margin-left: 0 !important;
+            font-size: 16px !important;
+            font-weight: 500 !important;
+            color: var(--color-primary) !important;
         }
 
     </style>
@@ -2080,8 +1994,7 @@ Merci LeadForm Order COD Form. L'application a vraiment transformé notre façon
                                     <span class="duration">/year and save 16%</span>
                                 </div>
                                 <div class="monthly-pricing" style="display: block;">
-                                    <span class="amount">$0.99</span>
-                                    <span class="duration">/month</span>
+                                    <span class="amount">$0.99<span class="duration">/month</span></span>
                                 </div>
                             </div>
                         </div>
@@ -2122,8 +2035,7 @@ Merci LeadForm Order COD Form. L'application a vraiment transformé notre façon
                                     <span class="duration">/year and save 17%</span>
                                 </div>
                                 <div class="monthly-pricing" style="display: block;">
-                                    <span class="amount">$9.99</span>
-                                    <span class="duration">/month</span>
+                                    <span class="amount">$9.99<span class="duration">/month</span></span>
                                 </div>
                             </div>
                         </div>
@@ -2165,8 +2077,7 @@ Merci LeadForm Order COD Form. L'application a vraiment transformé notre façon
                                     <span class="duration">/year and save 17%</span>
                                 </div>
                                 <div class="monthly-pricing" style="display: block;">
-                                    <span class="amount">$24.99</span>
-                                    <span class="duration">/month</span>
+                                    <span class="amount">$24.99<span class="duration">/month</span></span>
                                 </div>
                             </div>
                         </div>
@@ -2209,8 +2120,7 @@ Merci LeadForm Order COD Form. L'application a vraiment transformé notre façon
                                     <span class="duration">/year and save 33%</span>
                                 </div>
                                 <div class="monthly-pricing" style="display: block;">
-                                    <span class="amount">$49.99</span>
-                                    <span class="duration">/month</span>
+                                    <span class="amount">$49.99<span class="duration">/month</span></span>
                                 </div>
                             </div>
                         </div>
