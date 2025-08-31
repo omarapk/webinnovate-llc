@@ -6,7 +6,7 @@ use App\Http\Controllers\AffiliateController;
 use App\Http\Controllers\PagesController;
 
 // Main route - serves multilingual.blade.php at root URL
-Route::get('/', function () {
+Route::get('/leadform', function () {
     return view('home.multilingual');
 });
 
