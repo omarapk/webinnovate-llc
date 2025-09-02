@@ -35,6 +35,12 @@
     
     <!-- Custom CSS for Instagram Posts -->
     <style>
+        body {
+            font-family: 'Poppins', sans-serif !important;
+        }
+        h1, h2, h3, h4, h5, h6, p, span, div, a, button, input, textarea, select {
+            font-family: 'Poppins', sans-serif !important;
+        }
         .instagram-posts-section {
             padding: 80px 0;
         }
@@ -868,9 +874,9 @@
                         <img src="{{ asset('assets/images/shape/curve-line-4.png') }}" alt="Banner Line">
                     </div>
                     <div class="shape-hand scene">
-                        <span data-depth="2">
+                        <!-- <span data-depth="2">
                             <img src="{{ asset('assets/images/shape/hand-cap.png') }}" alt="Banner hand">
-                        </span>
+                        </span> -->
                     </div>
                     <div class="dot-bg">
                         <img src="{{ asset('assets/images/shape/dot-bg.png') }}" alt="Banner Dot">
@@ -1709,11 +1715,11 @@ Merci LeadForm Order COD Form. L'application a vraiment transformé notre façon
                             <div class="accordion" id="accordionExamplec3">
                                 <div class="accordion-item card" >
                                     <h2 class="accordion-header card-header" id="headingThree1">
-                                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree1" aria-expanded="true" aria-controls="collapseThree1">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree1" aria-expanded="false" aria-controls="collapseThree1">
                                             What is LeadForm and how does it work?
                                         </button>
                                     </h2>
-                                    <div id="collapseThree1" class="accordion-collapse collapse show" aria-labelledby="headingThree1" data-bs-parent="#accordionExamplec3">
+                                    <div id="collapseThree1" class="accordion-collapse collapse" aria-labelledby="headingThree1" data-bs-parent="#accordionExamplec3">
                                         <div class="accordion-body card-body">
                                         LeadForm is a Shopify app designed for COD stores. It replaces the standard checkout with a high-converting order form that includes upsells, bundles, pixel tracking, and more.                                        </div>
                                     </div>
@@ -1770,12 +1776,12 @@ Merci LeadForm Order COD Form. L'application a vraiment transformé notre façon
                             <div class="accordion" id="faqs-accordionExamplec3">
                                 <div class="accordion-item card">
                                     <h2 class="accordion-header card-header" id="faqs-headingThree1">
-                                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faqs-collapseThree1" aria-expanded="true" aria-controls="faqs-collapseThree1">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqs-collapseThree1" aria-expanded="false" aria-controls="faqs-collapseThree1">
                                             Does LeadForm work on mobile?
                                         </button>
                                     </h2>
 
-                                    <div id="faqs-collapseThree1" class="accordion-collapse collapse show" aria-labelledby="faqs-headingThree1" data-bs-parent="#faqs-accordionExamplec3">
+                                    <div id="faqs-collapseThree1" class="accordion-collapse collapse" aria-labelledby="faqs-headingThree1" data-bs-parent="#faqs-accordionExamplec3">
                                         <div class="accordion-body card-body">
                                             Absolutely. The form is fully optimized for mobile users, ensuring a smooth experience and higher conversions.
                                         </div>
@@ -1888,7 +1894,7 @@ Merci LeadForm Order COD Form. L'application a vraiment transformé notre façon
                                 <li><i class="fa-solid fa-check fa-2xs"></i> 100 Orders/mo</li>
                                 <li><i class="fa-solid fa-check fa-2xs"></i> Google Sheets Synchronisation</li>
                                 <li><i class="fa-solid fa-check fa-2xs"></i> Upsells & Bundles</li>
-                                <li><i class="fa-solid fa-check fa-2xs"></i> Abandoned checkouts</li>
+                                <li><i class="fa-solid fa-check fa-2xs"></i> Whatsapp abandoned checkouts</li>
                                 <li><i class="fa-solid fa-check fa-2xs"></i> Shipping rates</li>
                                 <li><i class="fa-solid fa-check fa-2xs"></i> Multi-Pixels</li>
                                 <li><i class="fa-solid fa-check fa-2xs"></i> Anti-Spam Fake Order Protection</li>
@@ -1930,7 +1936,7 @@ Merci LeadForm Order COD Form. L'application a vraiment transformé notre façon
                                 <li><i class="fa-solid fa-check fa-2xs"></i> 400 Orders/mo</li>
                                 <li><i class="fa-solid fa-check fa-2xs"></i> Google Sheets Synchronisation</li>
                                 <li><i class="fa-solid fa-check fa-2xs"></i> Upsells & Bundles</li>
-                                <li><i class="fa-solid fa-check fa-2xs"></i> Abandoned checkouts</li>
+                                <li><i class="fa-solid fa-check fa-2xs"></i> Whatsapp abandoned checkouts</li>
                                 <li><i class="fa-solid fa-check fa-2xs"></i> Shipping rates</li>
                                 <li><i class="fa-solid fa-check fa-2xs"></i> Multiple Pixels</li>
                                 <li><i class="fa-solid fa-check fa-2xs"></i> Anti-Spam - Fake Order Protection</li>
@@ -1972,7 +1978,7 @@ Merci LeadForm Order COD Form. L'application a vraiment transformé notre façon
                                 <li><i class="fa-solid fa-check fa-2xs"></i> Unlimited orders</li>
                                 <li><i class="fa-solid fa-check fa-2xs"></i> Google Sheets Synchronisation</li>
                                 <li><i class="fa-solid fa-check fa-2xs"></i> Upsells & Bundles</li>
-                                <li><i class="fa-solid fa-check fa-2xs"></i> Abandoned checkouts</li>
+                                <li><i class="fa-solid fa-check fa-2xs"></i> Whatsapp abandoned checkouts</li>
                                 <li><i class="fa-solid fa-check fa-2xs"></i> Shipping rates</li>
                                 <li><i class="fa-solid fa-check fa-2xs"></i> Multi-Pixels</li>
                                 <li><i class="fa-solid fa-check fa-2xs"></i> Anti-Spam Fake Order Protection</li>
@@ -2017,7 +2023,7 @@ Merci LeadForm Order COD Form. L'application a vraiment transformé notre façon
                                 <li><i class="fa-solid fa-check fa-2xs"></i> Multiple Markets</li>
                                 <li><i class="fa-solid fa-check fa-2xs"></i> Google Sheets Synchronisation</li>
                                 <li><i class="fa-solid fa-check fa-2xs"></i> Upsells & bundles</li>
-                                <li><i class="fa-solid fa-check fa-2xs"></i> Abandoned checkouts</li>
+                                <li><i class="fa-solid fa-check fa-2xs"></i> Whatsapp abandoned checkouts</li>
                                 <li><i class="fa-solid fa-check fa-2xs"></i> Shipping rates</li>
                                 <li><i class="fa-solid fa-check fa-2xs"></i> Multi-Pixels</li>
                                 <li><i class="fa-solid fa-check fa-2xs"></i> Anti-Spam Fake Order Protec</li>
@@ -2412,7 +2418,7 @@ Simplify checkout, boost conversions, and scale your business.
                                         <a href="#">Documentation</a>
                                     </li> -->
                                     <li>
-                                        <a href="https://leadform.crisp.help/en/">Help Center</a>
+                                        <a href="https://webinnovate-leadform.crisp.help/en/">Help Center</a>
                                     </li>
                                     <li>
                                         <a href="https://webinnovate.dev/leadform/feature-request">Request a Feature</a>
