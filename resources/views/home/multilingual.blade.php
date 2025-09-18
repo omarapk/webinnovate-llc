@@ -1001,7 +1001,7 @@
                             </div>
                             <div class="custom-video-player">
                                 <video class="w-100 rbt-radius" controls >
-                                    <source src="{{ asset('assets/videos/leadform-demo.mp4') }}" type="video/mp4">
+                                    <source src="{{ asset('assets/videos/leadform-demo1.mp4') }}" type="video/mp4">
                                     <source src="{{ asset('assets/videos/leadform-demo.webm') }}" type="video/webm">
                                     <source src="{{ asset('assets/videos/leadform-demo.ogg') }}" type="video/ogg">
                                     Your browser does not support the video tag.
@@ -1020,7 +1020,7 @@
                             <div class="rbt-feature-wrapper mt--30 ml_dec_20">
                                 <div class="rbt-feature feature-style-2 rbt-radius">
                                     <div class="icon bg-pink-opacity">
-                                        <i class="fa solid fa-heart"></i>
+                                        <img src="{{ asset('assets/images/icons/1.png') }}" alt="Rocket Icon" style="width: 100%; height: 100%; object-fit: contain;">
                                     </div>
                                     <div class="feature-content">
                                         <h6 class="feature-title"> Smooth Experience, Higher Conversions</h6>
@@ -1030,7 +1030,7 @@
 
                                 <div class="rbt-feature feature-style-2 rbt-radius">
                                     <div class="icon bg-primary-opacity">
-                                        <i class="fa-solid fa-book"></i>
+                                        <img src="{{ asset('assets/images/icons/2.png') }}" alt="Toolbox Icon" style="width: 100%; height: 100%; object-fit: contain;">
                                     </div>
                                     <div class="feature-content">
                                         <h6 class="feature-title">All Your Tools in One</h6>
@@ -1040,7 +1040,7 @@
 
                                 <div class="rbt-feature feature-style-2 rbt-radius">
                                     <div class="icon bg-secondary-opacity">
-                                        <i class="fa-solid fa-award"></i>
+                                        <img src="{{ asset('assets/images/icons/3.png') }}" alt="Chart Icon" style="width: 100%; height: 100%; object-fit: contain;">
                                     </div>
                                     <div class="feature-content">
                                         <h6 class="feature-title">Maximize Every Order</h6>
@@ -1139,7 +1139,7 @@ Our numbers speak louder than words.</p>
                     <div class="col-lg-12" >
                         <div class="section-title text-center">
                             <span class="subtitle bg-primary-opacity">The Practice</span>
-                            <h2 class="title w-600">All-in-One Features to Scale <br> Your COD Busines</h2>
+                            <h2 class="title w-600">All-in-One Features to Scale <br> Your COD Business</h2>
                         </div>
                     </div>
                 </div>
@@ -1697,7 +1697,7 @@ Merci LeadForm Order COD Form. L'application a vraiment transformé notre façon
             <div class="row">
                 <div class="col-lg-12">
                     <div class="breadcrumb-inner text-center">
-                        <h2 class="title faqs-title" id="faq">Faqs</h2>
+                        <h2 class="title faqs-title" id="faq">FAQ</h2>
 
                     </div>
                 </div>
