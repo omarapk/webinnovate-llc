@@ -35,6 +35,57 @@
     
     <!-- Custom CSS for Instagram Posts -->
     <style>
+        /* Mobile Menu Debug Styles */
+        .hamberger-button {
+            background: transparent !important;
+            border: none !important;
+            color: var(--color-body) !important;
+            font-size: 24px !important;
+            padding: 10px !important;
+            cursor: pointer !important;
+            display: block !important;
+        }
+        
+        .popup-mobile-menu {
+            z-index: 9999 !important;
+            position: fixed !important;
+            top: 0 !important;
+            left: 0 !important;
+            width: 100% !important;
+            height: 100% !important;
+            background-color: rgba(0, 0, 0, 0.8) !important;
+            visibility: hidden !important;
+            opacity: 0 !important;
+            transition: opacity 0.5s ease-out !important;
+        }
+        
+        .popup-mobile-menu.active {
+            visibility: visible !important;
+            opacity: 1 !important;
+        }
+        
+        .popup-mobile-menu .inner-wrapper {
+            width: 400px !important;
+            background-color: white !important;
+            height: 100% !important;
+            position: absolute !important;
+            left: -150px !important;
+            transition: all 0.5s ease-out !important;
+            padding: 60px 50px !important;
+            overflow-y: auto !important;
+        }
+        
+        .popup-mobile-menu.active .inner-wrapper {
+            left: 0 !important;
+        }
+        
+        @media (max-width: 767px) {
+            .popup-mobile-menu .inner-wrapper {
+                width: 300px !important;
+                padding: 30px 20px !important;
+            }
+        }
+        
         body {
             font-family: 'Poppins', sans-serif !important;
         }
@@ -767,7 +818,7 @@
                         <div class="mobile-menu-bar ml--5 d-block d-xl-none">
                             <div class="hamberger">
                                 <button class="hamberger-button">
-                                    <i class="fa solid fa-menu"></i>
+                                    <i class="fas fa-bars"></i>
                                 </button>
                             </div>
                         </div>
@@ -780,20 +831,20 @@
     </header>
     <!-- Mobile Menu Section -->
      
-    <!-- <div class="popup-mobile-menu">
+    <div class="popup-mobile-menu">
         <div class="inner-wrapper">
             <div class="inner-top">
                 <div class="content">
                     <div class="logo">
                         <div class="logo logo-dark">
-                            <a href="#">
-                                <img src="{{ asset('assets/images/logo/logo.png') }}" alt="Education Logo Images">
+                            <a href="https://apps.shopify.com/leadform-cod">
+                                <img src="{{ asset('assets/images/logo/1.svg') }}" style="width: 200px; height: auto;" alt="LeadForm Logo">
                             </a>
                         </div>
 
                         <div class="logo d-none logo-light">
-                            <a href="#">
-                                <img src="{{ asset('assets/images/dark/logo/logo-light.png') }}" alt="Education Logo Images">
+                            <a href="https://apps.shopify.com/leadform-cod">
+                                <img src="{{ asset('assets/images/dark/1.svg') }}" style="width: 200px; height: auto;" alt="LeadForm Logo">
                             </a>
                         </div>
                     </div>
@@ -801,49 +852,58 @@
                         <button class="close-button rbt-round-btn"><i class="feather-x"></i></button>
                     </div>
                 </div>
-                <p class="description">Histudy is a education website template. You can customize all.</p>
+                <!-- <p class="description">LeadForm - The ultimate COD (Cash on Delivery) solution for your Shopify store. Increase conversions with our all-in-one lead generation platform.</p>
                 <ul class="navbar-top-left rbt-information-list justify-content-start">
                     <li>
-                        <a href="mailto:hello@example.com"><i class="feather-mail"></i>example@gmail.com</a>
+                        <a href="mailto:support@leadform.com"><i class="feather-mail"></i>support@leadform.com</a>
                     </li>
                     <li>
-                        <a href="#"><i class="feather-phone"></i>(302) 555-0107</a>
+                        <a href="https://apps.shopify.com/leadform-cod"><i class="feather-external-link"></i>Shopify App Store</a>
                     </li>
-                </ul>
+                </ul> -->
             </div>
 
-            <div class="mobile-menu-bottom">
+            <nav class="mainmenu-nav">
+                <ul class="mainmenu">
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#faq">FAQ</a></li>
+                    <li><a href="#pricing">Pricing</a></li>
+                    <li><a href="#affiliate">Become An Affiliate</a></li>
+                </ul>
+            </nav>
+
+            <!-- <div class="mobile-menu-bottom">
                 <div class="rbt-btn-wrapper mb--20">
-                    <a class="rbt-btn btn-border-gradient radius-round btn-sm hover-transform-none w-100 justify-content-center text-center" href="#">
-                        <span>Enroll Now</span>
+                    <a class="rbt-btn btn-border-gradient radius-round btn-sm hover-transform-none w-100 justify-content-center text-center" href="https://apps.shopify.com/leadform-cod">
+                        <span>Start Free Trial</span>
                     </a>
                 </div>
 
                 <div class="social-share-wrapper">
-                    <span class="rbt-short-title d-block">Find With Us</span>
+                    <span class="rbt-short-title d-block">Follow Us</span>
                     <ul class="social-icon social-default transparent-with-border justify-content-start mt--20">
-                        <li><a href="https://www.facebook.com/">
+                        <li><a href="https://www.facebook.com/leadform" target="_blank">
                                 <i class="feather-facebook"></i>
                             </a>
                         </li>
-                        <li><a href="https://www.twitter.com">
+                        <li><a href="https://www.twitter.com/leadform" target="_blank">
                                 <i class="feather-twitter"></i>
                             </a>
                         </li>
-                        <li><a href="https://www.instagram.com/">
+                        <li><a href="https://www.instagram.com/leadform" target="_blank">
                                 <i class="feather-instagram"></i>
                             </a>
                         </li>
-                        <li><a href="https://www.linkdin.com/">
+                        <li><a href="https://www.linkedin.com/company/leadform" target="_blank">
                                 <i class="feather-linkedin"></i>
                             </a>
                         </li>
                     </ul>
                 </div>
-            </div>
+            </div> -->
 
         </div>
-    </div> -->
+    </div>
 
     <main class="rbt-main-wrapper">
         <!-- Start Banner Area  -->
@@ -2616,6 +2676,46 @@ Simplify checkout, boost conversions, and scale your business.
                 button.textContent = 'Read less';
             }
         }
+    </script>
+
+    <!-- Initialize Mobile Menu and Other Functionalities -->
+    <script>
+        $(document).ready(function() {
+            console.log("Mobile menu script loaded");
+            console.log("Hamburger button found:", $(".hamberger-button").length);
+            console.log("Mobile menu found:", $(".popup-mobile-menu").length);
+            
+            // Initialize mobile menu functionality
+            if (typeof eduJs !== 'undefined') {
+                console.log("eduJs found, initializing...");
+                eduJs.popupMobileMenu();
+                eduJs.headerSticky();
+            } else {
+                console.log("eduJs not found, using fallback...");
+            }
+            
+            // Alternative mobile menu initialization if eduJs is not available
+            $(".hamberger-button").on("click", function(e) {
+                console.log("Hamburger button clicked!");
+                e.preventDefault();
+                $(".popup-mobile-menu").addClass("active");
+                console.log("Mobile menu should be active now");
+            });
+
+            $(".close-button").on("click", function(e) {
+                console.log("Close button clicked!");
+                e.preventDefault();
+                $(".popup-mobile-menu").removeClass("active");
+            });
+
+            // Close menu when clicking outside
+            $(".popup-mobile-menu").on("click", function(e) {
+                if (e.target === this) {
+                    console.log("Clicked outside menu, closing...");
+                    $(".popup-mobile-menu").removeClass("active");
+                }
+            });
+        });
     </script>
 
 </body>
