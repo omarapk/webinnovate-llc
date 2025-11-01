@@ -3,9 +3,9 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Refund Policy - LeadForm: COD Order Form</title>
+    <title>Privacy Policy - LeadForm: COD Order Form</title>
     <meta name="robots" content="noindex, follow">
-    <meta name="description" content="Refund Policy for LeadForm: COD Order Form - Learn about our refund terms and conditions">
+    <meta name="description" content="Privacy Policy for LeadForm: COD Order Form - Learn about how we handle your personal information">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Favicon -->
@@ -115,11 +115,11 @@
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="/leadform"><i class="fas fa-home"></i></a></li>
-                    <li class="breadcrumb-item active">Refund Policy</li>
+                    <li class="breadcrumb-item active">Privacy Policy</li>
                 </ol>
             </nav>
-            <h1 class="display-4 fw-bold">Refund Policy</h1>
-            <p class="lead">LeadForm: COD Order Form Refund Policy</p>
+            <h1 class="display-4 fw-bold">Privacy Policy</h1>
+            <p class="lead">LeadForm: COD Order Form Privacy Policy</p>
         </div>
     </section>
 
@@ -127,83 +127,134 @@
     <section class="content-section">
         <div class="container">
             <div class="privacy-content">
-                <h1>Refund Policy – LeadForm: COD Order Form</h1>
-                <p><strong>Last updated: September 18, 2025</strong></p>
+                <h1>Privacy policy – LeadForm: COD Order Form</h1>
                 
-                <p>Thank you for using LeadForm: COD – Order Form (the "App"). We strive to ensure you have the best experience possible with our application. This Refund Policy explains when you may be eligible for a refund and how requests are processed.</p>
+                <p><strong>Last Updated: 23/01/2025</strong></p>
+
+                <p>Thank you for choosing LeadForm: COD – Order Form. We are committed to protecting your personal information and your right to privacy. If you have any questions or concerns about this notice, or our practices regarding your personal data, please contact us at <a href="mailto:support@leadform.app">support@leadform.app</a>.</p>
+
+                <p>When you visit our website (leadform.app) or use our services, you trust us with your personal information. This Privacy Notice explains in clear terms what data we collect, how we use it, and what rights you have. Please read it carefully to understand how we handle your data. If you do not agree with this policy, you should discontinue using our Services.</p>
+
+                <p>This Privacy Notice applies to all information collected through our website and any related services, sales, marketing, or events (collectively referred to as the "Services").</p>
 
                 <div class="table-of-contents">
                     <h4>Table of Contents</h4>
                     <ul>
-                        <li><a href="#general-policy">1. General Policy</a></li>
-                        <li><a href="#eligible-refund">2. Eligible Refund Situations</a></li>
-                        <li><a href="#annual-refunds">3. Refunds for Annual Subscriptions</a></li>
-                        <li><a href="#non-refundable">4. Non-Refundable Situations</a></li>
-                        <li><a href="#request-refund">5. How to Request a Refund</a></li>
-                        <li><a href="#refund-method">6. Refund Method</a></li>
-                        <li><a href="#policy-changes">7. Changes to This Policy</a></li>
+                        <li><a href="#collect-info">What Information Do We Collect?</a></li>
+                        <li><a href="#use-info">How Do We Use Your Information?</a></li>
+                        <li><a href="#share-info">Will Your Information Be Shared With Anyone?</a></li>
+                        <li><a href="#keep-info">How Long Do We Keep Your Information?</a></li>
+                        <li><a href="#safe-info">How Do We Keep Your Information Safe?</a></li>
+                        <li><a href="#minors">Do We Collect Information From Minors?</a></li>
+                        <li><a href="#privacy-rights">What Are Your Privacy Rights?</a></li>
+                        <li><a href="#do-not-track">Controls for Do-Not-Track Features</a></li>
+                        <li><a href="#updates">Do We Make Updates to This Policy?</a></li>
+                        <li><a href="#contact">How Can You Contact Us About This Policy?</a></li>
                     </ul>
                 </div>
 
-                <div id="general-policy">
-                    <h4>1. General Policy</h4>
-                    <p>By installing and using our App, you agree to our Terms of Service and this Refund Policy.</p>
-                    <p>Because LeadForm offers a fully functional free trial (or low-cost test period, if applicable), we generally do not provide refunds once a subscription has started or renewed, except in limited cases described below.</p>
-                </div>
-
-                <div id="eligible-refund">
-                    <h4>2. Eligible Refund Situations</h4>
-                    <p>You may be eligible for a refund if:</p>
+                <div id="collect-info">
+                    <h4>1. What Information Do We Collect?</h4>
+                    
+                    <h5>Automatically Collected Information</h5>
+                    <p>When you use our Services, we automatically collect technical information such as:</p>
                     <ul>
-                        <li>You were charged after uninstalling the app before the renewal date.</li>
-                        <li>You experienced a billing error (double charge, incorrect plan charge, etc.).</li>
-                        <li>There was a major technical issue preventing the app from functioning as intended, and our support team was unable to resolve it.</li>
+                        <li>IP address</li>
+                        <li>Browser and device characteristics</li>
+                        <li>Operating system and language</li>
+                        <li>Referring URLs and pages visited</li>
+                        <li>Device type and geolocation</li>
+                        <li>Usage data (how and when you interact with our Services)</li>
                     </ul>
-                    <p>In such cases, please contact us within 7 days of the charge to review your request.</p>
+                    <p>This data does not directly identify you but is necessary for maintaining the security, functionality, and analytics of our Services. Like many companies, we also use cookies and similar technologies.</p>
                 </div>
 
-                <div id="annual-refunds">
-                    <h4>3. Refunds for Annual Subscriptions</h4>
-                    <p>If you have subscribed to an annual plan and decide to cancel after several months of use, you may be eligible for a partial refund for the remaining unused months.</p>
-                    <p>However, please note that:</p>
+                <div id="use-info">
+                    <h4>2. How Do We Use Your Information?</h4>
+                    <p>We use personal information collected through our Services for the following purposes:</p>
                     <ul>
-                        <li>The annual plan includes a discounted rate compared to the monthly plan.</li>
-                        <li>When calculating the refund, the used months will be charged at the standard monthly rate (without discount).</li>
-                        <li>The refund will cover only the unused months, after deducting the recalculated value of the months already used.</li>
+                        <li><strong>Account setup and login:</strong> To help you create and manage your account, including integrations with third-party accounts (e.g., Google, Facebook).</li>
+                        <li><strong>Marketing and communication:</strong> To send promotional content, updates, and offers (if you've opted in). You can unsubscribe at any time.</li>
+                        <li><strong>Service improvement:</strong> For analytics, troubleshooting, and optimization of features.</li>
+                        <li><strong>Legal compliance:</strong> To comply with laws, regulations, or court orders.</li>
                     </ul>
-                    <p><strong>Example:</strong><br>
-                    If the annual plan is $180/year (equivalent to $15/month) and the monthly plan is $20/month, and you cancel after 5 months:<br>
-                    → You will be charged $20 × 5 = $100 for used months, and refunded the remaining balance ($180 – $100 = $80).</p>
-                </div>
-
-                <div id="non-refundable">
-                    <h4>4. Non-Refundable Situations</h4>
-                    <p>Refunds will not be issued for:</p>
+                    <p>We process your information based on:</p>
                     <ul>
-                        <li>Forgetting to uninstall the app before the billing date.</li>
-                        <li>Lack of usage or results that do not meet expectations.</li>
-                        <li>App incompatibility with third-party themes, apps, or custom scripts outside our control.</li>
-                        <li>Subscription cancellations made after the billing period has started and no technical issue was found.</li>
+                        <li>Legitimate business interests</li>
+                        <li>Contract performance</li>
+                        <li>Your consent</li>
+                        <li>Legal obligations</li>
                     </ul>
                 </div>
 
-                <div id="request-refund">
-                    <h4>5. How to Request a Refund</h4>
-                    <p>To request a refund, please contact us at:</p>
-                    <p>📧 <a href="mailto:support@leadform.app">support@leadform.app</a></p>
-                    <p>Include your Shopify store URL, the date of charge, and a brief description of the issue.</p>
-                    <p>Our team will review your case within 2–3 business days and issue an appropriate refund if eligible.</p>
+                <div id="share-info">
+                    <h4>3. Will Your Information Be Shared With Anyone?</h4>
+                    <p>We only share data when necessary and under strict conditions:</p>
+                    <ul>
+                        <li><strong>With your consent</strong> – for specific purposes you agree to.</li>
+                        <li><strong>Vendors & service providers</strong> – including hosting, payment processors, analytics, email delivery, and customer support.</li>
+                        <li><strong>Business transfers</strong> – during mergers, acquisitions, or company restructuring.</li>
+                        <li><strong>Legal requirements</strong> – to comply with law, national security, or law enforcement.</li>
+                        <li><strong>Protection of rights</strong> – in cases of fraud, abuse, or security risks.</li>
+                    </ul>
+                    <p>We do not sell or rent your personal information to third parties for marketing purposes.</p>
                 </div>
 
-                <div id="refund-method">
-                    <h4>6. Refund Method</h4>
-                    <p>If approved, refunds will be processed via Shopify's billing system.</p>
-                    <p>Once issued, the refund amount will automatically appear in your Shopify account or original payment method within 5–10 business days, depending on your bank or payment provider.</p>
+                <div id="keep-info">
+                    <h4>4. How Long Do We Keep Your Information?</h4>
+                    <p>We retain your information only as long as necessary to provide our Services and fulfill the purposes outlined in this Privacy Notice, unless a longer period is required by law.</p>
+                    <p>Once your data is no longer needed, we either delete it or anonymize it.</p>
                 </div>
 
-                <div id="policy-changes">
-                    <h4>7. Changes to This Policy</h4>
-                    <p>We may update this Refund Policy from time to time. All changes will be posted on this page with an updated "Last updated" date.</p>
+                <div id="safe-info">
+                    <h4>5. How Do We Keep Your Information Safe?</h4>
+                    <p>We use appropriate technical and organizational security measures to protect your personal information. However, no online service can be 100% secure. Transmission of personal information is at your own risk, so we recommend accessing our Services only in secure environments.</p>
+                </div>
+
+                <div id="minors">
+                    <h4>6. Do We Collect Information From Minors?</h4>
+                    <p>No. We do not knowingly collect or market to children under 18 years old.</p>
+                    <p>If we discover we have collected data from a minor, we will promptly delete it. If you are a parent or guardian and believe your child has shared personal data with us, please contact us at <a href="mailto:support@leadform.app">support@leadform.app</a>.</p>
+                </div>
+
+                <div id="privacy-rights">
+                    <h4>7. What Are Your Privacy Rights?</h4>
+                    <p>Depending on your location (e.g., the European Economic Area), you may have the right to:</p>
+                    <ul>
+                        <li>Access and obtain a copy of your data</li>
+                        <li>Request correction or deletion</li>
+                        <li>Restrict processing of your data</li>
+                        <li>Data portability (where applicable)</li>
+                        <li>Withdraw consent at any time</li>
+                    </ul>
+                    <p>You may also file a complaint with your local data protection authority if you believe we are unlawfully processing your data.</p>
+                    
+                    <h5>Account Information</h5>
+                    <p>You can delete the app anytime via the Shopify dashboard.</p>
+                    <p>Upon deletion, your account data will be removed from active databases, but we may retain certain data to comply with legal obligations or prevent fraud.</p>
+                    
+                    <h5>Cookies</h5>
+                    <p>You can configure your browser to reject cookies. Note: disabling cookies may affect certain features of our Services.</p>
+                    
+                    <h5>Email marketing</h5>
+                    <p>You may unsubscribe at any time using the link provided in our emails. Service-related emails (important updates, billing notices) cannot be opted out of.</p>
+                </div>
+
+                <div id="do-not-track">
+                    <h4>8. Controls for Do-Not-Track (DNT) Features</h4>
+                    <p>Currently, no uniform standard exists for recognizing DNT signals. Therefore, we do not respond to DNT browser settings. If a standard is adopted in the future, we will update this policy accordingly.</p>
+                </div>
+
+                <div id="updates">
+                    <h4>9. Do We Make Updates to This Policy?</h4>
+                    <p>Yes. We may update this Privacy Notice to stay compliant with laws and best practices. Updates will be reflected by the "Last Updated" date. For material changes, we may notify you via email or by posting a notice on our website.</p>
+                </div>
+
+                <div id="contact">
+                    <h4>10. How Can You Contact Us About This Policy?</h4>
+                    <p>If you have questions or comments about this Privacy Notice, you may contact us at:</p>
+                    <p>📧 <a href="mailto:contact@webinnovate.dev">contact@webinnovate.dev</a></p>
+                    <p>🌐 <a href="https://www.webinnovate.dev">www.webinnovate.dev</a></p>
                 </div>
 
                 <div style="margin-top: 40px; padding: 20px; background-color: #f8f9fa; border-radius: 8px;">

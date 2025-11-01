@@ -2456,12 +2456,14 @@ Simplify checkout, boost conversions, and scale your business.
                                     <li>
                                         <a href="#faq">FAQ</a>
                                     </li>
-                            
                                     <li>
-                                        <a href="https://webinnovate.dev/leadform/privacy-policy">Refund Policy</a>
+                                        <a href="https://webinnovate.dev/leadform/privacy-policy">Privacy Policy</a>
                                     </li>
                                     <li>
                                         <a href="https://webinnovate.dev/leadform/terms-of-service">Terms of Service</a>
+                                    </li>
+                                    <li>
+                                        <a href="https://webinnovate.dev/leadform/refund-policy">Refund Policy</a>
                                     </li>
                                 </ul>
                             </div>
