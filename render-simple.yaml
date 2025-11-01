@@ -17,7 +17,7 @@ services:
       - key: APP_DEBUG
         value: false
       - key: APP_URL
-        value: https://histudy-laravel-simple.onrender.com
+        value: https://webinnovate.dev
       - key: LOG_CHANNEL
         value: stack
       - key: DB_CONNECTION
