@@ -9,7 +9,7 @@ services:
       - key: APP_DEBUG
         value: true
       - key: APP_URL
-        value: https://leadform-page.onrender.com
+        value: https://webinnovate.dev
       - key: LOG_CHANNEL
         value: stack
       - key: DB_CONNECTION

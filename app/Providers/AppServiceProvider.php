@@ -22,7 +22,7 @@ class AppServiceProvider extends ServiceProvider
         // Force HTTPS for all URLs in production
         if (app()->environment('production')) {
             \URL::forceScheme('https');
-            \URL::forceRootUrl('https://leadform-page.onrender.com');
+            \URL::forceRootUrl('https://webinnovate.dev');
         }
     }
 }
