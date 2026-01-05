@@ -1910,7 +1910,7 @@ Merci LeadForm Order COD Form. L'application a vraiment transformé notre façon
                             <li class="nav-item">
                                 <button class="nav-link yearly-plan-btn" type="button">
                                     Yearly Plan
-                                    <span class="save-badge">SAVE UP TO 33%</span>
+                                    <span class="save-badge">SAVE UP TO 17%</span>
                                 </button>
                             </li>
                             <li class="nav-item">
@@ -1925,16 +1925,16 @@ Merci LeadForm Order COD Form. L'application a vraiment transformé notre façon
                 <div class="col-xl-3 col-lg-3 col-md-6 col-12">
                     <div class="pricing-table style-2">
                         <div class="pricing-header">
-                            <h3 class="title">Starter </h3>
-                            <span class="rbt-badge mb--35">14-day free trial</span>
+                            <h3 class="title">Free</h3>
+                            <!-- <span class="rbt-badge mb--35">Free to install</span> -->
                             <div class="price-wrap">
                                 <div class="yearly-pricing" style="display: none;">
-                                    <span class="amount">$9.99</span>
-                                    <span class="duration">/year and save 16%</span>
+                                    <span class="amount">Free</span>
+                                    <span class="duration"></span>
                                 </div>
                                 <div class="monthly-pricing" style="display: block;">
-                                    <span class="amount">$0.99</span>
-                                    <span class="duration">/month</span>
+                                    <span class="amount">Free</span>
+                                    <span class="duration"></span>
                                 </div>
                             </div>
                         </div>
@@ -1951,7 +1951,7 @@ Merci LeadForm Order COD Form. L'application a vraiment transformé notre façon
 
                         <div class="pricing-body">
                             <ul class="list-item">
-                                <li><i class="fa-solid fa-check fa-2xs"></i> 100 Orders/mo</li>
+                                <li><i class="fa-solid fa-check fa-2xs"></i> 60 Orders/mo</li>
                                 <li><i class="fa-solid fa-check fa-2xs"></i> Google Sheets Synchronisation</li>
                                 <li><i class="fa-solid fa-check fa-2xs"></i> Upsells & Bundles</li>
                                 <li><i class="fa-solid fa-check fa-2xs"></i> Whatsapp abandoned checkouts</li>
@@ -1967,8 +1967,7 @@ Merci LeadForm Order COD Form. L'application a vraiment transformé notre façon
                 <div class="col-xl-3 col-lg-3 col-md-6 col-12">
                     <div class="pricing-table style-2">
                         <div class="pricing-header">
-                            <h3 class="title">Basic </h3>
-                            <span class="rbt-badge mb--35">14-day free trial</span>
+                            <h3 class="title">Unlimited</h3>
                             <div class="price-wrap">
                                 <div class="yearly-pricing" style="display: none;">
                                     <span class="amount">$99</span>
@@ -1984,7 +1983,7 @@ Merci LeadForm Order COD Form. L'application a vraiment transformé notre façon
                         <div class="pricing-btn">
                             <a class="rbt-btn bg-primary-opacity hover-icon-reverse w-100" href="https://apps.shopify.com/leadform-cod">
                                 <div class="icon-reverse-wrapper">
-                                    <span class="btn-text">Start Free Trial</span>
+                                    <span class="btn-text">Start Now</span>
                                     <span class="btn-icon"><i class="fa-solid fa-arrow-right"></i></span>
                                     <span class="btn-icon"><i class="fa-solid fa-arrow-right"></i></span>
                                 </div>
@@ -1993,13 +1992,13 @@ Merci LeadForm Order COD Form. L'application a vraiment transformé notre façon
 
                         <div class="pricing-body">
                             <ul class="list-item">
-                                <li><i class="fa-solid fa-check fa-2xs"></i> 400 Orders/mo</li>
+                                <li><i class="fa-solid fa-check fa-2xs"></i> 440 Orders/mo</li>
                                 <li><i class="fa-solid fa-check fa-2xs"></i> Google Sheets Synchronisation</li>
                                 <li><i class="fa-solid fa-check fa-2xs"></i> Upsells & Bundles</li>
                                 <li><i class="fa-solid fa-check fa-2xs"></i> Whatsapp abandoned checkouts</li>
                                 <li><i class="fa-solid fa-check fa-2xs"></i> Shipping rates</li>
-                                <li><i class="fa-solid fa-check fa-2xs"></i> Multiple Pixels</li>
-                                <li><i class="fa-solid fa-check fa-2xs"></i> Anti-Spam - Fake Order Protection</li>
+                                <li><i class="fa-solid fa-check fa-2xs"></i> Multi-Pixels</li>
+                                <li><i class="fa-solid fa-check fa-2xs"></i> Anti-Spam Fake Order Protection</li>
                                 <li><i class="fa-solid fa-check fa-2xs"></i> 24/7 support</li>
                             </ul>
                         </div>
@@ -2007,11 +2006,9 @@ Merci LeadForm Order COD Form. L'application a vraiment transformé notre façon
                 </div>
                 <!-- Start Single Pricing  -->
                 <div class="col-xl-3 col-lg-3 col-md-6 col-12">
-                    <div class="pricing-table style-2 active">
+                    <div class="pricing-table style-2">
                         <div class="pricing-header">
-                            <div class="pricing-badge"><span>Popular</span></div>
-                            <h3 class="title">Premium </h3>
-                            <span class="rbt-badge mb--35">Most Popular</span>
+                            <h3 class="title">Unlimited</h3>
                             <div class="price-wrap">
                                 <div class="yearly-pricing" style="display: none;">
                                     <span class="amount">$249</span>
@@ -2026,7 +2023,7 @@ Merci LeadForm Order COD Form. L'application a vraiment transformé notre façon
                         <div class="pricing-btn">
                             <a class="rbt-btn hover-icon-reverse w-100" href="https://apps.shopify.com/leadform-cod">
                                 <div class="icon-reverse-wrapper">
-                                    <span class="btn-text">Start Free Trial</span>
+                                    <span class="btn-text">Start Now</span>
                                     <span class="btn-icon"><i class="fa-solid fa-arrow-right"></i></span>
                                     <span class="btn-icon"><i class="fa-solid fa-arrow-right"></i></span>
                                 </div>
@@ -2054,15 +2051,14 @@ Merci LeadForm Order COD Form. L'application a vraiment transformé notre façon
                 <div class="col-xl-3 col-lg-3 col-md-6 col-12">
                     <div class="pricing-table style-2">
                         <div class="pricing-header">
-                            <h3 class="title">Market Pro </h3>
-                            <span class="rbt-badge mb--35">14-day free trial</span>
+                            <h3 class="title">Market</h3>
                             <div class="price-wrap">
                                 <div class="yearly-pricing" style="display: none;">
-                                    <span class="amount">$399</span>
-                                    <span class="duration">/year and save 33%</span>
+                                    <span class="amount">$999.99</span>
+                                    <span class="duration">/year and save 17%</span>
                                 </div>
                                 <div class="monthly-pricing" style="display: block;">
-                                    <span class="amount">$49.99</span>
+                                    <span class="amount">$99.99</span>
                                     <span class="duration">/month</span>
                                 </div>
                             </div>
@@ -2071,7 +2067,7 @@ Merci LeadForm Order COD Form. L'application a vraiment transformé notre façon
                         <div class="pricing-btn">
                             <a class="rbt-btn bg-primary-opacity hover-icon-reverse w-100" href="https://apps.shopify.com/leadform-cod">
                                 <div class="icon-reverse-wrapper">
-                                    <span class="btn-text">Start Free Trial</span>
+                                    <span class="btn-text">Start Now</span>
                                     <span class="btn-icon"><i class="fa-solid fa-arrow-right"></i></span>
                                     <span class="btn-icon"><i class="fa-solid fa-arrow-right"></i></span>
                                 </div>
@@ -2081,12 +2077,12 @@ Merci LeadForm Order COD Form. L'application a vraiment transformé notre façon
                         <div class="pricing-body">
                             <ul class="list-item">
                                 <li><i class="fa-solid fa-check fa-2xs"></i> Multiple Markets</li>
-                                <li><i class="fa-solid fa-check fa-2xs"></i> Google Sheets Synchronisation</li>
+                                <li><i class="fa-solid fa-check fa-2xs"></i> G.Sheets Sync (Order & abandoned order)</li>
                                 <li><i class="fa-solid fa-check fa-2xs"></i> Upsells & bundles</li>
                                 <li><i class="fa-solid fa-check fa-2xs"></i> Whatsapp abandoned checkouts</li>
                                 <li><i class="fa-solid fa-check fa-2xs"></i> Shipping rates</li>
                                 <li><i class="fa-solid fa-check fa-2xs"></i> Multi-Pixels</li>
-                                <li><i class="fa-solid fa-check fa-2xs"></i> Anti-Spam Fake Order Protec</li>
+                                <li><i class="fa-solid fa-check fa-2xs"></i> Anti-Spam Fake Order Protection</li>
                                 <li><i class="fa-solid fa-check fa-2xs"></i> 24/7 support</li>
                             </ul>
                         </div>
