@@ -117,7 +117,6 @@
                 </ol>
             </nav>
             <h1 class="display-5 fw-bold">Privacy Policy - Cart Upsell App</h1>
-            <p class="lead mb-0">Direct access page (not linked in footer)</p>
         </div>
     </section>
 
