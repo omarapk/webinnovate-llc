@@ -17,6 +17,7 @@ Route::get('/leadform', function () {
 
 // Privacy Policy route
 Route::get('/leadform/privacy-policy', [PagesController::class, 'privacyPolicy'])->name('privacyPolicy');
+Route::get('/leadform/cart-upsell-privacy-policy', [PagesController::class, 'cartUpsellPrivacyPolicy'])->name('cartUpsellPrivacyPolicy');
 Route::get('/leadform/refund-policy', [PagesController::class, 'refundPolicy'])->name('refundPolicy');
 
 // Terms of Service route

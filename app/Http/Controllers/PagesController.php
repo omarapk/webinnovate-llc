@@ -97,6 +97,11 @@ class PagesController extends Controller
         return view('pages/privacyPolicy');
     }
 
+    public function cartUpsellPrivacyPolicy()
+    {
+        return view('pages/cartUpsellPrivacyPolicy');
+    }
+
     public function refundPolicy()
     {
         return view('pages/refundPolicy');
