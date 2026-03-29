@@ -190,7 +190,7 @@
                 <div id="request-refund">
                     <h4>5. How to Request a Refund</h4>
                     <p>To request a refund, please contact us at:</p>
-                    <p>📧 <a href="mailto:support@leadform.app">support@leadform.app</a></p>
+                    <p>📧 <a href="mailto:support@webinnovate.dev">support@webinnovate.dev</a></p>
                     <p>Include your Shopify store URL, the date of charge, and a brief description of the issue.</p>
                     <p>Our team will review your case within 2–3 business days and issue an appropriate refund if eligible.</p>
                 </div>
@@ -210,7 +210,7 @@
                     <h4>LeadForm: COD – Order Form</h4>
                     <p><strong>Developed by WebInnovate LLC</strong></p>
                     <p>📍 Kentucky, USA<br>
-                    ✉️ <a href="mailto:contact@webinnovate.dev">contact@webinnovate.dev</a><br>
+                    ✉️ <a href="mailto:support@webinnovate.dev">support@webinnovate.dev</a><br>
                     🌐 <a href="https://webinnovate.dev/leadform">https://webinnovate.dev/leadform</a></p>
                 </div>
             </div>

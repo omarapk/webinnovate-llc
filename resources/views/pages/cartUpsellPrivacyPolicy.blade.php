@@ -127,7 +127,7 @@
                 <h1>Privacy Policy - Cart Upsell App</h1>
                 <p><strong>Last Updated: 07/01/2026</strong></p>
 
-                <p>Thank you for choosing Cart Upsell App ("App", "we", "us", "our"). We are committed to protecting your privacy and handling your information responsibly. If you have any questions about this Privacy Policy or our practices, contact us at <a href="mailto:contact@webinnovate.dev">contact@webinnovate.dev</a>.</p>
+                <p>Thank you for choosing Cart Upsell App ("App", "we", "us", "our"). We are committed to protecting your privacy and handling your information responsibly. If you have any questions about this Privacy Policy or our practices, contact us at <a href="mailto:support@webinnovate.dev">support@webinnovate.dev</a>.</p>
 
                 <p>This Privacy Policy explains how we collect, use, disclose, retain, and protect information when you install or use our App on Shopify, or when you visit our websites and related services (collectively, the "Services"). If you do not agree with this policy, please discontinue use of the Services.</p>
 
@@ -264,7 +264,7 @@
                         <li>Data portability (where applicable)</li>
                         <li>Withdraw consent (where processing is based on consent)</li>
                     </ul>
-                    <p>To exercise your rights, contact <a href="mailto:contact@webinnovate.dev">contact@webinnovate.dev</a>. We may need to verify your identity and store ownership to protect your data.</p>
+                    <p>To exercise your rights, contact <a href="mailto:support@webinnovate.dev">support@webinnovate.dev</a>. We may need to verify your identity and store ownership to protect your data.</p>
                     <p><strong>Merchant control:</strong> As the merchant, you control what data is collected from your store via Shopify and which App features you enable.</p>
                 </div>
 
@@ -296,7 +296,7 @@
                     <p>If you have questions or requests regarding this Privacy Policy, contact:</p>
                     <ul>
                         <li>WebInnovate LLC</li>
-                        <li>Email: <a href="mailto:contact@webinnovate.dev">contact@webinnovate.dev</a></li>
+                        <li>Email: <a href="mailto:support@webinnovate.dev">support@webinnovate.dev</a></li>
                         <li>Site: <a href="https://www.webinnovate.dev" target="_blank" rel="noopener">www.webinnovate.dev</a></li>
                         <li>Location: Kentucky, USA</li>
                     </ul>

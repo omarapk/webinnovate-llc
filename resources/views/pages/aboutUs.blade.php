@@ -317,7 +317,7 @@
                                         <div class="contact-box">
                             <h2><i class="fa-solid fa-envelope"></i> Contact Us</h2>
                     <p>Questions, feedback, or partnership inquiries? We'd love to hear from you:</p>
-                                            <p><strong><i class="fa-solid fa-envelope"></i></strong> <a href="mailto:contact@webinnovate.dev.">contact@webinnovate.dev.</a></p>
+                                            <p><strong><i class="fa-solid fa-envelope"></i></strong> <a href="mailto:support@webinnovate.dev">support@webinnovate.dev</a></p>
                         <!-- <p><strong><i class="fa-solid fa-globe"></i></strong> <a href="https://leadform.app" target="_blank">leadform.app</a></p> -->
                 </div>
 

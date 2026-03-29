@@ -131,7 +131,7 @@
                 
                 <p><strong>Last Updated: 23/01/2025</strong></p>
 
-                <p>Thank you for choosing LeadForm: COD – Order Form. We are committed to protecting your personal information and your right to privacy. If you have any questions or concerns about this notice, or our practices regarding your personal data, please contact us at <a href="mailto:support@leadform.app">support@leadform.app</a>.</p>
+                <p>Thank you for choosing LeadForm: COD – Order Form. We are committed to protecting your personal information and your right to privacy. If you have any questions or concerns about this notice, or our practices regarding your personal data, please contact us at <a href="mailto:support@webinnovate.dev">support@webinnovate.dev</a>.</p>
 
                 <p>When you visit our website (leadform.app) or use our services, you trust us with your personal information. This Privacy Notice explains in clear terms what data we collect, how we use it, and what rights you have. Please read it carefully to understand how we handle your data. If you do not agree with this policy, you should discontinue using our Services.</p>
 
@@ -214,7 +214,7 @@
                 <div id="minors">
                     <h4>6. Do We Collect Information From Minors?</h4>
                     <p>No. We do not knowingly collect or market to children under 18 years old.</p>
-                    <p>If we discover we have collected data from a minor, we will promptly delete it. If you are a parent or guardian and believe your child has shared personal data with us, please contact us at <a href="mailto:support@leadform.app">support@leadform.app</a>.</p>
+                    <p>If we discover we have collected data from a minor, we will promptly delete it. If you are a parent or guardian and believe your child has shared personal data with us, please contact us at <a href="mailto:support@webinnovate.dev">support@webinnovate.dev</a>.</p>
                 </div>
 
                 <div id="privacy-rights">
@@ -253,7 +253,7 @@
                 <div id="contact">
                     <h4>10. How Can You Contact Us About This Policy?</h4>
                     <p>If you have questions or comments about this Privacy Notice, you may contact us at:</p>
-                    <p>📧 <a href="mailto:contact@webinnovate.dev">contact@webinnovate.dev</a></p>
+                    <p>📧 <a href="mailto:support@webinnovate.dev">support@webinnovate.dev</a></p>
                     <p>🌐 <a href="https://www.webinnovate.dev">www.webinnovate.dev</a></p>
                 </div>
 
@@ -261,7 +261,7 @@
                     <h4>LeadForm: COD – Order Form</h4>
                     <p><strong>Developed by WebInnovate LLC</strong></p>
                     <p>📍 Kentucky, USA<br>
-                    ✉️ <a href="mailto:contact@webinnovate.dev">contact@webinnovate.dev</a><br>
+                    ✉️ <a href="mailto:support@webinnovate.dev">support@webinnovate.dev</a><br>
                     🌐 <a href="https://webinnovate.dev/leadform">https://webinnovate.dev/leadform</a></p>
                 </div>
             </div>

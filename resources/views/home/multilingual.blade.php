@@ -855,7 +855,7 @@
                 <!-- <p class="description">LeadForm - The ultimate COD (Cash on Delivery) solution for your Shopify store. Increase conversions with our all-in-one lead generation platform.</p>
                 <ul class="navbar-top-left rbt-information-list justify-content-start">
                     <li>
-                        <a href="mailto:support@leadform.com"><i class="feather-mail"></i>support@leadform.com</a>
+                        <a href="mailto:support@webinnovate.dev"><i class="feather-mail"></i>support@webinnovate.dev</a>
                     </li>
                     <li>
                         <a href="https://apps.shopify.com/leadform-cod"><i class="feather-external-link"></i>Shopify App Store</a>
@@ -2495,7 +2495,7 @@ Simplify checkout, boost conversions, and scale your business.
                             <div class="footer-widget">
                                 <h5 class="ft-title">Get in Touch</h5>
                                 <ul class="ft-link">
-                                    <li><span><i class="fa-solid fa-envelope"></i>  Email:</span> <a href="mailto:webinnovate.dev@gmail.com">webinnovate.dev@gmail.com</a></li>
+                                    <li><span><i class="fa-solid fa-envelope"></i>  Email:</span> <a href="mailto:support@webinnovate.dev">support@webinnovate.dev</a></li>
                                     <li><span><i class="fa-solid fa-phone"></i> Phone:</span> <a href="https://wa.me/18198070658">+1 (819) 807-0658</a></li>
                                     <li><span><i class="fa-solid fa-comment"></i> Live Chat:</span> <a href="https://leadform.crisp.help/en/">Available inside the app (Crisp)</a></li>
                                 </ul>
