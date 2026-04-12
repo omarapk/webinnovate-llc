@@ -21,6 +21,7 @@
     <link rel="stylesheet" href="{{ asset('assets/css/styles.css') }}">
     
         <style>
+        @include('public.layouts.partials.leadform-cta-button-css')
         body {
             background-color: #f5f5f5;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -949,12 +950,9 @@
 
                          <!-- Submit Button -->
              <div class="text-center">
-                 <button type="submit" class="rbt-btn btn-gradient hover-icon-reverse btn-sm">
-                     <span class="icon-reverse-wrapper">
-                         <span class="btn-text">Submit </span>
-                         <span class="btn-icon"><i class="fas fa-paper-plane"></i></span>
-                         <span class="btn-icon"><i class="fas fa-paper-plane"></i></span>
-                     </span>
+                 <button type="submit" class="lf-cta-btn lf-cta-btn-sm lf-cta-switch">
+                     @include('public.layouts.partials.lf-cta-switch-label', ['label' => 'Submit'])
+                     <i class="fas fa-paper-plane" aria-hidden="true"></i>
                  </button>
              </div>
         </form>

@@ -787,8 +787,6 @@
                                     <a href="#affiliate">Become An Affiliate </a>
                                 </li>
 
-                                
-
                             </ul>
                         </nav>
                     </div>
@@ -1276,6 +1274,67 @@ Our numbers speak louder than words.</p>
                             <p class="description">Block fake orders and protect your business with advanced filters.</p>
                         </div>
                     </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="rbt-rbt-blog-area rbt-section-gap bg-color-white" id="blog">
+            <div class="container">
+                <div class="row g-5 align-items-end mb--30">
+                    <div class="col-lg-12">
+                        <div class="section-title text-center">
+                            <span class="subtitle bg-primary-opacity">From the blog</span>
+                            <h2 class="title w-600">Tips, updates &amp; COD best practices</h2>
+                            <p class="description has-medium-font-size mt--20 mb-0">Latest articles from the LeadForm team—right here on the landing page.</p>
+                        </div>
+                    </div>
+                </div>
+                @if ($blogCategories->isNotEmpty())
+                    <div class="row justify-content-center mb--40">
+                        <div class="col-lg-10">
+                            <div class="d-flex flex-wrap justify-content-center gap-2">
+                                <a href="{{ url('/leadform#blog') }}" class="rbt-btn btn-sm radius-round {{ request('category') ? 'btn-border' : 'btn-gradient' }}">All</a>
+                                @foreach ($blogCategories as $cat)
+                                    @if ($cat->posts_count > 0)
+                                        <a href="{{ url('/leadform?category='.$cat->slug.'#blog') }}" class="rbt-btn btn-sm radius-round {{ request('category') === $cat->slug ? 'btn-gradient' : 'btn-border' }}">{{ $cat->name }}</a>
+                                    @endif
+                                @endforeach
+                            </div>
+                        </div>
+                    </div>
+                @endif
+                <div class="row g-5 mt--10">
+                    @forelse ($blogPosts as $post)
+                        <div class="col-lg-4 col-md-6 col-sm-12 col-12 mt--30">
+                            <div class="rbt-card variation-02 rbt-hover">
+                                <div class="rbt-card-img">
+                                    <a href="{{ route('blog.show', $post->slug) }}">
+                                        @if ($post->featured_image)
+                                            <img src="{{ asset('storage/'.$post->featured_image) }}" alt="{{ $post->title }}">
+                                        @else
+                                            <img src="{{ asset('assets/images/blog/blog-grid-01.jpg') }}" alt="{{ $post->title }}">
+                                        @endif
+                                    </a>
+                                </div>
+                                <div class="rbt-card-body">
+                                    @if ($post->category)
+                                        <span class="rbt-meta mb--5 d-block"><i class="feather-book"></i> {{ $post->category->name }}</span>
+                                    @endif
+                                    <h5 class="rbt-card-title"><a href="{{ route('blog.show', $post->slug) }}">{{ $post->title }}</a></h5>
+                                    @if ($post->excerpt)
+                                        <p class="rbt-card-text">{{ \Illuminate\Support\Str::limit(strip_tags($post->excerpt), 120) }}</p>
+                                    @endif
+                                    <div class="rbt-card-bottom">
+                                        <a class="rbt-btn-link" href="{{ route('blog.show', $post->slug) }}">Read article<i class="feather-arrow-right"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    @empty
+                        <div class="col-12 text-center">
+                            <p class="text-muted mb-0">No blog posts published yet. Check back soon.</p>
+                        </div>
+                    @endforelse
                 </div>
             </div>
         </div>
@@ -2634,7 +2693,7 @@ Simplify checkout, boost conversions, and scale your business.
             });
             
             // Add active state to navigation links on scroll
-            const sections = document.querySelectorAll('#features, #faq, #pricing, #affiliate');
+            const sections = document.querySelectorAll('#features, #blog, #faq, #pricing, #affiliate');
             const navLinks = document.querySelectorAll('.mainmenu a[href^="#"]');
             
             window.addEventListener('scroll', function() {

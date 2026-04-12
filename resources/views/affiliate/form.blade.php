@@ -21,6 +21,7 @@
     <link rel="stylesheet" href="{{ asset('assets/css/styles.css') }}">
     
     <style>
+        @include('public.layouts.partials.leadform-cta-button-css')
         .affiliate-hero {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
@@ -112,23 +113,6 @@
             box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.25);
         }
         
-        .btn-submit {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            border: none;
-            border-radius: 10px;
-            padding: 15px 40px;
-            font-size: 18px;
-            font-weight: 600;
-            color: white;
-            transition: all 0.3s ease;
-            width: 100%;
-        }
-        
-        .btn-submit:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
-        }
-        
         .alert {
             border-radius: 10px;
             border: none;
@@ -144,24 +128,6 @@
         .alert-danger {
             background: #f8d7da;
             color: #721c24;
-        }
-        
-        .back-link {
-            display: inline-flex;
-            align-items: center;
-            color: #667eea;
-            text-decoration: none;
-            font-weight: 600;
-            margin-bottom: 30px;
-            transition: color 0.3s ease;
-        }
-        
-        .back-link:hover {
-            color: #764ba2;
-        }
-        
-        .back-link i {
-            margin-right: 8px;
         }
         
         @media (max-width: 768px) {
@@ -220,9 +186,9 @@
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-10">
-                    <a href="/" class="back-link">
+                    <a href="/" class="lf-cta-btn lf-cta-btn-sm lf-cta-switch mb-4 d-inline-flex align-items-center gap-2">
                         <i class="fas fa-arrow-left"></i>
-                        Back to Home
+                        @include('public.layouts.partials.lf-cta-switch-label', ['label' => 'Back to Home'])
                     </a>
                     
                     <div class="form-card">
@@ -302,9 +268,9 @@
                                 <textarea class="form-control" id="motivation" name="motivation" rows="3" placeholder="Share your motivation and how you plan to promote our products...">{{ old('motivation') }}</textarea>
                             </div>
                             
-                            <button type="submit" class="btn btn-submit">
+                            <button type="submit" class="lf-cta-btn lf-cta-switch w-100">
                                 <i class="fas fa-paper-plane me-2"></i>
-                                Submit Application
+                                @include('public.layouts.partials.lf-cta-switch-label', ['label' => 'Submit Application'])
                             </button>
                         </form>
                     </div>

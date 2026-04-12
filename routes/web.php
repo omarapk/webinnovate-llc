@@ -1,9 +1,22 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\HomeController;
+use App\Http\Controllers\Admin\Auth\AdminLoginController;
+use App\Http\Controllers\Admin\BlogCategoryController;
+use App\Http\Controllers\Admin\BlogPostController;
+use App\Http\Controllers\Admin\DocArticleController;
+use App\Http\Controllers\Admin\DocCategoryController;
+use App\Http\Controllers\Admin\DocSectionController;
 use App\Http\Controllers\AffiliateController;
 use App\Http\Controllers\PagesController;
+use App\Http\Controllers\Public\BlogController;
+use App\Http\Controllers\Public\DocsController;
+use App\Models\BlogCategory;
+use App\Models\BlogPost;
+use App\Models\DocArticle;
+use App\Models\DocCategory;
+use App\Models\DocSection;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
 
 // Root route - displays welcome page with "Welcome to WebInnovate"
 Route::get('/', function () {
@@ -11,8 +24,27 @@ Route::get('/', function () {
 });
 
 // Main route - serves multilingual.blade.php at /leadform URL
-Route::get('/leadform', function () {
-    return view('home.multilingual');
+Route::get('/leadform', function (Request $request) {
+    $blogPostsQuery = BlogPost::query()
+        ->published()
+        ->with(['category', 'author'])
+        ->orderByDesc('published_at')
+        ->orderByDesc('created_at');
+
+    if ($request->filled('category')) {
+        $slug = $request->string('category');
+        $blogPostsQuery->whereHas('category', fn ($q) => $q->where('slug', $slug));
+    }
+
+    $blogPosts = $blogPostsQuery->limit(9)->get();
+
+    $blogCategories = BlogCategory::query()
+        ->withCount(['posts' => fn ($q) => $q->published()])
+        ->orderBy('sort_order')
+        ->orderBy('name')
+        ->get();
+
+    return view('home.multilingual', compact('blogPosts', 'blogCategories'));
 });
 
 // Privacy Policy route
@@ -26,6 +58,77 @@ Route::get('/leadform/terms-of-service', [PagesController::class, 'termsOfServic
 // About Us route
 Route::get('/leadform/about-us', [PagesController::class, 'aboutUs'])->name('aboutUs');
 Route::get('/leadform/feature-request', [PagesController::class, 'featureRequest'])->name('featureRequest');
+
+Route::redirect('/blog', '/leadform', 301);
+Route::get('/blog/{slug}', [BlogController::class, 'show'])->name('blog.show');
+Route::get('/docs', [DocsController::class, 'index'])->name('docs.index');
+Route::get('/docs/category/{slug}', [DocsController::class, 'category'])->name('docs.category');
+Route::get('/docs/{slug}', [DocsController::class, 'show'])->name('docs.show');
+
+Route::get('/affiliate/apply', [AffiliateController::class, 'showForm'])->name('affiliate.show');
+Route::post('/affiliate/apply', [AffiliateController::class, 'submitForm'])->name('affiliate.submit');
+
+Route::prefix('admin')->name('admin.')->group(function () {
+    Route::get('/', function () {
+        if (auth()->check() && auth()->user()->is_admin === true) {
+            return redirect()->route('admin.dashboard');
+        }
+
+        return redirect()->route('admin.login');
+    })->name('index');
+
+    Route::get('login', [AdminLoginController::class, 'showLogin'])->name('login');
+    Route::post('login', [AdminLoginController::class, 'login'])->name('login.submit');
+
+    Route::middleware('auth')->group(function () {
+        Route::post('logout', [AdminLoginController::class, 'logout'])->name('logout');
+        Route::get('dashboard', function () {
+            return view('admin.dashboard', [
+                'totalBlogPosts' => BlogPost::query()->count(),
+                'totalDocArticles' => DocArticle::query()->count(),
+                'publishedBlogPosts' => BlogPost::query()->where('status', 'published')->count(),
+                'draftBlogPosts' => BlogPost::query()->where('status', 'draft')->count(),
+                'totalDocSections' => DocSection::query()->count(),
+                'totalDocCategories' => DocCategory::query()->count(),
+                'publishedDocArticles' => DocArticle::query()->published()->count(),
+                'draftDocArticles' => DocArticle::query()->where('status', 'draft')->count(),
+            ]);
+        })->middleware('admin')->name('dashboard');
+
+        Route::middleware('admin')->group(function () {
+            Route::patch('blog/posts/{post}/toggle', [BlogPostController::class, 'toggleStatus'])
+                ->name('blog.posts.toggle');
+
+            Route::resource('blog/categories', BlogCategoryController::class)
+                ->except(['show'])
+                ->names('blog.categories')
+                ->parameters(['categories' => 'category']);
+
+            Route::resource('blog/posts', BlogPostController::class)
+                ->except(['show'])
+                ->names('blog.posts')
+                ->parameters(['posts' => 'post']);
+
+            Route::patch('docs/articles/{article}/toggle', [DocArticleController::class, 'toggleStatus'])
+                ->name('docs.articles.toggle');
+
+            Route::resource('docs/sections', DocSectionController::class)
+                ->except(['show'])
+                ->names('docs.sections')
+                ->parameters(['sections' => 'section']);
+
+            Route::resource('docs/categories', DocCategoryController::class)
+                ->except(['show'])
+                ->names('docs.categories')
+                ->parameters(['categories' => 'category']);
+
+            Route::resource('docs/articles', DocArticleController::class)
+                ->except(['show'])
+                ->names('docs.articles')
+                ->parameters(['articles' => 'article']);
+        });
+    });
+});
 
 // Route::fallback(function () {
 //     return redirect('/');
