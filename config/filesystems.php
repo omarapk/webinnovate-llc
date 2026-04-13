@@ -17,6 +17,19 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Featured images (blog, docs)
+    |--------------------------------------------------------------------------
+    |
+    | Use "cloudinary" when CLOUDINARY_URL (or cloud/key/secret) is set.
+    | Override with FEATURED_IMAGE_DISK=public to keep storing under storage/app/public.
+    |
+    */
+
+    'featured_image_disk' => env('FEATURED_IMAGE_DISK')
+        ?: ((env('CLOUDINARY_URL') || env('CLOUDINARY_CLOUD_NAME')) ? 'cloudinary' : 'public'),
+
+    /*
+    |--------------------------------------------------------------------------
     | Filesystem Disks
     |--------------------------------------------------------------------------
     |
@@ -54,6 +67,16 @@ return [
             'endpoint' => env('AWS_ENDPOINT'),
             'use_path_style_endpoint' => env('AWS_USE_PATH_STYLE_ENDPOINT', false),
             'throw' => false,
+        ],
+
+        'cloudinary' => [
+            'driver' => 'cloudinary',
+            'url' => env('CLOUDINARY_URL'),
+            'cloud' => env('CLOUDINARY_CLOUD_NAME'),
+            'key' => env('CLOUDINARY_KEY'),
+            'secret' => env('CLOUDINARY_SECRET'),
+            'secure' => filter_var(env('CLOUDINARY_SECURE', true), FILTER_VALIDATE_BOOLEAN),
+            'prefix' => env('CLOUDINARY_PREFIX', 'leadform'),
         ],
 
     ],

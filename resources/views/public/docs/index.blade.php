@@ -9,16 +9,18 @@
 
 @section('content')
     <div class="docs-search-hero">
-        <h1 class="mb-0">How can we help you?</h1>
-        <form class="docs-search-input position-relative mt-4" action="{{ route('docs.index') }}" method="get" role="search">
-            <i class="bi bi-search search-icon"></i>
-            <input type="search" name="q" value="{{ $query }}" class="form-control" placeholder="How can we help you?" autocomplete="off" aria-label="Search help articles">
-        </form>
+        <div class="docs-search-hero-inner px-3 px-md-4">
+            <h1 class="mb-0">How can we help you?</h1>
+            <form class="docs-search-input position-relative mt-4 mt-md-5" action="{{ route('docs.index') }}" method="get" role="search">
+                <i class="bi bi-search search-icon" aria-hidden="true"></i>
+                <input type="search" name="q" value="{{ $query }}" class="form-control w-100" placeholder="Search help articles…" autocomplete="off" aria-label="Search help articles">
+            </form>
+        </div>
     </div>
 
     <div class="container py-5" style="max-width: 960px;">
         @if ($query !== '')
-            <div class="mb-5">
+            <div class="mb-5 docs-index-block">
                 <div class="d-flex flex-wrap align-items-center justify-content-between gap-2 mb-3">
                     <h2 class="docs-section-title mb-0">Search results</h2>
                     <a href="{{ route('docs.index') }}" class="lf-cta-btn lf-cta-btn-sm lf-cta-switch">@include('public.layouts.partials.lf-cta-switch-label', ['label' => 'Clear search'])</a>
@@ -46,10 +48,10 @@
             </div>
         @endif
 
-        <section class="mb-5 pb-2">
+        <section class="docs-index-block pb-2">
             <h2 class="docs-section-title">Most read articles</h2>
             @if ($mostReadArticles->isEmpty())
-                <p class="text-muted small mb-0">No published articles yet.</p>
+                <p class="docs-section-empty">No published articles yet.</p>
             @else
                 <div class="border rounded-3 bg-white px-3 px-md-4">
                     @foreach ($mostReadArticles as $art)
@@ -64,10 +66,10 @@
             @endif
         </section>
 
-        <section>
+        <section class="docs-index-block">
             <h2 class="docs-section-title">All categories</h2>
             @if ($categories->isEmpty())
-                <p class="text-muted small mb-0">No categories yet.</p>
+                <p class="docs-section-empty">No categories yet.</p>
             @else
                 <div class="row g-3 g-md-4">
                     @foreach ($categories as $i => $cat)

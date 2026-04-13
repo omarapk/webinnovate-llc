@@ -2,7 +2,9 @@
 
 namespace App\Models;
 
+use App\Support\FeaturedImage;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Support\Str;
@@ -52,6 +54,16 @@ class DocArticle extends Model
             'published_at' => 'datetime',
             'status' => 'string',
         ];
+    }
+
+    /**
+     * @return Attribute<string|null, never>
+     */
+    protected function featuredImageUrl(): Attribute
+    {
+        return Attribute::make(
+            get: fn () => FeaturedImage::url($this->featured_image),
+        );
     }
 
     /**

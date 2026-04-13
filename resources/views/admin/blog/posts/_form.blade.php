@@ -66,11 +66,11 @@
         @error('featured_image')
             <div class="invalid-feedback">{{ $message }}</div>
         @enderror
-        <div class="form-text">Max 2&nbsp;MB. Stored under <code>storage/app/public/blog/</code>.</div>
+        <div class="form-text">Max 2&nbsp;MB. @if (config('filesystems.featured_image_disk') === 'cloudinary')Delivered via Cloudinary (folder <code>{{ config('filesystems.disks.cloudinary.prefix', 'leadform') }}/blog</code>). @else Stored under <code>storage/app/public/blog/</code>. @endif</div>
         <div class="mt-3">
             @if ($post->exists && $post->featured_image)
                 <p class="small text-muted mb-1">Current image:</p>
-                <img src="{{ asset('storage/'.$post->featured_image) }}" alt="" class="img-thumbnail rounded-3" style="max-height: 180px;" id="current_featured_image">
+                <img src="{{ $post->featured_image_url }}" alt="" class="img-thumbnail rounded-3" style="max-height: 180px;" id="current_featured_image">
             @endif
             <img src="" alt="" class="img-thumbnail rounded-3 mt-2 d-none" style="max-height: 180px;" id="featured_preview">
         </div>

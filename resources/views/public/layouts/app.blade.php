@@ -5,12 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="{{ e(\Illuminate\Support\Str::limit(trim($__env->yieldContent('meta_description')) ?: 'LeadForm COD — Shopify COD Order Form App', 320)) }}">
     <title>@yield('title', config('app.name'))</title>
+    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('assets/images/logo.png') }}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+    @include('public.layouts.partials.landing-navbar-head')
     <style>
         body.public-site { font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif; color: #0f172a; background: #f1f5f9; }
-        @include('public.layouts.partials.pub-navbar-css')
-        @include('public.layouts.partials.leadform-cta-button-css')
         .pub-footer { background: #0f172a; color: rgba(255,255,255,.75); }
         .pub-footer a { color: rgba(255,255,255,.9); text-decoration: none; }
         .pub-footer a:hover { text-decoration: underline; }
@@ -19,8 +19,8 @@
     @stack('styles')
     @stack('head')
 </head>
-<body class="public-site d-flex flex-column min-vh-100">
-    @include('public.layouts.partials.main-navbar')
+<body class="rbt-header-sticky public-site d-flex flex-column min-vh-100">
+    @include('public.layouts.partials.landing-navbar')
 
     <main class="flex-grow-1 py-4 py-lg-5">
         @yield('content')
@@ -40,6 +40,7 @@
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    @include('public.layouts.partials.landing-navbar-scripts')
     @stack('scripts')
 </body>
 </html>

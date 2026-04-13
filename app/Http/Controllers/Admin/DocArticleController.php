@@ -5,9 +5,9 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\DocArticle;
 use App\Models\DocCategory;
+use App\Support\FeaturedImage;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\View\View;
 
 class DocArticleController extends Controller
@@ -64,7 +64,7 @@ class DocArticleController extends Controller
 
         $path = null;
         if ($request->hasFile('featured_image')) {
-            $path = $request->file('featured_image')->store('docs', 'public');
+            $path = $request->file('featured_image')->store('docs', FeaturedImage::disk());
         }
 
         DocArticle::create([
@@ -104,9 +104,9 @@ class DocArticleController extends Controller
 
         if ($request->hasFile('featured_image')) {
             if ($article->featured_image) {
-                Storage::disk('public')->delete($article->featured_image);
+                FeaturedImage::deleteStored($article->featured_image);
             }
-            $data['featured_image'] = $request->file('featured_image')->store('docs', 'public');
+            $data['featured_image'] = $request->file('featured_image')->store('docs', FeaturedImage::disk());
         }
 
         $article->update($data);
@@ -118,7 +118,7 @@ class DocArticleController extends Controller
     public function destroy(DocArticle $article): RedirectResponse
     {
         if ($article->featured_image) {
-            Storage::disk('public')->delete($article->featured_image);
+            FeaturedImage::deleteStored($article->featured_image);
         }
 
         $article->delete();

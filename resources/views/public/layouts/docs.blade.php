@@ -7,6 +7,8 @@
     <title>@yield('title', 'Help Center — LeadForm')</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('assets/images/logo.png') }}">
+    @include('public.layouts.partials.landing-navbar-head')
     <style>
         :root {
             --docs-bg: #ffffff;
@@ -23,50 +25,73 @@
             font-size: 0.9375rem;
             line-height: 1.6;
         }
-        @include('public.layouts.partials.pub-navbar-css')
         @include('public.layouts.partials.leadform-cta-button-css')
         .docs-search-hero {
-            padding: 2.5rem 1.25rem 2rem;
+            padding: clamp(3rem, 8vw, 5.5rem) 1.25rem clamp(2.5rem, 6vw, 4rem);
             text-align: center;
             border-bottom: 1px solid var(--docs-border);
             background: #fff;
         }
+        .docs-search-hero-inner {
+            max-width: 52rem;
+            margin-left: auto;
+            margin-right: auto;
+        }
         .docs-search-hero h1 {
-            font-size: clamp(1.5rem, 4vw, 1.875rem);
-            font-weight: 600;
-            letter-spacing: -0.03em;
-            margin-bottom: 1.25rem;
+            font-size: clamp(2rem, 5.5vw, 3.25rem);
+            font-weight: 700;
+            letter-spacing: -0.035em;
+            line-height: 1.15;
+            margin-bottom: 0;
             color: var(--docs-accent);
         }
         .docs-search-input {
-            max-width: 560px;
-            margin: 0 auto;
+            max-width: 100%;
+            width: 100%;
+            margin-left: auto;
+            margin-right: auto;
         }
         .docs-search-input .form-control {
             border: 1px solid var(--docs-border);
-            border-radius: 0.5rem;
-            padding: 0.75rem 1rem 0.75rem 2.75rem;
-            font-size: 1rem;
-            box-shadow: 0 1px 2px rgba(0,0,0,.04);
+            border-radius: 0.875rem;
+            padding: 1.05rem 1.35rem 1.05rem 3.5rem;
+            font-size: clamp(1.0625rem, 2vw, 1.25rem);
+            min-height: 3.75rem;
+            line-height: 1.4;
+            box-shadow: 0 2px 8px rgba(0,0,0,.06);
         }
         .docs-search-input .form-control:focus {
-            border-color: #d1d5db;
-            box-shadow: 0 0 0 3px rgba(17,24,39,.06);
+            border-color: #9ca3af;
+            box-shadow: 0 0 0 4px rgba(17,24,39,.08), 0 4px 14px rgba(0,0,0,.08);
         }
         .docs-search-input .search-icon {
             position: absolute;
-            left: 1rem;
+            left: 1.25rem;
             top: 50%;
             transform: translateY(-50%);
             color: var(--docs-muted);
             pointer-events: none;
+            font-size: 1.35rem;
         }
         .docs-section-title {
-            font-size: 1.125rem;
-            font-weight: 600;
-            letter-spacing: -0.02em;
+            font-size: clamp(1.4rem, 3.5vw, 2rem);
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            line-height: 1.2;
             color: var(--docs-accent);
-            margin-bottom: 1rem;
+            margin-bottom: 1.125rem;
+        }
+        .docs-section-empty {
+            font-size: clamp(1.0625rem, 2.2vw, 1.1875rem);
+            color: #64748b;
+            line-height: 1.65;
+            margin-bottom: 0;
+        }
+        .docs-index-block {
+            margin-bottom: clamp(2.25rem, 5vw, 3.5rem);
+        }
+        .docs-index-block:last-child {
+            margin-bottom: 0;
         }
         .docs-card-cat {
             border: 1px solid var(--docs-border);
@@ -182,16 +207,10 @@
         .docs-help-footer a.lf-cta-btn { margin: 0 0.25rem; }
     </style>
     @stack('styles')
+    @stack('head')
 </head>
-<body class="docs-help-body d-flex flex-column min-vh-100">
-    @include('public.layouts.partials.main-navbar', [
-        'navBrand' => 'Help Center',
-        'navBrandHref' => route('docs.index'),
-        'navPrimaryLabel' => 'Start free trial',
-        'navPrimaryHref' => 'https://apps.shopify.com/leadform-cod',
-        'navPrimaryNewTab' => true,
-        'navPrimaryIsCta' => true,
-    ])
+<body class="docs-help-body rbt-header-sticky d-flex flex-column min-vh-100">
+    @include('public.layouts.partials.landing-navbar')
 
     <main class="flex-grow-1">
         @yield('content')
@@ -207,6 +226,7 @@
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    @include('public.layouts.partials.landing-navbar-scripts')
     @stack('scripts')
 </body>
 </html>

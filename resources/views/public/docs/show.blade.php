@@ -69,7 +69,7 @@
 
                     @if ($article->featured_image)
                         <figure class="mb-4 rounded-3 overflow-hidden border">
-                            <img src="{{ asset('storage/'.$article->featured_image) }}" class="img-fluid w-100" alt="">
+                            <img src="{{ $article->featured_image_url }}" class="img-fluid w-100" alt="">
                         </figure>
                     @endif
 

@@ -774,6 +774,10 @@
                                 </li>
 
                                 <li class="with-megamenu has-menu-child-item">
+                                    <a href="#blog">Blog</a>
+                                </li>
+
+                                <li class="with-megamenu has-menu-child-item">
                                     <a href="#faq">Faq  </a>
                                 </li>
 
@@ -864,6 +868,7 @@
             <nav class="mainmenu-nav">
                 <ul class="mainmenu">
                     <li><a href="#features">Features</a></li>
+                    <li><a href="#blog">Blog</a></li>
                     <li><a href="#faq">FAQ</a></li>
                     <li><a href="#pricing">Pricing</a></li>
                     <li><a href="#affiliate">Become An Affiliate</a></li>
@@ -2407,7 +2412,7 @@ Merci LeadForm Order COD Form. L'application a vraiment transformé notre façon
                             <div class="rbt-card-img">
                                 <a href="{{ route('blog.show', $post->slug) }}">
                                     @if ($post->featured_image)
-                                        <img src="{{ asset('storage/'.$post->featured_image) }}" alt="{{ filled($post->alt_text) ? $post->alt_text : $post->title }}">
+                                        <img src="{{ $post->featured_image_url }}" alt="{{ filled($post->alt_text) ? $post->alt_text : $post->title }}">
                                     @else
                                         <img src="{{ asset('assets/images/blog/blog-grid-01.jpg') }}" alt="{{ $post->title }}">
                                     @endif

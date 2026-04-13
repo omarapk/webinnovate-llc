@@ -4,9 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\BlogPost;
+use App\Support\FeaturedImage;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
 use Illuminate\View\View;
@@ -66,7 +66,7 @@ class BlogPostController extends Controller
 
         $path = null;
         if ($request->hasFile('featured_image')) {
-            $path = $request->file('featured_image')->store('blog', 'public');
+            $path = $request->file('featured_image')->store('blog', FeaturedImage::disk());
         }
 
         BlogPost::create([
@@ -114,9 +114,9 @@ class BlogPostController extends Controller
 
         if ($request->hasFile('featured_image')) {
             if ($post->featured_image) {
-                Storage::disk('public')->delete($post->featured_image);
+                FeaturedImage::deleteStored($post->featured_image);
             }
-            $data['featured_image'] = $request->file('featured_image')->store('blog', 'public');
+            $data['featured_image'] = $request->file('featured_image')->store('blog', FeaturedImage::disk());
         }
 
         $post->update($data);
@@ -128,7 +128,7 @@ class BlogPostController extends Controller
     public function destroy(BlogPost $post): RedirectResponse
     {
         if ($post->featured_image) {
-            Storage::disk('public')->delete($post->featured_image);
+            FeaturedImage::deleteStored($post->featured_image);
         }
 
         $post->delete();
