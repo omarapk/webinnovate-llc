@@ -40,11 +40,20 @@
             border-right: 1px solid var(--admin-sidebar-border);
         }
 
-        .admin-logo-dot {
-            width: 2rem;
-            height: 2rem;
-            background: linear-gradient(135deg, var(--admin-accent) 0%, #7c5cff 100%);
-            box-shadow: 0 0 0 3px rgba(61, 126, 255, 0.25);
+        .admin-sidebar-logo-wrap {
+            width: 2.5rem;
+            height: 2.5rem;
+            padding: 2px;
+            background: rgba(0, 0, 0, 0.35);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            box-shadow: 0 0 0 3px rgba(61, 126, 255, 0.22);
+        }
+
+        .admin-sidebar-logo {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 0.25rem;
         }
 
         .admin-sidebar-nav .nav-link {

@@ -736,33 +736,6 @@
             }
         }
 
-        /* Pre-footer blog grid (Latest Updates) */
-        .blog-section {
-            padding: 80px 0;
-            background: #f8f9fa;
-        }
-        .blog-section__heading {
-            text-align: center;
-            margin-bottom: 40px;
-            font-size: 2rem;
-            font-weight: 700;
-        }
-        .blog-section__grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 30px;
-        }
-        @media (min-width: 769px) {
-            .blog-section__grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-        @media (min-width: 1025px) {
-            .blog-section__grid {
-                grid-template-columns: repeat(3, 1fr);
-            }
-        }
-
     </style>
 </head>
 <body class="rbt-header-sticky">
@@ -1301,53 +1274,6 @@ Our numbers speak louder than words.</p>
                             <p class="description">Block fake orders and protect your business with advanced filters.</p>
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="rbt-rbt-blog-area rbt-section-gap bg-color-white" id="blog">
-            <div class="container">
-                <div class="row g-5 align-items-end mb--30">
-                    <div class="col-lg-12">
-                        <div class="section-title text-center">
-                            <span class="subtitle bg-primary-opacity">From the blog</span>
-                            <h2 class="title w-600">Tips, updates &amp; COD best practices</h2>
-                            <p class="description has-medium-font-size mt--20 mb-0">Latest articles from the LeadForm team—right here on the landing page.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="row g-5 mt--10">
-                    @forelse ($blogPosts as $post)
-                        <div class="col-lg-4 col-md-6 col-sm-12 col-12 mt--30">
-                            <div class="rbt-card variation-02 rbt-hover">
-                                <div class="rbt-card-img">
-                                    <a href="{{ route('blog.show', $post->slug) }}">
-                                        @if ($post->featured_image)
-                                            <img src="{{ asset('storage/'.$post->featured_image) }}" alt="{{ $post->title }}">
-                                        @else
-                                            <img src="{{ asset('assets/images/blog/blog-grid-01.jpg') }}" alt="{{ $post->title }}">
-                                        @endif
-                                    </a>
-                                </div>
-                                <div class="rbt-card-body">
-                                    <h5 class="rbt-card-title"><a href="{{ route('blog.show', $post->slug) }}">{{ $post->title }}</a></h5>
-                                    @if ($post->author_name)
-                                        <p class="small text-muted mb-2 mb--10">By {{ $post->author_name }}</p>
-                                    @endif
-                                    @if ($post->excerpt)
-                                        <p class="rbt-card-text">{{ \Illuminate\Support\Str::limit(strip_tags($post->excerpt), 120) }}</p>
-                                    @endif
-                                    <div class="rbt-card-bottom">
-                                        <a class="rbt-btn-link" href="{{ route('blog.show', $post->slug) }}">Read article<i class="feather-arrow-right"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    @empty
-                        <div class="col-12 text-center">
-                            <p class="text-muted mb-0">No blog posts published yet. Check back soon.</p>
-                        </div>
-                    @endforelse
                 </div>
             </div>
         </div>
@@ -2463,57 +2389,52 @@ Merci LeadForm Order COD Form. L'application a vraiment transformé notre façon
     </div>
     <!-- End Commission Program Section -->
 
-    @if (isset($blogPosts) && $blogPosts->count() > 0)
-        <section class="blog-section" aria-labelledby="blog-section-heading">
-            <div class="container">
-                <h2 id="blog-section-heading" class="blog-section__heading">Latest Updates</h2>
-                <div class="blog-section__grid">
-                    @foreach ($blogPosts as $post)
-                        <div style="background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 2px 15px rgba(0,0,0,0.08);">
-                            @if ($post->featured_image)
-                                <img src="{{ asset('storage/'.$post->featured_image) }}"
-                                     alt="{{ filled($post->alt_text) ? $post->alt_text : $post->title }}"
-                                     loading="lazy"
-                                     style="width:100%; height: 200px; object-fit: cover;">
-                            @else
-                                <div style="width:100%; height: 200px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);" role="img" aria-label="{{ $post->title }}"></div>
-                            @endif
-
-                            <div style="padding: 20px;">
-                                <p style="color: #999; font-size: 0.85rem; margin-bottom: 8px;">
-                                    {{ ($post->published_at ?? $post->created_at)->format('F j, Y') }}
-                                </p>
-
-                                <h3 style="font-size: 1.1rem; font-weight: 700; margin-bottom: 10px; line-height: 1.4;">
-                                    <a href="{{ route('blog.show', $post->slug) }}" style="color: #1a1a2e; text-decoration: none;">
-                                        {{ $post->title }}
-                                    </a>
-                                </h3>
-
-                                @if ($post->author_name)
-                                    <p style="font-weight: 600; font-size: 0.9rem; margin-bottom: 10px; color: #444;">
-                                        By {{ $post->author_name }}
-                                    </p>
-                                @endif
-
-                                @if ($post->excerpt)
-                                    <p style="color: #666; font-size: 0.9rem; line-height: 1.6; margin-bottom: 15px;
-                                              display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">
-                                        {{ strip_tags($post->excerpt) }}
-                                    </p>
-                                @endif
-
-                                <a href="{{ route('blog.show', $post->slug) }}"
-                                   style="color: #764ba2; font-weight: 600; text-decoration: none; font-size: 0.9rem;">
-                                    Read more →
-                                </a>
-                            </div>
-                        </div>
-                    @endforeach
+    <div class="rbt-rbt-blog-area rbt-section-gap bg-color-white" id="blog">
+        <div class="container">
+            <div class="row g-5 align-items-end mb--30">
+                <div class="col-lg-12">
+                    <div class="section-title text-center">
+                        <span class="subtitle bg-primary-opacity">From the blog</span>
+                        <h2 class="title w-600">Tips, updates &amp; COD best practices</h2>
+                        <p class="description has-medium-font-size mt--20 mb-0">Latest articles from the LeadForm team—right here on the landing page.</p>
+                    </div>
                 </div>
             </div>
-        </section>
-    @endif
+            <div class="row g-5 mt--10">
+                @forelse ($blogPosts as $post)
+                    <div class="col-lg-4 col-md-6 col-sm-12 col-12 mt--30">
+                        <div class="rbt-card variation-02 rbt-hover">
+                            <div class="rbt-card-img">
+                                <a href="{{ route('blog.show', $post->slug) }}">
+                                    @if ($post->featured_image)
+                                        <img src="{{ asset('storage/'.$post->featured_image) }}" alt="{{ filled($post->alt_text) ? $post->alt_text : $post->title }}">
+                                    @else
+                                        <img src="{{ asset('assets/images/blog/blog-grid-01.jpg') }}" alt="{{ $post->title }}">
+                                    @endif
+                                </a>
+                            </div>
+                            <div class="rbt-card-body">
+                                <h5 class="rbt-card-title"><a href="{{ route('blog.show', $post->slug) }}">{{ $post->title }}</a></h5>
+                                @if ($post->author_name)
+                                    <p class="small text-muted mb-2 mb--10">By {{ $post->author_name }}</p>
+                                @endif
+                                @if ($post->excerpt)
+                                    <p class="rbt-card-text">{{ \Illuminate\Support\Str::limit(strip_tags($post->excerpt), 120) }}</p>
+                                @endif
+                                <div class="rbt-card-bottom">
+                                    <a class="rbt-btn-link" href="{{ route('blog.show', $post->slug) }}">Read article<i class="feather-arrow-right"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                @empty
+                    <div class="col-12 text-center">
+                        <p class="text-muted mb-0">No blog posts published yet. Check back soon.</p>
+                    </div>
+                @endforelse
+            </div>
+        </div>
+    </div>
 
     <footer class="rbt-footer footer-style-1 bg-color-darker overflow-hidden rbt-section-box box-footer">
             <div class="footer-top">
