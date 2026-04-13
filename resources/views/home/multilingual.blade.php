@@ -736,6 +736,33 @@
             }
         }
 
+        /* Pre-footer blog grid (Latest Updates) */
+        .blog-section {
+            padding: 80px 0;
+            background: #f8f9fa;
+        }
+        .blog-section__heading {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 2rem;
+            font-weight: 700;
+        }
+        .blog-section__grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
+        }
+        @media (min-width: 769px) {
+            .blog-section__grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        @media (min-width: 1025px) {
+            .blog-section__grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
     </style>
 </head>
 <body class="rbt-header-sticky">
@@ -1289,20 +1316,6 @@ Our numbers speak louder than words.</p>
                         </div>
                     </div>
                 </div>
-                @if ($blogCategories->isNotEmpty())
-                    <div class="row justify-content-center mb--40">
-                        <div class="col-lg-10">
-                            <div class="d-flex flex-wrap justify-content-center gap-2">
-                                <a href="{{ url('/leadform#blog') }}" class="rbt-btn btn-sm radius-round {{ request('category') ? 'btn-border' : 'btn-gradient' }}">All</a>
-                                @foreach ($blogCategories as $cat)
-                                    @if ($cat->posts_count > 0)
-                                        <a href="{{ url('/leadform?category='.$cat->slug.'#blog') }}" class="rbt-btn btn-sm radius-round {{ request('category') === $cat->slug ? 'btn-gradient' : 'btn-border' }}">{{ $cat->name }}</a>
-                                    @endif
-                                @endforeach
-                            </div>
-                        </div>
-                    </div>
-                @endif
                 <div class="row g-5 mt--10">
                     @forelse ($blogPosts as $post)
                         <div class="col-lg-4 col-md-6 col-sm-12 col-12 mt--30">
@@ -1317,10 +1330,10 @@ Our numbers speak louder than words.</p>
                                     </a>
                                 </div>
                                 <div class="rbt-card-body">
-                                    @if ($post->category)
-                                        <span class="rbt-meta mb--5 d-block"><i class="feather-book"></i> {{ $post->category->name }}</span>
-                                    @endif
                                     <h5 class="rbt-card-title"><a href="{{ route('blog.show', $post->slug) }}">{{ $post->title }}</a></h5>
+                                    @if ($post->author_name)
+                                        <p class="small text-muted mb-2 mb--10">By {{ $post->author_name }}</p>
+                                    @endif
                                     @if ($post->excerpt)
                                         <p class="rbt-card-text">{{ \Illuminate\Support\Str::limit(strip_tags($post->excerpt), 120) }}</p>
                                     @endif
@@ -2449,6 +2462,58 @@ Merci LeadForm Order COD Form. L'application a vraiment transformé notre façon
         </div>
     </div>
     <!-- End Commission Program Section -->
+
+    @if (isset($blogPosts) && $blogPosts->count() > 0)
+        <section class="blog-section" aria-labelledby="blog-section-heading">
+            <div class="container">
+                <h2 id="blog-section-heading" class="blog-section__heading">Latest Updates</h2>
+                <div class="blog-section__grid">
+                    @foreach ($blogPosts as $post)
+                        <div style="background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 2px 15px rgba(0,0,0,0.08);">
+                            @if ($post->featured_image)
+                                <img src="{{ asset('storage/'.$post->featured_image) }}"
+                                     alt="{{ filled($post->alt_text) ? $post->alt_text : $post->title }}"
+                                     loading="lazy"
+                                     style="width:100%; height: 200px; object-fit: cover;">
+                            @else
+                                <div style="width:100%; height: 200px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);" role="img" aria-label="{{ $post->title }}"></div>
+                            @endif
+
+                            <div style="padding: 20px;">
+                                <p style="color: #999; font-size: 0.85rem; margin-bottom: 8px;">
+                                    {{ ($post->published_at ?? $post->created_at)->format('F j, Y') }}
+                                </p>
+
+                                <h3 style="font-size: 1.1rem; font-weight: 700; margin-bottom: 10px; line-height: 1.4;">
+                                    <a href="{{ route('blog.show', $post->slug) }}" style="color: #1a1a2e; text-decoration: none;">
+                                        {{ $post->title }}
+                                    </a>
+                                </h3>
+
+                                @if ($post->author_name)
+                                    <p style="font-weight: 600; font-size: 0.9rem; margin-bottom: 10px; color: #444;">
+                                        By {{ $post->author_name }}
+                                    </p>
+                                @endif
+
+                                @if ($post->excerpt)
+                                    <p style="color: #666; font-size: 0.9rem; line-height: 1.6; margin-bottom: 15px;
+                                              display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">
+                                        {{ strip_tags($post->excerpt) }}
+                                    </p>
+                                @endif
+
+                                <a href="{{ route('blog.show', $post->slug) }}"
+                                   style="color: #764ba2; font-weight: 600; text-decoration: none; font-size: 0.9rem;">
+                                    Read more →
+                                </a>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+            </div>
+        </section>
+    @endif
 
     <footer class="rbt-footer footer-style-1 bg-color-darker overflow-hidden rbt-section-box box-footer">
             <div class="footer-top">

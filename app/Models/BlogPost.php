@@ -10,15 +10,19 @@ use Illuminate\Support\Str;
 class BlogPost extends Model
 {
     protected $fillable = [
-        'category_id',
         'title',
         'slug',
+        'seo_title',
+        'meta_description',
+        'tags',
+        'alt_text',
         'excerpt',
         'content',
         'featured_image',
         'status',
         'published_at',
         'author_id',
+        'author_name',
     ];
 
     protected static function boot(): void
@@ -50,28 +54,20 @@ class BlogPost extends Model
         return [
             'published_at' => 'datetime',
             'status' => 'string',
+            'tags' => 'array',
         ];
     }
 
     /**
+     * Posts that are marked published in the admin.
+     * `published_at` is used for ordering and on-page dates only, not to hide future-dated posts.
+     *
      * @param  Builder<static>  $query
      * @return Builder<static>
      */
     public function scopePublished(Builder $query): Builder
     {
-        return $query->where('status', 'published')
-            ->where(function (Builder $q) {
-                $q->whereNull('published_at')
-                    ->orWhere('published_at', '<=', now());
-            });
-    }
-
-    /**
-     * @return BelongsTo<BlogCategory, $this>
-     */
-    public function category(): BelongsTo
-    {
-        return $this->belongsTo(BlogCategory::class, 'category_id');
+        return $query->where('status', 'published');
     }
 
     /**

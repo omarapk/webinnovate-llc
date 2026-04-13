@@ -54,8 +54,6 @@ class DocsController extends Controller
         $category = DocCategory::query()
             ->where('is_visible', true)
             ->where('slug', $slug)
-            ->whereHas('section', fn ($q) => $q->where('is_visible', true))
-            ->with('section')
             ->firstOrFail();
 
         $articles = DocArticle::query()
@@ -75,7 +73,7 @@ class DocsController extends Controller
         $article = DocArticle::query()
             ->published()
             ->where('slug', $slug)
-            ->with(['category.section', 'author'])
+            ->with(['category', 'author'])
             ->firstOrFail();
 
         $siblingArticles = DocArticle::query()
@@ -111,16 +109,10 @@ class DocsController extends Controller
     protected function navCategories(): Collection
     {
         return DocCategory::query()
-            ->where('doc_categories.is_visible', true)
-            ->where('doc_sections.is_visible', true)
-            ->join('doc_sections', 'doc_sections.id', '=', 'doc_categories.section_id')
-            ->with(['section' => fn ($q) => $q->select('id', 'name', 'slug', 'sort_order')])
+            ->where('is_visible', true)
             ->withCount(['articles' => fn ($q) => $q->published()])
-            ->orderBy('doc_sections.sort_order')
-            ->orderBy('doc_sections.name')
-            ->orderBy('doc_categories.sort_order')
-            ->orderBy('doc_categories.name')
-            ->select('doc_categories.*')
+            ->orderBy('sort_order')
+            ->orderBy('name')
             ->get();
     }
 }

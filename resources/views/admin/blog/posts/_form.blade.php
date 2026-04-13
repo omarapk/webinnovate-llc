@@ -3,6 +3,17 @@
     @method('PUT')
 @endif
 
+@php
+    $tagsOld = old('tags');
+    if (is_array($tagsOld)) {
+        $tagsDisplay = implode(', ', $tagsOld);
+    } elseif (is_string($tagsOld)) {
+        $tagsDisplay = $tagsOld;
+    } else {
+        $tagsDisplay = is_array($post->tags) && count($post->tags) ? implode(', ', $post->tags) : '';
+    }
+@endphp
+
 <div class="row g-3">
     <div class="col-lg-8">
         <label for="title" class="form-label fw-semibold">Title <span class="text-danger">*</span></label>
@@ -10,19 +21,11 @@
         @error('title')
             <div class="invalid-feedback">{{ $message }}</div>
         @enderror
-        @if ($post->exists)
-            <div class="form-text">URL slug: <code>{{ $post->slug }}</code> (set when the post was created)</div>
-        @endif
     </div>
-    <div class="col-lg-4">
-        <label for="category_id" class="form-label fw-semibold">Category <span class="text-danger">*</span></label>
-        <select name="category_id" id="category_id" class="form-select @error('category_id') is-invalid @enderror" required>
-            <option value="">Select category</option>
-            @foreach ($categories as $cat)
-                <option value="{{ $cat->id }}" @selected(old('category_id', $post->category_id) == $cat->id)>{{ $cat->name }}</option>
-            @endforeach
-        </select>
-        @error('category_id')
+    <div class="col-lg-8">
+        <label for="author_name" class="form-label fw-semibold">Author Name (optional)</label>
+        <input type="text" name="author_name" id="author_name" class="form-control @error('author_name') is-invalid @enderror" value="{{ old('author_name', $post->author_name) }}" placeholder="e.g. imad test" maxlength="255">
+        @error('author_name')
             <div class="invalid-feedback">{{ $message }}</div>
         @enderror
     </div>
@@ -72,6 +75,64 @@
             <img src="" alt="" class="img-thumbnail rounded-3 mt-2 d-none" style="max-height: 180px;" id="featured_preview">
         </div>
     </div>
+    <div class="col-12">
+        <label for="alt_text" class="form-label fw-semibold">Alt Text for Image (optional)</label>
+        <input type="text" name="alt_text" id="alt_text" class="form-control @error('alt_text') is-invalid @enderror" value="{{ old('alt_text', $post->alt_text) }}" maxlength="255">
+        @error('alt_text')
+            <div class="invalid-feedback">{{ $message }}</div>
+        @enderror
+    </div>
+</div>
+
+<div class="card mt-3 border shadow-sm">
+    <div class="card-header fw-semibold d-flex align-items-center justify-content-between" data-bs-toggle="collapse" data-bs-target="#seoSettings" aria-expanded="false" aria-controls="seoSettings" role="button" style="cursor: pointer;">
+        <span>SEO Settings</span>
+        <span class="small text-muted">▼</span>
+    </div>
+    <div id="seoSettings" class="collapse">
+        <div class="card-body">
+            <div class="mb-3">
+                <label for="seo_title" class="form-label fw-semibold">SEO Title</label>
+                <input type="text" name="seo_title" id="seo_title" class="form-control @error('seo_title') is-invalid @enderror" value="{{ old('seo_title', $post->seo_title) }}" maxlength="60">
+                <div class="d-flex justify-content-between mt-1">
+                    <span class="form-text mb-0">Recommended max 60 characters.</span>
+                    <span id="seo_title_counter" class="small text-muted">0 / 60</span>
+                </div>
+                @error('seo_title')
+                    <div class="invalid-feedback d-block">{{ $message }}</div>
+                @enderror
+            </div>
+            <div class="mb-3">
+                <label for="meta_description" class="form-label fw-semibold">Meta Description</label>
+                <textarea name="meta_description" id="meta_description" rows="3" class="form-control @error('meta_description') is-invalid @enderror" maxlength="160">{{ old('meta_description', $post->meta_description) }}</textarea>
+                <div class="d-flex justify-content-between mt-1">
+                    <span class="form-text mb-0">Recommended max 160 characters.</span>
+                    <span id="meta_description_counter" class="small text-muted">0 / 160</span>
+                </div>
+                @error('meta_description')
+                    <div class="invalid-feedback d-block">{{ $message }}</div>
+                @enderror
+            </div>
+            <div class="mb-3">
+                <label for="post_slug" class="form-label fw-semibold">URL Slug</label>
+                <input type="text" name="slug" id="post_slug" class="form-control @error('slug') is-invalid @enderror" value="{{ old('slug', $post->slug) }}" @if (! $post->exists) placeholder="auto-from-title" @endif maxlength="255" {{ $post->exists ? 'required' : '' }}>
+                @error('slug')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
+                @if (! $post->exists)
+                    <div class="form-text">Leave blank to generate from the title. You can edit before saving.</div>
+                @endif
+            </div>
+            <div class="mb-0">
+                <label for="tags" class="form-label fw-semibold">Tags</label>
+                <input type="text" name="tags" id="tags" class="form-control @error('tags') is-invalid @enderror" value="{{ $tagsDisplay }}" placeholder="e.g. shopify, cod, tutorial">
+                @error('tags')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
+                <div class="form-text">Comma-separated.</div>
+            </div>
+        </div>
+    </div>
 </div>
 
 <div class="d-flex gap-2 mt-4">
@@ -112,6 +173,50 @@
                 preview.classList.remove('d-none');
                 if (current) current.classList.add('d-none');
             });
+        })();
+
+        (function () {
+            function slugify(str) {
+                return str
+                    .toLowerCase()
+                    .trim()
+                    .replace(/[\s_]+/g, '-')
+                    .replace(/[^\w\-]+/g, '')
+                    .replace(/\-\-+/g, '-')
+                    .replace(/^-+|-+$/g, '');
+            }
+
+            var titleField = document.getElementById('title');
+            var slugField = document.getElementById('post_slug');
+            var slugTouched = {{ $post->exists ? 'true' : 'false' }};
+
+            if (slugField && titleField) {
+                slugField.addEventListener('input', function () {
+                    slugTouched = true;
+                });
+                titleField.addEventListener('input', function () {
+                    if (!slugTouched) {
+                        slugField.value = slugify(titleField.value);
+                    }
+                });
+            }
+
+            function bindCounter(fieldId, counterId, max) {
+                var field = document.getElementById(fieldId);
+                var counter = document.getElementById(counterId);
+                if (!field || !counter) return;
+                function update() {
+                    var len = field.value.length;
+                    counter.textContent = len + ' / ' + max;
+                    counter.classList.toggle('text-danger', len > max);
+                    counter.classList.toggle('fw-semibold', len > max);
+                }
+                field.addEventListener('input', update);
+                update();
+            }
+
+            bindCounter('seo_title', 'seo_title_counter', 60);
+            bindCounter('meta_description', 'meta_description_counter', 160);
         })();
     </script>
 @endpush

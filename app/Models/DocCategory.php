@@ -3,14 +3,12 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Str;
 
 class DocCategory extends Model
 {
     protected $fillable = [
-        'section_id',
         'name',
         'slug',
         'description',
@@ -46,14 +44,6 @@ class DocCategory extends Model
         return [
             'is_visible' => 'boolean',
         ];
-    }
-
-    /**
-     * @return BelongsTo<DocSection, $this>
-     */
-    public function section(): BelongsTo
-    {
-        return $this->belongsTo(DocSection::class, 'section_id');
     }
 
     /**

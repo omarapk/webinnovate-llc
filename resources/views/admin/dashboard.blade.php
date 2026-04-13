@@ -67,19 +67,6 @@
             <div class="admin-stat-card p-4 h-100">
                 <div class="d-flex align-items-start justify-content-between gap-3">
                     <div>
-                        <div class="text-muted small fw-semibold text-uppercase mb-1" style="letter-spacing: 0.04em;">Doc sections</div>
-                        <div class="display-6 fw-bold lh-1" style="font-size: 2rem;">{{ number_format($totalDocSections) }}</div>
-                    </div>
-                    <div class="admin-stat-icon" style="background: rgba(14, 165, 233, 0.15); color: #0ea5e9;">
-                        <i class="bi bi-layers"></i>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-6 col-xl-3">
-            <div class="admin-stat-card p-4 h-100">
-                <div class="d-flex align-items-start justify-content-between gap-3">
-                    <div>
                         <div class="text-muted small fw-semibold text-uppercase mb-1" style="letter-spacing: 0.04em;">Doc categories</div>
                         <div class="display-6 fw-bold lh-1" style="font-size: 2rem;">{{ number_format($totalDocCategories) }}</div>
                     </div>

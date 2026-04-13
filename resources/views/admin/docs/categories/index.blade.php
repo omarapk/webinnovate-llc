@@ -6,7 +6,7 @@
 
 @section('content')
     <div class="d-flex flex-wrap align-items-center justify-content-between gap-2 mb-4">
-        <p class="text-muted mb-0">Categories belong to a section. Slugs are generated from the name.</p>
+        <p class="text-muted mb-0">Slugs are generated from the name.</p>
         <a href="{{ route('admin.docs.categories.create') }}" class="btn btn-primary">
             <i class="bi bi-plus-lg me-1"></i> New category
         </a>
@@ -18,7 +18,6 @@
                 <thead class="table-light">
                     <tr>
                         <th class="ps-4">Name</th>
-                        <th>Section</th>
                         <th>Slug</th>
                         <th class="text-center">Visible</th>
                         <th class="text-center">Articles</th>
@@ -54,7 +53,7 @@
                         </tr>
                     @empty
                         <tr>
-                            <td colspan="7" class="text-center text-muted py-5">No categories yet.</td>
+                            <td colspan="6" class="text-center text-muted py-5">No categories yet.</td>
                         </tr>
                     @endforelse
                 </tbody>

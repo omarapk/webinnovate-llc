@@ -5,18 +5,6 @@
 
 <div class="row g-3">
     <div class="col-md-6">
-        <label for="section_id" class="form-label fw-semibold">Section <span class="text-danger">*</span></label>
-        <select name="section_id" id="section_id" class="form-select @error('section_id') is-invalid @enderror" required>
-            <option value="">Select section</option>
-            @foreach ($sections as $sec)
-                <option value="{{ $sec->id }}" @selected(old('section_id', $category->section_id) == $sec->id)>{{ $sec->name }}</option>
-            @endforeach
-        </select>
-        @error('section_id')
-            <div class="invalid-feedback">{{ $message }}</div>
-        @enderror
-    </div>
-    <div class="col-md-6">
         <label for="name" class="form-label fw-semibold">Name <span class="text-danger">*</span></label>
         <input type="text" name="name" id="name" class="form-control @error('name') is-invalid @enderror" value="{{ old('name', $category->name) }}" required maxlength="255">
         @error('name')

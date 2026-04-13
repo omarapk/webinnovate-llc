@@ -10,7 +10,7 @@
     </div>
     <div class="card border-0 shadow-sm rounded-3 p-4 p-md-5">
         <form action="{{ route('admin.docs.articles.update', $article) }}" method="post" enctype="multipart/form-data">
-            @include('admin.docs.articles._form', ['article' => $article, 'sections' => $sections])
+            @include('admin.docs.articles._form', ['article' => $article, 'categories' => $categories])
         </form>
     </div>
 @endsection

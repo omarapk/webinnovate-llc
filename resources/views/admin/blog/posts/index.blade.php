@@ -15,15 +15,6 @@
     <div class="card border-0 shadow-sm rounded-3 p-3 p-md-4 mb-4">
         <form method="get" action="{{ route('admin.blog.posts.index') }}" class="row g-2 align-items-end">
             <div class="col-sm-6 col-md-4 col-lg-3">
-                <label for="filter_category" class="form-label small fw-semibold text-muted mb-1">Category</label>
-                <select name="category_id" id="filter_category" class="form-select form-select-sm">
-                    <option value="">All categories</option>
-                    @foreach ($categories as $cat)
-                        <option value="{{ $cat->id }}" @selected(request('category_id') == $cat->id)>{{ $cat->name }}</option>
-                    @endforeach
-                </select>
-            </div>
-            <div class="col-sm-6 col-md-4 col-lg-3">
                 <label for="filter_status" class="form-label small fw-semibold text-muted mb-1">Status</label>
                 <select name="status" id="filter_status" class="form-select form-select-sm">
                     <option value="">All statuses</option>
@@ -44,7 +35,6 @@
                 <thead class="table-light">
                     <tr>
                         <th class="ps-4">Title</th>
-                        <th>Category</th>
                         <th>Status</th>
                         <th>Published</th>
                         <th class="text-end pe-4">Actions</th>
@@ -56,7 +46,6 @@
                             <td class="ps-4">
                                 <span class="fw-medium">{{ \Illuminate\Support\Str::limit($post->title, 70) }}</span>
                             </td>
-                            <td>{{ $post->category?->name ?? '—' }}</td>
                             <td>
                                 @if ($post->status === 'published')
                                     <span class="badge rounded-pill bg-success-subtle text-success-emphasis border border-success-subtle">Published</span>
@@ -85,7 +74,7 @@
                         </tr>
                     @empty
                         <tr>
-                            <td colspan="5" class="text-center text-muted py-5">No posts found.</td>
+                            <td colspan="4" class="text-center text-muted py-5">No posts found.</td>
                         </tr>
                     @endforelse
                 </tbody>

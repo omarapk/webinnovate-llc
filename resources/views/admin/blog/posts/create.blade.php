@@ -9,16 +9,9 @@
         <a href="{{ route('admin.blog.posts.index') }}" class="text-decoration-none small"><i class="bi bi-arrow-left me-1"></i>Back to posts</a>
     </div>
 
-    @if ($categories->isEmpty())
-        <div class="alert alert-warning border-0 shadow-sm">
-            You need at least one category before creating a post.
-            <a href="{{ route('admin.blog.categories.create') }}" class="alert-link">Create a category</a>
-        </div>
-    @else
-        <div class="card border-0 shadow-sm rounded-3 p-4 p-md-5">
-            <form action="{{ route('admin.blog.posts.store') }}" method="post" enctype="multipart/form-data">
-                @include('admin.blog.posts._form', ['post' => $post, 'categories' => $categories])
-            </form>
-        </div>
-    @endif
+    <div class="card border-0 shadow-sm rounded-3 p-4 p-md-5">
+        <form action="{{ route('admin.blog.posts.store') }}" method="post" enctype="multipart/form-data">
+            @include('admin.blog.posts._form', ['post' => $post])
+        </form>
+    </div>
 @endsection

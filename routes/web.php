@@ -1,21 +1,16 @@
 <?php
 
 use App\Http\Controllers\Admin\Auth\AdminLoginController;
-use App\Http\Controllers\Admin\BlogCategoryController;
 use App\Http\Controllers\Admin\BlogPostController;
 use App\Http\Controllers\Admin\DocArticleController;
 use App\Http\Controllers\Admin\DocCategoryController;
-use App\Http\Controllers\Admin\DocSectionController;
 use App\Http\Controllers\AffiliateController;
 use App\Http\Controllers\PagesController;
 use App\Http\Controllers\Public\BlogController;
 use App\Http\Controllers\Public\DocsController;
-use App\Models\BlogCategory;
 use App\Models\BlogPost;
 use App\Models\DocArticle;
 use App\Models\DocCategory;
-use App\Models\DocSection;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 // Root route - displays welcome page with "Welcome to WebInnovate"
@@ -24,27 +19,14 @@ Route::get('/', function () {
 });
 
 // Main route - serves multilingual.blade.php at /leadform URL
-Route::get('/leadform', function (Request $request) {
-    $blogPostsQuery = BlogPost::query()
-        ->published()
-        ->with(['category', 'author'])
-        ->orderByDesc('published_at')
-        ->orderByDesc('created_at');
-
-    if ($request->filled('category')) {
-        $slug = $request->string('category');
-        $blogPostsQuery->whereHas('category', fn ($q) => $q->where('slug', $slug));
-    }
-
-    $blogPosts = $blogPostsQuery->limit(9)->get();
-
-    $blogCategories = BlogCategory::query()
-        ->withCount(['posts' => fn ($q) => $q->published()])
-        ->orderBy('sort_order')
-        ->orderBy('name')
+Route::get('/leadform', function () {
+    $blogPosts = BlogPost::published()
+        ->with('author')
+        ->latest('published_at')
+        ->take(6)
         ->get();
 
-    return view('home.multilingual', compact('blogPosts', 'blogCategories'));
+    return view('home.multilingual', compact('blogPosts'));
 });
 
 // Privacy Policy route
@@ -88,7 +70,6 @@ Route::prefix('admin')->name('admin.')->group(function () {
                 'totalDocArticles' => DocArticle::query()->count(),
                 'publishedBlogPosts' => BlogPost::query()->where('status', 'published')->count(),
                 'draftBlogPosts' => BlogPost::query()->where('status', 'draft')->count(),
-                'totalDocSections' => DocSection::query()->count(),
                 'totalDocCategories' => DocCategory::query()->count(),
                 'publishedDocArticles' => DocArticle::query()->published()->count(),
                 'draftDocArticles' => DocArticle::query()->where('status', 'draft')->count(),
@@ -99,11 +80,6 @@ Route::prefix('admin')->name('admin.')->group(function () {
             Route::patch('blog/posts/{post}/toggle', [BlogPostController::class, 'toggleStatus'])
                 ->name('blog.posts.toggle');
 
-            Route::resource('blog/categories', BlogCategoryController::class)
-                ->except(['show'])
-                ->names('blog.categories')
-                ->parameters(['categories' => 'category']);
-
             Route::resource('blog/posts', BlogPostController::class)
                 ->except(['show'])
                 ->names('blog.posts')
@@ -111,11 +87,6 @@ Route::prefix('admin')->name('admin.')->group(function () {
 
             Route::patch('docs/articles/{article}/toggle', [DocArticleController::class, 'toggleStatus'])
                 ->name('docs.articles.toggle');
-
-            Route::resource('docs/sections', DocSectionController::class)
-                ->except(['show'])
-                ->names('docs.sections')
-                ->parameters(['sections' => 'section']);
 
             Route::resource('docs/categories', DocCategoryController::class)
                 ->except(['show'])

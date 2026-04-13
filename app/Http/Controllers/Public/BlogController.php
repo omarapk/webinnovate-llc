@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Public;
 
 use App\Http\Controllers\Controller;
-use App\Models\BlogCategory;
 use App\Models\BlogPost;
 use Illuminate\View\View;
 
@@ -14,14 +13,8 @@ class BlogController extends Controller
         $post = BlogPost::query()
             ->published()
             ->where('slug', $slug)
-            ->with(['category', 'author'])
+            ->with(['author'])
             ->firstOrFail();
-
-        $categories = BlogCategory::query()
-            ->withCount(['posts' => fn ($q) => $q->published()])
-            ->orderBy('sort_order')
-            ->orderBy('name')
-            ->get();
 
         $recentPosts = BlogPost::query()
             ->published()
@@ -31,6 +24,6 @@ class BlogController extends Controller
             ->limit(5)
             ->get();
 
-        return view('public.blog.show', compact('post', 'categories', 'recentPosts'));
+        return view('public.blog.show', compact('post', 'recentPosts'));
     }
 }

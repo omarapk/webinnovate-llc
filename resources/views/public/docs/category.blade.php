@@ -10,12 +10,7 @@
                 <a href="{{ route('docs.index') }}" class="docs-sidebar-link text-dark fw-semibold mb-3 d-inline-flex align-items-center gap-1">
                     <i class="bi bi-arrow-left"></i> All categories
                 </a>
-                @php $lastSectionId = null @endphp
                 @foreach ($navCategories as $cat)
-                    @if ($cat->section_id !== $lastSectionId)
-                        @php $lastSectionId = $cat->section_id @endphp
-                        <div class="docs-sidebar-section">{{ $cat->section->name }}</div>
-                    @endif
                     <a href="{{ route('docs.category', $cat->slug) }}" class="docs-sidebar-link {{ $cat->id === $category->id ? 'active' : '' }}">
                         {{ $cat->name }}
                     </a>
@@ -37,12 +32,7 @@
                     </div>
                     <div class="offcanvas-body">
                         <a href="{{ route('docs.index') }}" class="docs-sidebar-link text-dark fw-semibold mb-2">← All categories</a>
-                        @php $lastSectionId = null @endphp
                         @foreach ($navCategories as $cat)
-                            @if ($cat->section_id !== $lastSectionId)
-                                @php $lastSectionId = $cat->section_id @endphp
-                                <div class="docs-sidebar-section">{{ $cat->section->name }}</div>
-                            @endif
                             <a href="{{ route('docs.category', $cat->slug) }}" class="docs-sidebar-link {{ $cat->id === $category->id ? 'active' : '' }}">{{ $cat->name }}</a>
                         @endforeach
                     </div>

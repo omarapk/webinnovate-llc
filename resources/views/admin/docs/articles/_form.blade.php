@@ -18,10 +18,8 @@
         <label for="category_id" class="form-label fw-semibold">Category <span class="text-danger">*</span></label>
         <select name="category_id" id="category_id" class="form-select @error('category_id') is-invalid @enderror" required>
             <option value="">Select category</option>
-            @foreach ($sections as $section)
-                @foreach ($section->categories as $cat)
-                    <option value="{{ $cat->id }}" @selected(old('category_id', $article->category_id) == $cat->id) data-section="{{ $section->id }}">{{ $section->name }} — {{ $cat->name }}</option>
-                @endforeach
+            @foreach ($categories as $cat)
+                <option value="{{ $cat->id }}" @selected(old('category_id', $article->category_id) == $cat->id)>{{ $cat->name }}</option>
             @endforeach
         </select>
         @error('category_id')

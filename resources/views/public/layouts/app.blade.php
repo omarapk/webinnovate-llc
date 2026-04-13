@@ -17,6 +17,7 @@
         .pub-card { border: 1px solid #e2e8f0; border-radius: 0.75rem; background: #fff; box-shadow: 0 1px 2px rgba(15,23,42,.04); }
     </style>
     @stack('styles')
+    @stack('head')
 </head>
 <body class="public-site d-flex flex-column min-vh-100">
     @include('public.layouts.partials.main-navbar')

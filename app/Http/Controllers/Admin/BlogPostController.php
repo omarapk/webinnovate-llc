@@ -3,11 +3,12 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\BlogCategory;
 use App\Models\BlogPost;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
+use Illuminate\Validation\Rule;
 use Illuminate\View\View;
 
 class BlogPostController extends Controller
@@ -15,24 +16,15 @@ class BlogPostController extends Controller
     public function index(Request $request): View
     {
         $query = BlogPost::query()
-            ->with('category')
             ->orderByDesc('updated_at');
-
-        if ($request->filled('category_id')) {
-            $query->where('category_id', $request->integer('category_id'));
-        }
 
         if ($request->filled('status')) {
             $query->where('status', $request->string('status'));
         }
 
         $posts = $query->paginate(15)->withQueryString();
-        $categories = BlogCategory::query()
-            ->orderBy('sort_order')
-            ->orderBy('name')
-            ->get();
 
-        return view('admin.blog.posts.index', compact('posts', 'categories'));
+        return view('admin.blog.posts.index', compact('posts'));
     }
 
     public function create(): View
@@ -40,19 +32,24 @@ class BlogPostController extends Controller
         $post = new BlogPost([
             'status' => 'draft',
         ]);
-        $categories = BlogCategory::query()
-            ->orderBy('sort_order')
-            ->orderBy('name')
-            ->get();
 
-        return view('admin.blog.posts.create', compact('post', 'categories'));
+        return view('admin.blog.posts.create', compact('post'));
     }
 
     public function store(Request $request): RedirectResponse
     {
+        $request->merge([
+            'slug' => filled($request->input('slug')) ? Str::slug($request->string('slug')) : null,
+        ]);
+
         $validated = $request->validate([
             'title' => ['required', 'string', 'max:255'],
-            'category_id' => ['required', 'exists:blog_categories,id'],
+            'slug' => ['nullable', 'string', 'max:255', Rule::unique('blog_posts', 'slug')],
+            'author_name' => ['nullable', 'string', 'max:255'],
+            'seo_title' => ['nullable', 'string', 'max:60'],
+            'meta_description' => ['nullable', 'string', 'max:160'],
+            'tags' => ['nullable', 'string', 'max:2000'],
+            'alt_text' => ['nullable', 'string', 'max:255'],
             'excerpt' => ['nullable', 'string'],
             'content' => ['required', 'string'],
             'featured_image' => ['nullable', 'image', 'max:2048'],
@@ -60,13 +57,21 @@ class BlogPostController extends Controller
             'published_at' => ['nullable', 'date'],
         ]);
 
+        if (blank($validated['slug'] ?? null)) {
+            unset($validated['slug']);
+        }
+
+        $tags = $this->tagsFromCommaString($request->input('tags'));
+        unset($validated['tags']);
+
         $path = null;
         if ($request->hasFile('featured_image')) {
             $path = $request->file('featured_image')->store('blog', 'public');
         }
 
         BlogPost::create([
-            ...collect($validated)->except(['featured_image'])->all(),
+            ...$validated,
+            'tags' => $tags,
             'featured_image' => $path,
             'author_id' => $request->user()->id,
         ]);
@@ -77,19 +82,23 @@ class BlogPostController extends Controller
 
     public function edit(BlogPost $post): View
     {
-        $categories = BlogCategory::query()
-            ->orderBy('sort_order')
-            ->orderBy('name')
-            ->get();
-
-        return view('admin.blog.posts.edit', compact('post', 'categories'));
+        return view('admin.blog.posts.edit', compact('post'));
     }
 
     public function update(Request $request, BlogPost $post): RedirectResponse
     {
+        $request->merge([
+            'slug' => Str::slug($request->string('slug')),
+        ]);
+
         $validated = $request->validate([
             'title' => ['required', 'string', 'max:255'],
-            'category_id' => ['required', 'exists:blog_categories,id'],
+            'slug' => ['required', 'string', 'max:255', Rule::unique('blog_posts', 'slug')->ignore($post->id)],
+            'author_name' => ['nullable', 'string', 'max:255'],
+            'seo_title' => ['nullable', 'string', 'max:60'],
+            'meta_description' => ['nullable', 'string', 'max:160'],
+            'tags' => ['nullable', 'string', 'max:2000'],
+            'alt_text' => ['nullable', 'string', 'max:255'],
             'excerpt' => ['nullable', 'string'],
             'content' => ['required', 'string'],
             'featured_image' => ['nullable', 'image', 'max:2048'],
@@ -97,7 +106,11 @@ class BlogPostController extends Controller
             'published_at' => ['nullable', 'date'],
         ]);
 
+        $tags = $this->tagsFromCommaString($request->input('tags'));
+        unset($validated['tags']);
+
         $data = collect($validated)->except(['featured_image'])->all();
+        $data['tags'] = $tags;
 
         if ($request->hasFile('featured_image')) {
             if ($post->featured_image) {
@@ -134,5 +147,19 @@ class BlogPostController extends Controller
 
         return redirect()->route('admin.blog.posts.index')
             ->with('success', 'Post status updated.');
+    }
+
+    /**
+     * @return array<int, string>|null
+     */
+    protected function tagsFromCommaString(?string $input): ?array
+    {
+        if ($input === null || trim($input) === '') {
+            return null;
+        }
+
+        $parts = array_values(array_filter(array_map('trim', explode(',', $input)), fn (string $t) => $t !== ''));
+
+        return $parts === [] ? null : $parts;
     }
 }

@@ -15,20 +15,11 @@
     <div class="card border-0 shadow-sm rounded-3 p-3 p-md-4 mb-4">
         <form method="get" action="{{ route('admin.docs.articles.index') }}" class="row g-2 align-items-end">
             <div class="col-sm-6 col-md-4 col-lg-3">
-                <label for="filter_section" class="form-label small fw-semibold text-muted mb-1">Section</label>
-                <select name="section_id" id="filter_section" class="form-select form-select-sm">
-                    <option value="">All sections</option>
-                    @foreach ($sections as $sec)
-                        <option value="{{ $sec->id }}" @selected(request('section_id') == $sec->id)>{{ $sec->name }}</option>
-                    @endforeach
-                </select>
-            </div>
-            <div class="col-sm-6 col-md-4 col-lg-3">
                 <label for="filter_category" class="form-label small fw-semibold text-muted mb-1">Category</label>
                 <select name="category_id" id="filter_category" class="form-select form-select-sm">
                     <option value="">All categories</option>
                     @foreach ($categories as $cat)
-                        <option value="{{ $cat->id }}" data-section-id="{{ $cat->section_id }}" @selected(request('category_id') == $cat->id)>{{ $cat->section?->name }} — {{ $cat->name }}</option>
+                        <option value="{{ $cat->id }}" @selected(request('category_id') == $cat->id)>{{ $cat->name }}</option>
                     @endforeach
                 </select>
             </div>
@@ -53,7 +44,6 @@
                 <thead class="table-light">
                     <tr>
                         <th class="ps-4">Title</th>
-                        <th>Section</th>
                         <th>Category</th>
                         <th>Status</th>
                         <th>Published</th>
@@ -65,7 +55,6 @@
                     @forelse ($articles as $article)
                         <tr>
                             <td class="ps-4 fw-medium">{{ \Illuminate\Support\Str::limit($article->title, 56) }}</td>
-                            <td class="small text-muted">{{ $article->category?->section?->name ?? '—' }}</td>
                             <td>{{ $article->category?->name ?? '—' }}</td>
                             <td>
                                 @if ($article->status === 'published')
@@ -94,7 +83,7 @@
                         </tr>
                     @empty
                         <tr>
-                            <td colspan="7" class="text-center text-muted py-5">No articles found.</td>
+                            <td colspan="6" class="text-center text-muted py-5">No articles found.</td>
                         </tr>
                     @endforelse
                 </tbody>

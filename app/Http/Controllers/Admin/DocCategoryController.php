@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\DocCategory;
-use App\Models\DocSection;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
@@ -14,9 +13,7 @@ class DocCategoryController extends Controller
     public function index(): View
     {
         $categories = DocCategory::query()
-            ->with('section')
             ->withCount('articles')
-            ->orderBy('section_id')
             ->orderBy('sort_order')
             ->orderBy('name')
             ->get();
@@ -30,18 +27,13 @@ class DocCategoryController extends Controller
             'sort_order' => 0,
             'is_visible' => true,
         ]);
-        $sections = DocSection::query()
-            ->orderBy('sort_order')
-            ->orderBy('name')
-            ->get();
 
-        return view('admin.docs.categories.create', compact('category', 'sections'));
+        return view('admin.docs.categories.create', compact('category'));
     }
 
     public function store(Request $request): RedirectResponse
     {
         $validated = $request->validate([
-            'section_id' => ['required', 'exists:doc_sections,id'],
             'name' => ['required', 'string', 'max:255'],
             'description' => ['nullable', 'string'],
             'sort_order' => ['required', 'integer', 'min:0'],
@@ -56,18 +48,12 @@ class DocCategoryController extends Controller
 
     public function edit(DocCategory $category): View
     {
-        $sections = DocSection::query()
-            ->orderBy('sort_order')
-            ->orderBy('name')
-            ->get();
-
-        return view('admin.docs.categories.edit', compact('category', 'sections'));
+        return view('admin.docs.categories.edit', compact('category'));
     }
 
     public function update(Request $request, DocCategory $category): RedirectResponse
     {
         $validated = $request->validate([
-            'section_id' => ['required', 'exists:doc_sections,id'],
             'name' => ['required', 'string', 'max:255'],
             'description' => ['nullable', 'string'],
             'sort_order' => ['required', 'integer', 'min:0'],
