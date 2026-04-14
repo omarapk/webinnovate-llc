@@ -2395,50 +2395,270 @@ Merci LeadForm Order COD Form. L'application a vraiment transformé notre façon
     <!-- End Commission Program Section -->
 
     <div class="rbt-rbt-blog-area rbt-section-gap bg-color-white" id="blog">
+        <style>
+            .lf-blog-scroll-head {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                gap: 16px;
+            }
+            .lf-blog-scroll-nav {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+            }
+            .lf-blog-scroll-count {
+                font-size: clamp(2.1rem, 3.5vw, 3.5rem);
+                line-height: 1;
+                font-weight: 800;
+                letter-spacing: -0.02em;
+                color: #0f172a;
+                white-space: nowrap;
+            }
+            .lf-blog-scroll-count small {
+                font-size: 0.45em;
+                font-weight: 700;
+                opacity: 0.9;
+                letter-spacing: 0;
+            }
+            .lf-blog-scroll-btn {
+                width: 40px;
+                height: 40px;
+                border-radius: 999px;
+                border: 1px solid rgba(15, 23, 42, 0.12);
+                background: #fff;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                cursor: pointer;
+            }
+            .lf-blog-scroll-btn:hover { background: rgba(15, 23, 42, 0.04); }
+            .lf-blog-scroll-btn:active { transform: translateY(1px); }
+
+            .lf-blog-scroll-track {
+                display: flex;
+                gap: 24px;
+                overflow-x: auto;
+                overflow-y: hidden;
+                padding: 12px 2px 6px;
+                scroll-snap-type: x mandatory;
+                scroll-padding-left: 2px;
+                -webkit-overflow-scrolling: touch;
+            }
+            .lf-blog-scroll-track::-webkit-scrollbar { height: 8px; }
+            .lf-blog-scroll-track::-webkit-scrollbar-thumb { background: rgba(2, 6, 23, 0.15); border-radius: 999px; }
+            .lf-blog-scroll-track::-webkit-scrollbar-track { background: rgba(2, 6, 23, 0.06); border-radius: 999px; }
+
+            .lf-blog-scroll-item {
+                flex: 0 0 auto;
+                width: min(360px, 86vw);
+                scroll-snap-align: start;
+            }
+            @media (min-width: 768px) {
+                .lf-blog-scroll-item { width: 360px; }
+            }
+            @media (min-width: 1200px) {
+                .lf-blog-scroll-item { width: 380px; }
+            }
+        </style>
         <div class="container">
-            <div class="row g-5 align-items-end mb--30">
-                <div class="col-lg-12">
-                    <div class="section-title text-center">
-                        <span class="subtitle bg-primary-opacity">FROM THE BLOG</span>
-                        <h2 class="title w-600">COD Tips &amp; Best Practices</h2>
-                        <p class="description has-medium-font-size mt--20 mb-0">Proven strategies to increase conversions, optimize your order form, and grow your COD store on Shopify.</p>
-                    </div>
+            <div class="section-title text-center mb--30">
+                <span class="subtitle bg-primary-opacity">FROM THE BLOG</span>
+                <h2 class="title w-600">COD Tips &amp; Best Practices</h2>
+                <p class="description has-medium-font-size mt--20 mb-0">Proven strategies to increase conversions, optimize your order form, and grow your COD store on Shopify.</p>
+            </div>
+
+            <div class="lf-blog-scroll-head mb--10">
+                <div class="lf-blog-scroll-count" aria-live="polite">
+                    <span id="lfBlogPos">1</span> <small>of</small> <span id="lfBlogTotal">{{ $blogPosts->count() }}</span>
+                </div>
+
+                <div class="lf-blog-scroll-nav d-none d-lg-flex" aria-label="Blog carousel navigation">
+                    <button type="button" class="lf-blog-scroll-btn" aria-label="Scroll left" onclick="window.lfScrollBlogByOne && window.lfScrollBlogByOne(-1)">
+                        <i class="feather-arrow-left" aria-hidden="true"></i>
+                    </button>
+                    <button type="button" class="lf-blog-scroll-btn" aria-label="Scroll right" onclick="window.lfScrollBlogByOne && window.lfScrollBlogByOne(1)">
+                        <i class="feather-arrow-right" aria-hidden="true"></i>
+                    </button>
                 </div>
             </div>
-            <div class="row g-5 mt--10">
-                @php($blogPosts = $blogPosts ?? collect())
-                @forelse ($blogPosts as $post)
-                    <div class="col-lg-4 col-md-6 col-sm-12 col-12 mt--30">
-                        <div class="rbt-card variation-02 rbt-hover">
-                            <div class="rbt-card-img">
-                                <a href="{{ route('blog.show', $post->slug) }}">
-                                    @if ($post->featured_image)
-                                        <img src="{{ $post->featured_image_url }}" alt="{{ filled($post->alt_text) ? $post->alt_text : $post->title }}">
-                                    @else
-                                        <img src="{{ asset('assets/images/blog/blog-grid-01.jpg') }}" alt="{{ $post->title }}">
+
+            @php($blogPosts = $blogPosts ?? collect())
+            @if ($blogPosts->isEmpty())
+                <div class="text-center">
+                    <p class="text-muted mb-0">No blog posts published yet. Check back soon.</p>
+                </div>
+            @else
+                <div id="lfBlogTrack" class="lf-blog-scroll-track" role="region" aria-label="Blog posts">
+                    <script>
+                        (function () {
+                            function getStep(track) {
+                                var first = track.querySelector('.lf-blog-scroll-item');
+                                if (!first) return 0;
+                                var styles = window.getComputedStyle(track);
+                                var gap = parseFloat(styles.columnGap || styles.gap || '0') || 0;
+                                return first.getBoundingClientRect().width + gap;
+                            }
+
+                            function init(track) {
+                                if (!track || track.dataset.lfRecycleReady === '1') return;
+                                var items = track.querySelectorAll('.lf-blog-scroll-item');
+                                if (!items || items.length <= 1) return;
+                                track.dataset.lfRecycleReady = '1';
+
+                                var totalEl = document.getElementById('lfBlogTotal');
+                                var posEl = document.getElementById('lfBlogPos');
+                                var total = items.length;
+                                if (totalEl) totalEl.textContent = String(total);
+                                var pos = 1;
+                                if (posEl) posEl.textContent = String(pos);
+
+                                // Start centered away from edges by moving the first item to the end a few times.
+                                // This makes it practically impossible to "hit the end" and avoids any visible jump.
+                                for (var i = 0; i < Math.min(2, items.length); i++) {
+                                    track.appendChild(track.firstElementChild);
+                                }
+                                // We moved the first item to the end twice, so the logical position advances too.
+                                if (total > 0) {
+                                    pos = ((pos - 1 + Math.min(2, total)) % total) + 1;
+                                    if (posEl) posEl.textContent = String(pos);
+                                }
+
+                                // Keep scroll in a stable range by recycling DOM nodes.
+                                // When scrolling right: move first card to end and compensate scrollLeft (no visual jump).
+                                // When scrolling left: move last card to start and compensate scrollLeft (no visual jump).
+                                var ticking = false;
+                                function recycle() {
+                                    ticking = false;
+                                    var step = getStep(track);
+                                    if (!step) return;
+
+                                    // Right recycle
+                                    while (track.scrollLeft >= step * 2) {
+                                        track.scrollLeft -= step;
+                                        track.appendChild(track.firstElementChild);
+                                        if (total > 0) {
+                                            pos = (pos % total) + 1;
+                                            if (posEl) posEl.textContent = String(pos);
+                                        }
+                                    }
+
+                                    // Left recycle
+                                    while (track.scrollLeft <= 0) {
+                                        track.insertBefore(track.lastElementChild, track.firstElementChild);
+                                        track.scrollLeft += step;
+                                        if (total > 0) {
+                                            pos = ((pos - 2 + total) % total) + 1;
+                                            if (posEl) posEl.textContent = String(pos);
+                                        }
+                                    }
+                                }
+
+                                track.addEventListener('scroll', function () {
+                                    if (ticking) return;
+                                    ticking = true;
+                                    requestAnimationFrame(recycle);
+                                }, { passive: true });
+
+                                window.lfScrollBlogByOne = function (dir) {
+                                    var step = getStep(track);
+                                    if (!step) return;
+                                    track.scrollBy({ left: step * (dir || 1), behavior: 'smooth' });
+                                };
+
+                                // Ensure initial scrollLeft isn't pinned at 0 to allow left recycling.
+                                var initialStep = getStep(track);
+                                if (initialStep) track.scrollLeft = initialStep;
+
+                                // Autoplay (pause on hover / focus / touch / hidden tab)
+                                var autoplayMs = 3000;
+                                var autoplayTimer = null;
+                                var paused = false;
+
+                                function startAutoplay() {
+                                    if (autoplayTimer || paused) return;
+                                    autoplayTimer = window.setInterval(function () {
+                                        if (paused) return;
+                                        window.lfScrollBlogByOne(1);
+                                    }, autoplayMs);
+                                }
+
+                                function stopAutoplay() {
+                                    if (!autoplayTimer) return;
+                                    window.clearInterval(autoplayTimer);
+                                    autoplayTimer = null;
+                                }
+
+                                function setPaused(nextPaused) {
+                                    paused = !!nextPaused;
+                                    if (paused) stopAutoplay();
+                                    else startAutoplay();
+                                }
+
+                                // Desktop hover
+                                track.addEventListener('mouseenter', function () { setPaused(true); });
+                                track.addEventListener('mouseleave', function () { setPaused(false); });
+                                // Keyboard focus inside cards
+                                track.addEventListener('focusin', function () { setPaused(true); });
+                                track.addEventListener('focusout', function () { setPaused(false); });
+                                // Touch interaction (mobile)
+                                track.addEventListener('touchstart', function () { setPaused(true); }, { passive: true });
+                                track.addEventListener('touchend', function () { setPaused(false); }, { passive: true });
+                                // User wheel/drag should pause briefly
+                                var resumeTimeout = null;
+                                function pauseBriefly() {
+                                    setPaused(true);
+                                    if (resumeTimeout) window.clearTimeout(resumeTimeout);
+                                    resumeTimeout = window.setTimeout(function () { setPaused(false); }, 2500);
+                                }
+                                track.addEventListener('wheel', pauseBriefly, { passive: true });
+                                track.addEventListener('pointerdown', pauseBriefly, { passive: true });
+
+                                document.addEventListener('visibilitychange', function () {
+                                    setPaused(document.hidden);
+                                });
+
+                                startAutoplay();
+                            }
+
+                            if (document.readyState === 'loading') {
+                                document.addEventListener('DOMContentLoaded', function () {
+                                    init(document.getElementById('lfBlogTrack'));
+                                });
+                            } else {
+                                init(document.getElementById('lfBlogTrack'));
+                            }
+                        })();
+                    </script>
+                    @foreach ($blogPosts as $post)
+                        <div class="lf-blog-scroll-item">
+                            <div class="rbt-card variation-02 rbt-hover">
+                                <div class="rbt-card-img">
+                                    <a href="{{ route('blog.show', $post->slug) }}">
+                                        @if ($post->featured_image)
+                                            <img src="{{ $post->featured_image_url }}" alt="{{ filled($post->alt_text) ? $post->alt_text : $post->title }}">
+                                        @else
+                                            <img src="{{ asset('assets/images/blog/blog-grid-01.jpg') }}" alt="{{ $post->title }}">
+                                        @endif
+                                    </a>
+                                </div>
+                                <div class="rbt-card-body">
+                                    <h5 class="rbt-card-title"><a href="{{ route('blog.show', $post->slug) }}">{{ $post->title }}</a></h5>
+                                    @if ($post->author_name)
+                                        <p class="small text-muted mb-2 mb--10">By {{ $post->author_name }}</p>
                                     @endif
-                                </a>
-                            </div>
-                            <div class="rbt-card-body">
-                                <h5 class="rbt-card-title"><a href="{{ route('blog.show', $post->slug) }}">{{ $post->title }}</a></h5>
-                                @if ($post->author_name)
-                                    <p class="small text-muted mb-2 mb--10">By {{ $post->author_name }}</p>
-                                @endif
-                                @if ($post->excerpt)
-                                    <p class="rbt-card-text">{{ \Illuminate\Support\Str::limit(strip_tags($post->excerpt), 120) }}</p>
-                                @endif
-                                <div class="rbt-card-bottom">
-                                    <a class="rbt-btn-link" href="{{ route('blog.show', $post->slug) }}">Read article<i class="feather-arrow-right"></i></a>
+                                    @if ($post->excerpt)
+                                        <p class="rbt-card-text">{{ \Illuminate\Support\Str::limit(strip_tags($post->excerpt), 120) }}</p>
+                                    @endif
+                                    <div class="rbt-card-bottom">
+                                        <a class="rbt-btn-link" href="{{ route('blog.show', $post->slug) }}">Read article<i class="feather-arrow-right"></i></a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                @empty
-                    <div class="col-12 text-center">
-                        <p class="text-muted mb-0">No blog posts published yet. Check back soon.</p>
-                    </div>
-                @endforelse
-            </div>
+                    @endforeach
+                </div>
+            @endif
         </div>
     </div>
 
