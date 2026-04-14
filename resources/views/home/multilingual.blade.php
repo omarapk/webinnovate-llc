@@ -2399,9 +2399,9 @@ Merci LeadForm Order COD Form. L'application a vraiment transformé notre façon
             <div class="row g-5 align-items-end mb--30">
                 <div class="col-lg-12">
                     <div class="section-title text-center">
-                        <span class="subtitle bg-primary-opacity">From the blog</span>
-                        <h2 class="title w-600">Tips, updates &amp; COD best practices</h2>
-                        <p class="description has-medium-font-size mt--20 mb-0">Latest articles from the LeadForm team—right here on the landing page.</p>
+                        <span class="subtitle bg-primary-opacity">FROM THE BLOG</span>
+                        <h2 class="title w-600">COD Tips &amp; Best Practices</h2>
+                        <p class="description has-medium-font-size mt--20 mb-0">Proven strategies to increase conversions, optimize your order form, and grow your COD store on Shopify.</p>
                     </div>
                 </div>
             </div>
