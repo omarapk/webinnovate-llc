@@ -103,10 +103,11 @@ class DocArticleController extends Controller
         $data = collect($validated)->except(['featured_image'])->all();
 
         if ($request->hasFile('featured_image')) {
-            if ($article->featured_image) {
-                FeaturedImage::deleteStored($article->featured_image);
-            }
+            $previousFeaturedImage = $article->featured_image;
             $data['featured_image'] = $request->file('featured_image')->store('docs', FeaturedImage::disk());
+            if ($previousFeaturedImage) {
+                FeaturedImage::deleteStored($previousFeaturedImage);
+            }
         }
 
         $article->update($data);

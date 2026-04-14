@@ -12,16 +12,16 @@ class AdminUserSeeder extends Seeder
      */
     public function run(): void
     {
-        $email = env('ADMIN_EMAIL');
-        $password = env('ADMIN_PASSWORD');
+        $email = trim((string) config('admin.email'));
+        $password = config('admin.password');
 
-        if (empty($email) || $password === null || $password === '') {
+        if ($email === '' || $password === null || $password === '') {
             $this->command?->warn('ADMIN_EMAIL and ADMIN_PASSWORD must be set in .env to seed the admin user.');
 
             return;
         }
 
-        User::firstOrCreate(
+        User::updateOrCreate(
             ['email' => $email],
             [
                 'name' => 'Admin',

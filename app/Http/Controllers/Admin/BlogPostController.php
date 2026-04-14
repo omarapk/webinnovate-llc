@@ -7,6 +7,7 @@ use App\Models\BlogPost;
 use App\Support\FeaturedImage;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
 use Illuminate\View\View;
@@ -87,6 +88,8 @@ class BlogPostController extends Controller
 
     public function update(Request $request, BlogPost $post): RedirectResponse
     {
+        Log::info('Update called', $request->except(['_token', 'content', 'featured_image']));
+
         $request->merge([
             'slug' => Str::slug($request->string('slug')),
         ]);
@@ -113,10 +116,34 @@ class BlogPostController extends Controller
         $data['tags'] = $tags;
 
         if ($request->hasFile('featured_image')) {
-            if ($post->featured_image) {
-                FeaturedImage::deleteStored($post->featured_image);
+            try {
+                Log::info('Upload attempt', [
+                    'has_file' => $request->hasFile('featured_image'),
+                    'disk' => FeaturedImage::disk(),
+                ]);
+
+                $previousFeaturedImage = $post->featured_image;
+                $newPath = $request->file('featured_image')->store('blog', FeaturedImage::disk());
+
+                Log::info('Upload result', ['path' => $newPath ?? 'null']);
+
+                if ($previousFeaturedImage) {
+                    FeaturedImage::deleteStored($previousFeaturedImage);
+                }
+
+                $data['featured_image'] = $newPath;
+            } catch (\Throwable $e) {
+                Log::error('Upload failed', [
+                    'message' => $e->getMessage(),
+                    'previous' => $e->getPrevious()?->getMessage(),
+                    'trace' => $e->getTraceAsString(),
+                ]);
+
+                return back()->withInput()->withErrors([
+                    'featured_image' => $e->getMessage()
+                        .($e->getPrevious() !== null ? ' | '.$e->getPrevious()->getMessage() : ''),
+                ]);
             }
-            $data['featured_image'] = $request->file('featured_image')->store('blog', FeaturedImage::disk());
         }
 
         $post->update($data);

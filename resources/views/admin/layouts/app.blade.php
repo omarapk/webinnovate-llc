@@ -161,6 +161,15 @@
 
         <div class="admin-main flex-grow-1 d-flex flex-column min-vh-100 min-w-0">
             @include('admin.partials.navbar')
+            @if ($errors->any())
+                <div class="alert alert-danger m-3">
+                    <ul class="mb-0">
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
             <main class="admin-content flex-grow-1 p-3 p-lg-4">
                 @if (session('success'))
                     <div class="alert alert-success alert-dismissible fade show shadow-sm border-0" role="alert">
