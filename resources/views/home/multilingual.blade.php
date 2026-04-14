@@ -2394,7 +2394,7 @@ Merci LeadForm Order COD Form. L'application a vraiment transformé notre façon
     </div>
     <!-- End Commission Program Section -->
 
-    <div class="rbt-rbt-blog-area rbt-section-gap bg-color-white" id="blog">
+    <div class="rbt-rbt-blog-area rbt-section-gap5 bg-color-white" id="blog">
         <style>
             .lf-blog-scroll-head {
                 display: flex;
