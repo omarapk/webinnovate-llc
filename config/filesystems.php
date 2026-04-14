@@ -25,6 +25,8 @@ return [
     |
     */
 
+    // Featured image storage for blog + docs.
+    // Override explicitly with FEATURED_IMAGE_DISK=public to force local storage.
     'featured_image_disk' => env('FEATURED_IMAGE_DISK')
         ?: ((env('CLOUDINARY_URL') || env('CLOUDINARY_CLOUD_NAME')) ? 'cloudinary' : 'public'),
 

@@ -44,7 +44,18 @@
                     @forelse ($posts as $post)
                         <tr>
                             <td class="ps-4">
-                                <span class="fw-medium">{{ \Illuminate\Support\Str::limit($post->title, 70) }}</span>
+                                <div class="d-flex align-items-center gap-2">
+                                    @if ($post->featured_image_url)
+                                        <img
+                                            src="{{ $post->featured_image_url }}"
+                                            alt=""
+                                            class="rounded border"
+                                            style="width: 44px; height: 32px; object-fit: cover;"
+                                            loading="lazy"
+                                        >
+                                    @endif
+                                    <span class="fw-medium">{{ \Illuminate\Support\Str::limit($post->title, 70) }}</span>
+                                </div>
                             </td>
                             <td>
                                 @if ($post->status === 'published')

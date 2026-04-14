@@ -2406,6 +2406,7 @@ Merci LeadForm Order COD Form. L'application a vraiment transformé notre façon
                 </div>
             </div>
             <div class="row g-5 mt--10">
+                @php($blogPosts = $blogPosts ?? collect())
                 @forelse ($blogPosts as $post)
                     <div class="col-lg-4 col-md-6 col-sm-12 col-12 mt--30">
                         <div class="rbt-card variation-02 rbt-hover">

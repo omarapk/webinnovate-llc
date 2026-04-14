@@ -21,7 +21,6 @@ Route::get('/', function () {
 // Main route - serves multilingual.blade.php at /leadform URL
 Route::get('/leadform', function () {
     $blogPosts = BlogPost::published()
-        ->with('author')
         ->latest('published_at')
         ->take(6)
         ->get();
