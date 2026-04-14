@@ -44,13 +44,13 @@ class BlogPostController extends Controller
         ]);
 
         $validated = $request->validate([
-            'title' => ['required', 'string', 'max:255'],
-            'slug' => ['nullable', 'string', 'max:255', Rule::unique('blog_posts', 'slug')],
-            'author_name' => ['nullable', 'string', 'max:255'],
-            'seo_title' => ['nullable', 'string', 'max:60'],
-            'meta_description' => ['nullable', 'string', 'max:160'],
-            'tags' => ['nullable', 'string', 'max:2000'],
-            'alt_text' => ['nullable', 'string', 'max:255'],
+            'title' => ['required', 'string'],
+            'slug' => ['nullable', 'string', 'max:768', Rule::unique('blog_posts', 'slug')],
+            'author_name' => ['nullable', 'string'],
+            'seo_title' => ['nullable', 'string'],
+            'meta_description' => ['nullable', 'string'],
+            'tags' => ['nullable', 'string'],
+            'alt_text' => ['nullable', 'string'],
             'excerpt' => ['nullable', 'string'],
             'content' => ['required', 'string'],
             'featured_image' => ['nullable', 'image', 'max:2048'],
@@ -95,13 +95,13 @@ class BlogPostController extends Controller
         ]);
 
         $validated = $request->validate([
-            'title' => ['required', 'string', 'max:255'],
-            'slug' => ['required', 'string', 'max:255', Rule::unique('blog_posts', 'slug')->ignore($post->id)],
-            'author_name' => ['nullable', 'string', 'max:255'],
-            'seo_title' => ['nullable', 'string', 'max:60'],
-            'meta_description' => ['nullable', 'string', 'max:160'],
-            'tags' => ['nullable', 'string', 'max:2000'],
-            'alt_text' => ['nullable', 'string', 'max:255'],
+            'title' => ['required', 'string'],
+            'slug' => ['required', 'string', 'max:768', Rule::unique('blog_posts', 'slug')->ignore($post->id)],
+            'author_name' => ['nullable', 'string'],
+            'seo_title' => ['nullable', 'string'],
+            'meta_description' => ['nullable', 'string'],
+            'tags' => ['nullable', 'string'],
+            'alt_text' => ['nullable', 'string'],
             'excerpt' => ['nullable', 'string'],
             'content' => ['required', 'string'],
             'featured_image' => ['nullable', 'image', 'max:2048'],

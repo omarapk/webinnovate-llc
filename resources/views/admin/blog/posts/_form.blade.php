@@ -17,14 +17,14 @@
 <div class="row g-3">
     <div class="col-lg-8">
         <label for="title" class="form-label fw-semibold">Title <span class="text-danger">*</span></label>
-        <input type="text" name="title" id="title" class="form-control @error('title') is-invalid @enderror" value="{{ old('title', $post->title) }}" required maxlength="255">
+        <input type="text" name="title" id="title" class="form-control @error('title') is-invalid @enderror" value="{{ old('title', $post->title) }}" required>
         @error('title')
             <div class="invalid-feedback">{{ $message }}</div>
         @enderror
     </div>
     <div class="col-lg-8">
         <label for="author_name" class="form-label fw-semibold">Author Name (optional)</label>
-        <input type="text" name="author_name" id="author_name" class="form-control @error('author_name') is-invalid @enderror" value="{{ old('author_name', $post->author_name) }}" placeholder="e.g. imad test" maxlength="255">
+        <input type="text" name="author_name" id="author_name" class="form-control @error('author_name') is-invalid @enderror" value="{{ old('author_name', $post->author_name) }}" placeholder="e.g. imad test">
         @error('author_name')
             <div class="invalid-feedback">{{ $message }}</div>
         @enderror
@@ -77,7 +77,7 @@
     </div>
     <div class="col-12">
         <label for="alt_text" class="form-label fw-semibold">Alt Text for Image (optional)</label>
-        <input type="text" name="alt_text" id="alt_text" class="form-control @error('alt_text') is-invalid @enderror" value="{{ old('alt_text', $post->alt_text) }}" maxlength="255">
+        <input type="text" name="alt_text" id="alt_text" class="form-control @error('alt_text') is-invalid @enderror" value="{{ old('alt_text', $post->alt_text) }}">
         @error('alt_text')
             <div class="invalid-feedback">{{ $message }}</div>
         @enderror
@@ -93,29 +93,23 @@
         <div class="card-body">
             <div class="mb-3">
                 <label for="seo_title" class="form-label fw-semibold">SEO Title</label>
-                <input type="text" name="seo_title" id="seo_title" class="form-control @error('seo_title') is-invalid @enderror" value="{{ old('seo_title', $post->seo_title) }}" maxlength="60">
-                <div class="d-flex justify-content-between mt-1">
-                    <span class="form-text mb-0">Recommended max 60 characters.</span>
-                    <span id="seo_title_counter" class="small text-muted">0 / 60</span>
-                </div>
+                <input type="text" name="seo_title" id="seo_title" class="form-control @error('seo_title') is-invalid @enderror" value="{{ old('seo_title', $post->seo_title) }}">
+                <div class="form-text mt-1 mb-0">Optional. Used for search result titles when set.</div>
                 @error('seo_title')
                     <div class="invalid-feedback d-block">{{ $message }}</div>
                 @enderror
             </div>
             <div class="mb-3">
                 <label for="meta_description" class="form-label fw-semibold">Meta Description</label>
-                <textarea name="meta_description" id="meta_description" rows="3" class="form-control @error('meta_description') is-invalid @enderror" maxlength="160">{{ old('meta_description', $post->meta_description) }}</textarea>
-                <div class="d-flex justify-content-between mt-1">
-                    <span class="form-text mb-0">Recommended max 160 characters.</span>
-                    <span id="meta_description_counter" class="small text-muted">0 / 160</span>
-                </div>
+                <textarea name="meta_description" id="meta_description" rows="3" class="form-control @error('meta_description') is-invalid @enderror">{{ old('meta_description', $post->meta_description) }}</textarea>
+                <div class="form-text mt-1 mb-0">Optional. Shown as the snippet in search results when set.</div>
                 @error('meta_description')
                     <div class="invalid-feedback d-block">{{ $message }}</div>
                 @enderror
             </div>
             <div class="mb-3">
                 <label for="post_slug" class="form-label fw-semibold">URL Slug</label>
-                <input type="text" name="slug" id="post_slug" class="form-control @error('slug') is-invalid @enderror" value="{{ old('slug', $post->slug) }}" @if (! $post->exists) placeholder="auto-from-title" @endif maxlength="255" {{ $post->exists ? 'required' : '' }}>
+                <input type="text" name="slug" id="post_slug" class="form-control @error('slug') is-invalid @enderror" value="{{ old('slug', $post->slug) }}" @if (! $post->exists) placeholder="auto-from-title" @endif {{ $post->exists ? 'required' : '' }}>
                 @error('slug')
                     <div class="invalid-feedback">{{ $message }}</div>
                 @enderror
@@ -201,22 +195,6 @@
                 });
             }
 
-            function bindCounter(fieldId, counterId, max) {
-                var field = document.getElementById(fieldId);
-                var counter = document.getElementById(counterId);
-                if (!field || !counter) return;
-                function update() {
-                    var len = field.value.length;
-                    counter.textContent = len + ' / ' + max;
-                    counter.classList.toggle('text-danger', len > max);
-                    counter.classList.toggle('fw-semibold', len > max);
-                }
-                field.addEventListener('input', update);
-                update();
-            }
-
-            bindCounter('seo_title', 'seo_title_counter', 60);
-            bindCounter('meta_description', 'meta_description_counter', 160);
         })();
     </script>
 @endpush

@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\AffiliateFormSubmission;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
-use App\Mail\AffiliateFormSubmission;
 
 class AffiliateController extends Controller
 {
@@ -17,31 +17,31 @@ class AffiliateController extends Controller
     {
         // Validate the form data
         $request->validate([
-            'full_name' => 'required|string|max:255',
-            'email' => 'required|email|max:255',
-            'whatsapp_number' => 'required|string|max:20',
-            'country' => 'required|string|max:100',
-            'preferred_language' => 'required|string|max:50',
+            'full_name' => 'required|string',
+            'email' => 'required|email',
+            'whatsapp_number' => 'required|string',
+            'country' => 'required|string',
+            'preferred_language' => 'required|string',
             'cod_business' => 'required|in:yes,no',
-            'business_type' => 'required|string|max:100',
-            'community_size' => 'required|string|max:50',
+            'business_type' => 'required|string',
+            'community_size' => 'required|string',
             'promotion_channels' => 'required|array|min:1',
-            'other_business_type' => 'nullable|string|max:255',
-            'other_channels' => 'nullable|string|max:255',
+            'other_business_type' => 'nullable|string',
+            'other_channels' => 'nullable|string',
             // Channel detail fields
-            'youtube_channel_name' => 'nullable|string|max:255',
+            'youtube_channel_name' => 'nullable|string',
             'youtube_followers' => 'nullable|integer|min:0',
-            'instagram_username' => 'nullable|string|max:255',
+            'instagram_username' => 'nullable|string',
             'instagram_followers' => 'nullable|integer|min:0',
-            'facebook_page_name' => 'nullable|string|max:255',
+            'facebook_page_name' => 'nullable|string',
             'facebook_followers' => 'nullable|integer|min:0',
-            'tiktok_username' => 'nullable|string|max:255',
+            'tiktok_username' => 'nullable|string',
             'tiktok_followers' => 'nullable|integer|min:0',
-            'twitter_username' => 'nullable|string|max:255',
+            'twitter_username' => 'nullable|string',
             'twitter_followers' => 'nullable|integer|min:0',
-            'linkedin_profile_name' => 'nullable|string|max:255',
+            'linkedin_profile_name' => 'nullable|string',
             'linkedin_connections' => 'nullable|integer|min:0',
-            'website_url' => 'nullable|url|max:255',
+            'website_url' => 'nullable|url',
             'website_monthly_visitors' => 'nullable|integer|min:0',
         ]);
 

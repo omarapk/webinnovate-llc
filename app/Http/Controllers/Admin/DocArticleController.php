@@ -52,7 +52,7 @@ class DocArticleController extends Controller
     public function store(Request $request): RedirectResponse
     {
         $validated = $request->validate([
-            'title' => ['required', 'string', 'max:255'],
+            'title' => ['required', 'string'],
             'category_id' => ['required', 'exists:doc_categories,id'],
             'excerpt' => ['nullable', 'string'],
             'content' => ['required', 'string'],
@@ -90,7 +90,7 @@ class DocArticleController extends Controller
     public function update(Request $request, DocArticle $article): RedirectResponse
     {
         $validated = $request->validate([
-            'title' => ['required', 'string', 'max:255'],
+            'title' => ['required', 'string'],
             'category_id' => ['required', 'exists:doc_categories,id'],
             'excerpt' => ['nullable', 'string'],
             'content' => ['required', 'string'],
