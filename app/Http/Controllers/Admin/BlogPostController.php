@@ -53,7 +53,12 @@ class BlogPostController extends Controller
             'alt_text' => ['nullable', 'string'],
             'excerpt' => ['nullable', 'string'],
             'content' => ['required', 'string'],
-            'featured_image' => ['nullable', 'image', 'max:2048'],
+            'featured_image' => [
+                'nullable',
+                'file',
+                'max:2048',
+                'mimetypes:image/jpeg,image/png,image/webp,image/gif,image/svg+xml',
+            ],
             'status' => ['required', 'in:draft,published'],
             'published_at' => ['nullable', 'date'],
         ]);
@@ -107,7 +112,12 @@ class BlogPostController extends Controller
             'alt_text' => ['nullable', 'string'],
             'excerpt' => ['nullable', 'string'],
             'content' => ['required', 'string'],
-            'featured_image' => ['nullable', 'image', 'max:2048'],
+            'featured_image' => [
+                'nullable',
+                'file',
+                'max:2048',
+                'mimetypes:image/jpeg,image/png,image/webp,image/gif,image/svg+xml',
+            ],
             'status' => ['required', 'in:draft,published'],
             'published_at' => ['nullable', 'date'],
         ]);
