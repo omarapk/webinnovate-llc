@@ -81,4 +81,10 @@ echo "Current configuration:"
 grep -E "^(APP_NAME|APP_ENV|APP_DEBUG|APP_URL|DB_CONNECTION)" .env
 
 echo "Starting Laravel server..."
-exec php artisan serve --host 0.0.0.0 --port 8000
+echo "Using PHP upload overrides: upload_max_filesize=32M post_max_size=32M"
+exec php \
+  -d upload_max_filesize=32M \
+  -d post_max_size=32M \
+  -d max_execution_time=180 \
+  -d max_input_time=180 \
+  artisan serve --host 0.0.0.0 --port 8000
