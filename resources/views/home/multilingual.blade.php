@@ -2513,126 +2513,33 @@ Merci LeadForm Order COD Form. L'application a vraiment transformé notre façon
                                 var posEl = document.getElementById('lfBlogPos');
                                 var total = items.length;
                                 if (totalEl) totalEl.textContent = String(total);
-                                var pos = 1;
-                                if (posEl) posEl.textContent = String(pos);
+                                function clamp(n, min, max) { return Math.max(min, Math.min(max, n)); }
 
-                                // Start centered away from edges by moving the first item to the end a few times.
-                                // This makes it practically impossible to "hit the end" and avoids any visible jump.
-                                for (var i = 0; i < Math.min(2, items.length); i++) {
-                                    track.appendChild(track.firstElementChild);
-                                }
-                                // We moved the first item to the end twice, so the logical position advances too.
-                                if (total > 0) {
-                                    pos = ((pos - 1 + Math.min(2, total)) % total) + 1;
-                                    if (posEl) posEl.textContent = String(pos);
-                                }
-
-                                // Keep scroll in a stable range by recycling DOM nodes.
-                                // When scrolling right: move first card to end and compensate scrollLeft (no visual jump).
-                                // When scrolling left: move last card to start and compensate scrollLeft (no visual jump).
-                                var ticking = false;
-                                function recycle() {
-                                    ticking = false;
+                                // Update the "1 of N" counter based on scroll position.
+                                function updatePos() {
                                     var step = getStep(track);
-                                    if (!step) return;
-
-                                    // Right recycle
-                                    while (track.scrollLeft >= step * 2) {
-                                        track.scrollLeft -= step;
-                                        track.appendChild(track.firstElementChild);
-                                        if (total > 0) {
-                                            pos = (pos % total) + 1;
-                                            if (posEl) posEl.textContent = String(pos);
-                                        }
+                                    if (!step || total <= 0) {
+                                        if (posEl) posEl.textContent = '1';
+                                        return;
                                     }
-
-                                    // Left recycle
-                                    while (track.scrollLeft <= 0) {
-                                        track.insertBefore(track.lastElementChild, track.firstElementChild);
-                                        track.scrollLeft += step;
-                                        if (total > 0) {
-                                            pos = ((pos - 2 + total) % total) + 1;
-                                            if (posEl) posEl.textContent = String(pos);
-                                        }
-                                    }
+                                    var idx = Math.round(track.scrollLeft / step);
+                                    idx = clamp(idx, 0, total - 1);
+                                    if (posEl) posEl.textContent = String(idx + 1);
                                 }
 
                                 track.addEventListener('scroll', function () {
-                                    if (ticking) return;
-                                    ticking = true;
-                                    requestAnimationFrame(recycle);
+                                    requestAnimationFrame(updatePos);
                                 }, { passive: true });
 
+                                // Arrow buttons scroll by one card, but manual scrolling remains free.
                                 window.lfScrollBlogByOne = function (dir) {
                                     var step = getStep(track);
                                     if (!step) return;
                                     track.scrollBy({ left: step * (dir || 1), behavior: 'smooth' });
                                 };
 
-                                // Ensure initial scrollLeft isn't pinned at 0 to allow left recycling.
-                                var initialStep = getStep(track);
-                                if (initialStep) track.scrollLeft = initialStep;
-
-                                // Autoplay (pause on hover / focus / touch / hidden tab)
-                                // Mobile: disable autoplay so it doesn't scroll after a swipe.
-                                var canAutoplay = true;
-                                try {
-                                    canAutoplay = window.matchMedia
-                                        ? window.matchMedia('(hover: hover) and (pointer: fine)').matches
-                                        : true;
-                                } catch (e) {
-                                    canAutoplay = true;
-                                }
-
-                                var autoplayMs = 3000;
-                                var autoplayTimer = null;
-                                var paused = false;
-
-                                function startAutoplay() {
-                                    if (!canAutoplay) return;
-                                    if (autoplayTimer || paused) return;
-                                    autoplayTimer = window.setInterval(function () {
-                                        if (paused) return;
-                                        window.lfScrollBlogByOne(1);
-                                    }, autoplayMs);
-                                }
-
-                                function stopAutoplay() {
-                                    if (!autoplayTimer) return;
-                                    window.clearInterval(autoplayTimer);
-                                    autoplayTimer = null;
-                                }
-
-                                function setPaused(nextPaused) {
-                                    paused = !!nextPaused;
-                                    if (paused) stopAutoplay();
-                                    else startAutoplay();
-                                }
-
-                                // Desktop hover
-                                track.addEventListener('mouseenter', function () { setPaused(true); });
-                                track.addEventListener('mouseleave', function () { setPaused(false); });
-                                // Keyboard focus inside cards
-                                track.addEventListener('focusin', function () { setPaused(true); });
-                                track.addEventListener('focusout', function () { setPaused(false); });
-                                // Touch interaction (mobile)
-                                // Keep paused (no autoplay resume after swipe).
-                                track.addEventListener('touchstart', function () { setPaused(true); }, { passive: true });
-                                // User wheel/drag should pause briefly
-                                var resumeTimeout = null;
-                                function pauseBriefly() {
-                                    setPaused(true);
-                                    if (resumeTimeout) window.clearTimeout(resumeTimeout);
-                                    resumeTimeout = window.setTimeout(function () { setPaused(false); }, 2500);
-                                }
-                                track.addEventListener('wheel', pauseBriefly, { passive: true });
-                                track.addEventListener('pointerdown', pauseBriefly, { passive: true });
-
-                                document.addEventListener('visibilitychange', function () {
-                                    setPaused(document.hidden);
-                                });
-
-                                startAutoplay();
+                                // Initial counter paint
+                                updatePos();
                             }
 
                             if (document.readyState === 'loading') {
