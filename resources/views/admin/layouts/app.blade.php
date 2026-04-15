@@ -31,6 +31,7 @@
             background: var(--admin-body-bg);
             color: var(--admin-heading);
             min-height: 100vh;
+            overflow: hidden;
         }
 
         .admin-sidebar {
@@ -38,6 +39,10 @@
             min-height: 100vh;
             background: linear-gradient(180deg, var(--admin-sidebar-bg) 0%, #12151d 100%);
             border-right: 1px solid var(--admin-sidebar-border);
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            overflow: hidden;
         }
 
         .admin-sidebar-logo-wrap {
@@ -89,6 +94,8 @@
 
         .admin-main {
             min-width: 0;
+            height: 100vh;
+            overflow-y: auto;
         }
 
         .admin-topbar {
@@ -150,6 +157,62 @@
         .tracking-wide {
             letter-spacing: 0.06em;
         }
+
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 52px;
+            height: 28px;
+            vertical-align: middle;
+        }
+
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #cbd5e1;
+            transition: 0.2s;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 22px;
+            width: 22px;
+            left: 3px;
+            bottom: 3px;
+            background-color: #fff;
+            transition: 0.2s;
+        }
+
+        .switch input:checked + .slider {
+            background-color: var(--admin-accent);
+        }
+
+        .switch input:focus + .slider {
+            box-shadow: 0 0 0 0.2rem rgba(61, 126, 255, 0.25);
+        }
+
+        .switch input:checked + .slider:before {
+            transform: translateX(24px);
+        }
+
+        .slider.round {
+            border-radius: 999px;
+        }
+
+        .slider.round:before {
+            border-radius: 50%;
+        }
     </style>
     @stack('styles')
 </head>
@@ -198,7 +261,65 @@
         </div>
     </div>
 
+    <div class="modal fade" id="confirmDeleteModal" tabindex="-1" aria-labelledby="confirmDeleteModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0 shadow">
+                <div class="modal-header border-0">
+                    <h5 class="modal-title" id="confirmDeleteModalLabel">Confirm delete</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body pt-0">
+                    <p class="mb-0 text-muted" id="confirmDeleteModalMessage">Are you sure you want to delete this item?</p>
+                </div>
+                <div class="modal-footer border-0">
+                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-danger" id="confirmDeleteModalConfirm">Delete</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script>
+        (() => {
+            const modalEl = document.getElementById('confirmDeleteModal');
+            if (!modalEl) return;
+
+            const modal = new bootstrap.Modal(modalEl);
+            const titleEl = document.getElementById('confirmDeleteModalLabel');
+            const messageEl = document.getElementById('confirmDeleteModalMessage');
+            const confirmBtn = document.getElementById('confirmDeleteModalConfirm');
+
+            let pendingForm = null;
+
+            document.addEventListener('submit', (e) => {
+                const form = e.target;
+                if (!(form instanceof HTMLFormElement)) return;
+                if (!form.classList.contains('js-confirm-delete')) return;
+
+                const submitter = e.submitter;
+                if (submitter instanceof HTMLButtonElement && submitter.disabled) return;
+
+                e.preventDefault();
+                pendingForm = form;
+
+                const t = form.getAttribute('data-confirm-title') || 'Confirm delete';
+                const m = form.getAttribute('data-confirm-message') || 'Are you sure you want to delete this item?';
+                if (titleEl) titleEl.textContent = t;
+                if (messageEl) messageEl.textContent = m;
+
+                modal.show();
+            });
+
+            confirmBtn?.addEventListener('click', () => {
+                if (!pendingForm) return;
+                const form = pendingForm;
+                pendingForm = null;
+                modal.hide();
+                form.submit();
+            });
+        })();
+    </script>
     @stack('scripts')
 </body>
 </html>

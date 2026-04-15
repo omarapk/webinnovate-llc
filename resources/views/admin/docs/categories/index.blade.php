@@ -43,11 +43,11 @@
                             </td>
                             <td class="text-end text-muted">{{ $category->sort_order }}</td>
                             <td class="text-end pe-4">
-                                <a href="{{ route('admin.docs.categories.edit', $category) }}" class="btn btn-sm btn-outline-primary">Edit</a>
-                                <form action="{{ route('admin.docs.categories.destroy', $category) }}" method="post" class="d-inline" onsubmit="return confirm('Delete this category?');">
+                                <a href="{{ route('admin.docs.categories.edit', $category) }}" class="btn btn-sm btn-primary">Edit</a>
+                                <form action="{{ route('admin.docs.categories.destroy', $category) }}" method="post" class="d-inline js-confirm-delete" data-confirm-title="Delete category?" data-confirm-message="This will permanently delete this category.">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class="btn btn-sm btn-outline-danger" @disabled($category->articles_count > 0)>Delete</button>
+                                    <button type="submit" class="btn btn-sm btn-danger" @disabled($category->articles_count > 0)>Delete</button>
                                 </form>
                             </td>
                         </tr>

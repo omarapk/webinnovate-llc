@@ -20,9 +20,9 @@ Route::get('/', function () {
 
 // Main route - serves multilingual.blade.php at /leadform URL
 Route::get('/leadform', function () {
-    $blogPosts = BlogPost::published()
-        ->latest('published_at')
-        ->take(6)
+    $blogPosts = BlogPost::query()
+        ->orderByDesc('published_at')
+        ->orderByDesc('created_at')
         ->get();
 
     return view('home.multilingual', compact('blogPosts'));

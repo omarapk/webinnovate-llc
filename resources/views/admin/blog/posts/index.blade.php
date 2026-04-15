@@ -12,22 +12,25 @@
         </a>
     </div>
 
-    <div class="card border-0 shadow-sm rounded-3 p-3 p-md-4 mb-4">
-        <form method="get" action="{{ route('admin.blog.posts.index') }}" class="row g-2 align-items-end">
-            <div class="col-sm-6 col-md-4 col-lg-3">
-                <label for="filter_status" class="form-label small fw-semibold text-muted mb-1">Status</label>
-                <select name="status" id="filter_status" class="form-select form-select-sm">
-                    <option value="">All statuses</option>
-                    <option value="draft" @selected(request('status') === 'draft')>Draft</option>
-                    <option value="published" @selected(request('status') === 'published')>Published</option>
-                </select>
-            </div>
-            <div class="col-auto d-flex gap-2">
-                <button type="submit" class="btn btn-sm btn-primary">Filter</button>
-                <a href="{{ route('admin.blog.posts.index') }}" class="btn btn-sm btn-outline-secondary">Reset</a>
-            </div>
-        </form>
-    </div>
+    {{--
+        Filters (commented out per request)
+        <div class="card border-0 shadow-sm rounded-3 p-3 p-md-4 mb-4">
+            <form method="get" action="{{ route('admin.blog.posts.index') }}" class="row g-2 align-items-end">
+                <div class="col-sm-6 col-md-4 col-lg-3">
+                    <label for="filter_status" class="form-label small fw-semibold text-muted mb-1">Status</label>
+                    <select name="status" id="filter_status" class="form-select form-select-sm">
+                        <option value="">All statuses</option>
+                        <option value="draft" @selected(request('status') === 'draft')>Draft</option>
+                        <option value="published" @selected(request('status') === 'published')>Published</option>
+                    </select>
+                </div>
+                <div class="col-auto d-flex gap-2">
+                    <button type="submit" class="btn btn-sm btn-primary">Filter</button>
+                    <a href="{{ route('admin.blog.posts.index') }}" class="btn btn-sm btn-outline-secondary">Reset</a>
+                </div>
+            </form>
+        </div>
+    --}}
 
     <div class="card border-0 shadow-sm rounded-3 overflow-hidden">
         <div class="table-responsive">
@@ -68,17 +71,25 @@
                                 {{ $post->published_at?->format('M j, Y g:i A') ?? '—' }}
                             </td>
                             <td class="text-end pe-4">
-                                <div class="d-flex flex-wrap justify-content-end gap-1">
-                                    <a href="{{ route('admin.blog.posts.edit', $post) }}" class="btn btn-sm btn-outline-primary">Edit</a>
+                                <div class="d-inline-flex align-items-center justify-content-end gap-2 flex-nowrap">
+                                    <a href="{{ route('admin.blog.posts.edit', $post) }}" class="btn btn-sm btn-primary">Edit</a>
+                                    <form action="{{ route('admin.blog.posts.destroy', $post) }}" method="post" class="d-inline js-confirm-delete" data-confirm-title="Delete post?" data-confirm-message="This will permanently delete this post.">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                                    </form>
                                     <form action="{{ route('admin.blog.posts.toggle', $post) }}" method="post" class="d-inline">
                                         @csrf
                                         @method('PATCH')
-                                        <button type="submit" class="btn btn-sm btn-outline-secondary" title="Toggle draft / published">Toggle</button>
-                                    </form>
-                                    <form action="{{ route('admin.blog.posts.destroy', $post) }}" method="post" class="d-inline" onsubmit="return confirm('Delete this post?');">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="btn btn-sm btn-outline-danger">Delete</button>
+                                        <label class="switch" title="Toggle draft / published">
+                                            <input
+                                                type="checkbox"
+                                                @checked($post->status === 'published')
+                                                onchange="this.form.submit()"
+                                                aria-label="Toggle draft / published"
+                                            >
+                                            <span class="slider round"></span>
+                                        </label>
                                     </form>
                                 </div>
                             </td>
