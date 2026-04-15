@@ -51,6 +51,13 @@ class DocArticleController extends Controller
 
     public function store(Request $request): RedirectResponse
     {
+        $uploaded = $request->file('featured_image');
+        if ($uploaded instanceof \Illuminate\Http\UploadedFile && ! $uploaded->isValid()) {
+            return back()->withInput()->withErrors([
+                'featured_image' => $uploaded->getErrorMessage().' (upload error code '.$uploaded->getError().')',
+            ]);
+        }
+
         $validated = $request->validate([
             'title' => ['required', 'string'],
             'category_id' => ['required', 'exists:doc_categories,id'],
@@ -59,7 +66,7 @@ class DocArticleController extends Controller
             'featured_image' => [
                 'nullable',
                 'file',
-                'max:10240',
+                'max:32768',
                 'mimetypes:image/jpeg,image/png,image/webp,image/gif,image/svg+xml',
             ],
             'status' => ['required', 'in:draft,published'],
@@ -68,8 +75,14 @@ class DocArticleController extends Controller
         ]);
 
         $path = null;
-        if ($request->hasFile('featured_image')) {
-            $path = $request->file('featured_image')->store('docs', FeaturedImage::disk());
+        if ($request->has('featured_image') && $uploaded instanceof \Illuminate\Http\UploadedFile && $uploaded->isValid()) {
+            try {
+                $path = $uploaded->store('docs', FeaturedImage::disk());
+            } catch (\Throwable $e) {
+                return back()->withInput()->withErrors([
+                    'featured_image' => $e->getMessage().($e->getPrevious() ? ' | '.$e->getPrevious()->getMessage() : ''),
+                ]);
+            }
         }
 
         DocArticle::create([
@@ -94,6 +107,13 @@ class DocArticleController extends Controller
 
     public function update(Request $request, DocArticle $article): RedirectResponse
     {
+        $uploaded = $request->file('featured_image');
+        if ($uploaded instanceof \Illuminate\Http\UploadedFile && ! $uploaded->isValid()) {
+            return back()->withInput()->withErrors([
+                'featured_image' => $uploaded->getErrorMessage().' (upload error code '.$uploaded->getError().')',
+            ]);
+        }
+
         $validated = $request->validate([
             'title' => ['required', 'string'],
             'category_id' => ['required', 'exists:doc_categories,id'],
@@ -102,7 +122,7 @@ class DocArticleController extends Controller
             'featured_image' => [
                 'nullable',
                 'file',
-                'max:10240',
+                'max:32768',
                 'mimetypes:image/jpeg,image/png,image/webp,image/gif,image/svg+xml',
             ],
             'status' => ['required', 'in:draft,published'],
@@ -112,11 +132,17 @@ class DocArticleController extends Controller
 
         $data = collect($validated)->except(['featured_image'])->all();
 
-        if ($request->hasFile('featured_image')) {
-            $previousFeaturedImage = $article->featured_image;
-            $data['featured_image'] = $request->file('featured_image')->store('docs', FeaturedImage::disk());
-            if ($previousFeaturedImage) {
-                FeaturedImage::deleteStored($previousFeaturedImage);
+        if ($request->has('featured_image') && $uploaded instanceof \Illuminate\Http\UploadedFile && $uploaded->isValid()) {
+            try {
+                $previousFeaturedImage = $article->featured_image;
+                $data['featured_image'] = $uploaded->store('docs', FeaturedImage::disk());
+                if ($previousFeaturedImage) {
+                    FeaturedImage::deleteStored($previousFeaturedImage);
+                }
+            } catch (\Throwable $e) {
+                return back()->withInput()->withErrors([
+                    'featured_image' => $e->getMessage().($e->getPrevious() ? ' | '.$e->getPrevious()->getMessage() : ''),
+                ]);
             }
         }
 

@@ -66,7 +66,7 @@
         @error('featured_image')
             <div class="invalid-feedback">{{ $message }}</div>
         @enderror
-        <div class="form-text">Max 2&nbsp;MB. @if (config('filesystems.featured_image_disk') === 'cloudinary')Delivered via Cloudinary (folder <code>{{ config('filesystems.disks.cloudinary.prefix', 'leadform') }}/blog</code>). @else Stored under <code>storage/app/public/blog/</code>. @endif</div>
+        <div class="form-text">Max 32&nbsp;MB. @if (config('filesystems.featured_image_disk') === 'cloudinary')Delivered via Cloudinary (folder <code>{{ config('filesystems.disks.cloudinary.prefix', 'leadform') }}/blog</code>). @else Stored under <code>storage/app/public/blog/</code>. @endif</div>
         <div class="mt-3">
             @if ($post->exists && $post->featured_image)
                 <p class="small text-muted mb-1">Current image:</p>

@@ -76,6 +76,24 @@ Route::prefix('admin')->name('admin.')->group(function () {
         })->middleware('admin')->name('dashboard');
 
         Route::middleware('admin')->group(function () {
+            Route::get('system/php', function () {
+                return response()->json([
+                    'php_version' => PHP_VERSION,
+                    'sapi' => php_sapi_name(),
+                    'loaded_ini' => php_ini_loaded_file(),
+                    'scanned_ini' => php_ini_scanned_files(),
+                    'upload_max_filesize' => ini_get('upload_max_filesize'),
+                    'post_max_size' => ini_get('post_max_size'),
+                    'max_file_uploads' => ini_get('max_file_uploads'),
+                    'max_execution_time' => ini_get('max_execution_time'),
+                    'max_input_time' => ini_get('max_input_time'),
+                    'memory_limit' => ini_get('memory_limit'),
+                    'user_ini_filename' => ini_get('user_ini.filename'),
+                    'user_ini_cache_ttl' => ini_get('user_ini.cache_ttl'),
+                    'cwd' => getcwd(),
+                ]);
+            })->name('system.php');
+
             Route::patch('blog/posts/{post}/toggle', [BlogPostController::class, 'toggleStatus'])
                 ->name('blog.posts.toggle');
 

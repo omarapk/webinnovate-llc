@@ -162,31 +162,32 @@ class BlogPostSeeder extends Seeder
         $bodyMd = trim(substr($rest, $bodyFrom, $lf - $bodyFrom));
 
         $altText = '';
-        if (preg_match('/\\*\\*Featured image alt text:\\*\\*\\s*(.+)\\n/u', $section, $mm)) {
+        if (preg_match('/\\*\\*Featured image alt text:\\*\\*\\s*(.+)\\n/ui', $section, $mm)) {
             $altText = trim($mm[1]);
         }
 
         $seoTitle = '';
-        if (preg_match('/\\*\\*SEO Title:\\*\\*\\s*(.+)\\n/u', $section, $mm)) {
+        if (preg_match('/\\*\\*SEO Title:\\*\\*\\s*(.+)\\n/ui', $section, $mm)) {
             $seoTitle = trim($mm[1]);
         }
 
         $metaDescription = '';
-        if (preg_match('/\\*\\*Meta Description:\\*\\*\\s*(.+)\\n/u', $section, $mm)) {
+        // Accept common casing variants: "Meta Description" and "Meta description"
+        if (preg_match('/\\*\\*Meta\\s+Description:\\*\\*\\s*(.+)\\n/ui', $section, $mm)) {
             $metaDescription = trim($mm[1]);
         }
 
         $slug = '';
-        if (preg_match('/\\*\\*URL Slug:\\*\\*\\s*(.+)\\n/u', $section, $mm)) {
+        if (preg_match('/\\*\\*URL Slug:\\*\\*\\s*(.+)\\n/ui', $section, $mm)) {
             $slug = trim($mm[1]);
-        } elseif (preg_match('/\\*\\*URL Slug:\\*\\*\\s*\\n([^\\n]+)\\n/u', $section, $mm)) {
+        } elseif (preg_match('/\\*\\*URL Slug:\\*\\*\\s*\\n([^\\n]+)\\n/ui', $section, $mm)) {
             $slug = trim($mm[1]);
         }
 
         $tagsRaw = '';
-        if (preg_match('/\\*\\*Tags:\\*\\*\\s*\\n([^\\n]+)\\n/u', $section, $mm)) {
+        if (preg_match('/\\*\\*Tags:\\*\\*\\s*\\n([^\\n]+)\\n/ui', $section, $mm)) {
             $tagsRaw = trim($mm[1]);
-        } elseif (preg_match('/\\*\\*Tags:\\*\\*\\s*(.+)\\n/u', $section, $mm)) {
+        } elseif (preg_match('/\\*\\*Tags:\\*\\*\\s*(.+)\\n/ui', $section, $mm)) {
             $tagsRaw = trim($mm[1]);
         }
         $tags = array_values(array_filter(array_map(static fn ($t) => trim($t), preg_split('/\\s*,\\s*/u', $tagsRaw) ?: [])));

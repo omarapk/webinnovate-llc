@@ -39,6 +39,13 @@ class BlogPostController extends Controller
 
     public function store(Request $request): RedirectResponse
     {
+        $uploaded = $request->file('featured_image');
+        if ($uploaded instanceof \Illuminate\Http\UploadedFile && ! $uploaded->isValid()) {
+            return back()->withInput()->withErrors([
+                'featured_image' => $uploaded->getErrorMessage().' (upload error code '.$uploaded->getError().')',
+            ]);
+        }
+
         $request->merge([
             'slug' => filled($request->input('slug')) ? Str::slug($request->string('slug')) : null,
         ]);
@@ -56,7 +63,7 @@ class BlogPostController extends Controller
             'featured_image' => [
                 'nullable',
                 'file',
-                'max:10240',
+                'max:32768',
                 'mimetypes:image/jpeg,image/png,image/webp,image/gif,image/svg+xml',
             ],
             'status' => ['required', 'in:draft,published'],
@@ -71,8 +78,14 @@ class BlogPostController extends Controller
         unset($validated['tags']);
 
         $path = null;
-        if ($request->hasFile('featured_image')) {
-            $path = $request->file('featured_image')->store('blog', FeaturedImage::disk());
+        if ($request->has('featured_image') && $uploaded instanceof \Illuminate\Http\UploadedFile && $uploaded->isValid()) {
+            try {
+                $path = $uploaded->store('blog', FeaturedImage::disk());
+            } catch (\Throwable $e) {
+                return back()->withInput()->withErrors([
+                    'featured_image' => $e->getMessage().($e->getPrevious() ? ' | '.$e->getPrevious()->getMessage() : ''),
+                ]);
+            }
         }
 
         BlogPost::create([
@@ -96,6 +109,13 @@ class BlogPostController extends Controller
         set_time_limit(120);
         ini_set('max_execution_time', '120');
 
+        $uploaded = $request->file('featured_image');
+        if ($uploaded instanceof \Illuminate\Http\UploadedFile && ! $uploaded->isValid()) {
+            return back()->withInput()->withErrors([
+                'featured_image' => $uploaded->getErrorMessage().' (upload error code '.$uploaded->getError().')',
+            ]);
+        }
+
         Log::info('Update called', $request->except(['_token', 'content', 'featured_image']));
 
         $request->merge([
@@ -115,7 +135,7 @@ class BlogPostController extends Controller
             'featured_image' => [
                 'nullable',
                 'file',
-                'max:10240',
+                'max:32768',
                 'mimetypes:image/jpeg,image/png,image/webp,image/gif,image/svg+xml',
             ],
             'status' => ['required', 'in:draft,published'],
@@ -128,15 +148,15 @@ class BlogPostController extends Controller
         $data = collect($validated)->except(['featured_image'])->all();
         $data['tags'] = $tags;
 
-        if ($request->hasFile('featured_image')) {
+        if ($request->has('featured_image') && $uploaded instanceof \Illuminate\Http\UploadedFile && $uploaded->isValid()) {
             try {
                 Log::info('Upload attempt', [
-                    'has_file' => $request->hasFile('featured_image'),
+                    'has_file' => true,
                     'disk' => FeaturedImage::disk(),
                 ]);
 
                 $previousFeaturedImage = $post->featured_image;
-                $newPath = $request->file('featured_image')->store('blog', FeaturedImage::disk());
+                $newPath = $uploaded->store('blog', FeaturedImage::disk());
 
                 Log::info('Upload result', ['path' => $newPath ?? 'null']);
 
