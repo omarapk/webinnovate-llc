@@ -59,7 +59,7 @@ class DocArticleController extends Controller
             'featured_image' => [
                 'nullable',
                 'file',
-                'max:2048',
+                'max:10240',
                 'mimetypes:image/jpeg,image/png,image/webp,image/gif,image/svg+xml',
             ],
             'status' => ['required', 'in:draft,published'],
@@ -102,7 +102,7 @@ class DocArticleController extends Controller
             'featured_image' => [
                 'nullable',
                 'file',
-                'max:2048',
+                'max:10240',
                 'mimetypes:image/jpeg,image/png,image/webp,image/gif,image/svg+xml',
             ],
             'status' => ['required', 'in:draft,published'],

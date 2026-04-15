@@ -56,7 +56,7 @@ class BlogPostController extends Controller
             'featured_image' => [
                 'nullable',
                 'file',
-                'max:2048',
+                'max:10240',
                 'mimetypes:image/jpeg,image/png,image/webp,image/gif,image/svg+xml',
             ],
             'status' => ['required', 'in:draft,published'],
@@ -115,7 +115,7 @@ class BlogPostController extends Controller
             'featured_image' => [
                 'nullable',
                 'file',
-                'max:2048',
+                'max:10240',
                 'mimetypes:image/jpeg,image/png,image/webp,image/gif,image/svg+xml',
             ],
             'status' => ['required', 'in:draft,published'],
