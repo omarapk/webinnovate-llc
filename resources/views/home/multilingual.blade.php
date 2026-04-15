@@ -441,9 +441,10 @@
             }
         }
 
-        /* Smooth scrolling for anchor links */
+        /* Keep manual scrolling consistent across browsers.
+           Anchor smooth-scrolling is handled via JS below. */
         html {
-            scroll-behavior: smooth;
+            scroll-behavior: auto;
         }
 
         /* Offset for fixed header when scrolling to sections */
@@ -664,9 +665,10 @@
             display: none;
         }
 
-        /* Smooth scrolling for anchor links */
+        /* Keep manual scrolling consistent across browsers.
+           Anchor smooth-scrolling is handled via JS below. */
         html {
-            scroll-behavior: smooth;
+            scroll-behavior: auto;
         }
 
         /* Affiliate section styling */
@@ -2441,7 +2443,8 @@ Merci LeadForm Order COD Form. L'application a vraiment transformé notre façon
                 overflow-x: auto;
                 overflow-y: hidden;
                 padding: 12px 2px 6px;
-                scroll-snap-type: x mandatory;
+                /* Allow fast manual scrolling without snapping "one by one" */
+                scroll-snap-type: x proximity;
                 scroll-padding-left: 2px;
                 -webkit-overflow-scrolling: touch;
             }
