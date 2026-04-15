@@ -21,6 +21,8 @@ Route::get('/', function () {
 // Main route - serves multilingual.blade.php at /leadform URL
 Route::get('/leadform', function () {
     $blogPosts = BlogPost::query()
+        ->where('status', 'published')
+        ->whereNotNull('published_at')
         ->orderByDesc('published_at')
         ->orderByDesc('created_at')
         ->get();
