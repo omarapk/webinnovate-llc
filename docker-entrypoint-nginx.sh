@@ -78,6 +78,9 @@ server {
     server_name _;
     root /var/www/public;
     index index.php;
+
+    # Allow larger admin uploads (featured images)
+    client_max_body_size 32m;
     
     # Trust proxy headers for HTTPS
     set_real_ip_from 0.0.0.0/0;
