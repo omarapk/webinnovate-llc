@@ -88,6 +88,9 @@ class BlogPostController extends Controller
 
     public function update(Request $request, BlogPost $post): RedirectResponse
     {
+        set_time_limit(120);
+        ini_set('max_execution_time', '120');
+
         Log::info('Update called', $request->except(['_token', 'content', 'featured_image']));
 
         $request->merge([
