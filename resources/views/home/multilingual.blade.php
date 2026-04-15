@@ -2571,11 +2571,22 @@ Merci LeadForm Order COD Form. L'application a vraiment transformé notre façon
                                 if (initialStep) track.scrollLeft = initialStep;
 
                                 // Autoplay (pause on hover / focus / touch / hidden tab)
+                                // Mobile: disable autoplay so it doesn't scroll after a swipe.
+                                var canAutoplay = true;
+                                try {
+                                    canAutoplay = window.matchMedia
+                                        ? window.matchMedia('(hover: hover) and (pointer: fine)').matches
+                                        : true;
+                                } catch (e) {
+                                    canAutoplay = true;
+                                }
+
                                 var autoplayMs = 3000;
                                 var autoplayTimer = null;
                                 var paused = false;
 
                                 function startAutoplay() {
+                                    if (!canAutoplay) return;
                                     if (autoplayTimer || paused) return;
                                     autoplayTimer = window.setInterval(function () {
                                         if (paused) return;
@@ -2602,8 +2613,8 @@ Merci LeadForm Order COD Form. L'application a vraiment transformé notre façon
                                 track.addEventListener('focusin', function () { setPaused(true); });
                                 track.addEventListener('focusout', function () { setPaused(false); });
                                 // Touch interaction (mobile)
+                                // Keep paused (no autoplay resume after swipe).
                                 track.addEventListener('touchstart', function () { setPaused(true); }, { passive: true });
-                                track.addEventListener('touchend', function () { setPaused(false); }, { passive: true });
                                 // User wheel/drag should pause briefly
                                 var resumeTimeout = null;
                                 function pauseBriefly() {
