@@ -46,6 +46,7 @@ Route::get('/leadform/feature-request', [PagesController::class, 'featureRequest
 Route::redirect('/blog', '/leadform', 301);
 Route::get('/blog/{slug}', [BlogController::class, 'show'])->name('blog.show');
 Route::get('/docs', [DocsController::class, 'index'])->name('docs.index');
+Route::get('/docs/search', [DocsController::class, 'search'])->name('docs.search');
 Route::get('/docs/category/{slug}', [DocsController::class, 'category'])->name('docs.category');
 Route::get('/docs/{slug}', [DocsController::class, 'show'])->name('docs.show');
 

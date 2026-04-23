@@ -9,6 +9,12 @@
 
 @push('styles')
     <style>
+        #docs-search-results {
+            display: none;
+        }
+        #docs-search-results.docs-search-results--visible {
+            display: block;
+        }
         .docs-search-input--hero .form-control {
             background: var(--docs-bg);
             border: 1px solid var(--docs-border);
@@ -118,25 +124,24 @@
     <div class="docs-search-hero">
         <div class="docs-search-hero-inner px-3 px-md-4">
             <h1 class="mb-0">How can we help you?</h1>
-            <form class="docs-search-input docs-search-input--hero position-relative mt-4 mt-md-5 mx-auto" style="max-width: 28rem;" action="{{ route('docs.index') }}" method="get" role="search">
+            <div class="docs-search-input docs-search-input--hero position-relative mt-4 mt-md-5 mx-auto" style="max-width: 28rem;" role="search">
                 <i class="bi bi-search search-icon" aria-hidden="true"></i>
-                <input type="search" name="q" value="{{ $query }}" class="form-control w-100" placeholder="Search help articles…" autocomplete="off" aria-label="Search help articles">
-            </form>
+                <input type="search" id="docs-search-input" class="form-control w-100" placeholder="Search help articles…" autocomplete="off" aria-label="Search help articles" aria-controls="docs-search-results">
+            </div>
         </div>
     </div>
 
     <div class="container py-5" style="max-width: 1040px;">
-        @if ($query !== '')
-            <div class="mb-5 docs-index-block">
-                <div class="d-flex flex-wrap align-items-center justify-content-between gap-2 mb-3">
-                    <h2 class="docs-section-title mb-0">Search results</h2>
-                    <a href="{{ route('docs.index') }}" class="lf-cta-btn lf-cta-btn-sm lf-cta-switch">@include('public.layouts.partials.lf-cta-switch-label', ['label' => 'Clear search'])</a>
-                </div>
-                @if ($searchResults->isEmpty())
-                    <p class="text-muted mb-0">No articles matched &ldquo;{{ $query }}&rdquo;. Try different keywords or browse categories below.</p>
+        <div id="docs-search-results" class="mb-5 docs-index-block" aria-live="polite"></div>
+
+        <div id="docs-normal-sections">
+            <section class="docs-index-block pb-2">
+                <h2 class="docs-section-title">Frequently read articles</h2>
+                @if ($mostReadArticles->isEmpty())
+                    <p class="docs-section-empty">No published articles yet.</p>
                 @else
                     <div class="docs-index-article-grid">
-                        @foreach ($searchResults->chunk(2) as $row)
+                        @foreach ($mostReadArticles->chunk(2) as $row)
                             <div class="row g-3">
                                 @foreach ($row as $art)
                                     <div class="col-md-6 docs-index-article-cell">
@@ -150,53 +155,83 @@
                         @endforeach
                     </div>
                 @endif
-            </div>
-        @endif
+            </section>
 
-        <section class="docs-index-block pb-2">
-            <h2 class="docs-section-title">Frequently read articles</h2>
-            @if ($mostReadArticles->isEmpty())
-                <p class="docs-section-empty">No published articles yet.</p>
-            @else
-                <div class="docs-index-article-grid">
-                    @foreach ($mostReadArticles->chunk(2) as $row)
-                        <div class="row g-3">
-                            @foreach ($row as $art)
-                                <div class="col-md-6 docs-index-article-cell">
-                                    <a href="{{ route('docs.show', $art->slug) }}" class="docs-index-article-link w-100 h-100">
-                                        <span class="docs-index-article-title">{{ $art->title }}</span>
-                                        <span class="docs-index-chevron" aria-hidden="true">›</span>
-                                    </a>
-                                </div>
-                            @endforeach
-                        </div>
-                    @endforeach
-                </div>
-            @endif
-        </section>
-
-        <section class="docs-index-block">
-            <h2 class="docs-section-title">Browse all categories</h2>
-            @if ($categories->isEmpty())
-                <p class="docs-section-empty">No categories yet.</p>
-            @else
-                <div class="row g-3 g-md-4">
-                    @foreach ($categories as $i => $cat)
-                        <div class="col-md-6">
-                            <a href="{{ route('docs.category', $cat->slug) }}" class="docs-index-cat-card d-flex gap-3 text-decoration-none text-reset h-100">
-                                <div class="docs-index-cat-icon flex-shrink-0">
-                                    <i class="bi {{ $catIcons[$i % count($catIcons)] }}"></i>
-                                </div>
-                                <div class="min-w-0 flex-grow-1">
-                                    <span class="docs-index-cat-badge">{{ $cat->name }}</span>
-                                    <p class="docs-index-cat-desc text-muted mb-0 mt-2">{{ $cat->description ? \Illuminate\Support\Str::limit($cat->description, 140) : 'Browse articles in this category.' }}</p>
-                                    <span class="docs-index-cat-meta text-muted d-inline-block mt-2">{{ $cat->articles_count }} {{ \Illuminate\Support\Str::plural('article', $cat->articles_count) }}</span>
-                                </div>
-                            </a>
-                        </div>
-                    @endforeach
-                </div>
-            @endif
-        </section>
+            <section class="docs-index-block">
+                <h2 class="docs-section-title">Browse all categories</h2>
+                @if ($categories->isEmpty())
+                    <p class="docs-section-empty">No categories yet.</p>
+                @else
+                    <div class="row g-3 g-md-4">
+                        @foreach ($categories as $i => $cat)
+                            <div class="col-md-6">
+                                <a href="{{ route('docs.category', $cat->slug) }}" class="docs-index-cat-card d-flex gap-3 text-decoration-none text-reset h-100">
+                                    <div class="docs-index-cat-icon flex-shrink-0">
+                                        <i class="bi {{ $catIcons[$i % count($catIcons)] }}"></i>
+                                    </div>
+                                    <div class="min-w-0 flex-grow-1">
+                                        <span class="docs-index-cat-badge">{{ $cat->name }}</span>
+                                        <p class="docs-index-cat-desc text-muted mb-0 mt-2">{{ $cat->description ? \Illuminate\Support\Str::limit($cat->description, 140) : 'Browse articles in this category.' }}</p>
+                                        <span class="docs-index-cat-meta text-muted d-inline-block mt-2">{{ $cat->articles_count }} {{ \Illuminate\Support\Str::plural('article', $cat->articles_count) }}</span>
+                                    </div>
+                                </a>
+                            </div>
+                        @endforeach
+                    </div>
+                @endif
+            </section>
+        </div>
     </div>
 @endsection
+
+@push('scripts')
+    <script>
+        (function () {
+            const searchInput = document.getElementById('docs-search-input');
+            const searchResults = document.getElementById('docs-search-results');
+            const normalSections = document.getElementById('docs-normal-sections');
+            const searchUrl = @json(route('docs.search'));
+            if (!searchInput || !searchResults || !normalSections) {
+                return;
+            }
+            let debounceTimer;
+            searchInput.addEventListener('input', function () {
+                const query = this.value.trim();
+                clearTimeout(debounceTimer);
+                if (query.length === 0) {
+                    searchResults.innerHTML = '';
+                    searchResults.classList.remove('docs-search-results--visible');
+                    normalSections.style.display = '';
+                    return;
+                }
+                if (query.length < 2) {
+                    searchResults.innerHTML = '';
+                    searchResults.classList.remove('docs-search-results--visible');
+                    normalSections.style.display = '';
+                    return;
+                }
+                debounceTimer = setTimeout(function () {
+                    normalSections.style.display = 'none';
+                    searchResults.classList.add('docs-search-results--visible');
+                    searchResults.innerHTML = '<p class="text-muted py-3 mb-0"><span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>Searching…</p>';
+                    const url = searchUrl + '?q=' + encodeURIComponent(query) + '&ajax=1';
+                    fetch(url, {
+                        headers: { 'X-Requested-With': 'XMLHttpRequest', 'Accept': 'application/json' }
+                    })
+                        .then(function (r) {
+                            if (!r.ok) {
+                                throw new Error('Network');
+                            }
+                            return r.json();
+                        })
+                        .then(function (data) {
+                            searchResults.innerHTML = data.html || '';
+                        })
+                        .catch(function () {
+                            searchResults.innerHTML = '<p class="text-muted py-3">Search failed. Please try again.</p>';
+                        });
+                }, 300);
+            });
+        })();
+    </script>
+@endpush
