@@ -5,12 +5,43 @@
     ? \Illuminate\Support\Str::limit(strip_tags($post->meta_description), 160)
     : trim(\Illuminate\Support\Str::limit(strip_tags((string) ($post->excerpt ?? $post->title)), 160)))
 
+@section('og_type', 'article')
+@section('og_title', $post->seo_title ?? $post->title)
+@if ($post->featured_image_url ?? null)
+    @section('og_image', $post->featured_image_url)
+@endif
+
 @push('head')
-    <meta property="og:title" content="{{ e(filled($post->seo_title) ? $post->seo_title : $post->title) }}">
-    <meta property="og:description" content="{{ e(\Illuminate\Support\Str::limit(strip_tags((string) (filled($post->meta_description) ? $post->meta_description : ($post->excerpt ?? $post->title))), 160)) }}">
     @if (is_array($post->tags) && count($post->tags))
         <meta name="keywords" content="{{ e(implode(', ', $post->tags)) }}">
     @endif
+    @php
+        $blogSchema = [
+            '@context' => 'https://schema.org',
+            '@type' => 'BlogPosting',
+            'headline' => $post->title,
+            'description' => \Illuminate\Support\Str::limit(strip_tags((string) ($post->excerpt ?? $post->content)), 200),
+            'datePublished' => $post->published_at?->toIso8601String(),
+            'dateModified' => $post->updated_at->toIso8601String(),
+            'author' => [
+                '@type' => 'Person',
+                'name' => $post->author_name ?? 'LeadForm Team',
+            ],
+            'publisher' => [
+                '@type' => 'Organization',
+                'name' => 'LeadForm',
+                'url' => url('/leadform'),
+            ],
+            'mainEntityOfPage' => [
+                '@type' => 'WebPage',
+                '@id' => url()->current(),
+            ],
+        ];
+        if (filled($post->featured_image_url ?? null)) {
+            $blogSchema['image'] = $post->featured_image_url;
+        }
+    @endphp
+    <script type="application/ld+json">{!! json_encode($blogSchema, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES) !!}</script>
 @endpush
 
 @push('styles')

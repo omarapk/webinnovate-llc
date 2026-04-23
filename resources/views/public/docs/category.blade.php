@@ -38,7 +38,7 @@
                     </div>
                 </div>
 
-                <div class="px-3 px-lg-5 py-4 py-lg-5 mx-auto" style="max-width: 720px;">
+                <div class="px-3 px-lg-5 py-4 py-lg-5 mx-auto" style="max-width: 780px;">
                     <a href="{{ route('docs.index') }}" class="lf-cta-btn lf-cta-btn-sm lf-cta-switch d-inline-flex align-items-center gap-1 mb-3">
                         <i class="bi bi-arrow-left"></i>
                         @include('public.layouts.partials.lf-cta-switch-label', ['label' => 'Back to Help Center'])

@@ -32,6 +32,11 @@ class DocArticle extends Model
             $fromTitle = Str::slug($article->title) ?: 'article';
             $base = blank($article->slug) ? $fromTitle : (Str::slug($article->slug) ?: $fromTitle);
             $article->slug = static::makeUniqueSlug($base);
+
+            if (filled($article->category_id) && (blank($article->sort_order) || (int) $article->sort_order === 0)) {
+                $max = static::query()->where('category_id', $article->category_id)->max('sort_order');
+                $article->sort_order = (int) ($max ?? 0) + 1;
+            }
         });
     }
 
@@ -67,16 +72,15 @@ class DocArticle extends Model
     }
 
     /**
+     * Posts that are published in the admin.
+     * `published_at` is for ordering and on-page dates only, not to hide future-dated articles (same idea as BlogPost).
+     *
      * @param  Builder<static>  $query
      * @return Builder<static>
      */
     public function scopePublished(Builder $query): Builder
     {
-        return $query->where('status', 'published')
-            ->where(function (Builder $q) {
-                $q->whereNull('published_at')
-                    ->orWhere('published_at', '<=', now());
-            });
+        return $query->where('status', 'published');
     }
 
     /**

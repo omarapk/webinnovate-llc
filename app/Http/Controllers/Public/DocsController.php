@@ -81,26 +81,9 @@ class DocsController extends Controller
             ->where('category_id', $article->category_id)
             ->orderBy('sort_order')
             ->orderBy('id')
-            ->get(['id', 'slug', 'title', 'sort_order']);
+            ->get(['id', 'slug', 'title']);
 
-        $prev = null;
-        $next = null;
-        $idx = $siblingArticles->search(fn (DocArticle $a) => $a->id === $article->id);
-        if ($idx !== false) {
-            if ($idx > 0) {
-                $prev = $siblingArticles[$idx - 1];
-            }
-            if ($idx < $siblingArticles->count() - 1) {
-                $next = $siblingArticles[$idx + 1];
-            }
-        }
-
-        return view('public.docs.show', compact(
-            'article',
-            'siblingArticles',
-            'prev',
-            'next'
-        ));
+        return view('public.docs.show', compact('article', 'siblingArticles'));
     }
 
     /**

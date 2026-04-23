@@ -8,6 +8,7 @@ use App\Http\Controllers\AffiliateController;
 use App\Http\Controllers\PagesController;
 use App\Http\Controllers\Public\BlogController;
 use App\Http\Controllers\Public\DocsController;
+use App\Http\Controllers\SitemapController;
 use App\Models\BlogPost;
 use App\Models\DocArticle;
 use App\Models\DocCategory;
@@ -18,7 +19,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-// Main route - serves multilingual.blade.php at /leadform URL
+// Main route - serves multilingual.blade.php at /leadform URL (canonical blog listing for SEO)
 Route::get('/leadform', function () {
     $blogPosts = BlogPost::query()
         ->where('status', 'published')
@@ -28,7 +29,7 @@ Route::get('/leadform', function () {
         ->get();
 
     return view('home.multilingual', compact('blogPosts'));
-});
+})->name('blog.index');
 
 // Privacy Policy route
 Route::get('/leadform/privacy-policy', [PagesController::class, 'privacyPolicy'])->name('privacyPolicy');
@@ -47,6 +48,8 @@ Route::get('/blog/{slug}', [BlogController::class, 'show'])->name('blog.show');
 Route::get('/docs', [DocsController::class, 'index'])->name('docs.index');
 Route::get('/docs/category/{slug}', [DocsController::class, 'category'])->name('docs.category');
 Route::get('/docs/{slug}', [DocsController::class, 'show'])->name('docs.show');
+
+Route::get('/sitemap.xml', [SitemapController::class, 'index'])->name('sitemap');
 
 Route::get('/affiliate/apply', [AffiliateController::class, 'showForm'])->name('affiliate.show');
 Route::post('/affiliate/apply', [AffiliateController::class, 'submitForm'])->name('affiliate.submit');
