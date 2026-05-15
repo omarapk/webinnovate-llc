@@ -2,22 +2,14 @@
 
 set -e
 
-APP_ROOT="${APP_ROOT:-/var/www}"
-cd "${APP_ROOT}"
-
-# shellcheck source=docker/entrypoint-common.sh
-source "${APP_ROOT}/docker/entrypoint-common.sh"
-
 echo "Starting Laravel application setup..."
-
-map_platform_database_env
 
 # Install nginx
 apt-get update && apt-get install -y nginx
 
-if [ ! -f .env ]; then
-    echo "Creating .env file..."
-    cat > .env << EOF
+# Create .env file with all required variables
+echo "Creating .env file..."
+cat > .env << EOF
 APP_NAME=HiStudy
 APP_ENV=production
 APP_DEBUG=true
@@ -34,32 +26,29 @@ SESSION_DRIVER=file
 SESSION_LIFETIME=120
 QUEUE_CONNECTION=sync
 EOF
-fi
 
+# Update with environment variables if provided
 if [ ! -z "$APP_URL" ]; then
-    set_env_var "APP_URL" "$APP_URL"
+    sed -i "s|APP_URL=.*|APP_URL=$APP_URL|g" .env
 fi
 
-sync_database_env_to_dotenv
+# Create database file
+echo "Setting up database..."
+touch database/database.sqlite
+chmod 664 database/database.sqlite
 
-if [ "$(database_driver)" = "sqlite" ]; then
-    echo "Setting up SQLite database..."
-    touch database/database.sqlite
-    chmod 664 database/database.sqlite
-fi
-
+# Create storage directories
 echo "Creating storage directories..."
 mkdir -p storage/framework/cache storage/framework/sessions storage/framework/views storage/logs
 chmod -R 775 storage bootstrap/cache
 
-if ! grep -q "APP_KEY=base64:" .env; then
-    echo "Generating application key..."
-    php artisan key:generate
-fi
+# Generate application key
+echo "Generating application key..."
+php artisan key:generate
 
-wait_for_database
+# Run migrations
 echo "Running migrations..."
-run_migrations_with_retry
+php artisan migrate --force
 
 # Clear caches
 echo "Clearing caches..."
@@ -81,13 +70,11 @@ ls -la public/assets/css/vendor/ || echo "CSS vendor directory not found"
 ls -la public/assets/css/ || echo "CSS directory not found"
 ls -la public/assets/js/ || echo "JS directory not found"
 
-LISTEN_PORT="$(app_port)"
-
 # Create nginx configuration
-echo "Creating nginx configuration on port ${LISTEN_PORT}..."
+echo "Creating nginx configuration..."
 cat > /etc/nginx/sites-available/laravel << EOF
 server {
-    listen ${LISTEN_PORT};
+    listen 8000;
     server_name _;
     root /var/www/public;
     index index.php;
