@@ -129,7 +129,7 @@
             <div class="privacy-content">
                 <h1>Privacy policy – LeadForm: COD Order Form</h1>
                 
-                <p><strong>Last Updated: 23/01/2025</strong></p>
+                <p><strong>Last Updated: 15/07/2026</strong></p>
 
                 <p>Thank you for choosing LeadForm: COD – Order Form. We are committed to protecting your personal information and your right to privacy. If you have any questions or concerns about this notice, or our practices regarding your personal data, please contact us at <a href="mailto:support@webinnovate.dev">support@webinnovate.dev</a>.</p>
 
@@ -142,6 +142,7 @@
                     <ul>
                         <li><a href="#collect-info">What Information Do We Collect?</a></li>
                         <li><a href="#use-info">How Do We Use Your Information?</a></li>
+                        <li><a href="#authorized-use">Authorized Use of Product Content</a></li>
                         <li><a href="#share-info">Will Your Information Be Shared With Anyone?</a></li>
                         <li><a href="#keep-info">How Long Do We Keep Your Information?</a></li>
                         <li><a href="#safe-info">How Do We Keep Your Information Safe?</a></li>
@@ -187,8 +188,15 @@
                     </ul>
                 </div>
 
+                <div id="authorized-use">
+                    <h4>3. Authorized Use of Product Content</h4>
+                    <p>LeadForm: COD – Order Form (the "App") helps you create landing pages and order forms for products you are legally authorized to sell — your own products, officially licensed products, or supplier/dropshipping products you have the right to resell.</p>
+                    <p>You must not use the App to copy products, images, descriptions, or other content from any website, store, or marketplace (including AliExpress) without explicit permission from the rights holder. You are solely responsible for ensuring you hold the necessary rights to any content you upload or import into the App.</p>
+                    <p>Misuse may infringe copyright and violates these Terms and Shopify's policies, and may result in account suspension.</p>
+                </div>
+
                 <div id="share-info">
-                    <h4>3. Will Your Information Be Shared With Anyone?</h4>
+                    <h4>4. Will Your Information Be Shared With Anyone?</h4>
                     <p>We only share data when necessary and under strict conditions:</p>
                     <ul>
                         <li><strong>With your consent</strong> – for specific purposes you agree to.</li>
@@ -201,24 +209,24 @@
                 </div>
 
                 <div id="keep-info">
-                    <h4>4. How Long Do We Keep Your Information?</h4>
+                    <h4>5. How Long Do We Keep Your Information?</h4>
                     <p>We retain your information only as long as necessary to provide our Services and fulfill the purposes outlined in this Privacy Notice, unless a longer period is required by law.</p>
                     <p>Once your data is no longer needed, we either delete it or anonymize it.</p>
                 </div>
 
                 <div id="safe-info">
-                    <h4>5. How Do We Keep Your Information Safe?</h4>
+                    <h4>6. How Do We Keep Your Information Safe?</h4>
                     <p>We use appropriate technical and organizational security measures to protect your personal information. However, no online service can be 100% secure. Transmission of personal information is at your own risk, so we recommend accessing our Services only in secure environments.</p>
                 </div>
 
                 <div id="minors">
-                    <h4>6. Do We Collect Information From Minors?</h4>
+                    <h4>7. Do We Collect Information From Minors?</h4>
                     <p>No. We do not knowingly collect or market to children under 18 years old.</p>
                     <p>If we discover we have collected data from a minor, we will promptly delete it. If you are a parent or guardian and believe your child has shared personal data with us, please contact us at <a href="mailto:support@webinnovate.dev">support@webinnovate.dev</a>.</p>
                 </div>
 
                 <div id="privacy-rights">
-                    <h4>7. What Are Your Privacy Rights?</h4>
+                    <h4>8. What Are Your Privacy Rights?</h4>
                     <p>Depending on your location (e.g., the European Economic Area), you may have the right to:</p>
                     <ul>
                         <li>Access and obtain a copy of your data</li>
@@ -241,17 +249,17 @@
                 </div>
 
                 <div id="do-not-track">
-                    <h4>8. Controls for Do-Not-Track (DNT) Features</h4>
+                    <h4>9. Controls for Do-Not-Track (DNT) Features</h4>
                     <p>Currently, no uniform standard exists for recognizing DNT signals. Therefore, we do not respond to DNT browser settings. If a standard is adopted in the future, we will update this policy accordingly.</p>
                 </div>
 
                 <div id="updates">
-                    <h4>9. Do We Make Updates to This Policy?</h4>
+                    <h4>10. Do We Make Updates to This Policy?</h4>
                     <p>Yes. We may update this Privacy Notice to stay compliant with laws and best practices. Updates will be reflected by the "Last Updated" date. For material changes, we may notify you via email or by posting a notice on our website.</p>
                 </div>
 
                 <div id="contact">
-                    <h4>10. How Can You Contact Us About This Policy?</h4>
+                    <h4>11. How Can You Contact Us About This Policy?</h4>
                     <p>If you have questions or comments about this Privacy Notice, you may contact us at:</p>
                     <p>📧 <a href="mailto:support@webinnovate.dev">support@webinnovate.dev</a></p>
                     <p>🌐 <a href="https://www.webinnovate.dev">www.webinnovate.dev</a></p>
