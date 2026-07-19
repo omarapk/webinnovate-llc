@@ -190,7 +190,7 @@
 
                 <div id="authorized-use">
                     <h4>3. Authorized Use of Product Content</h4>
-                    <p>LeadForm: COD – Order Form (the "App") helps you create landing pages and order forms for products you are legally authorized to sell — your own products, officially licensed products, or supplier/dropshipping products you have the right to resell.</p>
+                    <p>WEBI Landing Page Builder COD helps you create landing pages and order forms for products you are legally authorized to sell — your own products, officially licensed products, or supplier/dropshipping products you have the right to resell.</p>
                     <p>You must not use the App to copy products, images, descriptions, or other content from any website, store, or marketplace (including AliExpress) without explicit permission from the rights holder. You are solely responsible for ensuring you hold the necessary rights to any content you upload or import into the App.</p>
                     <p>Misuse may infringe copyright and violates these Terms and Shopify's policies, and may result in account suspension.</p>
                 </div>
