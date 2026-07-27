@@ -1,0 +1,845 @@
+/*
+ * Shared app-landing styles.
+ * Extracted verbatim from the original /leadform page (home/multilingual.blade.php)
+ * so every WEBI app landing shares the exact same design system.
+ */
+
+/* Mobile Menu Debug Styles */
+.hamberger-button {
+    background: transparent !important;
+    border: none !important;
+    color: var(--color-body) !important;
+    font-size: 24px !important;
+    padding: 10px !important;
+    cursor: pointer !important;
+    display: block !important;
+}
+
+.popup-mobile-menu {
+    z-index: 9999 !important;
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    background-color: rgba(0, 0, 0, 0.8) !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    transition: opacity 0.5s ease-out !important;
+}
+
+.popup-mobile-menu.active {
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+.popup-mobile-menu .inner-wrapper {
+    width: 400px !important;
+    background-color: white !important;
+    height: 100% !important;
+    position: absolute !important;
+    left: -150px !important;
+    transition: all 0.5s ease-out !important;
+    padding: 60px 50px !important;
+    overflow-y: auto !important;
+}
+
+.popup-mobile-menu.active .inner-wrapper {
+    left: 0 !important;
+}
+
+@media (max-width: 767px) {
+    .popup-mobile-menu .inner-wrapper {
+        width: 300px !important;
+        padding: 30px 20px !important;
+    }
+}
+
+body {
+    font-family: 'Poppins', sans-serif !important;
+}
+h1, h2, h3, h4, h5, h6, p, span, div, a, button, input, textarea, select {
+    font-family: 'Poppins', sans-serif !important;
+}
+.instagram-posts-section {
+    padding: 80px 0;
+}
+.instagram-post-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.instagram-post-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+.instagram-post-image {
+    height: 250px;
+    object-fit: cover;
+    width: 100%;
+    border-radius: 8px 8px 0 0;
+}
+.instagram-post-caption {
+    font-size: 14px;
+    line-height: 1.4;
+    margin-bottom: 10px;
+    color: #666;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+.instagram-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 12px;
+    color: #888;
+}
+.instagram-meta-item {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+.instagram-meta-item i {
+    font-size: 14px;
+}
+
+/* Dark Mode Styles */
+.dark-mode {
+    background-color: #1a1a1a !important;
+    color: #ffffff !important;
+}
+
+.dark-mode .rbt-header {
+    background-color: #2d2d2d !important;
+    border-bottom: 1px solid #404040;
+}
+
+.dark-mode .rbt-header-wrapper {
+    background-color: #2d2d2d !important;
+}
+
+.dark-mode .mainmenu > li > a {
+    color: #ffffff !important;
+}
+
+.dark-mode .mainmenu > li > a:hover {
+    color: #c20c81 !important;
+}
+
+.dark-mode .rbt-card {
+    background-color: #2d2d2d !important;
+    border: 1px solid #404040;
+}
+
+.dark-mode .rbt-card-body {
+    background-color: #2d2d2d !important;
+}
+
+.dark-mode .pricing-table {
+    background-color: #2d2d2d !important;
+    border: 1px solid #404040;
+}
+
+.dark-mode .pricing-header {
+    background-color: #2d2d2d !important;
+}
+
+.dark-mode .pricing-body {
+    background-color: #2d2d2d !important;
+}
+
+.dark-mode .section-title .title {
+    color: #ffffff !important;
+}
+
+.dark-mode .section-title .subtitle {
+    color: #cccccc !important;
+}
+
+.dark-mode .rbt-btn {
+    background-color: #c20c81 !important;
+    color: #ffffff !important;
+}
+
+.dark-mode .rbt-btn:hover {
+    background-color: #930c81 !important;
+}
+
+.dark-mode .bg-color-white {
+    background-color: #1a1a1a !important;
+}
+
+.dark-mode .bg-color-extra2 {
+    background-color: #2d2d2d !important;
+}
+
+.dark-mode .list-item li {
+    color: #cccccc !important;
+}
+
+.dark-mode .rbt-badge {
+    background-color: #404040 !important;
+    color: #ffffff !important;
+}
+
+.dark-mode .amount {
+    color: #ffffff !important;
+}
+
+.dark-mode .duration {
+    color: #cccccc !important;
+}
+
+/* Dark Mode Toggle Button */
+.dark-mode-toggle {
+    background: none;
+    border: none;
+    color: #333;
+    font-size: 20px;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    margin-right: 15px;
+}
+
+.dark-mode-toggle:hover {
+    background-color: rgba(194, 12, 129, 0.1);
+    color: #c20c81;
+}
+
+.dark-mode .dark-mode-toggle {
+    color: #ffffff;
+}
+
+.dark-mode .dark-mode-toggle:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #c20c81;
+}
+
+/* Smooth transitions for dark mode */
+body, .rbt-header, .rbt-card, .pricing-table, .section-title, .rbt-btn {
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Fix pricing button text overflow */
+.pricing-btn .rbt-btn {
+    min-height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 20px;
+    line-height: 1.2;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.pricing-btn .rbt-btn .icon-reverse-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    gap: 8px;
+}
+
+.pricing-btn .rbt-btn .btn-text {
+    font-size: 14px;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.pricing-btn .rbt-btn .btn-icon {
+    flex-shrink: 0;
+}
+
+/* Ensure button fits properly on smaller screens */
+@media (max-width: 768px) {
+    .pricing-btn .rbt-btn {
+        min-height: 45px;
+        padding: 10px 15px;
+    }
+
+    .pricing-btn .rbt-btn .btn-text {
+        font-size: 13px;
+    }
+}
+
+/* Fix checkmark positioning in pricing lists */
+.pricing-body .list-item li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin-bottom: 8px;
+    line-height: 1.4;
+    position: relative;
+}
+
+.pricing-body .list-item li i.feather-check {
+    color: #28a745;
+    font-size: 16px;
+    margin-top: 0;
+    flex-shrink: 0;
+    min-width: 16px;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.pricing-body .list-item li i.feather-x {
+    color: #dc3545;
+    font-size: 16px;
+    margin-top: 0;
+    flex-shrink: 0;
+    min-width: 16px;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.pricing-body .list-item li {
+    padding-left: 26px;
+    position: relative;
+}
+
+.pricing-body .list-item li.off {
+    opacity: 0.6;
+}
+
+/* Make brand logos smaller with more margin */
+.brand-list.brand-style-3 {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    overflow-x: auto;
+    padding: 20px 40px;
+    margin: 0 60px;
+}
+
+.brand-list.brand-style-3 li {
+    flex-shrink: 0;
+    margin: 0;
+}
+
+.brand-list.brand-style-3 li img {
+    max-height: 70px;
+    width: auto;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+}
+
+/* Make feature card icons smaller */
+.rbt-feature-card .icon img {
+    width: 30px !important;
+    height: 30px !important;
+    object-fit: contain;
+}
+
+.rbt-feature-card .icon {
+    width: 50px !important;
+    height: 50px !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Custom Video Player Styling */
+.custom-video-player {
+    position: relative;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.custom-video-player video {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 15px;
+}
+
+.custom-video-player img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 15px;
+}
+
+.video-wrapper {
+    position: relative;
+}
+
+.video-wrapper .v-shape-1 {
+    position: absolute;
+    top: -20px;
+    right: -20px;
+    z-index: 1;
+}
+
+/* Make grasse_1.avif image bigger */
+.brand-list.brand-style-3 li img[src*="grasse_1.avif"] {
+    max-height: 120px;
+    transform: scale(1.2);
+}
+
+.brand-list.brand-style-3 li:hover img {
+    transform: scale(1.1);
+}
+
+/* Responsive adjustments for brand logos */
+@media (max-width: 768px) {
+    .brand-list.brand-style-3 {
+        margin: 0 30px;
+        padding: 20px 20px;
+    }
+    .brand-list.brand-style-3 li img {
+        max-height: 50px;
+    }
+}
+
+@media (max-width: 480px) {
+    .brand-list.brand-style-3 {
+        margin: 0 15px;
+        padding: 15px 10px;
+    }
+    .brand-list.brand-style-3 li img {
+        max-height: 40px;
+    }
+}
+
+/* Keep manual scrolling consistent across browsers.
+   Anchor smooth-scrolling is handled via JS. */
+html {
+    scroll-behavior: auto;
+}
+
+/* Offset for fixed header when scrolling to sections */
+#features,
+#faq,
+#pricing,
+#affiliate {
+    scroll-margin-top: 100px;
+}
+
+/* FAQs title margin */
+.faqs-title {
+    margin-top: 50px;
+}
+
+/* Commission Program Section Styles */
+.benefits-circles {
+    position: relative;
+    margin-bottom: 60px;
+}
+
+.benefits-grid {
+    position: relative;
+    width: 250px;
+    height: 250px;
+    margin: 0 auto;
+}
+
+.benefit-circle {
+    position: absolute;
+    width: 100px;
+    height: 40px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-weight: 600;
+    font-size: 11px;
+    color: #333;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    opacity: 0.8;
+}
+
+.benefit-circle-1 {
+    top: 55px;
+    left: 10%;
+    transform: translateX(-50%);
+    background: linear-gradient(135deg, #87CEEB, #5F9EA0);
+}
+
+.benefit-circle-2 {
+    bottom: 15px;
+    left: -40px;
+    background: linear-gradient(135deg, #FFA500, #FF8C00);
+}
+
+.benefit-circle-3 {
+    top: 50%;
+    right: -40px;
+    transform: translateY(-50%);
+    background: linear-gradient(135deg, #FFD700, #FFA500);
+}
+
+.benefit-circle-4 {
+    top: 100%;
+    left: 270px;
+    transform: translateY(-50%);
+    background: linear-gradient(135deg, #9370DB, #8A2BE2);
+}
+
+.circle-content {
+    padding: 10px;
+}
+
+.benefit-text {
+    font-size: 9px;
+    font-weight: 600;
+    line-height: 1.2;
+}
+
+/* SVG demi-circles positioning */
+.benefits-svg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+    display: none; /* Hide SVG arcs to see only circles */
+}
+
+/* Main headline styles */
+.commission-headline .title {
+    font-size: 6rem;
+    line-height: 1.1;
+    margin-bottom: 30px;
+    font-weight: 700;
+}
+
+.highlight-yellow {
+    color: #c20c81;
+    font-weight: 700;
+}
+
+.highlight-orange {
+    color: #c20c81;
+    font-weight: 700;
+}
+
+/* Supporting text styles */
+.supporting-text .description {
+    font-size: 1.4rem;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+/* CTA buttons spacing */
+.cta-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .benefits-grid {
+        width: 250px;
+        height: 250px;
+    }
+
+    .benefit-circle {
+        width: 90px;
+        height: 35px;
+        font-size: 8px;
+    }
+
+    .commission-headline .title {
+        font-size: 3rem;
+    }
+
+    .cta-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .cta-buttons .rbt-btn {
+        width: 100%;
+        max-width: 300px;
+    }
+}
+
+@media (max-width: 480px) {
+    .benefits-grid {
+        width: 200px;
+        height: 200px;
+    }
+
+    .benefit-circle {
+        width: 80px;
+        height: 30px;
+        font-size: 7px;
+    }
+
+    .commission-headline .title {
+        font-size: 2.5rem;
+    }
+}
+
+/* Minimalist spacing for testimonials section */
+.rbt-testimonial-area.rbt-section-gap {
+    padding-top: 20px !important;
+    padding-bottom: 40px !important;
+}
+
+.rbt-testimonial-area .wrapper {
+    padding-top: 20px !important;
+}
+
+.rbt-testimonial-area .section-title {
+    margin-bottom: 30px !important;
+}
+
+/* Testimonial text truncation and read more functionality */
+.testimonial-text {
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    line-height: 1.5;
+    max-height: 6em; /* 4 lines * 1.5 line-height */
+    transition: max-height 0.3s ease;
+}
+
+.testimonial-text.expanded {
+    -webkit-line-clamp: unset;
+    max-height: none;
+}
+
+.read-more-btn {
+    color: #c20c81;
+    background: none;
+    border: none;
+    padding: 5px 0;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: underline;
+    margin-top: 10px;
+    transition: color 0.3s ease;
+}
+
+.read-more-btn:hover {
+    color: #930c81;
+}
+
+.read-more-btn.hidden {
+    display: none;
+}
+
+/* Affiliate section styling */
+#affiliate {
+    padding-top: 80px !important;
+    padding-bottom: 80px !important;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+}
+
+#affiliate .rbt-section-gap {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+}
+
+/* Save Badge Styles */
+.yearly-plan-btn {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.save-badge {
+    background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+    color: white;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 4px 8px;
+    border-radius: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    box-shadow: 0 2px 8px rgba(255, 107, 107, 0.3);
+    animation: pulse 2s infinite;
+    white-space: nowrap;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* Dark mode support for save badge */
+.dark-mode .save-badge {
+    background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+    box-shadow: 0 2px 8px rgba(255, 107, 107, 0.4);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .yearly-plan-btn {
+        flex-direction: column;
+        gap: 4px;
+    }
+
+    .save-badge {
+        font-size: 9px;
+        padding: 3px 6px;
+    }
+}
+
+/* Blog carousel (extracted from the /leadform blog section) */
+.lf-blog-scroll-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+}
+.lf-blog-scroll-nav {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.lf-blog-scroll-count {
+    font-size: clamp(2.1rem, 3.5vw, 3.5rem);
+    line-height: 1;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    color: #0f172a;
+    white-space: nowrap;
+}
+.lf-blog-scroll-count small {
+    font-size: 0.45em;
+    font-weight: 700;
+    opacity: 0.9;
+    letter-spacing: 0;
+}
+.lf-blog-scroll-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 999px;
+    border: 1px solid rgba(15, 23, 42, 0.12);
+    background: #fff;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+.lf-blog-scroll-btn:hover { background: rgba(15, 23, 42, 0.04); }
+.lf-blog-scroll-btn:active { transform: translateY(1px); }
+
+.lf-blog-scroll-track {
+    display: flex;
+    gap: 24px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 12px 2px 6px;
+    /* Allow fast manual scrolling without snapping "one by one" */
+    scroll-snap-type: x proximity;
+    scroll-padding-left: 2px;
+    -webkit-overflow-scrolling: touch;
+}
+.lf-blog-scroll-track::-webkit-scrollbar { height: 8px; }
+.lf-blog-scroll-track::-webkit-scrollbar-thumb { background: rgba(2, 6, 23, 0.15); border-radius: 999px; }
+.lf-blog-scroll-track::-webkit-scrollbar-track { background: rgba(2, 6, 23, 0.06); border-radius: 999px; }
+
+.lf-blog-scroll-item {
+    flex: 0 0 auto;
+    width: min(360px, 86vw);
+    scroll-snap-align: start;
+}
+@media (min-width: 768px) {
+    .lf-blog-scroll-item { width: 360px; }
+}
+@media (min-width: 1200px) {
+    .lf-blog-scroll-item { width: 380px; }
+}
+
+/* Hero secondary (fallback) CTA */
+.hero-secondary-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-left: 16px;
+    font-weight: 600;
+    color: #0f172a;
+    text-decoration: underline;
+}
+.hero-secondary-cta:hover { color: #c20c81; }
+@media (max-width: 575px) {
+    .hero-secondary-cta { margin-left: 0; margin-top: 14px; display: inline-flex; }
+}
+
+/* Languages badge (e.g. OrderSheet) */
+.app-languages-badge {
+    display: inline-flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+    margin-top: 18px;
+}
+.app-languages-badge .lang-pill {
+    background: rgba(194, 12, 129, 0.08);
+    color: #c20c81;
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: 600;
+    padding: 5px 14px;
+}
+
+/* App rating badge (only shown when data allows it) */
+.app-rating-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #fff;
+    border: 1px solid rgba(15, 23, 42, 0.08);
+    border-radius: 999px;
+    padding: 8px 18px;
+    font-weight: 600;
+    color: #0f172a;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+}
+.app-rating-badge .stars { color: #f5a623; letter-spacing: 2px; }
+
+/* App logo lockup — icon + wordmark, used by apps without a full logo file */
+.app-logo-lockup {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    white-space: nowrap;
+}
+.app-logo-lockup img {
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+.app-logo-lockup span {
+    font-size: 20px;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    color: #192335;
+    line-height: 1.1;
+}
+.app-logo-lockup span strong {
+    font-weight: 800;
+    color: #c20c81;
+}
+.app-logo-lockup-light span {
+    color: #ffffff;
+}

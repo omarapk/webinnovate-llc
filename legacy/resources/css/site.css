@@ -1,0 +1,261 @@
+@import "tailwindcss";
+
+/*
+|--------------------------------------------------------------------------
+| WebInnovate corporate design system
+|--------------------------------------------------------------------------
+| shadcn/ui "Vercel" theme — Geist, radius 0.5rem, neutral scale with a
+| black primary and a red destructive. Used by the corporate pages only;
+| the WEBI app landings keep their own HiStudy stylesheet.
+*/
+
+:root {
+    --radius: 0.5rem;
+
+    --background: oklch(1 0 0);
+    --foreground: oklch(0 0 0);
+
+    --card: oklch(1 0 0);
+    --card-foreground: oklch(0 0 0);
+
+    --popover: oklch(1 0 0);
+    --popover-foreground: oklch(0 0 0);
+
+    --primary: oklch(0 0 0);
+    --primary-foreground: oklch(1 0 0);
+
+    --secondary: oklch(0.9491 0 0);
+    --secondary-foreground: oklch(0 0 0);
+
+    --muted: oklch(0.9702 0 0);
+    --muted-foreground: oklch(0.4386 0 0);
+
+    --accent: oklch(0.9491 0 0);
+    --accent-foreground: oklch(0 0 0);
+
+    --destructive: oklch(0.6274 0.1900 25);
+    --destructive-foreground: oklch(1 0 0);
+
+    --border: oklch(0.9067 0 0);
+    --input: oklch(0.9067 0 0);
+    --ring: oklch(0 0 0);
+}
+
+/* Inverted band. Redefining the tokens means every component inside a
+   `.section-dark` (cards, borders, muted text) flips without extra classes. */
+.section-dark {
+    --background: oklch(0.1448 0 0);
+    --foreground: oklch(0.9851 0 0);
+    --card: oklch(0.1913 0 0);
+    --card-foreground: oklch(0.9851 0 0);
+    --primary: oklch(0.9851 0 0);
+    --primary-foreground: oklch(0.1448 0 0);
+    --secondary: oklch(0.2603 0 0);
+    --secondary-foreground: oklch(0.9851 0 0);
+    --muted: oklch(0.2134 0 0);
+    --muted-foreground: oklch(0.7155 0 0);
+    --border: oklch(1 0 0 / 0.12);
+    --ring: oklch(0.9851 0 0);
+
+    background-color: var(--background);
+    color: var(--foreground);
+}
+
+@theme inline {
+    --color-background: var(--background);
+    --color-foreground: var(--foreground);
+    --color-card: var(--card);
+    --color-card-foreground: var(--card-foreground);
+    --color-popover: var(--popover);
+    --color-popover-foreground: var(--popover-foreground);
+    --color-primary: var(--primary);
+    --color-primary-foreground: var(--primary-foreground);
+    --color-secondary: var(--secondary);
+    --color-secondary-foreground: var(--secondary-foreground);
+    --color-muted: var(--muted);
+    --color-muted-foreground: var(--muted-foreground);
+    --color-accent: var(--accent);
+    --color-accent-foreground: var(--accent-foreground);
+    --color-destructive: var(--destructive);
+    --color-destructive-foreground: var(--destructive-foreground);
+    --color-border: var(--border);
+    --color-input: var(--input);
+    --color-ring: var(--ring);
+
+    --radius-sm: calc(var(--radius) - 4px);
+    --radius-md: calc(var(--radius) - 2px);
+    --radius-lg: var(--radius);
+    --radius-xl: calc(var(--radius) + 4px);
+
+    --font-sans: Geist, ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+    --font-mono: "Geist Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+@layer base {
+    * {
+        @apply border-border;
+    }
+
+    /* `clip` rather than `hidden` so the sticky header keeps working. Guards
+       against wide decorative rows (marquees) widening the document. */
+    html {
+        overflow-x: clip;
+    }
+
+    body {
+        @apply bg-background text-foreground font-sans antialiased;
+        overflow-x: clip;
+        font-feature-settings: "cv11", "ss01";
+        font-variation-settings: "opsz" 32;
+    }
+
+    ::selection {
+        @apply bg-foreground text-background;
+    }
+}
+
+@layer components {
+    /* Faint grid backdrop used behind heroes and page headers. */
+    .bg-grid {
+        background-image:
+            linear-gradient(to right, oklch(0 0 0 / 0.045) 1px, transparent 1px),
+            linear-gradient(to bottom, oklch(0 0 0 / 0.045) 1px, transparent 1px);
+        background-size: 56px 56px;
+    }
+
+    .section-dark .bg-grid {
+        background-image:
+            linear-gradient(to right, oklch(1 0 0 / 0.06) 1px, transparent 1px),
+            linear-gradient(to bottom, oklch(1 0 0 / 0.06) 1px, transparent 1px);
+    }
+
+    /* Dot field — softer than the grid, used on dark bands. */
+    .bg-dots {
+        background-image: radial-gradient(oklch(0 0 0 / 0.09) 1px, transparent 1px);
+        background-size: 22px 22px;
+    }
+
+    .section-dark .bg-dots {
+        background-image: radial-gradient(oklch(1 0 0 / 0.11) 1px, transparent 1px);
+    }
+
+    /* Soft coloured light source. Colour comes from --glow on the element. */
+    .glow {
+        background: radial-gradient(closest-side, var(--glow, oklch(0 0 0 / 0.15)), transparent);
+        filter: blur(8px);
+    }
+
+    /* Fades a decorative layer out towards the edges. */
+    .mask-fade-edges {
+        mask-image: linear-gradient(to right, transparent, black 12%, black 88%, transparent);
+    }
+
+    .mask-fade-bottom {
+        mask-image: linear-gradient(to bottom, black 55%, transparent);
+    }
+
+    .mask-fade-b-soft {
+        mask-image: linear-gradient(to bottom, black 70%, transparent);
+    }
+
+    /*
+    | Product mockup
+    |------------------------------------------------------------------
+    | A fake browser/app window used to frame the inline UI illustrations.
+    | Built from real elements rather than a screenshot so it stays crisp
+    | and inherits the theme tokens.
+    */
+    .mockup {
+        @apply overflow-hidden rounded-xl border border-border bg-card;
+        box-shadow:
+            0 1px 2px oklch(0 0 0 / 0.04),
+            0 12px 32px -8px oklch(0 0 0 / 0.12),
+            0 32px 64px -24px oklch(0 0 0 / 0.16);
+    }
+
+    .mockup-bar {
+        @apply flex items-center gap-1.5 border-b border-border bg-muted/60 px-3 py-2.5;
+    }
+
+    .mockup-dot {
+        @apply size-2.5 rounded-full bg-border;
+    }
+
+    /* Small floating info chip that overlaps the mockup. */
+    .chip {
+        @apply flex items-center gap-2.5 rounded-xl border border-border bg-card/90 px-3.5 py-2.5 text-xs font-medium backdrop-blur-md;
+        box-shadow: 0 8px 24px -6px oklch(0 0 0 / 0.18);
+    }
+
+    /* Gradient hairline that runs along the top edge of a card on hover. */
+    .accent-rule {
+        background: linear-gradient(90deg, transparent, var(--accent-from), var(--accent-to), transparent);
+    }
+}
+
+@layer utilities {
+    /* Infinite logo / testimonial marquee. Duration is set per instance. */
+    @keyframes marquee {
+        from { transform: translateX(0); }
+        to   { transform: translateX(calc(-50% - var(--marquee-gap, 0px) / 2)); }
+    }
+
+    .animate-marquee {
+        animation: marquee var(--marquee-duration, 40s) linear infinite;
+    }
+
+    .marquee-paused:hover .animate-marquee {
+        animation-play-state: paused;
+    }
+
+    /* Scroll-reveal start state; Motion animates these to their final values.
+       Kept visible when JS is unavailable. */
+    .js .reveal {
+        opacity: 0;
+        transform: translateY(16px);
+    }
+
+    /* Slow drift for the decorative chips around the hero mockup. */
+    @keyframes float-y {
+        0%, 100% { transform: translateY(0); }
+        50%      { transform: translateY(-10px); }
+    }
+
+    .animate-float {
+        animation: float-y 6s ease-in-out infinite;
+    }
+
+    /* Sweeping highlight used on the "syncing" row of the OrderSheet mock. */
+    @keyframes shimmer {
+        from { transform: translateX(-100%); }
+        to   { transform: translateX(200%); }
+    }
+
+    .animate-shimmer {
+        animation: shimmer 2.6s ease-in-out infinite;
+    }
+
+    /* Expanding ring behind live-status dots. */
+    @keyframes ping-soft {
+        0%   { transform: scale(1); opacity: 0.5; }
+        80%, 100% { transform: scale(2.2); opacity: 0; }
+    }
+
+    .animate-ping-soft {
+        animation: ping-soft 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .js .reveal {
+            opacity: 1;
+            transform: none;
+        }
+
+        .animate-marquee,
+        .animate-float,
+        .animate-shimmer,
+        .animate-ping-soft {
+            animation: none;
+        }
+    }
+}

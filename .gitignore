@@ -1,19 +1,30 @@
-/.phpunit.cache
+# Next.js
+/.next
+/out
+next-env.d.ts
 /node_modules
-/public/build
-/public/hot
-/public/storage
-/storage/*.key
-/vendor
+.vercel
+*.tsbuildinfo
+
+# Environment
 .env
 .env.backup
 .env.production
-.phpunit.result.cache
-Homestead.json
-Homestead.yaml
-auth.json
-npm-debug.log
-yarn-error.log
+.env*.local
+
+# Legacy Laravel (kept as reference while the migration finishes)
+/legacy/vendor
+/legacy/storage/*.key
+/legacy/.phpunit.cache
+/legacy/.phpunit.result.cache
+/public/build
+/public/hot
+/public/storage
+
+# Editors & tooling
 /.fleet
 /.idea
 /.vscode
+auth.json
+npm-debug.log
+yarn-error.log
