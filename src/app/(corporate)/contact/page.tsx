@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 
+import { DirectContact } from '@/components/direct-contact';
 import { PageHeader } from '@/components/page-header';
 import { QuoteForm } from '@/components/quote-form';
 import { Reveal, RevealGroup } from '@/components/reveal';
@@ -15,6 +16,10 @@ export const metadata: Metadata = {
 };
 
 export default function ContactPage() {
+  // No mail provider means a submission would go nowhere, so the page offers
+  // the inbox directly instead of a form that cannot deliver.
+  const canDeliverQuotes = Boolean(process.env.RESEND_API_KEY);
+
   return (
     <>
       <PageHeader
@@ -35,8 +40,8 @@ export default function ContactPage() {
                 Tell us what you want to build
               </Reveal>
               <Reveal as="p" className="mt-4 text-lg leading-relaxed text-muted-foreground text-pretty">
-                Fill this in and you get back a scoped proposal — what we would build, in what order, how
-                long it takes and what it costs.
+                {canDeliverQuotes ? 'Fill this in' : 'Get in touch'} and you get back a scoped proposal
+                — what we would build, in what order, how long it takes and what it costs.
               </Reveal>
 
               <Reveal as="ul" className="mt-8 space-y-3">
@@ -54,22 +59,22 @@ export default function ContactPage() {
                 ))}
               </Reveal>
 
-              <Reveal className="mt-8 rounded-xl border border-border bg-card p-5">
-                <p className="text-sm font-medium">Prefer to talk first?</p>
-                <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">
-                  Message us on WhatsApp at{' '}
-                  <a className="font-medium text-foreground underline-offset-4 hover:underline" href={site.whatsapp.url} rel="noopener">
-                    {site.whatsapp.display}
-                  </a>
-                  .
-                </p>
-              </Reveal>
+              {canDeliverQuotes ? (
+                <Reveal className="mt-8 rounded-xl border border-border bg-card p-5">
+                  <p className="text-sm font-medium">Prefer to talk first?</p>
+                  <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">
+                    Message us on WhatsApp at{' '}
+                    <a className="font-medium text-foreground underline-offset-4 hover:underline" href={site.whatsapp.url} rel="noopener">
+                      {site.whatsapp.display}
+                    </a>
+                    .
+                  </p>
+                </Reveal>
+              ) : null}
             </RevealGroup>
 
             <RevealGroup>
-              <Reveal>
-                <QuoteForm />
-              </Reveal>
+              <Reveal>{canDeliverQuotes ? <QuoteForm /> : <DirectContact />}</Reveal>
             </RevealGroup>
           </div>
         </div>

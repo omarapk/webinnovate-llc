@@ -57,9 +57,9 @@ export async function submitQuote(_previous: QuoteState, formData: FormData): Pr
 /**
  * Send the request to the team.
  *
- * Uses Resend when `RESEND_API_KEY` is configured. Without it — local dev, or
- * before the key is provisioned — the request is logged so nothing is silently
- * dropped while the integration is pending.
+ * Uses Resend when `RESEND_API_KEY` is configured. Without it the request is
+ * only logged, so production reports the failure and points the visitor at the
+ * inbox instead of claiming a delivery that never happened.
  */
 async function deliver(payload: QuotePayload): Promise<boolean> {
   const apiKey = process.env.RESEND_API_KEY;
@@ -76,7 +76,7 @@ async function deliver(payload: QuotePayload): Promise<boolean> {
 
   if (!apiKey) {
     console.info('[quote request]\n%s', body);
-    return true;
+    return process.env.NODE_ENV !== 'production';
   }
 
   try {
