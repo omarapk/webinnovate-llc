@@ -302,6 +302,57 @@
         animation: shimmer 2.6s ease-in-out infinite;
     }
 
+    /* Hero orbits. Duration is set per ring so they drift out of sync. */
+    @keyframes orbit {
+        from { transform: rotate(0deg); }
+        to   { transform: rotate(360deg); }
+    }
+
+    .animate-orbit {
+        animation: orbit 60s linear infinite;
+    }
+
+    .animate-orbit-reverse {
+        animation: orbit 60s linear infinite reverse;
+    }
+
+    /* Energy travelling along the hero connectors, towards the core. */
+    @keyframes flow {
+        to { stroke-dashoffset: -100; }
+    }
+
+    .animate-flow {
+        animation: flow 3s linear infinite;
+    }
+
+    /*
+    | Looping feed
+    |------------------------------------------------------------------
+    | Items enter one by one, hold, then clear — used by the LeadForm mockups
+    | for rows that arrive live (sheet rows, pixel events, chat messages).
+    | Stagger with `animation-delay` on each child.
+    */
+    @keyframes cycle-in {
+        0%       { opacity: 0; transform: translateY(8px); }
+        14%, 86% { opacity: 1; transform: none; }
+        100%     { opacity: 0; transform: translateY(-8px); }
+    }
+
+    .animate-cycle {
+        animation: cycle-in var(--cycle-duration, 7s) ease-in-out infinite both;
+    }
+
+    /* Bar that fills, holds, then resets — verification and sync progress. */
+    @keyframes fill-bar {
+        0%       { width: 8%; }
+        60%, 90% { width: 100%; }
+        100%     { width: 8%; }
+    }
+
+    .animate-fill {
+        animation: fill-bar var(--cycle-duration, 7s) ease-in-out infinite;
+    }
+
     /* Expanding ring behind live-status dots. */
     @keyframes ping-soft {
         0%   { transform: scale(1); opacity: 0.5; }
@@ -321,6 +372,11 @@
         .animate-marquee,
         .animate-float,
         .animate-shimmer,
+        .animate-orbit,
+        .animate-orbit-reverse,
+        .animate-flow,
+        .animate-cycle,
+        .animate-fill,
         .animate-ping-soft {
             animation: none;
         }

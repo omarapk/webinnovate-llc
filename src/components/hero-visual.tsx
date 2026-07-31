@@ -1,255 +1,250 @@
 'use client';
 
-import { motion } from 'motion/react';
+import { motion, useReducedMotion } from 'motion/react';
 
 /**
- * Hero studio illustration.
+ * Hero illustration — the studio as an orbital system.
  *
- * A SaaS product surface: revenue climbing, an intelligence layer reasoning
- * over it, and the engineering signals underneath. Deliberately abstract —
- * it sells the studio, not the WEBI apps (those live in #references).
+ * The core is a wireframe globe, deliberately echoing the WebInnovate mark, and
+ * the five things we sell orbit it: engineering, security, SEO, growth and
+ * support. Drawn as vector art rather than a product screenshot so it stays
+ * symbolic, and built from theme tokens so it follows the palette.
  */
 
-const REVENUE_LINE =
-  'M0,104 C18,100 30,94 44,90 C60,86 70,96 84,93 C102,89 112,74 128,70 C146,66 156,63 172,60 C190,56 200,47 216,44 C234,40 244,38 260,33 C278,27 292,18 312,10';
-
-const REVENUE_AREA = `${REVENUE_LINE} L320,120 L0,120 Z`;
-
-/** Nodes of the small "intelligence" graph, in a 120×120 viewBox. */
-const NODES = [
-  { cx: 60, cy: 22, r: 5 },
-  { cx: 22, cy: 54, r: 4 },
-  { cx: 98, cy: 52, r: 4 },
-  { cx: 40, cy: 96, r: 4 },
-  { cx: 84, cy: 98, r: 4 },
-  { cx: 60, cy: 60, r: 7 },
+/** Tilted orbit ellipses: [rx, ry, tilt°, spin duration, direction]. */
+const ORBITS = [
+  { rx: 250, ry: 96, tilt: -16, duration: '46s', reverse: false },
+  { rx: 210, ry: 132, tilt: 38, duration: '62s', reverse: true },
+  { rx: 268, ry: 60, tilt: 74, duration: '78s', reverse: false },
 ];
 
-const EDGES = [
-  [0, 5],
-  [1, 5],
-  [2, 5],
-  [3, 5],
-  [4, 5],
-  [0, 1],
-  [0, 2],
-  [1, 3],
-  [2, 4],
-  [3, 4],
-];
+/** Wireframe meridians and parallels on the core globe. */
+const MERIDIANS = [28, 56, 84];
+const PARALLELS = [30, 58];
 
-const kpis = [
-  { label: 'Conversion', value: '+38%' },
-  { label: 'Uptime', value: '99.9%' },
-  { label: 'Response', value: '< 1h' },
-];
+type Capability = {
+  label: string;
+  metric: string;
+  /** Position of the chip, as a percentage of the illustration box. */
+  position: string;
+  /** Where the connector meets the chip, in SVG user units. */
+  from: [number, number];
+  delay: number;
+  icon: React.ReactNode;
+};
 
-const capabilities = [
-  { label: 'Development', detail: 'Shipping', color: '#A21CAF' },
-  { label: 'Security', detail: 'Hardened', color: '#DB2777' },
-  { label: 'SEO', detail: 'Indexed', color: '#9333EA' },
-  { label: 'Support', detail: 'Monitored', color: '#7C3AED' },
+const CORE: [number, number] = [400, 290];
+
+const CAPABILITIES: Capability[] = [
+  {
+    label: 'Engineering',
+    metric: 'TypeScript · Edge',
+    position: 'left-0 top-[6%]',
+    from: [150, 76],
+    delay: 0,
+    icon: <path d="m8 6-5 6 5 6M16 6l5 6-5 6" />,
+  },
+  {
+    label: 'Security',
+    metric: '0 critical',
+    position: 'right-[2%] top-0',
+    from: [648, 52],
+    delay: 0.1,
+    icon: (
+      <>
+        <path d="M12 3 5 6v6c0 4.1 2.9 7.8 7 8.9 4.1-1.1 7-4.8 7-8.9V6l-7-3Z" />
+        <path d="m9 12 2 2 4-4" />
+      </>
+    ),
+  },
+  {
+    label: 'SEO',
+    metric: 'Ranked #1',
+    position: 'right-0 top-[46%]',
+    from: [690, 300],
+    delay: 0.2,
+    icon: (
+      <>
+        <circle cx="11" cy="11" r="7" />
+        <path d="m20 20-3.5-3.5" />
+      </>
+    ),
+  },
+  {
+    label: 'Growth',
+    metric: '+214% MRR',
+    position: 'bottom-[4%] right-[12%]',
+    from: [590, 520],
+    delay: 0.3,
+    icon: (
+      <>
+        <path d="M3 17l6-6 4 4 7-7" />
+        <path d="M14 8h6v6" />
+      </>
+    ),
+  },
+  {
+    label: 'Support',
+    metric: '99.98% uptime',
+    position: 'bottom-[10%] left-[1%]',
+    from: [140, 494],
+    delay: 0.4,
+    icon: <path d="M3 12h4l2.5-6 5 12L17 12h4" />,
+  },
 ];
 
 export function HeroVisual() {
+  const reducedMotion = useReducedMotion();
+
   return (
-    <div className="relative mx-auto max-w-4xl">
-      <div className="pointer-events-none absolute -inset-x-24 -bottom-16 -top-24 -z-10 overflow-hidden" aria-hidden="true">
-        <div className="glow absolute left-[6%] top-[8%] size-[380px] rounded-full" style={{ '--glow': 'oklch(0.62 0.24 340 / 0.20)' } as React.CSSProperties} />
-        <div className="glow absolute right-[4%] top-[20%] size-[400px] rounded-full" style={{ '--glow': 'oklch(0.55 0.22 290 / 0.16)' } as React.CSSProperties} />
-        <div className="glow absolute -bottom-[8%] left-[40%] size-[440px] rounded-full" style={{ '--glow': 'oklch(0.68 0.19 150 / 0.12)' } as React.CSSProperties} />
+    <div className="relative mx-auto aspect-[4/3] w-full max-w-4xl sm:aspect-[16/10]">
+      <div className="pointer-events-none absolute -inset-16 -z-10 overflow-hidden" aria-hidden="true">
+        <div className="glow absolute left-1/2 top-1/2 size-[560px] -translate-x-1/2 -translate-y-1/2 rounded-full" style={{ '--glow': 'oklch(0.62 0.24 340 / 0.26)' } as React.CSSProperties} />
+        <div className="glow absolute left-[14%] top-[8%] size-[380px] rounded-full" style={{ '--glow': 'oklch(0.55 0.22 290 / 0.20)' } as React.CSSProperties} />
+        <div className="glow absolute bottom-[2%] right-[10%] size-[420px] rounded-full" style={{ '--glow': 'oklch(0.68 0.19 150 / 0.14)' } as React.CSSProperties} />
       </div>
 
-      <div className="mockup">
-        <div className="mockup-bar">
-          <span className="mockup-dot" />
-          <span className="mockup-dot" />
-          <span className="mockup-dot" />
-          <div className="ml-3 flex flex-1 items-center gap-2 rounded-md bg-background px-2.5 py-1 text-[11px] text-muted-foreground">
-            <svg className="size-3 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-              <rect x="3" y="4" width="18" height="16" rx="2" />
-              <path d="M3 9h18" />
-            </svg>
-            your-saas.app / growth
-          </div>
-        </div>
+      <svg
+        className="absolute inset-0 size-full"
+        viewBox="0 0 800 580"
+        fill="none"
+        preserveAspectRatio="xMidYMid meet"
+        aria-hidden="true"
+      >
+        <defs>
+          <radialGradient id="core-body" cx="34%" cy="28%">
+            <stop offset="0%" stopColor="#F5D0FE" />
+            <stop offset="28%" stopColor="#D946EF" />
+            <stop offset="62%" stopColor="#9333EA" />
+            <stop offset="100%" stopColor="#3B0764" />
+          </radialGradient>
 
-        <div className="grid sm:grid-cols-[1.45fr_1fr]">
-          {/* Growth */}
-          <div className="border-b border-border p-5 sm:border-b-0 sm:border-r sm:p-6">
-            <div className="flex items-start justify-between gap-4">
-              <div>
-                <p className="text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">
-                  Recurring revenue
-                </p>
-                <p className="mt-2 text-3xl font-semibold tracking-tight tabular-nums">
-                  $2.4M<span className="text-muted-foreground">+</span>
-                </p>
-              </div>
-              <span className="inline-flex items-center gap-1 rounded-full bg-emerald-500/10 px-2 py-1 text-[11px] font-semibold text-emerald-600">
-                <svg className="size-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                  <path d="M6 15l6-6 6 6" />
-                </svg>
-                +214%
-              </span>
-            </div>
+          <radialGradient id="core-sheen" cx="30%" cy="24%">
+            <stop offset="0%" stopColor="#FFFFFF" stopOpacity="0.55" />
+            <stop offset="100%" stopColor="#FFFFFF" stopOpacity="0" />
+          </radialGradient>
 
-            <svg className="mt-5 h-32 w-full" viewBox="0 0 320 120" fill="none" preserveAspectRatio="none" aria-hidden="true">
-              <defs>
-                <linearGradient id="growth-stroke" x1="0" x2="1" y1="1" y2="0">
-                  <stop offset="0%" stopColor="#A21CAF" />
-                  <stop offset="55%" stopColor="#DB2777" />
-                  <stop offset="100%" stopColor="#7C3AED" />
-                </linearGradient>
-                <linearGradient id="growth-fill" x1="0" x2="0" y1="0" y2="1">
-                  <stop offset="0%" stopColor="#DB2777" stopOpacity="0.22" />
-                  <stop offset="100%" stopColor="#DB2777" stopOpacity="0" />
-                </linearGradient>
-              </defs>
+          <linearGradient id="orbit-line" x1="0" x2="1" y1="0" y2="1">
+            <stop offset="0%" stopColor="#A21CAF" stopOpacity="0" />
+            <stop offset="30%" stopColor="#A21CAF" stopOpacity="0.55" />
+            <stop offset="70%" stopColor="#7C3AED" stopOpacity="0.55" />
+            <stop offset="100%" stopColor="#7C3AED" stopOpacity="0" />
+          </linearGradient>
 
-              {[24, 56, 88].map((y) => (
-                <line key={y} x1="0" y1={y} x2="320" y2={y} stroke="currentColor" strokeWidth="1" className="text-border" strokeDasharray="3 6" />
-              ))}
+          <linearGradient id="link-line" x1="0" x2="1" y1="0" y2="0">
+            <stop offset="0%" stopColor="#A21CAF" stopOpacity="0.05" />
+            <stop offset="100%" stopColor="#A21CAF" stopOpacity="0.5" />
+          </linearGradient>
+        </defs>
 
-              <motion.path
-                d={REVENUE_AREA}
-                fill="url(#growth-fill)"
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8, delay: 0.5 }}
+        {/* Orbits */}
+        <g>
+          {ORBITS.map((orbit) => (
+            <g
+              key={orbit.tilt}
+              className={orbit.reverse ? 'animate-orbit-reverse' : 'animate-orbit'}
+              style={{
+                transformOrigin: `${CORE[0]}px ${CORE[1]}px`,
+                animationDuration: orbit.duration,
+              }}
+            >
+              <ellipse
+                cx={CORE[0]}
+                cy={CORE[1]}
+                rx={orbit.rx}
+                ry={orbit.ry}
+                stroke="url(#orbit-line)"
+                strokeWidth="1.5"
+                transform={`rotate(${orbit.tilt} ${CORE[0]} ${CORE[1]})`}
               />
-              <motion.path
-                d={REVENUE_LINE}
-                stroke="url(#growth-stroke)"
-                strokeWidth="2.5"
-                strokeLinecap="round"
-                initial={{ pathLength: 0 }}
-                whileInView={{ pathLength: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 1.4, ease: [0.16, 1, 0.3, 1] }}
+              {/* Satellite riding the ring */}
+              <circle
+                cx={CORE[0] + orbit.rx * Math.cos((orbit.tilt * Math.PI) / 180)}
+                cy={CORE[1] + orbit.rx * Math.sin((orbit.tilt * Math.PI) / 180)}
+                r="4"
+                fill="#D946EF"
               />
-            </svg>
+            </g>
+          ))}
+        </g>
 
-            <div className="mt-5 grid grid-cols-3 gap-2">
-              {kpis.map((kpi) => (
-                <div key={kpi.label} className="rounded-lg border border-border px-3 py-2.5">
-                  <p className="text-[10px] uppercase tracking-wide text-muted-foreground">{kpi.label}</p>
-                  <p className="mt-0.5 text-sm font-semibold tabular-nums">{kpi.value}</p>
-                </div>
-              ))}
-            </div>
-          </div>
+        {/* Connectors from each capability to the core */}
+        {CAPABILITIES.map((capability) => (
+          <line
+            key={capability.label}
+            x1={capability.from[0]}
+            y1={capability.from[1]}
+            x2={CORE[0]}
+            y2={CORE[1]}
+            stroke="url(#link-line)"
+            strokeWidth="1.5"
+            strokeDasharray="3 7"
+            className="animate-flow"
+            style={{ animationDelay: `${capability.delay * -3}s` }}
+          />
+        ))}
 
-          {/* Intelligence */}
-          <div className="flex flex-col p-5 sm:p-6">
-            <div className="flex items-center justify-between">
-              <span className="text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">
-                Intelligence
-              </span>
-              <span className="inline-flex items-center gap-1.5 text-[11px] text-muted-foreground">
-                <span className="relative flex size-1.5">
-                  <span className="animate-ping-soft absolute inline-flex size-full rounded-full bg-emerald-500" />
-                  <span className="relative inline-flex size-1.5 rounded-full bg-emerald-500" />
-                </span>
-                Live
-              </span>
-            </div>
+        {/* Core globe */}
+        <motion.g
+          initial={reducedMotion ? false : { scale: 0.82, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
+          style={{ transformOrigin: `${CORE[0]}px ${CORE[1]}px` }}
+        >
+          <circle cx={CORE[0]} cy={CORE[1]} r="104" fill="#A21CAF" opacity="0.16" />
+          <circle cx={CORE[0]} cy={CORE[1]} r="88" fill="url(#core-body)" />
 
-            <div className="mt-4 flex justify-center rounded-xl border border-border bg-muted/40 py-4">
-              <svg className="size-32" viewBox="0 0 120 120" fill="none" aria-hidden="true">
-                <defs>
-                  <linearGradient id="node-fill" x1="0" x2="1" y1="0" y2="1">
-                    <stop offset="0%" stopColor="#A21CAF" />
-                    <stop offset="100%" stopColor="#7C3AED" />
-                  </linearGradient>
-                </defs>
+          <g stroke="#FFFFFF" strokeOpacity="0.42" strokeWidth="1.5" fill="none">
+            {MERIDIANS.map((rx) => (
+              <ellipse key={`m${rx}`} cx={CORE[0]} cy={CORE[1]} rx={rx} ry="88" />
+            ))}
+            {PARALLELS.map((ry) => (
+              <ellipse key={`p${ry}`} cx={CORE[0]} cy={CORE[1]} rx="88" ry={ry} />
+            ))}
+            <line x1={CORE[0] - 88} y1={CORE[1]} x2={CORE[0] + 88} y2={CORE[1]} />
+          </g>
 
-                {EDGES.map(([from, to], index) => (
-                  <motion.line
-                    key={`${from}-${to}`}
-                    x1={NODES[from].cx}
-                    y1={NODES[from].cy}
-                    x2={NODES[to].cx}
-                    y2={NODES[to].cy}
-                    stroke="url(#node-fill)"
-                    strokeWidth="1"
-                    strokeOpacity="0.45"
-                    initial={{ pathLength: 0, opacity: 0 }}
-                    whileInView={{ pathLength: 1, opacity: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.6, delay: 0.3 + index * 0.06 }}
-                  />
-                ))}
+          <circle cx={CORE[0]} cy={CORE[1]} r="88" fill="url(#core-sheen)" />
+          <circle cx={CORE[0]} cy={CORE[1]} r="88" stroke="#FFFFFF" strokeWidth="3" />
 
-                {NODES.map((node, index) => (
-                  <motion.circle
-                    key={`${node.cx}-${node.cy}`}
-                    cx={node.cx}
-                    cy={node.cy}
-                    r={node.r}
-                    fill="url(#node-fill)"
-                    initial={{ scale: 0, opacity: 0 }}
-                    whileInView={{ scale: 1, opacity: 1 }}
-                    viewport={{ once: true }}
-                    transition={{
-                      duration: 0.4,
-                      delay: 0.5 + index * 0.08,
-                      type: 'spring',
-                      bounce: 0.5,
-                    }}
-                    style={{ originX: `${node.cx}px`, originY: `${node.cy}px` }}
-                  />
-                ))}
+          {/* Network nodes on the globe, straight from the mark */}
+          {[
+            [CORE[0] - 62, CORE[1] - 34],
+            [CORE[0] + 58, CORE[1] - 48],
+            [CORE[0] + 22, CORE[1] + 66],
+          ].map(([cx, cy]) => (
+            <g key={`${cx}-${cy}`}>
+              <circle cx={cx} cy={cy} r="11" fill="#FFFFFF" />
+              <circle cx={cx} cy={cy} r="8" fill="#DB2777" />
+            </g>
+          ))}
+        </motion.g>
+      </svg>
+
+      {/* Capability chips, anchored around the orbit */}
+      {CAPABILITIES.map((capability) => (
+        <motion.div
+          key={capability.label}
+          className={`absolute ${capability.position}`}
+          initial={reducedMotion ? false : { opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.35 + capability.delay, ease: [0.16, 1, 0.3, 1] }}
+        >
+          <div className="chip animate-float" style={{ animationDelay: `${capability.delay * -4}s` }}>
+            <span className="flex size-7 shrink-0 items-center justify-center rounded-lg bg-foreground text-background">
+              <svg className="size-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                {capability.icon}
               </svg>
-            </div>
-
-            <div className="mt-4 space-y-1.5">
-              {capabilities.map((capability) => (
-                <div
-                  key={capability.label}
-                  className="flex items-center justify-between rounded-lg border border-border px-3 py-2 text-[11px]"
-                >
-                  <span className="flex items-center gap-2">
-                    <span className="size-1.5 rounded-full" style={{ background: capability.color }} />
-                    {capability.label}
-                  </span>
-                  <span className="text-muted-foreground">{capability.detail}</span>
-                </div>
-              ))}
-            </div>
+            </span>
+            <span className="whitespace-nowrap">
+              {capability.label}
+              <span className="block text-[11px] font-normal text-muted-foreground">
+                {capability.metric}
+              </span>
+            </span>
           </div>
-        </div>
-      </div>
-
-      <div className="chip animate-float absolute right-full top-28 -mr-4 hidden whitespace-nowrap xl:flex" style={{ animationDelay: '-1s' }}>
-        <span className="flex size-6 items-center justify-center rounded-md bg-foreground text-background">
-          <svg className="size-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-            <path d="m8 6-5 6 5 6M16 6l5 6-5 6" />
-          </svg>
-        </span>
-        <span>
-          Built by engineers
-          <span className="block text-[11px] font-normal text-muted-foreground">
-            Production code, not prototypes
-          </span>
-        </span>
-      </div>
-
-      <div className="chip animate-float absolute bottom-24 left-full -ml-4 hidden whitespace-nowrap xl:flex" style={{ animationDelay: '-3.5s' }}>
-        <span className="flex size-6 items-center justify-center rounded-md bg-emerald-500/10 text-emerald-600">
-          <svg className="size-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-            <path d="M12 3 5 6v6c0 4.1 2.9 7.8 7 8.9 4.1-1.1 7-4.8 7-8.9V6l-7-3Z" />
-            <path d="m9 12 2 2 4-4" />
-          </svg>
-        </span>
-        <span>
-          Secure &amp; scalable
-          <span className="block text-[11px] font-normal text-muted-foreground">
-            Audited, monitored, maintained
-          </span>
-        </span>
-      </div>
+        </motion.div>
+      ))}
     </div>
   );
 }

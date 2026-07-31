@@ -3,8 +3,8 @@
 import { useActionState } from 'react';
 import { useFormStatus } from 'react-dom';
 
-import { submitQuote } from '@/app/contact/actions';
-import { budgetOptions, timelineOptions, type QuoteState } from '@/app/contact/quote-options';
+import { submitQuote } from '@/lib/quote-action';
+import { budgetOptions, timelineOptions, type QuoteState } from '@/lib/quote-options';
 
 const initialState: QuoteState = { status: 'idle' };
 

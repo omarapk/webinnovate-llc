@@ -46,13 +46,15 @@ type RevealProps = {
   className?: string;
   style?: CSSProperties;
   as?: ElementType;
+  /** Set when the revealed element is also a scroll anchor. */
+  id?: string;
   /** Only meaningful when `as` renders an anchor. */
   href?: string;
   rel?: string;
   target?: string;
 };
 
-export function RevealGroup({ children, className, style, as = 'div', ...anchor }: RevealProps) {
+export function RevealGroup({ children, className, style, as = 'div', ...rest }: RevealProps) {
   const Tag = motionTag(as);
 
   return (
@@ -63,18 +65,18 @@ export function RevealGroup({ children, className, style, as = 'div', ...anchor 
       viewport={{ once: true, margin: '-10% 0px -10% 0px' }}
       className={className}
       style={style}
-      {...anchor}
+      {...rest}
     >
       {children}
     </Tag>
   );
 }
 
-export function Reveal({ children, className, style, as = 'div', ...anchor }: RevealProps) {
+export function Reveal({ children, className, style, as = 'div', ...rest }: RevealProps) {
   const Tag = motionTag(as);
 
   return (
-    <Tag variants={item} className={className} style={style} {...anchor}>
+    <Tag variants={item} className={className} style={style} {...rest}>
       {children}
     </Tag>
   );

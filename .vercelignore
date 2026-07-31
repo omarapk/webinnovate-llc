@@ -1,0 +1,8 @@
+# The Laravel site is kept for reference only; nothing in the Next build reads it.
+legacy
+
+# Local tooling and notes.
+scripts
+*.md
+!README.md
+note.txt

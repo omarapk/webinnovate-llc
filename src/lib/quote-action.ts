@@ -1,6 +1,6 @@
 'use server';
 
-import type { QuoteState } from '@/app/contact/quote-options';
+import type { QuoteState } from '@/lib/quote-options';
 import { site } from '@/data/site';
 
 type QuotePayload = {

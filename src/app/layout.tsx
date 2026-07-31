@@ -1,11 +1,17 @@
 import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
 
-import { Footer } from '@/components/footer';
-import { Header } from '@/components/header';
 import { site } from '@/data/site';
 
 import './globals.css';
+
+/**
+ * Root layout — document shell only.
+ *
+ * The chrome lives in the route groups: (corporate) wears the studio header
+ * and footer, (apps) wears each product's own, since a Shopify app landing
+ * needs its own navigation and its own install CTA.
+ */
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -29,8 +35,8 @@ export const metadata: Metadata = {
   robots: { index: true, follow: true },
   alternates: { canonical: '/' },
   icons: {
-    icon: '/assets/images/brand/webinnovate/icon-clean.png',
-    apple: '/assets/images/brand/webinnovate/icon-clean.png',
+    icon: '/assets/images/brand/webinnovate/logo-mark.png',
+    apple: '/assets/images/brand/webinnovate/logo-mark.png',
   },
   openGraph: {
     type: 'website',
@@ -53,11 +59,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           Skip to content
         </a>
 
-        <Header />
-
-        <main id="main">{children}</main>
-
-        <Footer />
+        {children}
       </body>
     </html>
   );
