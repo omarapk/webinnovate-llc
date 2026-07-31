@@ -15,6 +15,15 @@ const nextConfig: NextConfig = {
    */
   async redirects() {
     return [
+      // One canonical host. `site.url` is the apex, so www folds into it
+      // rather than serving the same pages under a second hostname.
+      {
+        source: '/:path*',
+        has: [{ type: 'host', value: 'www.webinnovate.dev' }],
+        destination: 'https://webinnovate.dev/:path*',
+        permanent: true,
+      },
+
       // The blog and its posts were LeadForm material; /blog already 301'd to
       // /leadform on the old site.
       { source: '/blog', destination: '/leadform', permanent: true },
