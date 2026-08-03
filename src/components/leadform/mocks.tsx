@@ -1,3 +1,5 @@
+import Image from 'next/image';
+
 import { BrandMark } from '@/components/brand-mark';
 import { leadform } from '@/data/leadform';
 
@@ -100,23 +102,13 @@ export function OrderFormMock() {
     <Frame title="Checkout · your-store.com">
       <div className="space-y-3.5 p-4">
         <div className="flex items-center gap-3">
-          <div
-            className="flex size-11 shrink-0 items-center justify-center rounded-lg text-white"
-            style={{ backgroundImage: ACCENT }}
-          >
-            <svg
-              className="size-5"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="1.8"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              aria-hidden="true"
-            >
-              <path d="M4 11a8 8 0 0 1 16 0v5a3 3 0 0 1-3 3h-1v-8h4M8 19H7a3 3 0 0 1-3-3v-5h4v8Z" />
-            </svg>
-          </div>
+          <Image
+            src="/assets/images/leadform/wireless-headphones.jpg"
+            alt=""
+            width={44}
+            height={44}
+            className="size-11 shrink-0 rounded-lg object-cover"
+          />
           <div className="min-w-0">
             <p className="truncate text-xs font-semibold">Premium Wireless Headphones</p>
             <p className="text-[11px] text-muted-foreground">$24.00 per unit</p>
