@@ -245,6 +245,10 @@ export const leadform = {
       q: 'Do you provide customer support?',
       a: "Of course. Our support team is available via live chat and email. We're here to listen to your needs and help you get the best results from LeadForm.",
     },
+    {
+      q: 'Will installing LeadForm change my Shopify checkout or theme?',
+      a: "No. LeadForm adds a one-page order form on your product and landing pages instead of sending customers through Shopify's default checkout, and your theme stays untouched. Every field and the design are customizable from your Shopify admin.",
+    },
   ],
 
   pricing: {
