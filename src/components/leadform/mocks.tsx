@@ -19,11 +19,14 @@ function Field({
   label,
   value,
   placeholder,
+  caret = false,
   className = '',
 }: {
   label: string;
   value?: string;
   placeholder?: string;
+  /** Blinking input caret after the value, as if it was just typed. */
+  caret?: boolean;
   className?: string;
 }) {
   return (
@@ -31,7 +34,15 @@ function Field({
       <p className="text-[10px] font-medium text-muted-foreground">{label}</p>
       <div className="mt-1 flex h-8 items-center rounded-lg border border-border bg-background px-2.5 text-[11px]">
         {value ? (
-          <span className="font-medium">{value}</span>
+          <span className="font-medium">
+            {value}
+            {caret && (
+              <span
+                className="animate-caret ml-px inline-block h-3 w-px translate-y-0.5 bg-foreground/70"
+                aria-hidden="true"
+              />
+            )}
+          </span>
         ) : (
           <span className="text-muted-foreground/60">{placeholder}</span>
         )}
@@ -47,7 +58,7 @@ function SummaryRow({
   muted,
 }: {
   label: string;
-  value: string;
+  value: React.ReactNode;
   strong?: boolean;
   muted?: boolean;
 }) {
@@ -89,6 +100,9 @@ function Frame({
 /*
 | 1. The order form itself
 |--------------------------------------------------------------------------
+| The hero mock demos itself: the selected tier cycles 1 → 2 → 3 units on a
+| 9-second loop (`cycle-a/b/c` in globals.css) and the summary, total and
+| buy button follow the same clock. Reduced motion rests on tier 2.
 */
 
 const QUANTITY_TIERS = [
@@ -96,6 +110,43 @@ const QUANTITY_TIERS = [
   { units: '2 Units', save: 'Save 20%', price: '$38.40', was: '$48.00', badge: 'Most popular' },
   { units: '3 Units', save: 'Save 30%', price: '$50.40', was: '$72.00', badge: null },
 ];
+
+/** Order maths per tier, kept consistent with the tier cards above. */
+const TIER_TOTALS: { subtotal: string; discount: string; total: string }[] = [
+  { subtotal: '$24.00', discount: '$0.00', total: '$24.00' },
+  { subtotal: '$48.00', discount: '−$9.60', total: '$38.40' },
+  { subtotal: '$72.00', discount: '−$21.60', total: '$50.40' },
+];
+
+const CYCLE = ['cycle-a', 'cycle-b', 'cycle-c'] as const;
+
+/**
+ * Stacks the three per-tier values on one grid cell; the cycle classes fade
+ * the active one in as the demo loop moves through the tiers.
+ */
+function CycleValue({
+  values,
+  align = 'end',
+  className = '',
+}: {
+  values: [string, string, string];
+  align?: 'start' | 'center' | 'end';
+  className?: string;
+}) {
+  return (
+    <span className={`inline-grid ${className}`}>
+      {values.map((value, index) => (
+        <span
+          key={index}
+          className={`${CYCLE[index]} [grid-area:1/1]`}
+          style={{ justifySelf: align }}
+        >
+          {value}
+        </span>
+      ))}
+    </span>
+  );
+}
 
 export function OrderFormMock() {
   return (
@@ -116,70 +167,93 @@ export function OrderFormMock() {
         </div>
 
         <div className="space-y-2">
-          {QUANTITY_TIERS.map((tier, index) => {
-            const selected = index === 1;
-
-            return (
-              <div
-                key={tier.units}
-                className={`relative flex items-center gap-2.5 rounded-lg border p-2.5 ${
-                  selected ? 'border-transparent bg-muted/60 ring-2' : 'border-border'
-                }`}
-                style={selected ? { '--tw-ring-color': leadform.accent.to } as React.CSSProperties : undefined}
-              >
+          {QUANTITY_TIERS.map((tier, index) => (
+            <div
+              key={tier.units}
+              className="relative flex items-center gap-2.5 rounded-lg border border-border p-2.5"
+            >
+              {/* Selection ring; each tier's overlay takes its turn. */}
+              <span
+                className={`${CYCLE[index]} pointer-events-none absolute -inset-px rounded-lg bg-muted/60 ring-2`}
+                style={{ '--tw-ring-color': leadform.accent.to } as React.CSSProperties}
+                aria-hidden="true"
+              />
+              <span className="relative size-3.5 shrink-0 rounded-full border-2 border-border">
                 <span
-                  className={`size-3.5 shrink-0 rounded-full border-2 ${
-                    selected ? 'border-transparent' : 'border-border'
-                  }`}
-                  style={selected ? { backgroundImage: ACCENT } : undefined}
+                  className={`${CYCLE[index]} absolute -inset-0.5 rounded-full`}
+                  style={{ backgroundImage: ACCENT }}
                 />
-                <div className="min-w-0 flex-1">
-                  <p className="text-[11px] font-semibold">{tier.units}</p>
-                  {tier.save && (
-                    <p className="text-[10px] font-medium" style={{ color: leadform.accent.to }}>
-                      {tier.save}
-                    </p>
-                  )}
-                </div>
-                <div className="shrink-0 text-right">
-                  <p className="text-[11px] font-semibold">{tier.price}</p>
-                  {tier.was && (
-                    <p className="text-[10px] text-muted-foreground line-through">{tier.was}</p>
-                  )}
-                </div>
-                {tier.badge && (
-                  <span
-                    className="absolute -top-2 right-3 rounded-full px-1.5 py-0.5 text-[9px] font-semibold text-white"
-                    style={{ backgroundImage: ACCENT }}
-                  >
-                    {tier.badge}
-                  </span>
+              </span>
+              <div className="relative min-w-0 flex-1">
+                <p className="text-[11px] font-semibold">{tier.units}</p>
+                {tier.save && (
+                  <p className="text-[10px] font-medium" style={{ color: leadform.accent.to }}>
+                    {tier.save}
+                  </p>
                 )}
               </div>
-            );
-          })}
+              <div className="relative shrink-0 text-right">
+                <p className="text-[11px] font-semibold">{tier.price}</p>
+                {tier.was && (
+                  <p className="text-[10px] text-muted-foreground line-through">{tier.was}</p>
+                )}
+              </div>
+              {tier.badge && (
+                <span
+                  className="absolute -top-2 right-3 rounded-full px-1.5 py-0.5 text-[9px] font-semibold text-white"
+                  style={{ backgroundImage: ACCENT }}
+                >
+                  {tier.badge}
+                </span>
+              )}
+            </div>
+          ))}
         </div>
 
         <div className="grid grid-cols-2 gap-2.5">
-          <Field label="Full name*" value="James Wilson" />
+          <Field label="Full name*" value="James Wilson" caret />
           <Field label="Mobile number*" value="+1 555 482 7391" />
           <Field className="col-span-2" label="City" value="Austin, TX" />
         </div>
 
         <div className="space-y-1.5 rounded-lg bg-muted/50 p-2.5">
-          <SummaryRow label="Subtotal" value="$48.00" muted />
-          <SummaryRow label="Discount" value="−$9.60" muted />
+          <SummaryRow
+            label="Subtotal"
+            value={<CycleValue values={[TIER_TOTALS[0].subtotal, TIER_TOTALS[1].subtotal, TIER_TOTALS[2].subtotal]} />}
+            muted
+          />
+          <SummaryRow
+            label="Discount"
+            value={<CycleValue values={[TIER_TOTALS[0].discount, TIER_TOTALS[1].discount, TIER_TOTALS[2].discount]} />}
+            muted
+          />
           <SummaryRow label="Shipping" value="Free" muted />
           <div className="border-t border-border pt-1.5">
-            <SummaryRow label="Total" value="$38.40" strong />
+            <SummaryRow
+              label="Total"
+              value={<CycleValue values={[TIER_TOTALS[0].total, TIER_TOTALS[1].total, TIER_TOTALS[2].total]} />}
+              strong
+            />
           </div>
         </div>
 
         <div
-          className="flex h-10 items-center justify-center rounded-lg text-xs font-semibold text-white"
+          className="relative flex h-10 items-center justify-center overflow-hidden rounded-lg text-xs font-semibold text-white"
           style={{ backgroundImage: ACCENT }}
         >
-          Buy it now — $38.40
+          {/* Sheen sweeping across the CTA. */}
+          <span
+            className="animate-shimmer absolute inset-y-0 left-0 w-1/3 -skew-x-12 bg-white/15"
+            aria-hidden="true"
+          />
+          <CycleValue
+            align="center"
+            values={[
+              `Buy it now — ${TIER_TOTALS[0].total}`,
+              `Buy it now — ${TIER_TOTALS[1].total}`,
+              `Buy it now — ${TIER_TOTALS[2].total}`,
+            ]}
+          />
         </div>
 
         <p className="text-center text-[10px] text-muted-foreground">

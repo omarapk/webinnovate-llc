@@ -5,6 +5,7 @@ import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
 
 import { Logo } from '@/components/logo';
+import { ScrollProgress } from '@/components/scroll-progress';
 
 /**
  * Section menu. Every entry points at a band of the homepage, so the header
@@ -66,6 +67,7 @@ export function Header() {
         scrolled ? 'border-border bg-background shadow-sm' : 'border-transparent bg-background/80'
       }`}
     >
+      <ScrollProgress className="bg-gradient-to-r from-[#A21CAF] via-[#DB2777] to-[#7C3AED]" />
       <div className="mx-auto flex h-16 max-w-6xl items-center gap-3 px-4 sm:gap-6 sm:px-6 lg:px-8">
         <Logo className="shrink-0" />
 

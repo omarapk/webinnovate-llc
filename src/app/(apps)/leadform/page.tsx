@@ -108,8 +108,10 @@ export default function LeadformPage() {
               >
                 {leadform.hero.headline}
                 <span
-                  className="mt-1 block bg-clip-text text-transparent"
-                  style={{ backgroundImage: ACCENT }}
+                  className="animate-gradient-pan mt-1 block bg-clip-text text-transparent"
+                  style={{
+                    backgroundImage: `linear-gradient(90deg, ${leadform.accent.from}, ${leadform.accent.to}, ${leadform.accent.from})`,
+                  }}
                 >
                   {leadform.hero.headlineAccent}
                 </span>
@@ -215,23 +217,34 @@ export default function LeadformPage() {
           <p className="text-center text-xs font-medium uppercase tracking-widest text-muted-foreground">
             Join successful merchants like
           </p>
-          <div className="mt-7 flex flex-wrap items-center justify-center gap-x-10 gap-y-6 sm:gap-x-14">
-            {leadform.merchants.map((merchant) => (
-              <a
-                key={merchant.name}
-                href={merchant.url}
-                rel="noopener nofollow"
-                className="opacity-80 grayscale transition hover:opacity-100 hover:grayscale-0"
-              >
-                <Image
-                  src={merchant.image}
-                  alt={merchant.name}
-                  width={160}
-                  height={48}
-                  className="h-10 w-auto object-contain"
-                />
-              </a>
-            ))}
+          {/* Infinite strip; pauses on hover so the links stay clickable. The
+              list renders twice for a seamless loop — the clone is decorative. */}
+          <div
+            className="marquee-paused mask-fade-edges mt-7 overflow-hidden"
+            style={{ '--marquee-duration': '28s', '--marquee-gap': '3.5rem' } as React.CSSProperties}
+          >
+            <div className="animate-marquee flex w-max items-center gap-x-14">
+              {[false, true].map((clone) =>
+                leadform.merchants.map((merchant) => (
+                  <a
+                    key={`${merchant.name}${clone ? '-clone' : ''}`}
+                    href={merchant.url}
+                    rel="noopener nofollow"
+                    aria-hidden={clone || undefined}
+                    tabIndex={clone ? -1 : undefined}
+                    className="opacity-80 grayscale transition hover:opacity-100 hover:grayscale-0"
+                  >
+                    <Image
+                      src={merchant.image}
+                      alt={clone ? '' : merchant.name}
+                      width={160}
+                      height={48}
+                      className="h-10 w-auto object-contain"
+                    />
+                  </a>
+                )),
+              )}
+            </div>
           </div>
         </div>
       </section>

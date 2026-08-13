@@ -4,6 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 
+import { ScrollProgress } from '@/components/scroll-progress';
 import { leadform } from '@/data/leadform';
 
 /** LeadForm's own header: section nav plus the App Store install CTA. */
@@ -23,6 +24,7 @@ export function AppHeader() {
         scrolled ? 'border-border bg-background shadow-sm' : 'border-transparent bg-background/80'
       }`}
     >
+      <ScrollProgress className="bg-gradient-to-r from-[#A21CAF] to-[#E11D8F]" />
       <div className="mx-auto flex h-16 max-w-6xl items-center gap-3 px-4 sm:gap-6 sm:px-6 lg:px-8">
         <Link href={`/${leadform.slug}`} className="flex shrink-0 items-center gap-2.5">
           <Image

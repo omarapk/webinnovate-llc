@@ -275,6 +275,57 @@
         animation-play-state: paused;
     }
 
+    /* The hero underline draws itself once the headline has landed. Needs
+       pathLength="1" on the path so the dash math is unit-based. */
+    @keyframes draw-line {
+        to { stroke-dashoffset: 0; }
+    }
+
+    .draw-line {
+        stroke-dasharray: 1;
+        stroke-dashoffset: 1;
+        animation: draw-line 0.9s cubic-bezier(0.65, 0, 0.35, 1) 1.1s forwards;
+    }
+
+    /* Demo loop on the order-form mock: three slots take 3-second turns in a
+       9-second round. Negative delays start every slot mid-cycle, so the base
+       opacities below only matter when the animation is off — reduced motion
+       then rests on slot b, the middle tier. */
+    @keyframes take-turn {
+        0%, 31% { opacity: 1; }
+        34%, 100% { opacity: 0; }
+    }
+
+    .cycle-a, .cycle-b, .cycle-c {
+        animation: take-turn 9s infinite;
+    }
+
+    .cycle-a { opacity: 0; animation-delay: 0s; }
+    .cycle-b { opacity: 1; animation-delay: -6s; }
+    .cycle-c { opacity: 0; animation-delay: -3s; }
+
+    /* Typing caret at the end of a pre-filled mock field. */
+    @keyframes caret-blink {
+        0%, 45% { opacity: 1; }
+        50%, 100% { opacity: 0; }
+    }
+
+    .animate-caret {
+        animation: caret-blink 1.1s steps(1) infinite;
+    }
+
+    /* Slow pan across a text gradient; pair with a from→to→from gradient
+       and background-clip: text. */
+    @keyframes gradient-pan {
+        from { background-position: 0% 50%; }
+        to   { background-position: 200% 50%; }
+    }
+
+    .animate-gradient-pan {
+        background-size: 200% auto;
+        animation: gradient-pan 5s linear infinite;
+    }
+
     /* Scroll-reveal start state; Motion animates these to their final values.
        Kept visible when JS is unavailable. */
     .js .reveal {
@@ -377,8 +428,19 @@
         .animate-flow,
         .animate-cycle,
         .animate-fill,
-        .animate-ping-soft {
+        .animate-ping-soft,
+        .cycle-a,
+        .cycle-b,
+        .cycle-c,
+        .animate-caret,
+        .animate-gradient-pan {
             animation: none;
+        }
+
+        /* Without the draw animation the underline must simply be there. */
+        .draw-line {
+            animation: none;
+            stroke-dashoffset: 0;
         }
     }
 }

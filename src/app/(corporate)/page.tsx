@@ -102,7 +102,9 @@ export default function HomePage() {
                     </linearGradient>
                   </defs>
                   <path
+                    className="draw-line"
                     d="M4 8.5C72 3 148 2 220 4.5c48 1.6 96 3.6 136 2"
+                    pathLength={1}
                     stroke="url(#hero-underline)"
                     strokeWidth="6"
                     strokeLinecap="round"
